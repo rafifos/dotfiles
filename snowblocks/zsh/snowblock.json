@@ -1,0 +1,23 @@
+[
+  {
+    "defaults": {
+      "create": true,
+      "relink": true
+    },
+    "clean": ["~"],
+    "link": {
+      "~/.zlogout": {
+        "relative": true
+      },
+      "~/.zprofile": {
+        "relative": true
+      },
+      "~/.zshenv": {
+        "relative": true
+      },
+      "~/.zshrc": {
+        "relative": true
+      }
+    }
+  }
+]
