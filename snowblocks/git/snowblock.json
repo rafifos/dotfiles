@@ -6,18 +6,9 @@
     },
     "clean": ["~"],
     "link": {
-      "~/.czrc": {
-        "relative": true
-      },
-      "~/.gitconfig": {
-        "hosts": {
-          "INSPIRON-5420": "gitconfig.home",
-          "-": "gitconfig.base"
-        }
-      },
-      "~/.git-commit-msg": {
-        "relative": true
-      }
+      "~/.czrc": "czrc",
+      "~/.gitconfig": "gitconfig",
+      "~/.git-commit-msg": "git-commit-msg"
     }
   }
 ]

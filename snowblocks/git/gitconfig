@@ -1,3 +1,8 @@
+[user]
+  name = Rafael Julio
+  email = hello.rjulio@gmail.com
+  signingkey = 3E651E566E1F6D7F
+
 [core]
   ; We don't actually use git extensions, and thist keeps backwards
   ; compatibility with older git versions.
@@ -21,7 +26,7 @@
 
 [gui]
   ; Set the max commit message width.
-  commitmsgwidth = 80
+  commitmsgwidth = 100
 
 [commit]
   ; Template to be shown on the commit message prompt.
