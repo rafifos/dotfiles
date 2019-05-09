@@ -4,6 +4,17 @@
 # TODO: Continue to implement usefullness starting with:
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
+# Set $PATH so it includes user's private binaries if it exists.
+[[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
+[[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
+
+# Add Linuxbrew to $PATH if it's installed.
+[[ -d /home/linuxbrew/.linuxbrew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# Sets the directory of globally installed npm packages to the users $HOME,
+# avoiding EACCES errors. Only if npm is installed.
+(( $+commands[npm] )) && export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
