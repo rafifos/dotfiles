@@ -13,11 +13,12 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Enable color support for dircolors.
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-# Enables auto-completion/key bindings to fzf.
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+# Set $PATH so it includes user's private binaries if it exists.
+[[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
+[[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
 
-# Workaround for distributions that ship mawk by default.
-(( $+commands[gawk] )) && alias awk=gawk
+# Add Linuxbrew to $PATH if it's installed.
+[[ -d /home/linuxbrew/.linuxbrew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Enable colorized long listing with human-readable size.
 alias ls='LC_COLLATE=C ls -lAh --color=auto --group-directories-first'
@@ -122,42 +123,32 @@ mkd() {
   mkdir -p "$@" && cd "$@"
 }
 
-# We use [zplug](https://github.com/zplug/zplug) for plugin management.
-[[ ! -d ~/.zplug ]] && curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+# Installs antibody if it doesn't exist.
+[[ ! -f /usr/local/bin/antibody ]] && curl -sL git.io/antibody | sh -s
 
-source ~/.zplug/init.zsh
+# Starts Antibody.
+source <(antibody init)
 
-# Only loaded if an external program is installed.
-zplug "b4b4r07/enhancd", use:init.sh, if:"(( $+commands[fzf] ))", hook-load: "export ENHANCD_FILTER=fzf"
-zplug "modules/dpkg", from:prezto, if:"(( $+commands[dpkg] ))"
-zplug "plugins/adb", from:oh-my-zsh, if:"(( $+commands[adb] ))"
-zplug "plugins/cp", from:oh-my-zsh, if:"(( $+commands[rsync] ))"
-zplug "plugins/httpie", from:oh-my-zsh, if:"(( $+commands[http] ))"
-zplug "plugins/npm", from:oh-my-zsh, if:"(( $+commands[npm] ))"
-zplug "plugins/repo", from:oh-my-zsh, if:"(( $+commands[repo] ))"
-zplug "plugins/thefuck", from:oh-my-zsh, if:"(( $+commands[fuck] ))"
-zplug "wfxr/forgit", if:"(( $+commands[fzf] ))"
-zplug "zpm-zsh/clipboard", if:"(( $+commands[xclip] ))"
+# Only bundled if an external program is installed.
+(( $+commands[adb] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/adb || echo 'adb is not installed or not located in $PATH.'
+(( $+commands[http] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie || echo 'httpie is not installed or not located in $PATH.'
+(( $+commands[xclip] )) && antibody bundle zpm-zsh/clipboard || echo 'xclip is not installed or not located in $PATH.'
 
-# Only loaded if a file is present.
-zplug "zdharma/zsh-diff-so-fancy", use:"bin/diff-so-fancy", as:command, if:"[[  -f ~/.gitconfig.sec  ]]"
+# Only bundled if a file is present.
+[[ -f /usr/lib/command-not-found ]] && antibody bundle sorin-ionescu/prezto path:modules/command-not-found
+[[ -f ~/.gitconfig ]] && antibody bundle zdharma/zsh-diff-so-fancy
 
-# Default plugins.
-zplug "denysdovhan/gitio-zsh"
-zplug "gmatheu/shell-plugins", use:"explain-shell/zsh-explain-shell.zsh"
-zplug "MichaelAquilina/zsh-you-should-use"
-zplug "modules/archive", from:prezto
-zplug "modules/command-not-found", from:prezto
-zplug "plugins/colored-man-pages", from:oh-my-zsh
-zplug "plugins/transfer", from:oh-my-zsh
-zplug "rapgenic/zsh-git-complete-urls"
-zplug "yous/vanilli.sh"
-zplug "zdharma/fast-syntax-highlighting", defer:2
-zplug "zpm-zsh/colors"
-zplug "zpm-zsh/ls"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search", defer:3
+antibody bundle MichaelAquilina/zsh-you-should-use
+antibody bundle sorin-ionescu/prezto path:modules/archive
+antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
+antibody bundle rapgenic/zsh-git-complete-urls
+antibody bundle yous/vanilli.sh
+antibody bundle zpm-zsh/colors
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
 
 # Change it according to your up/down arrow keys.
 # To see if they match with your keyboard, run cat -v and observe it's output.
@@ -175,38 +166,6 @@ bindkey '^ ' autosuggest-fetch
 # Binds the "Ctrl + ->" to accept the command autosuggestion.
 bindkey '^[[C' autosuggest-accept
 
-# Using the "spaceship" prompt, made by Denys Dovhan.
-# NOTE: You may want to install `jq` to avoid prompt slowness.
-# See: https://github.com/denysdovhan/spaceship-prompt/blob/master/docs/Troubleshooting.md#why-is-my-prompt-slow
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, as:theme
-
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
-
-export SPACESHIP_CHAR_SUFFIX=" "
-
-export SPACESHIP_USER_SHOW=always
-
-export SPACESHIP_HOST_SHOW=always
-export SPACESHIP_HOST_SHOW_FULL=true
-
-export SPACESHIP_DIR_TRUNC_PREFIX="…/"
-
-export SPACESHIP_EXEC_TIME_ELAPSED=5
-
-# Enable it if using a Laptop, or don't, it's on you.
-export SPACESHIP_BATTERY_SHOW=false
-
-export SPACESHIP_EXIT_CODE_SHOW=true
-export SPACESHIP_EXIT_CODE_SUFFIX=" "
-
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo; zplug install
-  else
-    echo
-  fi
-fi
-
-zplug load
+# Using the "pure" prompt, made by Sindre Sorhus.
+antibody bundle mafredri/zsh-async
+antibody bundle sindresorhus/pure

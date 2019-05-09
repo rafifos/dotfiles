@@ -8,11 +8,12 @@ This dotfiles repository uses [snowsaw](https://github.com/arcticicestudio/snows
 
 - commitizen
 - cz-conventional-changelog
-- diff-so-fancy
+- tldr
 
 ### Optional requirements
 
-- curl
-- fzf
+- adb
 - httpie
-- fuck
+- xclip
+- grc
+- [nord-dircolors](https://github.com/arcticicestudio/nord-dircolors) (or other dircolors theme)
