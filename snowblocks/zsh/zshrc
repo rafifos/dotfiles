@@ -11,9 +11,10 @@
 # Add Linuxbrew to $PATH if it's installed.
 [[ -d /home/linuxbrew/.linuxbrew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# Sets the directory of globally installed npm packages to the users $HOME,
-# avoiding EACCES errors. Only if npm is installed.
+# Sets the directory of globally installed npm packages to the users $HOME and 
+# add it to $PATH, avoiding EACCES errors. Only if npm is installed.
 (( $+commands[npm] )) && export NPM_CONFIG_PREFIX="$HOME/.npm-global"
+(( $+commands[npm] )) && PATH="$HOME/.npm-global/bin:$PATH"
 
 # Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -23,13 +24,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # Enable color support for dircolors.
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-# Set $PATH so it includes user's private binaries if it exists.
-[[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
-[[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
-
-# Add Linuxbrew to $PATH if it's installed.
-[[ -d /home/linuxbrew/.linuxbrew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Enable colorized long listing with human-readable size.
 alias ls='LC_COLLATE=C ls -lAh --color=auto --group-directories-first'
@@ -76,57 +70,6 @@ alias rm='rm -Iv'
 # * Use two tab stops. (-x2, --tabs=n)
 alias less='less -RFXx2'
 
-# Show mode bits of files and directories in octal form.
-#
-# %A - Access rights in human readable form
-# %a - Access rights in octal
-# %N - Quoted file name with dereference if symbolic link
-alias lsm='stat -c "%A %a %N"'
-
-# Shows the current session time.
-# Use option "-s" to show the session start.
-#
-# @param $@ (optional) the options
-# @options ["-s","-h"]
-# @throws 1 Unknown option
-seti() {
-  local uptime session
-  session=0
-
-  case "$1" in
-    -s)
-      session=1
-      ;;
-    -h)
-      printf "\e[1mUsage: \e[36mseti \e[30m[OPTIONS]\n"
-      printf "  \e[01;36m-s  \e[0mShow session start\n"
-      printf "  \e[01;36m-h  \e[0mShow this help\e[0m\n"
-      return 0
-      ;;
-    -*)
-      printf "\e[31mUnknown option\e[0m"
-      return 1
-      ;;
-  esac
-
-  if [ $session -gt 0 ]
-  then
-    uptime=$(uptime -s)
-  else
-    uptime=$(</proc/uptime)
-    uptime=${uptime%%.*}
-
-    s=$(( uptime%60 ))
-    m=$(( uptime/60%60 ))
-    h=$(( uptime/60/60%24 ))
-    d=$(( uptime/60/60/24 ))
-
-    uptime=""$d"d "$h"h "$m"m "$s"s"
-  fi
-  printf "\e[36m%s\e[0m" "$uptime"
-  return 0
-}
-
 # Create a new directory and enter it.
 #
 # @param $1 the name of the directory to create and enter
@@ -148,6 +91,9 @@ source <(antibody init)
 # Only bundled if a file is present.
 [[ -f /usr/lib/command-not-found ]] && antibody bundle sorin-ionescu/prezto path:modules/command-not-found
 [[ -f ~/.gitconfig ]] && antibody bundle zdharma/zsh-diff-so-fancy
+
+# Only bundled if a directory is present.
+[[ -d /home/linuxbrew/.linuxbrew ]] && antibody bundle Homebrew/brew path:completions/zsh kind:fpath
 
 antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle sorin-ionescu/prezto path:modules/archive
