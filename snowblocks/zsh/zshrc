@@ -121,7 +121,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 bindkey '^ ' autosuggest-fetch
 
 # Binds the "Ctrl + ->" to accept the command autosuggestion.
-bindkey '^[[C' autosuggest-accept
+bindkey '^[[1;5C' autosuggest-accept
 
 # Initializes ZSH's completion engine
 autoload -U compinit && compinit
