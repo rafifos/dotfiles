@@ -6,13 +6,15 @@ This dotfiles repository uses [snowsaw](https://github.com/arcticicestudio/snows
 
 ### NodeJS Packages
 
+- android-platform-tools
 - commitizen
 - cz-conventional-changelog
 - tldr
 
 ### Optional requirements
 
-- adb
+- pigz
+- pbzip2
 - httpie
 - xclip
 - grc
