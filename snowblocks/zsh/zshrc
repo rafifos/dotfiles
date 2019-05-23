@@ -84,8 +84,8 @@ mkd() {
 source <(antibody init)
 
 # Only bundled if an external program is installed.
-(( $+commands[adb] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/adb || echo 'adb is not installed or not located in $PATH.'
-(( $+commands[http] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie || echo 'httpie is not installed or not located in $PATH.'
+(( $+commands[adb] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/adb kind:fpath || echo 'adb is not installed or not located in $PATH.'
+(( $+commands[http] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath || echo 'httpie is not installed or not located in $PATH.'
 (( $+commands[xclip] )) && antibody bundle zpm-zsh/clipboard || echo 'xclip is not installed or not located in $PATH.'
 
 # Only bundled if a file is present.
@@ -96,7 +96,8 @@ source <(antibody init)
 [[ -d /home/linuxbrew/.linuxbrew ]] && antibody bundle Homebrew/brew path:completions/zsh kind:fpath
 
 antibody bundle MichaelAquilina/zsh-you-should-use
-antibody bundle sorin-ionescu/prezto path:modules/archive
+antibody bundle sorin-ionescu/prezto path:modules/archive/functions kind:path
+antibody bundle sorin-ionescu/prezto path:modules/archive/functions kind:fpath
 antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
 antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
 antibody bundle rapgenic/zsh-git-complete-urls
