@@ -99,6 +99,70 @@ mkd() {
   mkdir -p "$@" && cd "$@"
 }
 
+# Compress files into archives.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# @param $1 the name of the archive
+# @param $2 the paths(s)/file(s) to compress
+# @throws 1 Unsupported or invalid file
+compress() {
+if [ -n $1 ]; then
+  file=$1
+  case $file in
+    *.tar.xz) shift && tar cJf $file $* ;;
+    *.tar.bz2) shift && tar cjf $file $* ;;
+    *.tar.gz) shift && tar czf $file $* ;;
+    *.gz) shift && tar czf $file $* ;;
+    *.tar) shift && tar cf $file $* ;;
+    *.tgz) shift && tar czf $file $* ;;
+    *.zip) shift && zip $file $* ;;
+    *.7z) shift && 7za a $file $* >/dev/null ;;
+    *)
+      echo -e "\e[1;38;5;221m\u2757 \e[0mUnsupported format"
+      return 1
+      ;;
+  esac
+  echo -e "\e[1;38;5;77m\u2714 \e[0mCompressed \e[3;38;5;80m'$file'\e[0m"
+else
+  echo -e "\e[1;38;5;160m\u2717 \e[3;38;5;80m'$file' \e[1;37mis not a valid extractable file\e[0m"
+  return 1
+fi
+return 0
+}
+
+# Extract archived files.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# @param $1 the file to extract
+# @throws 1 Unsupported or invalid file
+extract() {
+if [ -f $1 ]; then
+  case $1 in
+    *.tar.bz2) tar -jxvf $1 ;;
+    *.tar.gz)  tar -zxvf $1 ;;
+    *.bz2)     bunzip2 $1 ;;
+    *.gz)      gunzip $1 ;;
+    *.tar)     tar -xvf $1 ;;
+    *.tbz2)    tar -jxvf $1 ;;
+    *.tgz)     tar -zxvf $1 ;;
+    *.zip)     unzip $1 ;;
+    *)
+    printf "\e[33mUnsupported format\e[0m"
+    return 1
+    ;;
+  esac
+  printf "\e[32mExtracted\e[0m %s" "$1"
+else
+  printf "\e[33m%s is not a valid extractable file\e[0m" "$1"
+  return 1
+fi
+return 0
+}
+
 # Starts Antibody.
 source <(antibody init)
 
@@ -116,8 +180,6 @@ source <(antibody init)
 
 antibody bundle yous/vanilli.sh
 antibody bundle MichaelAquilina/zsh-you-should-use
-antibody bundle sorin-ionescu/prezto path:modules/archive/functions kind:path
-antibody bundle sorin-ionescu/prezto path:modules/archive/functions kind:fpath
 antibody bundle zpm-zsh/colors
 antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
