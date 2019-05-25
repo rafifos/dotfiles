@@ -4,6 +4,10 @@
 
 This dotfiles repository uses [snowsaw](https://github.com/arcticicestudio/snowsaw) which requires Python 3.6+ to be available in $PATH.
 
+### Prompt
+
+The prompt requires a font [patched for powerline](https://github.com/powerline/fonts) in order to work properly.
+
 ### NodeJS Packages
 
 - android-platform-tools
@@ -13,8 +17,7 @@ This dotfiles repository uses [snowsaw](https://github.com/arcticicestudio/snows
 
 ### Optional requirements
 
-- pigz
-- pbzip2
+- jq
 - httpie
 - xclip
 - grc
