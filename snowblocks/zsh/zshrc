@@ -28,17 +28,44 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Enable color support for dircolors.
 [[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 
-# Enable colorized long listing with human-readable size.
-alias ls='LC_COLLATE=C ls -lAh --color=auto --group-directories-first'
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# Enable colorized long listing with human-readable size and ISO-8601 date 
+# format.
+alias ls='LC_COLLATE=C ls -lAh --color=auto --time-style="+%Y-%m-%d +%H:%M:%S" --group-directories-first'
 
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
 # List in raw format with one entry per line.
 alias lsraw='LC_COLLATE=C \ls -N1 --group-directories-first'
 
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
 # Enable unified diff format by default.
 alias diff='diff -u'
 
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
 # Disable wget log file
 alias wget='wget --hsts-file='
+
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# Shorthand for alias to
+#
+# * Only display ANSI "color" escape sequences in "raw" form.
+#   (-R, --RAW-CONTROL-CHARS)
+# * Automatically exit if the entire file can be displayed on the first screen.
+#   (-F, --quit-if-one-screen)
+# * Disable sending the termcap (de)initialization strings to the terminal to
+#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
+# * Use two tab stops. (-x2, --tabs=n)
+alias less='less -RFXx2'
 
 # Shorthand for alias to
 #
@@ -62,18 +89,10 @@ alias mv='mv -iuv'
 # * Explain what operations are being done. (-v, --verbose)
 alias rm='rm -Iv'
 
-# Shorthand for alias to
-#
-# * Only display ANSI "color" escape sequences in "raw" form.
-#   (-R, --RAW-CONTROL-CHARS)
-# * Automatically exit if the entire file can be displayed on the first screen.
-#   (-F, --quit-if-one-screen)
-# * Disable sending the termcap (de)initialization strings to the terminal to
-#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
-# * Use two tab stops. (-x2, --tabs=n)
-alias less='less -RFXx2'
-
 # Create a new directory and enter it.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
 #
 # @param $1 the name of the directory to create and enter
 mkd() {
