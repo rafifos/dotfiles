@@ -5,7 +5,7 @@
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
 # Installs antibody if it doesn't exist.
-[[ ! -f ${HOME}/.local/bin/antibody ]] && curl -sfL https://install.goreleaser.com/github.com/getantibody/antibody.sh | sh -s -- -b '${HOME}/.local/bin'
+[[ ! -f ${HOME}/.local/bin/antibody ]] && curl -sfL https://install.goreleaser.com/github.com/getantibody/antibody.sh | sh -s -- -b ${HOME}/.local/bin
 
 # Set $PATH so it includes user's private binaries if it exists.
 [[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
@@ -14,7 +14,7 @@
 # Add Linuxbrew to $PATH if it's installed.
 [[ -d /home/linuxbrew/.linuxbrew ]] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-# Sets the directory of globally installed npm packages to the users $HOME and 
+# Sets the directory of globally installed npm packages to the users $HOME and
 # add it to $PATH, avoiding EACCES errors. Only if npm is installed.
 (( $+commands[npm] )) && export NPM_CONFIG_PREFIX="$HOME/.npm-global"
 (( $+commands[npm] )) && PATH="$HOME/.npm-global/bin:$PATH"
