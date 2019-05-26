@@ -1,3 +1,6 @@
 [submodule ".snowsaw"]
 	path = .snowsaw
 	url = https://github.com/arcticicestudio/snowsaw
+[submodule "snowblocks/dircolors/nord-dircolors"]
+	path = snowblocks/dircolors/nord-dircolors
+	url = git@github.com:arcticicestudio/nord-dircolors.git
