@@ -1,8 +1,0 @@
-[
-  {
-    "clean": ["~"],
-    "link": {
-      "~/.dircolors": "dircolors"
-    }
-  }
-]
