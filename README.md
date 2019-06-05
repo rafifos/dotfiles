@@ -17,7 +17,6 @@ The prompt requires a font [patched for powerline](https://github.com/powerline/
 
 ### Optional requirements
 
-- jq
 - httpie
 - xclip
 - grc
