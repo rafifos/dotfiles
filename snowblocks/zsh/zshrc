@@ -16,8 +16,11 @@
 
 # Sets the directory of globally installed npm packages to the users $HOME and
 # add it to $PATH, avoiding EACCES errors. Only if npm is installed.
-(( $+commands[npm] )) && export NPM_CONFIG_PREFIX="$HOME/.npm-global"
-(( $+commands[npm] )) && PATH="$HOME/.npm-global/bin:$PATH"
+(( $+commands[npm] )) && [[ ! $(npm config get prefix 2>/dev/null) = "/home/rafifos/.npm-global" ]] && npm config set prefix "$HOME/.npm-global"
+(( $+commands[npm] )) && export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Disables automatic package-lock generation on npm.
+(( $+commands[npm] )) && [[ ! $(npm config get package-lock 2>/dev/null) = "false" ]] && npm config set package-lock false
 
 # Install Ruby Gems to ~/.gems
 export GEM_HOME="$HOME/.gems"
