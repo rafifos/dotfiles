@@ -2,21 +2,19 @@
   {
     "defaults": {
       "create": true,
-      "relink": true
+      "relink": true,
+      "relative": true
     },
     "clean": ["~"],
     "link": {
-      "~/.zlogout": {
-        "relative": true
-      },
-      "~/.zprofile": {
-        "relative": true
-      },
-      "~/.zshenv": {
-        "relative": true
-      },
+      "~/.zlogout": "zlogout",
+      "~/.zprofile": "zlogout",
+      "~/.zshenv": "zshenv",
       "~/.zshrc": {
-        "relative": true
+        "hosts": {
+          "desktop": "zshrc.home",
+          "A000054.local": "zshrc.quero"
+        }
       }
     }
   }

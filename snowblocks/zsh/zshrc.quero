@@ -1,0 +1,178 @@
+# ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
+# to set up aliases, functions, options, key bindings, etc.
+#
+# TODO: Continue to implement usefullness starting with:
+# https://github.com/unixorn/awesome-zsh-plugins#completions
+
+
+
+(( ! $+commands[antibody] )) && echo 'Please install Antibody.'
+
+# Set $PATH so it includes user's private binaries if it exists.
+[[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
+[[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
+
+# Colored GCC warnings and errors.
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# Enable long listing with human-readable size in ls.
+alias ls='LC_COLLATE=C ls -lAh'
+
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# Enable unified diff format by default.
+alias diff='diff -u'
+
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# Shorthand for alias to
+#
+# * Only display ANSI "color" escape sequences in "raw" form.
+#   (-R, --RAW-CONTROL-CHARS)
+# * Automatically exit if the entire file can be displayed on the first screen.
+#   (-F, --quit-if-one-screen)
+# * Disable sending the termcap (de)initialization strings to the terminal to
+#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
+# * Use two tab stops. (-x2, --tabs=n)
+alias less='less -RFXx2'
+
+# Shorthand for alias to
+#
+# * Prompt before overwriting files. (-i, --interactive)
+# * Preserve: mode, ownership and timestamps. (-p)
+# * Explain what operations are being done. (-v, --verbose)
+alias cp='cp -ipv'
+
+# Shorthand for alias to
+#
+# * Prompt before overwriting files. (-i, --interactive
+# * Move only when the SOURCE file is newer than the destination file or when
+#   the destination file is missing. (-u, --update)
+# * Explain what operations are being done. (-v, --verbose)
+alias mv='mv -iuv'
+
+# Shorthand for alias to
+#
+# * Prompt once before removing more than three files, or when removing
+#   recursively. (-i)
+# * Explain what operations are being done. (-v, --verbose)
+alias rm='rm -iv'
+
+# Create a new directory and enter it.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# @param $1 the name of the directory to create and enter
+mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Compress files into archives.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# @param $1 the name of the archive
+# @param $2 the paths(s)/file(s) to compress
+# @throws 1 Unsupported or invalid file
+compress() {
+if [ -n $1 ]; then
+  file=$1
+  case $file in
+    *.tar.xz) shift && tar cJf $file $* ;;
+    *.tar.bz2) shift && tar cjf $file $* ;;
+    *.tar.gz) shift && tar czf $file $* ;;
+    *.gz) shift && tar czf $file $* ;;
+    *.tar) shift && tar cf $file $* ;;
+    *.tgz) shift && tar czf $file $* ;;
+    *.zip) shift && zip $file $* ;;
+    *.7z) shift && 7za a $file $* >/dev/null ;;
+    *)
+      echo -e "\e[1;38;5;221m\u2757 \e[0mUnsupported format"
+      return 1
+      ;;
+  esac
+  echo -e "\e[1;38;5;77m\u2714 \e[0mCompressed \e[3;38;5;80m'$file'\e[0m"
+else
+  echo -e "\e[1;38;5;160m\u2717 \e[3;38;5;80m'$file' \e[1;37mis not a valid extractable file\e[0m"
+  return 1
+fi
+return 0
+}
+
+# Extract archived files.
+#
+# Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2016-present Sven Greb <development@svengreb.de>
+#
+# @param $1 the file to extract
+# @throws 1 Unsupported or invalid file
+extract() {
+if [ -f $1 ]; then
+  case $1 in
+    *.tar.bz2) tar -jxvf $1 ;;
+    *.tar.gz)  tar -zxvf $1 ;;
+    *.bz2)     bunzip2 $1 ;;
+    *.gz)      gunzip $1 ;;
+    *.tar)     tar -xvf $1 ;;
+    *.tbz2)    tar -jxvf $1 ;;
+    *.tgz)     tar -zxvf $1 ;;
+    *.zip)     unzip $1 ;;
+    *)
+    printf "\e[33mUnsupported format\e[0m"
+    return 1
+    ;;
+  esac
+  printf "\e[32mExtracted\e[0m %s" "$1"
+else
+  printf "\e[33m%s is not a valid extractable file\e[0m" "$1"
+  return 1
+fi
+return 0
+}
+
+# Starts Antibody.
+source <(antibody init)
+
+# Only bundled if an external program is installed.
+(( $+commands[adb] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/adb kind:fpath || echo 'adb is not installed or not located in $PATH.'
+(( $+commands[http] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath || echo 'httpie is not installed or not located in $PATH.'
+
+# Only bundled if a file is present.
+[[ -f ~/.gitconfig ]] && antibody bundle zdharma/zsh-diff-so-fancy
+
+antibody bundle yous/vanilli.sh
+antibody bundle MichaelAquilina/zsh-you-should-use
+antibody bundle zpm-zsh/colors
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-history-substring-search
+
+# Change it according to your up/down arrow keys.
+# To see if they match with your keyboard, run cat -v and observe it's output.
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
+ZSH_HIGHLIGHT_PATTERNS+=("rm *" "fg=white,bold,bg=red")
+
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+# Binds the "Ctrl + Space" to fetch a command autosuggestion.
+bindkey '^ ' autosuggest-fetch
+
+# Binds the "Ctrl + ->" to accept the command autosuggestion.
+bindkey '^[[1;5C' autosuggest-accept
+
+# Initializes ZSH's completion engine
+autoload -U compinit && compinit
+
+# Using the "pure" prompt, made by Sindre Sorhus.
+antibody bundle mafredri/zsh-async
+antibody bundle sindresorhus/pure
