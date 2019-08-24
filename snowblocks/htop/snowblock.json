@@ -4,10 +4,7 @@
   },
   {
     "link": {
-      "~/.config/htop/htoprc": {
-        "hosts": {
-          "desktop": "htoprc"
-        }
+      "~/.config/htop/htoprc": "htoprc"
       }
     }
   }
