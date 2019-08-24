@@ -6,7 +6,11 @@
     },
     "clean": ["~"],
     "link": {
-      "~/.czrc": "czrc",
+      "~/.czrc": {
+        "hosts": {
+          "desktop": "czrc"
+        }
+      },
       "~/.gitconfig": {
         "create": true,
         "hosts": {
