@@ -1,10 +1,5 @@
 [
   {
-    "defaults": {
-      "create": true,
-      "relink": true,
-      "relative": true
-    },
     "clean": ["~"],
     "link": {
       "~/.zlogout": "zlogout",

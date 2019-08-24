@@ -1,9 +1,5 @@
 [
   {
-    "defaults": {
-      "create": true,
-      "relink": true
-    },
     "clean": ["~"],
     "link": {
       "~/.czrc": {
@@ -12,7 +8,6 @@
         }
       },
       "~/.gitconfig": {
-        "create": true,
         "hosts": {
           "desktop": "gitconfig.home",
           "A000054.local": "gitconfig.quero"
