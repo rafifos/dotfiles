@@ -2,8 +2,7 @@
   {
     "clean": ["~"],
     "link": {
-      "~/.czrc": "czrc"
-      },
+      "~/.czrc": "czrc",
       "~/.gitconfig": {
         "hosts": {
           "desktop": "gitconfig.home",
