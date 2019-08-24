@@ -15,8 +15,7 @@
         "create": true,
         "hosts": {
           "desktop": "gitconfig.home",
-          "A000054.local": "gitconfig.quero",
-          "-": "gitconfig.common"
+          "A000054.local": "gitconfig.quero"
         }
       },
       "~/.git-commit-msg": {
