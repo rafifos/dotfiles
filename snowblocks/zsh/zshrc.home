@@ -22,6 +22,9 @@
 # Disables automatic package-lock generation on npm.
 (( $+commands[npm] )) && [[ ! $(npm config get package-lock 2>/dev/null) = "false" ]] && npm config set package-lock false
 
+# Use nano as the default editor.
+export EDITOR=nano
+
 # Install Ruby Gems to ~/.gems
 export GEM_HOME="$HOME/.gems"
 export PATH="$HOME/.gems/bin:$PATH"
