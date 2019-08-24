@@ -4,7 +4,7 @@
 # TODO: Continue to implement usefullness starting with:
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
-(( ! $+commands[antibody] )) && echo 'Please install Antibody.'
+(( ! $+commands[antibody] )) && echo 'Please install Antibody.' && exit
 
 # Set $PATH so it includes user's private binaries if it exists.
 [[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
