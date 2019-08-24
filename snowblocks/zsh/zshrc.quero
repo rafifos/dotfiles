@@ -4,13 +4,17 @@
 # TODO: Continue to implement usefullness starting with:
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
-
-
 (( ! $+commands[antibody] )) && echo 'Please install Antibody.'
 
 # Set $PATH so it includes user's private binaries if it exists.
 [[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
 [[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
+
+# nvm setup.
+[[ ! -d ~/.nvm ]] && mkdir ~/.nvm
+export NVM_DIR="$HOME/.nvm"
+[[ -s "/usr/local/opt/nvm/nvm.sh" ]] && . "/usr/local/opt/nvm/nvm.sh"
+[[ -s "/usr/local/opt/nvm/etc/bash_completion" ]] && . "/usr/local/opt/nvm/etc/bash_completion"
 
 # Use nano as the default editor.
 export EDITOR='nano'
@@ -156,7 +160,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-history-substring-search
-antibody bundle lukechilds/zsh-nvm
 
 # Change it according to your up/down arrow keys.
 # To see if they match with your keyboard, run cat -v and observe it's output.
