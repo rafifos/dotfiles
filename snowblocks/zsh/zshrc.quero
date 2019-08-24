@@ -156,6 +156,7 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-history-substring-search
+antibody bundle lukechilds/zsh-nvm
 
 # Change it according to your up/down arrow keys.
 # To see if they match with your keyboard, run cat -v and observe it's output.
