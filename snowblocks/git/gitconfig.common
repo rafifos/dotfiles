@@ -65,4 +65,4 @@
   makepatch = !git --no-pager diff --no-color
 
   ; Creates an emergency commit with a COMMIT_MSG from whatthecommit.com
-  yolo = !git add -A && git commit -m \"$(curl --silent --fail https://whatthecommit.com/index.txt)\"
+  yolo = !git add -A && git commit -S --signoff -m \"$(curl --silent --fail https://whatthecommit.com/index.txt)\"
