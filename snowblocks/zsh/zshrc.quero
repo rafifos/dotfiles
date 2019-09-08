@@ -160,6 +160,10 @@ return 0
 # Starts Antibody.
 source <(antibody init)
 
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+antibody bundle robbyrussell/oh-my-zsh
+
 # Only bundled if an external program is installed.
 (( $+commands[adb] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/adb kind:fpath || echo 'adb is not installed or not located in $PATH.'
 (( $+commands[http] )) && antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath || echo 'httpie is not installed or not located in $PATH.'
@@ -172,6 +176,7 @@ antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle zpm-zsh/colors
 antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/transfer
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-completions
