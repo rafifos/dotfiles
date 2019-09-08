@@ -78,6 +78,11 @@ alias mv='mv -iuv'
 # * Explain what operations are being done. (-v, --verbose)
 alias rm='rm -iv'
 
+# Shorthand alias to
+#
+# * cd into my Work Directory (WorkDir)
+alias wd='cd ~/WorkDir'
+
 # Create a new directory and enter it.
 #
 # Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
