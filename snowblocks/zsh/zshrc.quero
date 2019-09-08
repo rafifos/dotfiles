@@ -10,6 +10,13 @@
 [[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
 [[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
 
+# Set $PATH so it include Android SDK Tools and Platform Tools if it exists.
+[[ -d "$HOME/Library/Android/sdk/build-tools" ]] && PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
+[[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+# Exports the ANDROID_SDK_HOME path.
+[[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+
 # nvm setup.
 [[ ! -d ~/.nvm ]] && mkdir ~/.nvm
 export NVM_DIR="$HOME/.nvm"
