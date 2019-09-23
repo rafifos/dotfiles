@@ -11,12 +11,6 @@
 [[ -d ~/bin ]] && PATH="$HOME/bin:$PATH"
 [[ -d ~/.local/bin ]] && PATH="$HOME/.local/bin:$PATH"
 
-# Use nano as the default editor.
-export EDITOR='nano'
-
-# Colored GCC warnings and errors.
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
 # make less more friendly for non-text input files, see lesspipe(1).
 [[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -185,11 +179,6 @@ antibody bundle lukechilds/zsh-nvm
 # To see if they match with your keyboard, run cat -v and observe it's output.
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
-ZSH_HIGHLIGHT_PATTERNS+=("rm *" "fg=white,bold,bg=red")
-
-ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # Binds the "Ctrl + Space" to fetch a command autosuggestion.
 bindkey '^ ' autosuggest-fetch
