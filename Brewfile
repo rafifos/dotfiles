@@ -38,6 +38,7 @@ cask "spotify"
 cask "stremio"
 cask "transmission"
 cask "visual-studio-code"
+cask "whatsapp"
 cask "zeplin"
 
 mas "Xcode", id: 497799835
