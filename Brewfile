@@ -35,6 +35,7 @@ cask "netbeans"
 cask "react-native-debugger"
 cask "slack"
 cask "spotify"
+cask "stremio"
 cask "visual-studio-code"
 cask "zeplin"
 
