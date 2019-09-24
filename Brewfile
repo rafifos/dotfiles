@@ -36,6 +36,7 @@ cask "react-native-debugger"
 cask "slack"
 cask "spotify"
 cask "stremio"
+cask "transmission"
 cask "visual-studio-code"
 cask "zeplin"
 
