@@ -1,6 +1,0 @@
-# ~/.zprofile: Sourced by ZSH(1) when starting as a login shell (--login).
-
-# include .zshrc if it exists
-if [[ -f "$HOME/.zshrc" ]]; then
-  . "$HOME/.zshrc"
-fi

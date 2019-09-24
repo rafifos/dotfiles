@@ -1,0 +1,111 @@
+# ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
+# to set up aliases, functions, options, key bindings, etc.
+#
+# TODO: Continue to implement usefullness starting with:
+# https://github.com/unixorn/awesome-zsh-plugins#completions
+
+# Set $PATH so it includes user's private binaries if it exists.
+[[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
+[[ -d ~/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
+
+export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+
+[[ ! -d ~/.nvm ]] && mkdir ~/.nvm
+
+# shellcheck source=/usr/local/opt/nvm/nvm.sh
+# shellcheck disable=SC1091
+source "/usr/local/opt/nvm/nvm.sh"
+
+# shellcheck source=/usr/local/opt/nvm/etc/bash_completion
+# shellcheck disable=SC1091
+source "/usr/local/opt/nvm/etc/bash_completion"
+
+# Create a new directory and enter it.
+#
+# @param $1 the name of the directory to create and enter
+mkd() {
+  mkdir -p "$@" && cd "$@" || return
+}
+
+# Starts Android Emulator from the shell.
+alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
+
+alias wd='cd $HOME/WorkDir || return'
+alias qb='cd $HOME/WorkDir/qb_app_rn || return'
+alias qba='cd $HOME/WorkDir/qb_app_rn/app || return'
+alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return'
+
+# Enable long listing with human-readable size in ls.
+alias ls='LC_COLLATE=C ls -lAh'
+
+# Enable unified diff format by default.
+alias diff='diff -u'
+
+# * Only display ANSI "color" escape sequences in "raw" form.
+#   (-R, --RAW-CONTROL-CHARS)
+# * Automatically exit if the entire file can be displayed on the first screen.
+#   (-F, --quit-if-one-screen)
+# * Disable sending the termcap (de)initialization strings to the terminal to
+#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
+# * Use two tab stops. (-x2, --tabs=n)
+alias less='less -RFXx2'
+
+# * Prompt before overwriting files. (-i, --interactive)
+# * Preserve: mode, ownership and timestamps. (-p)
+# * Explain what operations are being done. (-v, --verbose)
+alias cp='cp -ipv'
+
+# * Prompt before overwriting files. (-i, --interactive
+# * Move only when the SOURCE file is newer than the destination file or when
+#   the destination file is missing. (-u, --update)
+# * Explain what operations are being done. (-v, --verbose)
+alias mv='mv -iuv'
+
+# * Prompt once before removing more than three files, or when removing
+#   recursively. (-i)
+# * Explain what operations are being done. (-v, --verbose)
+alias rm='rm -iv'
+
+# shellcheck source=/usr/local/bin/antibody
+# shellcheck disable=SC1091
+source <(antibody init)
+
+# FIXME: This is a hack.
+# shellcheck disable=SC2034
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+antibody bundle robbyrussell/oh-my-zsh
+
+antibody bundle MichaelAquilina/zsh-you-should-use
+antibody bundle robbyrussell/oh-my-zsh path:plugins/adb kind:fpath
+antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
+antibody bundle robbyrussell/oh-my-zsh path:plugins/git
+antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath
+antibody bundle yous/vanilli.sh
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zpm-zsh/colors
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-history-substring-search
+
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
+export ZSH_HIGHLIGHT_PATTERNS+=("rm *" "fg=white,bold,bg=red")
+
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+# Change it according to your up/down arrow keys.
+# To see if they match with your keyboard, run cat -v and observe it's output.
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Binds the "Ctrl + Space" to fetch a command autosuggestion.
+bindkey '^ ' autosuggest-fetch
+
+# Binds the "Ctrl + ->" to accept the command autosuggestion.
+bindkey '^[[1;5C' autosuggest-accept
+
+autoload -U compinit && compinit
+
+# Prompt setup
+eval "$(starship init zsh)"

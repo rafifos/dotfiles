@@ -1,0 +1,99 @@
+[macros.print_info]
+  prefix = ["echo", "[INFO]"]
+
+[macros.print_task_info]
+  prefix = ["@print_info", "Processing task:"]
+
+[macros.print_install_info]
+  prefix = ["@print_info", "Installing:"]
+
+[macros.install_yarn_package]
+  deps = ["install_yarn"]
+  prefix = ["yarn", "global", "add"]
+
+[tasks.default]
+  cmds = [
+    ["brew", "bundle"],
+    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
+    ["@install_yarn_package", "tldr"],
+    ["@print_info", "Dotfiles deployed to:", "${HM_DEST}"],
+  ]
+  deps = [
+    "install_homebrew",
+    "git",
+    "htop",
+    "zsh",
+  ]
+  links = [
+    ["${HM_DEST}/bin/colors", "bin/colors"],
+    ["${HM_DEST}/bin/open", "bin/open"],
+    ["${HM_DEST}/bin/treed", "bin/treed"],
+  ]
+
+[tasks.install_xcode_tools]
+  rejects = [["which", "xcodebuild"]]
+  cmds = [
+    ["@print_install_info", "Xcode Command Line Tools"],
+    ["xcode-select", "install"],
+  ]
+
+[tasks.install_homebrew]
+  rejects = [["which", "brew"]]
+  deps = ["install_xcode_tools"]
+  cmds = [
+    ["@print_install_info", "Homebrew"],
+    ["/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"],
+  ]
+
+[tasks.install_nvm]
+  rejects = [["which", "nvm"]]
+  cmds = [
+    ["@print_install_info", "Node Version Manager"],
+    ["curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash"],
+  ]
+
+[tasks.install_nodejs]
+  deps = ["install_nvm"]
+  rejects = [["which", "node"]]
+  cmds = [
+    ["@print_install_info", "NodeJS LTS"],
+    ["nvm", "install", "--lts"],
+  ]
+
+[tasks.install_yarn]
+  deps = ["install_nodejs"]
+  rejects = [["which", "yarn"]]
+  cmds = [
+    ["@print_install_info", "Yarn"],
+    ["npm", "i", "-g", "yarn"],
+  ]
+
+[tasks.git]
+  cmds = [
+    ["@print_task_info", "git"],
+  ]
+  links = [
+    ["${HM_DEST}/.czrc", "git/czrc"],
+    ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
+    ["${HM_DEST}/.gitconfig", "git/gitconfig"],
+  ]
+
+[tasks.htop]
+  cmds = [
+    ["@print_task_info", "htop"],
+  ]
+  links = [
+    ["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"],
+  ]
+
+[tasks.zsh]
+  cmds = [
+    ["@print_task_info", "zsh"],
+    ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"],
+  ]
+  links = [
+    ["${HM_DEST}/.zlogout", "zsh/zlogout"],
+    ["${HM_DEST}/.zprofile", "zsh/zprofile"],
+    ["${HM_DEST}/.zshenv", "zsh/zshenv"],
+    ["${HM_DEST}/.zshrc", "zsh/zshrc"],
+  ]
