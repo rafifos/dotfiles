@@ -5,12 +5,7 @@
       "~/.zlogout": "zlogout",
       "~/.zprofile": "zlogout",
       "~/.zshenv": "zshenv",
-      "~/.zshrc": {
-        "hosts": {
-          "desktop": "zshrc.home",
-          "A000054.local": "zshrc.quero"
-        }
-      }
+      "~/.zshrc": "zshrc"
     }
   }
 ]

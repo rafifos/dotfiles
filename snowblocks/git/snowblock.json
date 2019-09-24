@@ -3,18 +3,8 @@
     "clean": ["~"],
     "link": {
       "~/.czrc": "czrc",
-      "~/.gitconfig": {
-        "hosts": {
-          "desktop": "gitconfig.home",
-          "A000054.local": "gitconfig.quero"
-        }
-      },
-      "~/.git-commit-msg": {
-        "hosts": {
-          "desktop": "git-commit-msg.home",
-          "A000054.local": "git-commit-msg.quero"
-        }
-      }
+      "~/.gitconfig": "gitconfig",
+      "~/.git-commit-msg": "git-commit-msg"
     }
   }
 ]

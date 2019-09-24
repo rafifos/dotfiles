@@ -1,7 +1,7 @@
 [user]
-	name = Rafael Lemos
-	email = rafael.lemos@redealumni.com
-  signingkey = 019B3BFE2D9BABD7E0E5BDACA6B1F263AFC969E4
+  name = Rafael Julio
+  email = hello.rjulio@gmail.com
+  signingkey = 3E651E566E1F6D7F
 
 [core]
   ; Use the nano editor by default
@@ -16,11 +16,11 @@
 
 [tag]
   ; Always sign annotated tags.
-	forceSignAnnotated = true
+  forceSignAnnotated = true
 
 [gpg]
   ; This is needed by MacOS
-	program = gpg
+  program = gpg
 
 [commit]
   ; Template to be shown on the commit message prompt.
