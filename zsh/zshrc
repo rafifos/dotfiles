@@ -88,7 +88,7 @@ antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-history-substring-search
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
-export ZSH_HIGHLIGHT_PATTERNS+=("rm *" "fg=white,bold,bg=red")
+export ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
 
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
