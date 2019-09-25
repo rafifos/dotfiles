@@ -65,8 +65,7 @@ alias mv='mv -iuv'
 # * Explain what operations are being done. (-v, --verbose)
 alias rm='rm -iv'
 
-# shellcheck source=/usr/local/bin/antibody
-# shellcheck disable=SC1091
+# shellcheck disable=SC1090
 source <(antibody init)
 
 # FIXME: This is a hack.
