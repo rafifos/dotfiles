@@ -1,77 +1,30 @@
-[macros.print_info]
-  prefix = ["echo", "[INFO]"]
-
-[macros.print_task_info]
-  prefix = ["@print_info", "Processing task:"]
-
-[macros.print_install_info]
-  prefix = ["@print_info", "Installing:"]
-
+#
+# Macros
+#
 [macros.install_yarn_package]
   deps = ["install_yarn"]
   prefix = ["yarn", "global", "add"]
 
-[tasks.default]
-  cmds = [
-    ["brew", "bundle"],
-    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
-    ["@install_yarn_package", "tldr"],
-    ["@print_info", "Dotfiles deployed to:", "${HM_DEST}"],
-  ]
-  deps = [
-    "install_homebrew",
-    "git",
-    "htop",
-    "zsh",
-  ]
-  links = [
-    ["${HM_DEST}/bin/colors", "bin/colors"],
-    ["${HM_DEST}/bin/open", "bin/open"],
-    ["${HM_DEST}/bin/treed", "bin/treed"],
-  ]
+[macros.install_gem]
+  deps = ["install_yarn"]
+  prefix = ["sudo", "gem", "install"]
 
-[tasks.install_xcode_tools]
-  rejects = [["which", "xcodebuild"]]
-  cmds = [
-    ["@print_install_info", "Xcode Command Line Tools"],
-    ["xcode-select", "install"],
-  ]
-
-[tasks.install_homebrew]
-  rejects = [["which", "brew"]]
-  deps = ["install_xcode_tools"]
-  cmds = [
-    ["@print_install_info", "Homebrew"],
-    ["/usr/bin/ruby -e $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"],
-  ]
-
-[tasks.install_nvm]
-  rejects = [["which", "nvm"]]
-  cmds = [
-    ["@print_install_info", "Node Version Manager"],
-    ["curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash"],
-  ]
-
+#
+# Install tasks
+#
 [tasks.install_nodejs]
-  deps = ["install_nvm"]
   rejects = [["which", "node"]]
-  cmds = [
-    ["@print_install_info", "NodeJS LTS"],
-    ["nvm", "install", "--lts"],
-  ]
+  cmds = [["nvm", "install", "--lts"]]
 
 [tasks.install_yarn]
   deps = ["install_nodejs"]
   rejects = [["which", "yarn"]]
-  cmds = [
-    ["@print_install_info", "Yarn"],
-    ["npm", "i", "-g", "yarn"],
-  ]
+  cmds = [["npm", "i", "-g", "yarn"]]
 
+#
+# Pseudo-package tasks
+#
 [tasks.git]
-  cmds = [
-    ["@print_task_info", "git"],
-  ]
   links = [
     ["${HM_DEST}/.czrc", "git/czrc"],
     ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
@@ -79,21 +32,43 @@
   ]
 
 [tasks.htop]
-  cmds = [
-    ["@print_task_info", "htop"],
-  ]
-  links = [
-    ["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"],
-  ]
+  links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
+
+[tasks.ssh]
+  links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
 [tasks.zsh]
+  # TODO: Remove after macOS 10.15 (Catalina) is out.
   cmds = [
-    ["@print_task_info", "zsh"],
-    ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"],
+    ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"]
   ]
   links = [
     ["${HM_DEST}/.zlogout", "zsh/zlogout"],
     ["${HM_DEST}/.zprofile", "zsh/zprofile"],
     ["${HM_DEST}/.zshenv", "zsh/zshenv"],
     ["${HM_DEST}/.zshrc", "zsh/zshrc"],
+  ]
+
+#
+# The father of all tasks.
+# If you want your task to be executed, add it to the deps section.
+#
+[tasks.default]
+  cmds = [
+    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
+    ["@install_yarn_package", "tldr"],
+    ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
+    ["@install_gem", "cocoapods", "-v 1.7.5"],
+    ["@install_gem", "cocoapods-fix-react-native"],
+  ]
+  deps = [
+    "git",
+    "htop",
+    "ssh",
+    "zsh",
+  ]
+  links = [
+    ["${HM_DEST}/bin/colors", "bin/colors"],
+    ["${HM_DEST}/bin/open", "bin/open"],
+    ["${HM_DEST}/bin/treed", "bin/treed"],
   ]
