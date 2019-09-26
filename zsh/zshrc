@@ -34,7 +34,11 @@ mkd() {
 # TODO: Add a dynamic way of loading the emulator.
 alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
 
+#
+# Easy directory navigation.
+#
 alias wd='cd $HOME/WorkDir || return'
+alias dotfiles='cd $HOME/WorkDir/dotfiles || return'
 alias qb='cd $HOME/WorkDir/qb_app_rn || return'
 alias qba='cd $HOME/WorkDir/qb_app_rn/app || return'
 alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return'
