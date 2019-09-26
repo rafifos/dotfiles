@@ -30,47 +30,6 @@ mkd() {
   mkdir -p "$@" && cd "$@" || return
 }
 
-# Starts Android Emulator from the shell.
-# TODO: Add a dynamic way of loading the emulator.
-alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
-
-#
-# Easy directory navigation.
-#
-alias wd='cd $HOME/WorkDir || return'
-alias dotfiles='cd $HOME/WorkDir/dotfiles || return'
-alias qb='cd $HOME/WorkDir/qb_app_rn || return'
-alias qba='cd $HOME/WorkDir/qb_app_rn/app || return'
-alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return'
-
-# Enable unified diff format by default.
-alias diff='diff -u'
-
-# * Only display ANSI "color" escape sequences in "raw" form.
-#   (-R, --RAW-CONTROL-CHARS)
-# * Automatically exit if the entire file can be displayed on the first screen.
-#   (-F, --quit-if-one-screen)
-# * Disable sending the termcap (de)initialization strings to the terminal to
-#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
-# * Use two tab stops. (-x2, --tabs=n)
-alias less='less -RFXx2'
-
-# * Prompt before overwriting files. (-i, --interactive)
-# * Preserve: mode, ownership and timestamps. (-p)
-# * Explain what operations are being done. (-v, --verbose)
-alias cp='cp -ipv'
-
-# * Prompt before overwriting files. (-i, --interactive
-# * Move only when the SOURCE file is newer than the destination file or when
-#   the destination file is missing. (-u, --update)
-# * Explain what operations are being done. (-v, --verbose)
-alias mv='mv -iuv'
-
-# * Prompt once before removing more than three files, or when removing
-#   recursively. (-i)
-# * Explain what operations are being done. (-v, --verbose)
-alias rm='rm -iv'
-
 # shellcheck disable=SC1090
 source <(antibody init)
 
@@ -86,6 +45,7 @@ antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle mroth/evalcache
 antibody bundle yous/vanilli.sh
 antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zigius/expand-ealias.plugin.zsh
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-completions
 antibody bundle zsh-users/zsh-history-substring-search
@@ -104,6 +64,47 @@ bindkey '^[[1;5C' autosuggest-accept
 autoload -U compinit && compinit
 
 _evalcache brew command-not-found-init
+
+# Starts Android Emulator from the shell.
+# TODO: Add a dynamic way of loading the emulator.
+alias emulator= '$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
+
+#
+# Easy directory navigation.
+#
+alias wd= 'cd $HOME/WorkDir || return '
+alias dotfiles= 'cd $HOME/WorkDir/dotfiles || return '
+alias qb= 'cd $HOME/WorkDir/qb_app_rn || return '
+alias qba= 'cd $HOME/WorkDir/qb_app_rn/app || return '
+alias qbs= 'cd $HOME/WorkDir/qb_app_rn/server || return '
+
+# * Only display ANSI "color" escape sequences in "raw" form.
+#   (-R, --RAW-CONTROL-CHARS)
+# * Automatically exit if the entire file can be displayed on the first screen.
+#   (-F, --quit-if-one-screen)
+# * Disable sending the termcap (de)initialization strings to the terminal to
+#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
+# * Use two tab stops. (-x2, --tabs=n)
+alias less='less -RFXx2'
+
+# Enable unified diff format by default.
+ealias diff='diff -u'
+
+# * Prompt before overwriting files. (-i, --interactive)
+# * Preserve: mode, ownership and timestamps. (-p)
+# * Explain what operations are being done. (-v, --verbose)
+ealias cp='cp -ipv'
+
+# * Prompt before overwriting files. (-i, --interactive
+# * Move only when the SOURCE file is newer than the destination file or when
+#   the destination file is missing. (-u, --update)
+# * Explain what operations are being done. (-v, --verbose)
+ealias mv='mv -iuv'
+
+# * Prompt once before removing more than three files, or when removing
+#   recursively. (-i)
+# * Explain what operations are being done. (-v, --verbose)
+ealias rm='rm -iv'
 
 # Prompt setup
 _evalcache starship init zsh
