@@ -37,6 +37,9 @@
 [tasks.ssh]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
+[tasks.starship]
+  links = [["${HM_DEST}/.config/starship.toml", "starship/starship.toml"]]
+
 [tasks.zsh]
   # TODO: Remove after macOS 10.15 (Catalina) is out.
   cmds = [
@@ -65,6 +68,7 @@
     "git",
     "htop",
     "ssh",
+    "starship",
     "zsh",
   ]
   links = [
