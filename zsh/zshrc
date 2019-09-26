@@ -37,9 +37,6 @@ alias qb='cd $HOME/WorkDir/qb_app_rn || return'
 alias qba='cd $HOME/WorkDir/qb_app_rn/app || return'
 alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return'
 
-# Enable long listing with human-readable size in ls.
-alias ls='LC_COLLATE=C ls -lAh'
-
 # Enable unified diff format by default.
 alias diff='diff -u'
 

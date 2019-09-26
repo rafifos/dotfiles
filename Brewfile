@@ -6,6 +6,7 @@ tap "homebrew/command-not-found"
 
 brew "antibody"
 brew "diff-so-fancy"
+brew "exa"
 brew "ffsend"
 brew "git"
 brew "grc"
