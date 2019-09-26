@@ -19,6 +19,8 @@ source "$(brew --prefix)/opt/nvm/nvm.sh"
 # shellcheck disable=SC1090
 source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
+eval "$(brew command-not-found-init)"
+
 # Create a new directory and enter it.
 #
 # @param $1 the name of the directory to create and enter
@@ -27,6 +29,7 @@ mkd() {
 }
 
 # Starts Android Emulator from the shell.
+# TODO: Add a dynamic way of loading the emulator.
 alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
 
 alias wd='cd $HOME/WorkDir || return'

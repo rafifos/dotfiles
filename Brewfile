@@ -2,6 +2,7 @@ tap "beeftornado/rmtree"
 tap "getantibody/tap"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
+tap "homebrew/command-not-found"
 
 brew "antibody"
 brew "diff-so-fancy"
