@@ -14,13 +14,14 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
+#
+# Node Version Manager.
+#
 [[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
-
-# shellcheck disable=SC1090
-source "$(brew --prefix)/opt/nvm/nvm.sh"
-
-# shellcheck disable=SC1090
-source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+# shellcheck disable=SC1091
+source "/usr/local/opt/nvm/nvm.sh"
+# shellcheck disable=SC1091
+source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 # Create a new directory and enter it.
 #
