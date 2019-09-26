@@ -4,7 +4,11 @@
 # TODO: Continue to implement usefullness starting with:
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
-# Setups Homebrew's ZSH completions.
+# Setup iTerm2 shell integration.
+# shellcheck disable=SC1090
+source "$HOME/.iterm2_shell_integration.zsh"
+
+# Setup Homebrew's ZSH completions.
 FPATH="/usr/local/share/zsh/site-functions:$FPATH"
 
 #
