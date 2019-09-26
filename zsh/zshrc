@@ -19,8 +19,6 @@ source "$(brew --prefix)/opt/nvm/nvm.sh"
 # shellcheck disable=SC1090
 source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
-eval "$(brew command-not-found-init)"
-
 # Create a new directory and enter it.
 #
 # @param $1 the name of the directory to create and enter
@@ -77,6 +75,7 @@ export ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 antibody bundle MichaelAquilina/zsh-you-should-use
+antibody bundle mroth/evalcache
 antibody bundle yous/vanilli.sh
 antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle zsh-users/zsh-autosuggestions
@@ -96,5 +95,7 @@ bindkey '^[[1;5C' autosuggest-accept
 
 autoload -U compinit && compinit
 
+_evalcache brew command-not-found-init
+
 # Prompt setup
-eval "$(starship init zsh)"
+_evalcache starship init zsh
