@@ -71,28 +71,20 @@ alias rm='rm -iv'
 # shellcheck disable=SC1090
 source <(antibody init)
 
-# FIXME: This is a hack.
-# shellcheck disable=SC2034
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-
-antibody bundle robbyrussell/oh-my-zsh
-
-antibody bundle MichaelAquilina/zsh-you-should-use
-antibody bundle robbyrussell/oh-my-zsh path:plugins/adb kind:fpath
-antibody bundle robbyrussell/oh-my-zsh path:plugins/colored-man-pages
-antibody bundle robbyrussell/oh-my-zsh path:plugins/git
-antibody bundle robbyrussell/oh-my-zsh path:plugins/httpie kind:fpath
-antibody bundle yous/vanilli.sh
-antibody bundle zdharma/fast-syntax-highlighting
-antibody bundle zpm-zsh/colors
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
-antibody bundle zsh-users/zsh-history-substring-search
+export YSU_MODE=ALL
+export YSU_HARDCORE=1
 
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
 export ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
 
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+antibody bundle MichaelAquilina/zsh-you-should-use
+antibody bundle yous/vanilli.sh
+antibody bundle zdharma/fast-syntax-highlighting
+antibody bundle zsh-users/zsh-autosuggestions
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-history-substring-search
 
 # Change it according to your up/down arrow keys.
 # To see if they match with your keyboard, run cat -v and observe it's output.
