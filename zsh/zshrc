@@ -5,13 +5,13 @@
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
 # Set $PATH so it includes user's private binaries if it exists.
-[[ -d ~/bin ]] && export PATH="$HOME/bin:$PATH"
-[[ -d ~/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
-[[ ! -d ~/.nvm ]] && mkdir ~/.nvm
+[[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
 
 # shellcheck disable=SC1090
 source "$(brew --prefix)/opt/nvm/nvm.sh"
