@@ -4,10 +4,13 @@
 # TODO: Continue to implement usefullness starting with:
 # https://github.com/unixorn/awesome-zsh-plugins#completions
 
-# Set $PATH so it includes user's private binaries if it exists.
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
-[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+# Setups Homebrew's ZSH completions.
+FPATH="/usr/local/share/zsh/site-functions:$FPATH"
 
+#
+# $PATH additions.
+#
+export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 
