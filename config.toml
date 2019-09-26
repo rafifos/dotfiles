@@ -59,6 +59,7 @@
 #
 [tasks.default]
   cmds = [
+    ["sudo", "scutil", "--set HostName", "A1398"],
     ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
     ["@install_yarn_package", "tldr"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
