@@ -101,6 +101,9 @@ alias less='less -RFXx2'
 # Enable unified diff format by default.
 ealias diff='diff -u'
 
+# Use RFC 5322 date format by default.
+alias date='date -R'
+
 # * Prompt before overwriting files. (-i, --interactive)
 # * Preserve: mode, ownership and timestamps. (-p)
 # * Explain what operations are being done. (-v, --verbose)
