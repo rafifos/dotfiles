@@ -36,12 +36,11 @@ cask "linphone"
 cask "netbeans"
 cask "postman"
 cask "react-native-debugger"
-cask "slack"
 cask "spotify"
+cask "station"
 cask "stremio"
 cask "transmission"
 cask "visual-studio-code"
 cask "whatsapp"
-cask "zeplin"
 
 mas "Xcode", id: 497799835
