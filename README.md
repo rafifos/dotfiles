@@ -1,5 +1,15 @@
 # rafifos does dotfiles, managed by Homemaker
 
+## Important notes
+
+This dotfiles's `zsh` configuration includes a specific [file](zsh/ztoken) for storing your tokens. **DO NOT** commit anything to this file.
+
+The file is tracked by `git`, and you probably don't want it to be. To disable tracking on this file, run:
+
+```sh
+git update-index --skip-worktree zsh/ztoken
+```
+
 ## Download `homemaker`
 
 Download the lastest version from [FooSoft Productions](https://foosoft.net/projects/homemaker/dl/homemaker_darwin_amd64.tar.gz) and place `homemaker` in this repository root.
