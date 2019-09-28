@@ -17,6 +17,7 @@ brew "nvm"
 brew "shellcheck"
 brew "starship"
 brew "tree"
+brew "youtube-dl"
 brew "zsh"
 
 cask "adoptopenjdk"
