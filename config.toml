@@ -51,6 +51,7 @@
     ["${HM_DEST}/.zprofile", "zsh/zprofile"],
     ["${HM_DEST}/.zshenv", "zsh/zshenv"],
     ["${HM_DEST}/.zshrc", "zsh/zshrc"],
+    ["${HM_DEST}/.ztoken", "zsh/ztoken"],
   ]
 
 #

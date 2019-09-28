@@ -9,6 +9,9 @@
 # commands that produce output or assume the shell is attached to a tty.
 #
 
+# shellcheck disable=SC1090
+source "$HOME/.ztoken"
+
 # Use nano as the default editor.
 export EDITOR='nano'
 
