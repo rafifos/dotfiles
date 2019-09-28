@@ -34,6 +34,9 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
+[tasks.iina]
+  links = [["${HM_DEST}/Library/Preferences/com.colliderli.iina.plist", "iina/com.colliderli.iina.plist"]]
+
 [tasks.ssh]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
@@ -70,6 +73,7 @@
   deps = [
     "git",
     "htop",
+    "iina",
     "ssh",
     "starship",
     "zsh",
