@@ -1,3 +1,4 @@
+tap "AdoptOpenJDK/openjdk"
 tap "beeftornado/rmtree"
 tap "getantibody/tap"
 tap "homebrew/cask-fonts"
@@ -20,6 +21,7 @@ brew "tree"
 brew "youtube-dl"
 brew "zsh"
 
+cask "adoptopenjdk8-openj9"
 cask "android-file-transfer"
 cask "android-studio"
 cask "blitz"
