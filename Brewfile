@@ -7,7 +7,6 @@ tap "homebrew/command-not-found"
 
 brew "antibody"
 brew "diff-so-fancy"
-brew "exa"
 brew "ffmpeg"
 brew "ffsend"
 brew "git"
