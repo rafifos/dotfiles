@@ -46,7 +46,6 @@ export ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 antibody bundle ael-code/zsh-colored-man-pages
-antibody bundle chrissicool/zsh-256color
 antibody bundle hlissner/zsh-autopair
 antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle mroth/evalcache
