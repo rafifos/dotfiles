@@ -1,0 +1,19 @@
+# Enable syntax highlighting for all available languages.
+# NOTE: This only works with Homebrew's nano.
+include /usr/local/share/nano/*.nanorc
+
+# Enable smooth scrolling (scroll line by line, instead of chunk by chunk).
+set smooth
+
+# Enable auto-indent.
+set autoindent
+
+# Disable line wrapping.
+set nowrap
+
+# Use two spaces as indentation characters.
+set tabstospaces
+set tabsize 2
+
+# Enable basic mouse functionality.
+set mouse

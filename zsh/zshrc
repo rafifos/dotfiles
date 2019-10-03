@@ -98,6 +98,9 @@ alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return '
 # * Use two tab stops. (-x2, --tabs=n)
 alias less='less -RFXx2'
 
+# Use Homebrew's nano by default.
+alias nano='/usr/local/bin/nano'
+
 # Enable unified diff format by default.
 ealias diff='diff -u'
 
