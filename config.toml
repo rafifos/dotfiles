@@ -61,7 +61,7 @@
     ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
     ["@install_yarn_package", "tldr"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
-    ["@install_gem", "cocoapods", "-v 1.7.5"],
+    ["@install_gem", "cocoapods", "-v 1.8.0"],
     ["@install_gem", "cocoapods-fix-react-native"],
   ]
   deps = [
