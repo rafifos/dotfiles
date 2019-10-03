@@ -121,4 +121,5 @@ ealias mv='mv -iuv'
 ealias rm='rm -iv'
 
 # Prompt setup
-_evalcache starship init zsh
+antibody bundle mafredri/zsh-async
+antibody bundle sindresorhus/pure
