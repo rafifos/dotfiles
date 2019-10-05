@@ -122,5 +122,5 @@ ealias mv='mv -iuv'
 ealias rm='rm -iv'
 
 # Prompt setup
-antibody bundle mafredri/zsh-async
-antibody bundle sindresorhus/pure
+source "$HOME/.p10k.zsh"
+antibody bundle romkatv/powerlevel10k
