@@ -50,6 +50,8 @@ antibody bundle hlissner/zsh-autopair
 antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle mroth/evalcache
 antibody bundle rapgenic/zsh-git-complete-urls
+antibody bundle timothyrowan/betterbrew-zsh-plugin
+antibody bundle Valiev/almostontop
 antibody bundle willghatch/zsh-saneopt
 antibody bundle yous/vanilli.sh
 antibody bundle zdharma/fast-syntax-highlighting
@@ -69,8 +71,6 @@ bindkey '^ ' autosuggest-fetch
 
 # Binds the "Ctrl + ->" to accept the command autosuggestion.
 bindkey '^[[1;5C' autosuggest-accept
-
-autoload -U compinit && compinit
 
 _evalcache brew command-not-found-init
 
@@ -99,11 +99,11 @@ alias less='less -RFXx2'
 # Use Homebrew's nano by default.
 alias nano='/usr/local/bin/nano'
 
-# Enable unified diff format by default.
-ealias diff='diff -u'
-
 # Use RFC 5322 date format by default.
 alias date='date -R'
+
+# Enable unified diff format by default.
+ealias diff='diff -u'
 
 # * Prompt before overwriting files. (-i, --interactive)
 # * Preserve: mode, ownership and timestamps. (-p)
@@ -121,6 +121,11 @@ ealias mv='mv -iuv'
 # * Explain what operations are being done. (-v, --verbose)
 ealias rm='rm -iv'
 
-# Prompt setup
-source "$HOME/.p10k.zsh"
-antibody bundle romkatv/powerlevel10k
+# Downloads a file using httpie.
+ealias download='http -d'
+
+# Prompt setup.
+antibody bundle denysdovhan/spaceship-prompt
+
+# Starts ZSH's completion engine.
+autoload -U compinit && compinit
