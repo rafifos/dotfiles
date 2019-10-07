@@ -1,5 +1,5 @@
 # ~/.zprofile: Sourced by ZSH(1) when starting as a login shell (--login).
 
 if [[ -f "$HOME/.zshrc" ]]; then
-  . "$HOME/.zshrc"
+  source "$HOME/.zshrc"
 fi
