@@ -45,7 +45,6 @@
     ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"]
   ]
   links = [
-    ["${HM_DEST}/.iterm2_shell_integration.zsh", "zsh/iterm2_shell_integration.zsh"],
     ["${HM_DEST}/.zlogout", "zsh/zlogout"],
     ["${HM_DEST}/.zprofile", "zsh/zprofile"],
     ["${HM_DEST}/.zshenv", "zsh/zshenv"],
