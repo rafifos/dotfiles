@@ -42,13 +42,19 @@ ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 antibody bundle ael-code/zsh-colored-man-pages
+antibody bundle DarrinTisdale/zsh-aliases-exa
 antibody bundle hlissner/zsh-autopair
+antibody bundle joow/macos
+antibody bundle marzocchi/zsh-notify
+antibody bundle mattmc3/zsh-safe-rm
 antibody bundle MichaelAquilina/zsh-you-should-use
 antibody bundle mroth/evalcache
+antibody bundle rafifos/git-aliases
 antibody bundle rapgenic/zsh-git-complete-urls
 antibody bundle timothyrowan/betterbrew-zsh-plugin
 antibody bundle Valiev/almostontop
 antibody bundle willghatch/zsh-saneopt
+antibody bundle wuotr/zsh-plugin-vscode
 antibody bundle yous/vanilli.sh
 antibody bundle zdharma/fast-syntax-highlighting
 antibody bundle zigius/expand-ealias.plugin.zsh
@@ -120,8 +126,12 @@ ealias rm='rm -iv'
 # Downloads a file using httpie.
 ealias download='http -d'
 
+# Records the screen on iOS Simulator as a gif.
+ealias screenrecord='xcrun simctl io booted recordVideo "Record from $(date).gif"'
+
 # Prompt setup.
 SPACESHIP_BATTERY_THRESHOLD=40
+SPACESHIP_CHAR_SYMBOL='➜  '
 SPACESHIP_EXIT_CODE_SHOW=true
 SPACESHIP_HOST_SHOW_FULL=true
 SPACESHIP_HOST_SHOW=always
