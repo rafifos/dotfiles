@@ -33,9 +33,6 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
-[tasks.hyper]
-  links = [["${HM_DEST}/.hyper.js", "hyper/hyper.js"]]
-
 [tasks.nano]
   links = [["${HM_DEST}/.nanorc", "nano/nanorc"]]
 
