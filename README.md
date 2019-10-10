@@ -1,5 +1,9 @@
 # rafifos does dotfiles, managed by Homemaker
 
+## TODO
+
+- Migrate `zsh` to [Oh MY Zsh](https://github.com/robbyrussell/oh-my-zsh)
+
 ## Important notes
 
 This dotfiles's `zsh` configuration includes a specific [file](zsh/ztoken) for storing your tokens. **DO NOT** commit anything to this file.
