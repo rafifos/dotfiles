@@ -8,23 +8,23 @@
 # custom environment in such cases.  Note also that .zshenv should not contain
 # commands that produce output or assume the shell is attached to a tty.
 #
-
-source "$HOME/.ztoken"
-
-# Use nano as the default editor.
 export EDITOR='nano'
-
-# Colored GCC warnings and errors.
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-export NVM_DIR
+export LANG="pt_BR.UTF-8"
+export LC_ALL="pt_BR.UTF-8"
+export LC_COLLATE="pt_BR.UTF-8"
+export LC_CTYPE="pt_BR.UTF-8"
+export LC_MESSAGES="pt_BR.UTF-8"
+export LC_MONETARY="pt_BR.UTF-8"
+export LC_NUMERIC="pt_BR.UTF-8"
+export LC_TIME="pt_BR.UTF-8"
 
 case "$OSTYPE" in
   darwin*)
     [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-  ;;
-  linux*)
-    # TODO: Move Linux-only environment to this section.
+    [[ -d "${ZDOTDIR:-${HOME}}/Library/Android/sdk/build-tools" ]] && PATH="${ZDOTDIR:-${HOME}}/Library/Android/sdk/build-tools:$PATH"
+    [[ -d "${ZDOTDIR:-${HOME}}/Library/Android/sdk/platform-tools" ]] && PATH="${ZDOTDIR:-${HOME}}/Library/Android/sdk/platform-tools:$PATH"
   ;;
 esac
+
+source "$HOME/.ztoken"

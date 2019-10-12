@@ -2,7 +2,7 @@
 
 ## TODO
 
-- Migrate `zsh` to [Oh MY Zsh](https://github.com/robbyrussell/oh-my-zsh)
+- ~~Migrate `zsh` to [Oh MY Zsh](https://github.com/robbyrussell/oh-my-zsh)~~ Migrated to [ZIM](https://github.com/zimfw/zimfw)
 
 ## Important notes
 
@@ -55,5 +55,5 @@ eval "$(ssh-agent -s)"
 ### Deploy
 
 ```sh
-./homemaker -clobber config.toml "$PWD"
+./homemaker -clobber -verbose config.toml "$PWD"
 ```
