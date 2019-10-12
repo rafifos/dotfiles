@@ -1,9 +1,7 @@
 tap "AdoptOpenJDK/openjdk"
 tap "beeftornado/rmtree"
-tap "getantibody/tap"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
-tap "homebrew/command-not-found"
 
 brew "diff-so-fancy"
 brew "ffmpeg"
