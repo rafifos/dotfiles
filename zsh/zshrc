@@ -1,143 +1,38 @@
 # ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
 # to set up aliases, functions, options, key bindings, etc.
 #
-# TODO: Continue to implement usefullness starting with:
-# https://github.com/unixorn/awesome-zsh-plugins#completions
+export ZSH_HOME="${ZDOTDIR:-${HOME}}"
 
-[ ! -f "$HOME/.iterm2_shell_integration.zsh" ] && curl -L "https://iterm2.com/shell_integration/zsh" -o "$HOME/.iterm2_shell_integration.zsh"
-source "$HOME/.iterm2_shell_integration.zsh"
+[[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
 
-# Setup Homebrew's ZSH completions.
-FPATH="/usr/local/share/zsh/site-functions:$FPATH"
+[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ] && curl -L "https://iterm2.com/shell_integration/zsh" -o "$ZSH_HOME/.iterm2_shell_integration.zsh"
+source "$ZSH_HOME/.iterm2_shell_integration.zsh"
 
-#
-# $PATH additions.
-#
-PATH="$HOME/bin:$PATH"
-PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
-PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+export YSU_MODE=ALL
+export YSU_HARDCORE=1
+[ ! -d "$ZSH_HOME/.zsh-you-should-use" ] && git clone git@github.com:MichaelAquilina/zsh-you-should-use.git "$ZSH_HOME/.zsh-you-should-use"
+source "$ZSH_HOME/.zsh-you-should-use/you-should-use.plugin.zsh"
 
-#
-# Node Version Manager.
-#
-[[ ! -d "$HOME/.nvm" ]] && mkdir "$HOME/.nvm"
+export NVM_DIR="$ZSH_HOME/.nvm"
+[[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
 source "/usr/local/opt/nvm/nvm.sh"
 source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
-# Create a new directory and enter it.
-#
-# @param $1 the name of the directory to create and enter
-mkd() {
-  mkdir -p "$@" && cd "$@" || return
-}
+alias cp="cp -ipv"
+alias diff="diff -u"
+alias dotfiles="cd $HOME/WorkDir/dotfiles || return"
+alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
+alias less="less -RFXx2"
+alias mv="mv -iuv"
+alias nano="/usr/local/bin/nano"
+alias qb="cd $HOME/WorkDir/qb_app_rn || return "
+alias qba="cd $HOME/WorkDir/qb_app_rn/app || return "
+alias qbs="cd $HOME/WorkDir/qb_app_rn/server || return "
+alias rm="rm -iv"
+alias screenrecord="xcrun simctl io booted recordVideo "Record from $(date).gif""
+alias wd="cd $HOME/WorkDir || return "
 
-source <(antibody init)
 
-YSU_MODE=ALL
-YSU_HARDCORE=1
-
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main pattern)
-ZSH_HIGHLIGHT_PATTERNS=("rm *" "fg=white,bold,bg=red")
-
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-
-antibody bundle ael-code/zsh-colored-man-pages
-antibody bundle DarrinTisdale/zsh-aliases-exa
-antibody bundle hlissner/zsh-autopair
-antibody bundle joow/macos
-antibody bundle marzocchi/zsh-notify
-antibody bundle mattmc3/zsh-safe-rm
-antibody bundle MichaelAquilina/zsh-you-should-use
-antibody bundle mroth/evalcache
-antibody bundle rafifos/git-aliases
-antibody bundle rapgenic/zsh-git-complete-urls
-antibody bundle timothyrowan/betterbrew-zsh-plugin
-antibody bundle Valiev/almostontop
-antibody bundle willghatch/zsh-saneopt
-antibody bundle wuotr/zsh-plugin-vscode
-antibody bundle yous/vanilli.sh
-antibody bundle zdharma/fast-syntax-highlighting
-antibody bundle zigius/expand-ealias.plugin.zsh
-antibody bundle zpm-zsh/colorize
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
-antibody bundle zsh-users/zsh-history-substring-search
-
-# Change it according to your up/down arrow keys.
-# To see if they match with your keyboard, run cat -v and observe it's output.
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-# Binds the "Ctrl + Space" to fetch a command autosuggestion.
-bindkey '^ ' autosuggest-fetch
-
-# Binds the "Ctrl + ->" to accept the command autosuggestion.
-bindkey '^[[1;5C' autosuggest-accept
-
-_evalcache brew command-not-found-init
-
-# Starts Android Emulator from the shell.
-# TODO: Add a dynamic way of loading the emulator.
-alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
-
-#
-# Easy directory navigation.
-#
-alias wd='cd $HOME/WorkDir || return '
-alias dotfiles='cd $HOME/WorkDir/dotfiles || return '
-alias qb='cd $HOME/WorkDir/qb_app_rn || return '
-alias qba='cd $HOME/WorkDir/qb_app_rn/app || return '
-alias qbs='cd $HOME/WorkDir/qb_app_rn/server || return '
-
-# * Only display ANSI "color" escape sequences in "raw" form.
-#   (-R, --RAW-CONTROL-CHARS)
-# * Automatically exit if the entire file can be displayed on the first screen.
-#   (-F, --quit-if-one-screen)
-# * Disable sending the termcap (de)initialization strings to the terminal to
-#   avoid unnecessary operations like clearing the screen. (-X, --no-init)
-# * Use two tab stops. (-x2, --tabs=n)
-alias less='less -RFXx2'
-
-# Use Homebrew's nano by default.
-alias nano='/usr/local/bin/nano'
-
-# Use RFC 5322 date format by default.
-alias date='date -R'
-
-# Enable unified diff format by default.
-ealias diff='diff -u'
-
-# * Prompt before overwriting files. (-i, --interactive)
-# * Preserve: mode, ownership and timestamps. (-p)
-# * Explain what operations are being done. (-v, --verbose)
-ealias cp='cp -ipv'
-
-# * Prompt before overwriting files. (-i, --interactive
-# * Move only when the SOURCE file is newer than the destination file or when
-#   the destination file is missing. (-u, --update)
-# * Explain what operations are being done. (-v, --verbose)
-ealias mv='mv -iuv'
-
-# * Prompt once before removing more than three files, or when removing
-#   recursively. (-i)
-# * Explain what operations are being done. (-v, --verbose)
-ealias rm='rm -iv'
-
-# Downloads a file using httpie.
-ealias download='http -d'
-
-# Records the screen on iOS Simulator as a gif.
-ealias screenrecord='xcrun simctl io booted recordVideo "Record from $(date).gif"'
-
-# Prompt setup.
-SPACESHIP_BATTERY_THRESHOLD=40
-SPACESHIP_CHAR_SYMBOL='➜  '
-SPACESHIP_EXIT_CODE_SHOW=true
-SPACESHIP_HOST_SHOW_FULL=true
-SPACESHIP_HOST_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_USER_SHOW=always
-antibody bundle denysdovhan/spaceship-prompt
-
-# Starts ZSH's completion engine.
-autoload -U compinit && compinit
+export ZIM_HOME="$ZSH_HOME/.zim"
+[[ ! -d "${ZIM_HOME}" ]] && git clone --recursive git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
+[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
