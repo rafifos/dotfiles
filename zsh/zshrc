@@ -25,7 +25,7 @@ export NVM_DIR="$ZSH_HOME/.nvm"
 		unset -f nvm node npm yarn
 		source "/usr/local/opt/nvm/nvm.sh"
 		nvm use --lts >/dev/null
-		[ ! -r "/usr/local/opt/nvm/etc/bash_completion.d/nvm" || source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+		[[ ! -r "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ]] || source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 		nvm ${1+"$@"}
 	}
 
