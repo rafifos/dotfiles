@@ -45,7 +45,7 @@
   makepatch = !git --no-pager diff --no-color
 
   ; Creates an emergency commit with a COMMIT_MSG from whatthecommit.com
-  yolo = !git add -A && git commit -S --signoff -m \"$(curl --silent --fail https://whatthecommit.com/index.txt)\"
+  yolo = !git commit -S -m \"$(curl --silent --fail https://whatthecommit.com/index.txt)\"
 
 # The default git colors aren't optimal, this tries to resolve it.
 # see: https://github.com/so-fancy/diff-so-fancy#improved-colors-for-the-highlighted-bits
