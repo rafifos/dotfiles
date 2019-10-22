@@ -34,11 +34,12 @@ cask "postgres"
 cask "postman"
 cask "react-native-debugger"
 cask "redis"
+cask "slack"
 cask "spotify"
-cask "station"
 cask "stremio"
 cask "transmission"
 cask "visual-studio-code"
 cask "whatsapp"
 
 mas "Xcode", id: 497799835
+mas "Jira Cloud by Atlassian", id: 1475897096
