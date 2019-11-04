@@ -22,8 +22,9 @@ export LC_TIME="pt_BR.UTF-8"
 case "$OSTYPE" in
   darwin*)
     [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-    [[ -d "${ZDOTDIR:-${HOME}}/Library/Android/sdk/build-tools" ]] && PATH="${ZDOTDIR:-${HOME}}/Library/Android/sdk/build-tools:$PATH"
-    [[ -d "${ZDOTDIR:-${HOME}}/Library/Android/sdk/platform-tools" ]] && PATH="${ZDOTDIR:-${HOME}}/Library/Android/sdk/platform-tools:$PATH"
+    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
+    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+    [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
   ;;
 esac
 
