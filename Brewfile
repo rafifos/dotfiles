@@ -12,6 +12,7 @@ brew "nvm"
 brew "pbzip2"
 brew "pigz"
 brew "rustup"
+brew "watchman"
 brew "youtube-dl"
 brew "zsh"
 
