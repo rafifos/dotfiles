@@ -11,6 +11,7 @@ brew "nano"
 brew "nvm"
 brew "pbzip2"
 brew "pigz"
+brew "rustup"
 brew "youtube-dl"
 brew "zsh"
 
