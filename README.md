@@ -57,3 +57,11 @@ eval "$(ssh-agent -s)"
 ```sh
 ./homemaker -clobber -verbose config.toml "$PWD"
 ```
+
+## Bugs and Workarounds
+
+### League of Legends
+
+#### Voice chat not working
+
+See [this post on Reddit.](https://www.reddit.com/r/leagueoflegends/comments/ay9o4s/how_to_fix_voice_chat_in_macos_mojave/)
