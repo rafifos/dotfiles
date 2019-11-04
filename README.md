@@ -60,6 +60,48 @@ eval "$(ssh-agent -s)"
 
 ## Bugs and Workarounds
 
+### Visual Studio Code
+
+#### Extensions
+
+You will need to install the extensions manually while I figure out a way of automating it's install procedure for this project.
+
+```sh
+cat <<EOF | xargs -L 1 code --install-extension
+arcticicestudio.nord-visual-studio-code
+bierner.github-markdown-preview
+bierner.markdown-checkbox
+bierner.markdown-emoji
+bierner.markdown-preview-github-styles
+bierner.markdown-yaml-preamble
+bungcip.better-toml
+DavidAnson.vscode-markdownlint
+dbaeumer.vscode-eslint
+eamodio.gitlens
+EditorConfig.EditorConfig
+esbenp.prettier-vscode
+Gaardsholt.vscode-whatthecommit
+IBM.output-colorizer
+mikestead.dotenv
+MS-DevSkim.vscode-devskim
+ms-vscode.vscode-typescript-tslint-plugin
+msjsdiag.vscode-react-native
+naumovs.color-highlight
+Orta.vscode-jest
+PKief.material-icon-theme
+rocketseat.RocketseatReactJS
+rocketseat.RocketseatReactNative
+rust-lang.rust
+serayuzgur.crates
+Swellaby.rust-pack
+Tyriar.lorem-ipsum
+Tyriar.sort-lines
+VisualStudioExptTeam.vscodeintellicode
+wix.glean
+ymotongpoo.licenser
+EOF
+```
+
 ### League of Legends
 
 #### Voice chat not working

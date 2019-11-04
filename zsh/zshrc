@@ -20,7 +20,7 @@ source "/usr/local/opt/nvm/nvm.sh"
 source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 alias cp="cp -ipv"
-alias debugger="open http://localhost:8081/debugger-ui/"
+alias debugger="open http://localhost:8081/debugger-ui/" #DevSkim: reviewed DS162092 on 2019-11-04 by Rafael Julio <hello.rjulio@gmail.com> 
 alias diff="diff -u"
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
 alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
