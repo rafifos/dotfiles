@@ -27,13 +27,13 @@ alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 
 alias less="less -RFXx2"
 alias mv="mv -iuv"
 alias nano="/usr/local/bin/nano"
-alias qb="cd $HOME/WorkDir/qb_app_rn"
-alias qba="cd $HOME/WorkDir/qb_app_rn/app"
-alias qbs="cd $HOME/WorkDir/qb_app_rn/server"
+alias quero="cd $HOME/WorkDir/quero"
+alias qb="cd $HOME/WorkDir/quero/qb_app_rn"
+alias qba="cd $HOME/WorkDir/quero/qb_app_rn/app"
+alias qbs="cd $HOME/WorkDir/quero/qb_app_rn/server"
 alias rm="rm -iv"
 alias screenrecord="xcrun simctl io booted recordVideo "Record from $(date).gif""
 alias wd="cd $HOME/WorkDir"
-
 
 export ZIM_HOME="$ZSH_HOME/.zim"
 [[ ! -d "${ZIM_HOME}" ]] && git clone --recursive git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
