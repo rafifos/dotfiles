@@ -83,4 +83,5 @@
   ]
   links = [
     ["${HM_DEST}/bin/colors", "bin/colors"],
+    ["${HM_DEST}/bin/hls", "bin/hls"],
   ]
