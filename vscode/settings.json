@@ -1,16 +1,18 @@
 {
-  "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[markdown]": {
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80
   },
+  "[javascript]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "cSpell.allowCompoundWords": true,
+  "cSpell.language": "en,pt-BR",
   "color-highlight.markRuler": false,
   "debug.inlineValues": true,
+  "debug.node.autoAttach": "on",
   "debug.openExplorerOnEnd": true,
   "debug.showSubSessionsInToolBar": true,
   "debug.toolBarLocation": "docked",
@@ -26,19 +28,24 @@
   "editor.fontSize": 16,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "editor.minimap.renderCharacters": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [
-    120,
-    80
-  ],
+  "editor.rulers": [120, 80],
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
+  "eslint.experimental.incrementalSync": true,
   "eslint.lintTask.enable": true,
-  "eslint.packageManager": "yarn",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "extensions.showRecommendationsOnlyOnDemand": true,
   "files.associations": {
     "zimrc": "shellscript",
@@ -50,43 +57,33 @@
   },
   "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
+  "flow.useNPMPackagedFlow": false,
   "git.alwaysShowStagedChangesResourceGroup": true,
   "git.branchSortOrder": "alphabetically",
   "git.defaultCloneDirectory": "$HOME/WorkDir",
   "git.enableCommitSigning": true,
   "git.inputValidationLength": 80,
   "git.inputValidationSubjectLength": null,
-  "git.scanRepositories": [
-    "$HOME/WorkDir"
-  ],
+  "git.scanRepositories": ["$HOME/WorkDir"],
   "git.showPushSuccessNotification": true,
   "git.supportCancellation": true,
+  "git.untrackedChanges": "separate",
   "gitlens.blame.avatars": false,
   "gitlens.blame.heatmap.enabled": false,
-  "gitlens.blame.highlight.locations": [
-    "gutter"
-  ],
+  "gitlens.blame.highlight.locations": ["gutter"],
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.hovers.enabled": false,
-  "gitlens.recentChanges.highlight.locations": [
-    "gutter",
-    "line",
-    "overview"
-  ],
+  "gitlens.recentChanges.highlight.locations": ["gutter", "line", "overview"],
   "gitlens.views.compare.enabled": false,
   "gitlens.views.fileHistory.location": "scm",
   "gitlens.views.lineHistory.enabled": false,
   "gitlens.views.repositories.enabled": false,
   "gitlens.views.search.enabled": false,
-  "glean.experiments": [
-    "hooksForFunctionalComponents"
-  ],
+  "glean.experiments": ["hooksForFunctionalComponents"],
   "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "javascript.validate.enable": false,
-  "jest.autoEnable": false,
   "licenser.author": "Rafael Julio",
   "licenser.license": "MIT",
   "licenser.useSingleLineStyle": false,
@@ -96,9 +93,10 @@
   "material-icon-theme.saturation": 0.6,
   "material-icon-theme.showUpdateMessage": true,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
-  "npm.packageManager": "yarn",
+  "npm-intellisense.scanDevDependencies": true,
+  "npm.enableRunFromFolder": true,
+  "npm.enableScriptExplorer": true,
   "search.maintainFileSearchCache": true,
-  "sortLines.sortEntireFile": true,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "terminal.external.osxExec": "iTerm2.app",
@@ -106,11 +104,9 @@
   "terminal.integrated.experimentalRefreshOnResume": true,
   "terminal.integrated.experimentalUseTitleEvent": true,
   "terminal.integrated.rightClickBehavior": "default",
-  "tslint.alwaysShowRuleFailuresAsWarnings": false,
-  "tslint.packageManager": "yarn",
   "typescript.format.enable": false,
+  "typescript.surveys.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.validate.enable": false,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.restoreFullscreen": true,
   "workbench.colorTheme": "Nord",
