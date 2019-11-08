@@ -6,7 +6,8 @@
   "[javascript]": {
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
-    }
+    },
+    "editor.formatOnSaveTimeout": 1000
   },
   "cSpell.allowCompoundWords": true,
   "cSpell.language": "en,pt-BR",
@@ -32,7 +33,10 @@
   "editor.minimap.renderCharacters": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [120, 80],
+  "editor.rulers": [
+    120,
+    80
+  ],
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
@@ -64,24 +68,34 @@
   "git.enableCommitSigning": true,
   "git.inputValidationLength": 80,
   "git.inputValidationSubjectLength": null,
-  "git.scanRepositories": ["$HOME/WorkDir"],
+  "git.scanRepositories": [
+    "$HOME/WorkDir"
+  ],
   "git.showPushSuccessNotification": true,
   "git.supportCancellation": true,
   "git.untrackedChanges": "separate",
   "gitlens.blame.avatars": false,
   "gitlens.blame.heatmap.enabled": false,
-  "gitlens.blame.highlight.locations": ["gutter"],
+  "gitlens.blame.highlight.locations": [
+    "gutter"
+  ],
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.hovers.enabled": false,
-  "gitlens.recentChanges.highlight.locations": ["gutter", "line", "overview"],
+  "gitlens.recentChanges.highlight.locations": [
+    "gutter",
+    "line",
+    "overview"
+  ],
   "gitlens.views.compare.enabled": false,
   "gitlens.views.fileHistory.location": "scm",
   "gitlens.views.lineHistory.enabled": false,
   "gitlens.views.repositories.enabled": false,
   "gitlens.views.search.enabled": false,
-  "glean.experiments": ["hooksForFunctionalComponents"],
+  "glean.experiments": [
+    "hooksForFunctionalComponents"
+  ],
   "javascript.format.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "licenser.author": "Rafael Julio",
