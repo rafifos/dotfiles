@@ -33,7 +33,7 @@ zmodules=(
 #
 
 # Set your desired prompt here
-zprompt_theme='eriner'
+zprompt_theme='pure'
 
 #
 # Completion
