@@ -1,7 +1,5 @@
-# File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
-
-# Created by https://www.gitignore.io/api/linux,macos,visualstudiocode,windows
-# Edit at https://www.gitignore.io/?templates=linux,macos,visualstudiocode,windows
+# Created by https://www.gitignore.io/api/linux,macos,windows
+# Edit at https://www.gitignore.io/?templates=linux,macos,windows
 
 ### Linux ###
 *~
@@ -46,17 +44,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### VisualStudioCode ###
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -83,7 +70,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/linux,macos,visualstudiocode,windows
-
-# Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
+# End of https://www.gitignore.io/api/linux,macos,windows
 homemaker
