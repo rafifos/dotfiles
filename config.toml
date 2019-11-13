@@ -44,6 +44,7 @@
   links = [
     ["${HM_DEST}/Library/Application Support/Code/User/snippets/markdown.json", "vscode/snippets/markdown.json"],
     ["${HM_DEST}/Library/Application Support/Code/User/settings.json", "vscode/settings.json"],
+    ["${HM_DEST}/.vscode-react-native/VSCodeTelemetrySettings.json", "vscode/VSCodeTelemetrySettings.json"],
   ]
 
 [tasks.zsh]
