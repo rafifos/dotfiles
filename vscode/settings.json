@@ -3,21 +3,16 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80
   },
-  "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
-    "editor.formatOnSaveTimeout": 1000
-  },
   "color-highlight.markRuler": false,
   "debug.inlineValues": true,
   "debug.node.autoAttach": "on",
   "debug.openExplorerOnEnd": true,
   "debug.showSubSessionsInToolBar": true,
   "debug.toolBarLocation": "docked",
-  "devskim.enableBestPracticeRules": true,
-  "devskim.enableManualReviewRules": true,
-  "devskim.manualReviewerName": "Rafael Julio <hello.rjulio@gmail.com>",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true,
+    "source.organizeImports": true
+  },
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
