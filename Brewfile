@@ -15,6 +15,7 @@ brew "watchman"
 brew "youtube-dl"
 brew "zsh"
 
+cask "alacritty"
 cask "adoptopenjdk8-openj9"
 cask "android-file-transfer"
 cask "android-studio"
