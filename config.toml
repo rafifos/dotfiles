@@ -6,19 +6,22 @@
   prefix = ["yarn", "global", "add"]
 
 [macros.install_gem]
-  deps = ["install_yarn"]
   prefix = ["sudo", "gem", "install"]
+
+[macros.check_command]
+  prefix = ["command", "-v"]
+  suffix = [">/dev/null", "2>&1"]
 
 #
 # Install tasks
 #
 [tasks.install_nodejs]
-  rejects = [["which", "node"]]
+  rejects = [["@check_command", "node"]]
   cmds = [["nvm", "install", "--lts"]]
 
 [tasks.install_yarn]
   deps = ["install_nodejs"]
-  rejects = [["which", "yarn"]]
+  rejects = [["@check_command", "yarn"]]
   cmds = [["npm", "i", "-g", "yarn"]]
 
 #
@@ -48,7 +51,6 @@
   ]
 
 [tasks.zsh]
-  # TODO: Remove after macOS 10.15 (Catalina) is out.
   cmds = [
     ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"]
   ]
