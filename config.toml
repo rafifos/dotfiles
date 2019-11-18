@@ -27,6 +27,9 @@
 #
 # Pseudo-package tasks
 #
+[tasks.alacritty]
+  links = [["${HM_DEST}/.config/alacritty/alacritty.yml", "alacritty/alacritty.yml"]]
+
 [tasks.git]
   links = [
     ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
@@ -77,6 +80,7 @@
     ["@install_gem", "cocoapods-fix-react-native"],
   ]
   deps = [
+    "alacritty",
     "git",
     "htop",
     "nano",
