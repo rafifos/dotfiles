@@ -74,7 +74,7 @@ zinput_mode='vi'
 
 # Uncomment to enable double-dot expansion. This appends '../' to your input for
 # each '.' you type after an initial '..'
-#zdouble_dot_expand='true'
+zdouble_dot_expand='true'
 
 #
 # Syntax-Highlighting
