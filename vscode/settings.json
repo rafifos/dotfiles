@@ -4,6 +4,8 @@
     "editor.wordWrapColumn": 120
   },
   "color-highlight.markRuler": false,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.language": "en-US,pt-BR",
   "debug.inlineValues": true,
   "debug.toolBarLocation": "docked",
   "editor.copyWithSyntaxHighlighting": false,
@@ -13,9 +15,9 @@
   "editor.fontFamily": "Iosevka",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "editor.minimap.renderCharacters": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
@@ -26,6 +28,7 @@
   "editor.smoothScrolling": true,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "files.associations": {
     "zimrc": "shellscript",
@@ -67,6 +70,9 @@
   "gitlens.views.lineHistory.enabled": false,
   "gitlens.views.repositories.enabled": false,
   "gitlens.views.search.enabled": false,
+  "glean.experiments": [
+    "hooksForFunctionalComponents"
+  ],
   "javascript.updateImportsOnFileMove.enabled": "always",
   "jest.autoEnable": false,
   "licenser.author": "Rafael Julio",
@@ -82,7 +88,6 @@
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.colorTheme": "Nord",
   "workbench.editor.enablePreview": false,
   "workbench.fontAliasing": "antialiased",
