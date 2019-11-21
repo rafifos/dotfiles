@@ -29,6 +29,7 @@
 #
 [tasks.git]
   links = [
+    ["${HM_DEST}/.czrc", "git/czrc"],
     ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
     ["${HM_DEST}/.gitconfig", "git/gitconfig"],
     ["${HM_DEST}/.gitignore", "git/gitignore"],
@@ -67,6 +68,7 @@
   cmds = [
     ["sudo", "scutil", "--set HostName", "A1398"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
+    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
     ["@install_gem", "cocoapods", "-v 1.8.0"],
     ["@install_gem", "cocoapods-fix-react-native"],
   ]
