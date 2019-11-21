@@ -37,9 +37,6 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
-[tasks.nano]
-  links = [["${HM_DEST}/.nanorc", "nano/nanorc"]]
-
 [tasks.ssh]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
@@ -76,7 +73,6 @@
   deps = [
     "git",
     "htop",
-    "nano",
     "ssh",
     "vscode",
     "zsh",
