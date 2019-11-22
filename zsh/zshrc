@@ -2,41 +2,36 @@
 # to set up aliases, functions, options, key bindings, etc.
 #
 export ZSH_HOME="${ZDOTDIR:-${HOME}}"
+export NVM_DIR="$ZSH_HOME/.nvm"
+export YSU_MODE=ALL
+export YSU_HARDCORE=1
+export ZIM_HOME="$ZSH_HOME/.zim"
 
-[[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
-[[ -d "/usr/local/sbin" ]] && PATH="/usr/local/sbin:$PATH"
+[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+[[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH"
 
 [ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ] && curl -L "https://iterm2.com/shell_integration/zsh" -o "$ZSH_HOME/.iterm2_shell_integration.zsh"
 source "$ZSH_HOME/.iterm2_shell_integration.zsh"
 
-export YSU_MODE=ALL
-export YSU_HARDCORE=1
 [ ! -d "$ZSH_HOME/.zsh-you-should-use" ] && git clone git@github.com:MichaelAquilina/zsh-you-should-use.git "$ZSH_HOME/.zsh-you-should-use"
 source "$ZSH_HOME/.zsh-you-should-use/you-should-use.plugin.zsh"
 
-export NVM_DIR="$ZSH_HOME/.nvm"
 [[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
 source "/usr/local/opt/nvm/nvm.sh"
 source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
+[[ ! -d "${ZIM_HOME}" ]] && git clone --recursive git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
+[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
+
 alias cp="cp -ipv"
-alias debugger="open http://localhost:8081/debugger-ui/" #DevSkim: reviewed DS162092 on 2019-11-04 by Rafael Julio <hello.rjulio@gmail.com> 
+alias mv="mv -iuv"
+alias rm="rm -iv"
 alias diff="diff -u"
+
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
 alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
 alias less="less -RFXx2"
-alias mv="mv -iuv"
-alias nano="/usr/local/bin/nano"
 alias quero="cd $HOME/WorkDir/quero"
-alias qb="cd $HOME/WorkDir/quero/quero_bolsa"
 alias qba="cd $HOME/WorkDir/quero/qb_app_rn"
-alias cq="cd $HOME/WorkDir/quero/conta-quero"
-alias cqf="cd $HOME/WorkDir/quero/conta-quero-front"
-alias md="cd $HOME/WorkDir/quero/matricula-digital-rails"
-alias rm="rm -iv"
 alias screenrecord="xcrun simctl io booted recordVideo "Record from $(date).gif""
 alias wd="cd $HOME/WorkDir"
-
-export ZIM_HOME="$ZSH_HOME/.zim"
-[[ ! -d "${ZIM_HOME}" ]] && git clone --recursive git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
-[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
