@@ -24,7 +24,7 @@ source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
 alias cp="cp -ipv"
-alias mv="mv -iuv"
+alias mv="mv -iv"
 alias rm="rm -iv"
 alias diff="diff -u"
 
