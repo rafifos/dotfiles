@@ -20,7 +20,6 @@ zstyle ':zim:module' zsh-completions 'url' 'zsh-users/zsh-completions'
 zstyle ':zim:module' zsh-autosuggestions 'url' 'zsh-users/zsh-autosuggestions'
 zstyle ':zim:module' zsh-syntax-highlighting 'url' 'zsh-users/zsh-syntax-highlighting'
 
-
 # Module settings
 
 # completion
