@@ -4,9 +4,6 @@
   signingkey = 3E651E566E1F6D7F
 
 [core]
-  ; Use the micro editor by default
-  editor = micro
-
   ; Use diff-so-fancy as the default pager.
   pager = diff-so-fancy | less --tabs=4 -RFX
 
