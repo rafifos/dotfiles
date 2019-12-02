@@ -1,3 +1,4 @@
 # ~/.zlogin: Sourced by ZSH(1) when starting as a login shell (--login).
 #
-[[ -s ${ZIM_HOME}/login_init.zsh ]] && source ${ZIM_HOME}/login_init.zsh
+# Initialize Zim
+zimfw login-init -q &!

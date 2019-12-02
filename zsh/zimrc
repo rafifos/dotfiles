@@ -1,93 +1,87 @@
 # ~/.zimrc: Defines configuration for [ZIM](https://github.com/zimfw/zimfw).
 #
 
-#################
-# CORE SETTINGS #
-#################
+# Core settings
 
-# Select what modules you would like enabled.
-# The second line of modules may depend on options set by modules in the first
-# line. These dependencies are noted on the respective module's README.md.
-zmodules=(
-  archive
-  autosuggestions
-  completion
-  directory
-  environment
-  git-info
-  history
-  input
-  prompt
-  ssh
-  utility
-  syntax-highlighting
-  history-substring-search
-)
+# Select what modules you would like enabled. Modules are sourced in the order 
+# given.
+zstyle ':zim' modules \
+    archive directory environment git history input ssh utility you-should-use \
+    async pure \
+    zsh-completions completion \
+    zsh-autosuggestions zsh-syntax-highlighting history-substring-search
 
-###################
-# MODULE SETTINGS #
-###################
+# Modules setup configuration.
+# See https://github.com/zimfw/zimfw/blob/develop/README.md#module-customization
+zstyle ':zim:module' you-should-use 'url' 'MichaelAquilina/zsh-you-should-use'
+zstyle ':zim:module' async 'url' 'mafredri/zsh-async'
+zstyle ':zim:module' pure 'url' 'sindresorhus/pure'
+zstyle ':zim:module' zsh-completions 'url' 'zsh-users/zsh-completions'
+zstyle ':zim:module' zsh-autosuggestions 'url' 'zsh-users/zsh-autosuggestions'
+zstyle ':zim:module' zsh-syntax-highlighting 'url' 'zsh-users/zsh-syntax-highlighting'
 
+
+# Module settings
+
+# completion
 #
-# Prompt
-#
+# Set a custom path for the completion dump file.
+# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
+zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${HOST}-${ZSH_VERSION}"
 
-# Set your desired prompt here
-zprompt_theme='eriner'
-
+# environment
 #
-# Completion
-#
+# Set a custom terminal title format. Use prompt expansion strings for dynamic data.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
+zstyle ':zim:environment' termtitle '%n@%m: %~'
 
-# Set an optional host-specific filename for the completion cache file. If none
-# is provided, the default '.zcompdump' is used.
-zcompdump_file=".zcompdump-${HOST}-${ZSH_VERSION}"
-
+# history
 #
-# Utility
-#
+# Save the history in a custom file path.
+# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zhistory is used.
+HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory-${HOST}-${ZSH_VERSION}
 
-# Uncomment to enable spelling correction prompt for commands. See:
-# http://zsh.sourceforge.net/Doc/Release/Options.html#Input_002fOutput
+# input
+#
+# Enable double-dot expansion.
+# This appends '../' to your input for each '.' you type after an initial '..'
+zstyle ':zim:input' double-dot-expand yes
+# Set input mode to 'emacs' (default) or 'vi'.
+zstyle ':zim:input' mode 'vi'
+
+# ssh
+#
+# Defines the identities (from ~/.ssh) that will be loaded and cached on login.
+zstyle ':zim:ssh' ids 'id_rsa'
+
+# utility
+#
+# Enable spelling correction prompts.
+# See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
 setopt CORRECT
-
-# Set custom spelling correction prompt
+#
+# Set a custom spelling correction prompt.
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
+# you-should-use
 #
-# Environment
+# This will cause zsh to refuse to execute commands you have entered if an 
+# alternative alias for it exists.
+YSU_HARDCORE=1
+
+# zsh-autosuggestions
 #
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
-# Set the string below to the desired terminal title format string.
-# The terminal title is redrawn upon directory change, however, variables like 
-# ${PWD} are only evaluated once. Use prompt expansion strings for dynamic data:
-#   http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# The example below uses the following format: 'username@host:/current/directory'
-ztermtitle='%n@%m:%~'
-
+# zsh-syntax-highlighting
 #
-# Input
-#
-
-# Set to vi or emacs
-zinput_mode='vi'
-
-# Uncomment to enable double-dot expansion. This appends '../' to your input for
-# each '.' you type after an initial '..'
-zdouble_dot_expand='true'
-
-#
-# Syntax-Highlighting
-#
-
-# This determines what highlighters will be used with the syntax-highlighting module.
-# Documentation of the highlighters can be found here:
-#   https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-zhighlighters=(main brackets root)
-
-#
-# SSH
-#
-
-# Load these ssh identities with the ssh module
-zssh_ids=(id_rsa)
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
