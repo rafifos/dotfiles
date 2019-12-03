@@ -86,22 +86,13 @@ bungcip.better-toml
 dbaeumer.vscode-eslint
 eamodio.gitlens
 esbenp.prettier-vscode
-icrawl.discord-vscode
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
-ms-vscode.vscode-typescript-tslint-plugin
-msjsdiag.debugger-for-chrome
 msjsdiag.vscode-react-native
 naumovs.color-highlight
-rocketseat.RocketseatReactJS
-rocketseat.RocketseatReactNative
-streetsidesoftware.code-spell-checker
-streetsidesoftware.code-spell-checker-portuguese-brazilian
 tombonnike.vscode-status-bar-format-toggle
 wayou.vscode-todo-highlight
 wix.glean
-ymotongpoo.licenser
-
 EOF
 ```
 
