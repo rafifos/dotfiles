@@ -74,7 +74,6 @@ Gaardsholt.vscode-whatthecommit
 IBM.output-colorizer
 Orta.vscode-jest
 PKief.material-icon-theme
-Stepsize.tech-debt-tracker
 VisualStudioExptTeam.vscodeintellicode
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
