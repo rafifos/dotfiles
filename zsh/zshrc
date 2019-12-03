@@ -5,8 +5,19 @@ export ZIM_HOME="$ZSH_HOME/.zim"
 
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
-[[ ! -d "${ZIM_HOME}" ]] && git clone --branch develop git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
-[[ -s ${ZIM_HOME}/zimfw.zsh ]] && source ${ZIM_HOME}/zimfw.zsh
+if [[ ! -d "${ZIM_HOME}" ]]; then
+  git clone --branch develop git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
+
+  # Will complain that modules are not installed at first, so silence that.
+  source ${ZIM_HOME}/zimfw.zsh &>/dev/null
+
+  zimfw install
+  zimfw compile
+
+  print -P "%F{yellow}Restart your shell for the changes to take effect.%f"
+else
+  source ${ZIM_HOME}/zimfw.zsh
+fi
 
 alias less="less -RFXx2"
 
