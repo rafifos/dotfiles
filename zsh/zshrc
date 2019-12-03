@@ -19,6 +19,33 @@ else
   source ${ZIM_HOME}/zimfw.zsh
 fi
 
+case "$OSTYPE" in
+  darwin*)
+    [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
+    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+    [[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH"
+
+    [ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ] && curl -L "https://iterm2.com/shell_integration/zsh" -o "$ZSH_HOME/.iterm2_shell_integration.zsh"
+    source "$ZSH_HOME/.iterm2_shell_integration.zsh"
+
+    export NVM_DIR="$ZSH_HOME/.nvm"
+    [[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
+    source "/usr/local/opt/nvm/nvm.sh"
+    source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+
+    alias cp="cp -ipv"
+    alias diff="diff -u"
+    alias mv="mv -iv"
+    alias rm="rm -iv"
+
+    alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
+    alias qba="cd $HOME/WorkDir/quero/qb_app_rn"
+    alias quero="cd $HOME/WorkDir/quero"
+    alias screenrecord="xcrun simctl io booted recordVideo "Record from $(date).gif""
+  ;;
+esac
+
 alias less="less -RFXx2"
 
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
