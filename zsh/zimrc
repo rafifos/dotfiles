@@ -6,7 +6,7 @@
 # Select what modules you would like enabled. Modules are sourced in the order 
 # given.
 zstyle ':zim' modules \
-    archive directory environment git history input ssh utility \
+    archive directory environment git history input ssh termtitle utility \
     you-should-use \
     async pure \
     zsh-completions completion \
@@ -29,13 +29,6 @@ zstyle ':zim:module' zsh-syntax-highlighting 'url' 'zsh-users/zsh-syntax-highlig
 # If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
 zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${HOST}-${ZSH_VERSION}"
 
-# environment
-#
-# Set a custom terminal title format. Use prompt expansion strings for dynamic data.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
-zstyle ':zim:environment' termtitle '%n@%m: %~'
-
 # history
 #
 # Save the history in a custom file path.
@@ -54,6 +47,13 @@ zstyle ':zim:input' mode 'vi'
 #
 # Defines the identities (from ~/.ssh) that will be loaded and cached on login.
 zstyle ':zim:ssh' ids 'id_rsa'
+
+# termtitle
+#
+# Set a custom terminal title format. Use prompt expansion strings for dynamic data.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
+zstyle ':zim:termtitle' format '%n@%m: %~'
 
 # utility
 #
