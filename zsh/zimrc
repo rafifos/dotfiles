@@ -13,10 +13,10 @@ zmodule termtitle
 zmodule utility
 
 # External modules
-zmodule MichaelAquilina/zsh-you-should-use
+zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
 
 # Prompt
-zmodule mafredri/zsh-async
+zmodule mafredri/zsh-async --name async
 zmodule sindresorhus/pure
 
 # This needs to come last, don't change it's order.
