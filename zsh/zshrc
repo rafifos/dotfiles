@@ -18,7 +18,7 @@ bindkey -v
 # Enable spelling correction prompts.
 # See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
 setopt CORRECT
-#
+
 # Set a custom spelling correction prompt.
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
@@ -58,11 +58,13 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
+# Installs and sources ZIM if it isn't installed.
 if [[ ! -f ${ZIM_HOME}/zimfw.zsh ]]; then
   curl --create-dirs -fLosS "${ZIM_HOME}/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh"
   source ${ZIM_HOME}/zimfw.zsh install
 fi
 
+# Loads ZIM's static init script, only if it exists.
 [[ -f ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init

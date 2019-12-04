@@ -2,14 +2,13 @@
 #
 
 # Modules
-zmodule archive 
-zmodule directory 
-zmodule environment 
-zmodule git 
-zmodule history 
-zmodule input 
-zmodule ssh 
-zmodule termtitle 
+zmodule archive
+zmodule directory
+zmodule environment
+zmodule history
+zmodule input
+zmodule ssh
+zmodule termtitle
 zmodule utility
 
 # External modules
