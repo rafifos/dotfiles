@@ -52,6 +52,12 @@ mkdir -m 744 "$HOME/.ssh"
 eval "$(ssh-agent -s)"
 ```
 
+### ZIM
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/develop/install.zsh | zsh
+```
+
 ### Deploy
 
 ```sh

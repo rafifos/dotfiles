@@ -5,18 +5,70 @@ export ZIM_HOME="$ZSH_HOME/.zim"
 
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
-if [[ ! -d "${ZIM_HOME}" ]]; then
-  git clone --branch develop git@github.com:zimfw/zimfw.git "${ZIM_HOME}"
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
 
-  # Will complain that modules are not installed at first, so silence that.
-  source ${ZIM_HOME}/zimfw.zsh &>/dev/null
+# Save the history in a custom file path.
+# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zhistory is used.
+HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory-${HOST}-${ZSH_VERSION}
 
-  zimfw install
-  zimfw compile
+# Set editor default keymap to emacs (\`-e\`) or vi (\`-v\`)
+bindkey -v
 
-  print -P "%F{yellow}Restart your shell for the changes to take effect.%f"
-else
-  source ${ZIM_HOME}/zimfw.zsh
+# Enable spelling correction prompts.
+# See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
+setopt CORRECT
+#
+# Set a custom spelling correction prompt.
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+
+# Remove path separator from WORDCHARS.
+WORDCHARS=\${WORDCHARS//[\\/]}
+
+# Set a custom path for the completion dump file.
+# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
+zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${HOST}-${ZSH_VERSION}"
+
+# Enable double-dot expansion.
+# This appends '../' to your input for each '.' you type after an initial '..'
+zstyle ':zim:input' double-dot-expand yes
+
+# Defines the identities (from ~/.ssh) that will be loaded and cached on login.
+zstyle ':zim:ssh' ids 'id_rsa'
+
+# Set a custom terminal title format. Use prompt expansion strings for dynamic data.
+# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
+# For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
+zstyle ':zim:termtitle' format '%n@%m: %~'
+
+# This will cause zsh to refuse to execute commands you have entered if an 
+# alternative alias for it exists.
+YSU_HARDCORE=1
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
+
+source ${ZIM_HOME}/init.zsh
+
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# Bind up and down keys
+zmodload -F zsh/terminfo +p:terminfo
+if [[ -n \${terminfo[kcuu1]} && -n \${terminfo[kcud1]} ]]; then
+  bindkey \${terminfo[kcuu1]} history-substring-search-up
+  bindkey \${terminfo[kcud1]} history-substring-search-down
 fi
 
 case "$OSTYPE" in
