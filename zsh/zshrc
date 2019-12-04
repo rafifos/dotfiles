@@ -59,9 +59,8 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 if [[ ! -f ${ZIM_HOME}/zimfw.zsh ]]; then
-  curl --create-dirs -fo "${ZIM_HOME}/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh"
+  curl --create-dirs -fLosS "${ZIM_HOME}/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh"
   source ${ZIM_HOME}/zimfw.zsh install
-  print -P "%F{yellow}Restart your shell for the changes to take effect.%f"
 fi
 
 [[ -f ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
