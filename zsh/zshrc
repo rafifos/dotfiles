@@ -1,8 +1,6 @@
 # ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
 # to set up aliases, functions, options, key bindings, etc.
 #
-export ZIM_HOME="$ZSH_HOME/.zim"
-
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
 # Remove older command from the history if a duplicate is to be added.
