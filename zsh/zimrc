@@ -15,8 +15,7 @@ zmodule utility
 zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
 
 # Prompt
-zmodule mafredri/zsh-async --name async
-zmodule sindresorhus/pure
+zmodule denysdovhan/spaceship-prompt --name spaceship
 
 # This needs to come last, don't change it's order.
 zmodule zsh-users/zsh-completions
