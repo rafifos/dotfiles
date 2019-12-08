@@ -12,9 +12,6 @@ setopt HIST_IGNORE_ALL_DUPS
 # If none is provided, the default ${ZDOTDIR:-${HOME}}/.zhistory is used.
 HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory-${HOST}-${ZSH_VERSION}
 
-# Set editor default keymap to emacs (\`-e\`) or vi (\`-v\`)
-bindkey -v
-
 # Enable spelling correction prompts.
 # See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
 setopt CORRECT
