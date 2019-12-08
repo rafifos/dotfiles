@@ -98,6 +98,8 @@ case "$OSTYPE" in
   ;;
 esac
 
+eval "$(hub alias -s)"
+
 alias less="less -RFXx2"
 
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
