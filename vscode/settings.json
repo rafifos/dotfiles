@@ -3,6 +3,38 @@
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 120
   },
+  "better-comments.tags": [
+    {
+      "backgroundColor": "transparent",
+      "color": "#4C566A",
+      "strikethrough": true,
+      "tag": "//"
+    },
+    {
+      "backgroundColor": "transparent",
+      "color": "#88C0D0",
+      "strikethrough": false,
+      "tag": "*"
+    },
+    {
+      "backgroundColor": "transparent",
+      "color": "#8FBCBB",
+      "strikethrough": false,
+      "tag": "todo"
+    },
+    {
+      "backgroundColor": "transparent",
+      "color": "#B48EAD",
+      "strikethrough": false,
+      "tag": "?"
+    },
+    {
+      "backgroundColor": "transparent",
+      "color": "#BF616A",
+      "strikethrough": false,
+      "tag": "!"
+    }
+  ],
   "color-highlight.markRuler": false,
   "debug.inlineValues": true,
   "debug.toolBarLocation": "docked",
