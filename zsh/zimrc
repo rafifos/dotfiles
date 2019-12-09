@@ -6,6 +6,7 @@ zmodule archive
 zmodule directory
 zmodule environment
 zmodule history
+zmodule homebrew
 zmodule input
 zmodule ssh
 zmodule termtitle
