@@ -74,13 +74,13 @@ if [[ ! -f ${ZIM_HOME}/zimfw.zsh ]]; then
   source ${ZIM_HOME}/zimfw.zsh install
 fi
 
-# Update static initialization script if it's outdated, before sourcing it
+# Update static initialization script if it's outdated, before sourcing it.
 if [[ ${ZIM_HOME}/init.zsh -ot ${ZSH_HOME}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 source ${ZIM_HOME}/init.zsh
 
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 

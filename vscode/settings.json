@@ -50,6 +50,7 @@
   "editor.formatOnType": true,
   "editor.minimap.renderCharacters": false,
   "editor.multiCursorModifier": "ctrlCmd",
+  "editor.occurrencesHighlight": false,
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [120, 80],
   "editor.smoothScrolling": true,
