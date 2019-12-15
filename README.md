@@ -54,6 +54,22 @@ xcode-select --install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+### Windows
+
+#### Install Boxstarter Modules
+
+```powershell
+iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); Get-Boxstarter -Force
+```
+
+#### Install the Boxstarter Package
+
+```powershell
+Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -DisableReboots
+```
+
+> NOTE: This requires you to be in a elevated PowerShell prompt.
+
 ### Bundle `Brewfile`
 
 ```sh
