@@ -94,13 +94,7 @@ You will need to install the extensions manually while I figure out a way of aut
 
 ```sh
 cat <<EOF | xargs -L 1 code --install-extension
-DavidAnson.vscode-markdownlint
-EditorConfig.EditorConfig
-Gaardsholt.vscode-whatthecommit
-IBM.output-colorizer
-Orta.vscode-jest
-PKief.material-icon-theme
-VisualStudioExptTeam.vscodeintellicode
+aaron-bond.better-comments
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
 bierner.markdown-checkbox
@@ -108,15 +102,24 @@ bierner.markdown-emoji
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
 bungcip.better-toml
+DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
+EditorConfig.EditorConfig
 esbenp.prettier-vscode
+Gaardsholt.vscode-whatthecommit
+IBM.output-colorizer
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
+ms-azuretools.vscode-docker
+ms-vscode.js-debug-nightly
+ms-vscode.vscode-typescript-tslint-plugin
 msjsdiag.vscode-react-native
 naumovs.color-highlight
+Orta.vscode-jest
+PKief.material-icon-theme
 tombonnike.vscode-status-bar-format-toggle
-wayou.vscode-todo-highlight
+VisualStudioExptTeam.vscodeintellicode
 wix.glean
 EOF
 ```
