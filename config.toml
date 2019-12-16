@@ -63,7 +63,10 @@
 #
 [tasks.default__darwin]
   cmds = [
-    ["sudo", "scutil", "--set HostName", "A1398"],
+    ["sudo", "scutil", "--set", "HostName", "A1398"],
+    ["sudo", "scutil", "--set", "LocalHostName", "A1398"],
+    ["sudo", "scutil", "--set", "ComputerName", "A1398"],
+    ["dscacheutil", "-flushcache"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
     ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
     ["@install_gem", "cocoapods"],
