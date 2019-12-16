@@ -38,19 +38,16 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
-[tasks.ssh]
+[tasks.ssh__darwin]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
-[tasks.vscode]
+[tasks.vscode__darwin]
   links = [
     ["${HM_DEST}/Library/Application Support/Code/User/snippets/markdown.json", "vscode/snippets/markdown.json"],
     ["${HM_DEST}/Library/Application Support/Code/User/settings.json", "vscode/settings.json"],
   ]
 
 [tasks.zsh]
-  cmds = [
-    ["sudo", "dscl", ".", "-create", "/Users/$USER", "UserShell", "/usr/local/bin/zsh"]
-  ]
   links = [
     ["${HM_DEST}/.zimrc", "zsh/zimrc"],
     ["${HM_DEST}/.zlogin", "zsh/zlogin"],
@@ -64,7 +61,7 @@
 # The father of all tasks.
 # If you want your task to be executed, add it to the deps section.
 #
-[tasks.default]
+[tasks.default__darwin]
   cmds = [
     ["sudo", "scutil", "--set HostName", "A1398"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
@@ -77,6 +74,20 @@
     "htop",
     "ssh",
     "vscode",
+    "zsh",
+  ]
+  links = [
+    ["${HM_DEST}/bin/colors", "bin/colors"],
+    ["${HM_DEST}/bin/hls", "bin/hls"],
+  ]
+
+[tasks.default__linux]
+  cmds = [
+    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
+  ]
+  deps = [
+    "git",
+    "htop",
     "zsh",
   ]
   links = [

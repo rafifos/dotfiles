@@ -20,43 +20,69 @@ Download the lastest version from [FooSoft Productions](https://foosoft.net/proj
 
 ## Deploying
 
-### Install Xcode Command Line Tools
+Prerequisites:
+
+- Your `ssh` key to be already in the keyring
+
+### Linux (and WSL)
+
+This section assumes you're using Ubuntu, or any other `apt`-based distro.
+
+#### Install prerequisites
+
+```sh
+sudo apt install build-essential curl file git zsh
+```
+
+#### Install Linuxbrew
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+```
+
+### macOS
+
+#### Install Xcode Command Line Tools
 
 ```sh
 xcode-select --install
 ```
 
-### Install Homebrew
+#### Install Homebrew
 
 ```sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
+### Windows
+
+#### Install Boxstarter Modules
+
+```powershell
+iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); Get-Boxstarter -Force
+```
+
+#### Install the Boxstarter Package
+
+```powershell
+Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -DisableReboots
+```
+
+> NOTE: This requires you to be in a elevated PowerShell prompt.
+
 ### Bundle `Brewfile`
 
 ```sh
-brew bundle
-```
-
-### `ssh`
-
-#### Create `$HOME/.ssh`
-
-```sh
-mkdir -m 744 "$HOME/.ssh"
-```
-
-#### Start `ssh-agent`
-
-```sh
-eval "$(ssh-agent -s)"
+brew bundle --verbose
 ```
 
 ### Deploy
 
 ```sh
-./homemaker -clobber -verbose config.toml "$PWD"
+./homemaker -clobber -verbose -variant=`variant` config.toml "$PWD"
 ```
+
+> NOTE: Variant can be `linux` and `darwin` atm.
 
 ## Bugs and Workarounds
 
@@ -94,9 +120,3 @@ wayou.vscode-todo-highlight
 wix.glean
 EOF
 ```
-
-### League of Legends
-
-#### Voice chat not working
-
-See [this post on Reddit.](https://www.reddit.com/r/leagueoflegends/comments/ay9o4s/how_to_fix_voice_chat_in_macos_mojave/)
