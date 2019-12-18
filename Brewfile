@@ -14,7 +14,6 @@ brew "pigz"
 brew "watchman"
 
 cask "adoptopenjdk8-openj9"
-cask "android-file-transfer"
 cask "android-studio"
 cask "docker"
 cask "fanny"
