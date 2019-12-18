@@ -15,6 +15,7 @@ zmodule utility
 
 # External modules
 zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
+zmodule Valiev/almostontop
 
 # Prompt
 zmodule denysdovhan/spaceship-prompt --name spaceship
