@@ -39,6 +39,7 @@ Set-WindowsExplorerOptions -DisableShowHiddenFilesFoldersDrives -DisableShowProt
 # Chocolatey packages
 cinst chocolateygui -y
 cinst discord -y
+cinst epicgameslauncher -y
 cinst gitkraken -y
 cinst google-backup-and-sync -y
 cinst googlechrome -y
