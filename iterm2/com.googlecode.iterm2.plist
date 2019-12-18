@@ -411,7 +411,7 @@
 	dWxs0g0ODxJaTlMub2JqZWN0c1YkY2xhc3OiEBGAAoAKgA3TFA0OFRkdV05TLmtleXOj
 	FhcYgAOABIAFoxobHIAGgAeACIAJWklkZW50aWZpZXJVV2lkdGhWSGlkZGVuUTAjQGjA
 	AAAAAAAI0iUmJyhaJGNsYXNzbmFtZVgkY2xhc3Nlc1xOU0RpY3Rpb25hcnmiJylYTlNP
-	YmplY3TTFA0OKy8doxYXGIADgASABaMwMRyAC4AMgAiACVExI0BzsZ2yLQ5W0iUmNzhe
+	YmplY3TTFA0OKy8doxYXGIADgASABaMwMRyAC4AMgAiACVExI0B0oZ2yLQ5W0iUmNzhe
 	TlNNdXRhYmxlQXJyYXmjNzkpV05TQXJyYXkACAARABoAJAApADIANwBJAEwAUgBUAGMA
 	aQBuAHkAgACDAIUAhwCJAJAAmACcAJ4AoACiAKYAqACqAKwArgC5AL8AxgDIANEA0gDX
 	AOIA6wD4APsBBAELAQ8BEQETARUBGQEbAR0BHwEhASMBLAExAUABRAAAAAAAAAIBAAAA
@@ -436,8 +436,10 @@
 	<string>0 162 224 275 0 0 1440 877 </string>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>299 325 841 470 0 0 1440 877 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>410 383 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>493 346 730 438 0 0 1440 877 </string>
+	<string>0 79 1440 798 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>176 175 745 438 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -1273,10 +1275,14 @@
 	<key>NoSyncAllAppVersions</key>
 	<array>
 		<string>3.3.6</string>
+		<string>3.3.7</string>
 	</array>
+	<key>NoSyncBFPFavorites</key>
+	<array/>
 	<key>NoSyncBFPRecents</key>
 	<array>
 		<string>Iosevka</string>
+		<string>Fira Code</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
@@ -1292,11 +1298,11 @@
 	<key>NoSyncLastTipTime</key>
 	<real>594671891.17110395</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>138</integer>
+	<integer>233</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>592760520.66341496</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -2106,8 +2112,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-11-18T02:12:31Z</date>
+	<date>2019-12-18T23:39:48Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
@@ -2131,6 +2139,6 @@
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.6</string>
+	<string>3.3.7</string>
 </dict>
 </plist>
