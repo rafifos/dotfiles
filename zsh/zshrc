@@ -93,9 +93,7 @@ case "$OSTYPE" in
     [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
     [[ -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && source "$ZSH_HOME/.iterm2_shell_integration.zsh"
 
-    alias cp="cp -ipv"
     alias mv="mv -iv"
-    alias rm="rm -iv"
 
     alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
     alias qba="cd $HOME/WorkDir/quero/qb_app_rn"
@@ -105,8 +103,6 @@ case "$OSTYPE" in
   linux*)
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
-    alias cp="cp -ipv"
-    alias rm="rm -iv"
     alias mv="mv -iuv"
   ;;
 esac
@@ -118,8 +114,10 @@ source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
 eval "$(hub alias -s)"
 
+alias cp="cp -ipv"
 alias diff="diff -u"
 alias less="less -RFXx2"
+alias rm="rm -iv"
 
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
 alias wd="cd $HOME/WorkDir"
