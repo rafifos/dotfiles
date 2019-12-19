@@ -1,16 +1,17 @@
 #
 # Macros
 #
+[macros.check_command]
+  prefix = ["command", "-v"]
+  suffix = [">/dev/null", "2>&1"]
+
 [macros.install_yarn_package]
   deps = ["install_yarn"]
   prefix = ["yarn", "global", "add"]
 
 [macros.install_gem]
-  prefix = ["sudo", "gem", "install"]
-
-[macros.check_command]
-  prefix = ["command", "-v"]
-  suffix = [">/dev/null", "2>&1"]
+  deps = ["install_rvm"]
+  prefix = ["gem", "install"]
 
 #
 # Install tasks
@@ -23,6 +24,13 @@
   deps = ["install_nodejs"]
   rejects = [["@check_command", "yarn"]]
   cmds = [["npm", "i", "-g", "yarn"]]
+
+[tasks.install_rvm]
+  rejects = [["@check_command", "rvm"]]
+  cmds = [
+    ["\curl", "-sSL", "https://get.rvm.io", "|", "bash", "-s", "--", "--ignore-dotfiles"],
+    ["rvm", "use", "ruby", "--install", "--default"],
+  ]
 
 #
 # Pseudo-package tasks
@@ -69,6 +77,7 @@
     ["dscacheutil", "-flushcache"],
     ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
     ["@install_yarn_package", "lerna", "appcenter-cli", "react-native-cli"],
+    ["@install_gem", "rails", "--no-document"],
     ["@install_gem", "bundler"],
     ["@install_gem", "cocoapods", "cocoapods-fix-react-native"],
   ]
