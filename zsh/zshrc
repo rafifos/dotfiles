@@ -86,9 +86,9 @@ bindkey '^[[B' history-substring-search-down
 case "$OSTYPE" in
   darwin*)
     [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$HOME/Library/Android/sdk/build-tools:$PATH"
-    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-    [[ -d "/usr/local/sbin" ]] && export PATH="/usr/local/sbin:$PATH"
+    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/build-tools"
+    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+    [[ -d "/usr/local/sbin" ]] && export PATH="$PATH:/usr/local/sbin"
 
     [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
     [[ -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && source "$ZSH_HOME/.iterm2_shell_integration.zsh"
