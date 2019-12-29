@@ -1,11 +1,7 @@
 # ~/.zlogin: Sourced by ZSH(1) when starting as a login shell (--login).
 #
-# Initialize Zim
-source ${ZIM_HOME}/login_init.zsh -q &!
+# Load RVM into a shell session *as a function*.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-case "$OSTYPE" in
-  darwin*)
-    # Load RVM into a shell session *as a function*
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-  ;;
-esac
+# Initialize ZIM.
+source ${ZIM_HOME}/login_init.zsh -q &!

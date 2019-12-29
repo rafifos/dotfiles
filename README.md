@@ -45,6 +45,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 #### Install Xcode Command Line Tools
 
 ```sh
+gem update --system
 xcode-select --install
 ```
 
@@ -75,6 +76,10 @@ Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -Dis
 ```sh
 brew bundle --verbose
 ```
+
+### Install Ruby on Rails
+
+Folow the instructions on [Install Rails](http://installrails.com).
 
 ### Deploy
 
