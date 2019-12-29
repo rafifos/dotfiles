@@ -45,13 +45,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/i
 #### Install Xcode Command Line Tools
 
 ```sh
-gem update --system
 xcode-select --install
 ```
 
 #### Install Homebrew
 
 ```sh
+gem update --system
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
