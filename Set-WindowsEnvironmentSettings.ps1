@@ -38,10 +38,12 @@ Set-WindowsExplorerOptions -DisableShowHiddenFilesFoldersDrives -DisableShowProt
 cinst chocolateygui -y
 cinst discord -y
 cinst epicgameslauncher -y
+cinst fluent-terminal -y
 cinst gitkraken -y
 cinst googlechrome -y
 cinst leagueoflegends -y
 cinst linkshellextension -y
 cinst peazip -y
+cinst steam -y
 cinst stremio -y
 cinst vscode -y
