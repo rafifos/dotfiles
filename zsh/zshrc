@@ -1,28 +1,22 @@
 # ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
 # to set up aliases, functions, options, key bindings, etc.
 #
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
+[[ -d "$HOME/bin" ]] && export PATH="$PATH:$HOME/bin"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
+[[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"
 
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
-
-# Save the history in a custom file path.
-# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zhistory is used.
-HISTFILE=${ZDOTDIR:-${HOME}}/.zhistory-${HOST}-${ZSH_VERSION}
 
 # Enable spelling correction prompts.
 # See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
 setopt CORRECT
 
 # Set a custom spelling correction prompt.
-SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+SPROMPT='zsh: Correct %F{red}%R%f to %F{green}%r%f [n: no, y: yes, a: abort, e: edit]? '
 
 # Remove path separator from WORDCHARS.
 WORDCHARS=\${WORDCHARS//[\\/]}
-
-# Set a custom path for the completion dump file.
-# If none is provided, the default ${ZDOTDIR:-${HOME}}/.zcompdump is used.
-zstyle ':zim:completion' dumpfile "${ZDOTDIR:-${HOME}}/.zcompdump-${HOST}-${ZSH_VERSION}"
 
 # Enable double-dot expansion.
 # This appends '../' to your input for each '.' you type after an initial '..'
@@ -34,7 +28,7 @@ zstyle ':zim:ssh' ids 'id_rsa'
 # Set a custom terminal title format. Use prompt expansion strings for dynamic data.
 # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
-zstyle ':zim:termtitle' format '%n@%m: %~'
+zstyle ':zim:termtitle' format '%n in %~ at %m'
 
 # This will cause zsh to refuse to execute commands you have entered if an 
 # alternative alias for it exists.
@@ -85,16 +79,16 @@ bindkey '^[[B' history-substring-search-down
 
 case "$OSTYPE" in
   darwin*)
+    [[ -d "/usr/local/sbin" ]] && export PATH="$PATH:/usr/local/sbin"
     [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
     [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/build-tools"
     [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
-    [[ -d "/usr/local/sbin" ]] && export PATH="$PATH:/usr/local/sbin"
-    [[ -d "$HOME/.rvm/bin" ]] && export PATH="$PATH:$HOME/.rvm/bin"
 
-    [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
-    [[ -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]] && source "$ZSH_HOME/.iterm2_shell_integration.zsh"
-
-    alias mv="mv -iv"
+    if [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]]; then
+      curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
+    else
+      source "$ZSH_HOME/.iterm2_shell_integration.zsh"
+    fi
 
     alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
     alias qba="cd $HOME/WorkDir/quero/qb_app_rn"
@@ -103,8 +97,6 @@ case "$OSTYPE" in
   ;;
   linux*)
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
-    alias mv="mv -iuv"
   ;;
 esac
 
@@ -113,11 +105,13 @@ export NVM_DIR="$ZSH_HOME/.nvm"
 source "$(brew --prefix)/opt/nvm/nvm.sh"
 source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
+# Overrides git with hub.
 eval "$(hub alias -s)"
 
 alias cp="cp -ipv"
 alias diff="diff -u"
 alias less="less -RFXx2"
+alias mv="mv -iv"
 alias rm="rm -iv"
 
 alias dotfiles="cd $HOME/WorkDir/dotfiles"
