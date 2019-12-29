@@ -39,7 +39,6 @@ cinst chocolateygui -y
 cinst discord -y
 cinst epicgameslauncher -y
 cinst gitkraken -y
-cinst google-backup-and-sync -y
 cinst googlechrome -y
 cinst leagueoflegends -y
 cinst linkshellextension -y
