@@ -13,10 +13,12 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt CORRECT
 
 # Set a custom spelling correction prompt.
-SPROMPT='zsh: Correct %F{red}%R%f to %F{green}%r%f [n: no, y: yes, a: abort, e: edit]? '
+export SPROMPT='zsh: Correct %F{red}%R%f to %F{green}%r%f [n: no, y: yes, a: abort, e: edit]? '
 
-# Remove path separator from WORDCHARS.
-WORDCHARS=\${WORDCHARS//[\\/]}
+# Prevents M-b and M-f (backward-word and forward-word) to jump over an entire
+# /path/location. Instead, this makes it jumps based on words separated by an
+# "/", like on Bash.
+export WORDCHARS=''
 
 # Enable double-dot expansion.
 # This appends '../' to your input for each '.' you type after an initial '..'
@@ -25,53 +27,43 @@ zstyle ':zim:input' double-dot-expand yes
 # Defines the identities (from ~/.ssh) that will be loaded and cached on login.
 zstyle ':zim:ssh' ids 'id_rsa'
 
-# Set a custom terminal title format. Use prompt expansion strings for dynamic data.
+# Set a custom terminal title format. Use prompt expansion strings for dynamic 
+# data.
 # See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
 # For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
 zstyle ':zim:termtitle' format '%n in %~ at %m'
 
 # This will cause zsh to refuse to execute commands you have entered if an 
 # alternative alias for it exists.
-YSU_HARDCORE=1
+export YSU_HARDCORE=1
 
 # Show user prompt section (true, false, always or needed).
-SPACESHIP_USER_SHOW='always'
+export SPACESHIP_USER_SHOW='always'
 
 # Show host prompt section (true, false or always).
-SPACESHIP_HOST_SHOW='always'
+export SPACESHIP_HOST_SHOW='always'
 
 # The minimum number of seconds for showing execution time section.
-SPACESHIP_EXEC_TIME_ELAPSED=5
+export SPACESHIP_EXEC_TIME_ELAPSED=5
 
 # Battery level below which battery section will be shown.
-SPACESHIP_BATTERY_THRESHOLD=30
+export SPACESHIP_BATTERY_THRESHOLD=30
 
 # Show exit code of last command.
-SPACESHIP_EXIT_CODE_SHOW=true
+export SPACESHIP_EXIT_CODE_SHOW=true
 
 # Customize the style that the suggestions are shown with.
 # See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
 # Set what highlighters will be used.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 
 # Customize the main highlighter styles.
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
 typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
-
-# Installs and sources ZIM if it isn't installed.
-if [[ ! -f ${ZIM_HOME}/zimfw.zsh ]]; then
-  curl --create-dirs -fLsS -o "${ZIM_HOME}/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh" && source ${ZIM_HOME}/zimfw.zsh install
-fi
-
-# Update static initialization script if it's outdated, before sourcing it.
-if [[ ${ZIM_HOME}/init.zsh -ot ${ZSH_HOME}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-source ${ZIM_HOME}/init.zsh
+export ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
 bindkey '^[[A' history-substring-search-up
@@ -90,13 +82,13 @@ case "$OSTYPE" in
       source "$ZSH_HOME/.iterm2_shell_integration.zsh"
     fi
 
-    alias emulator="$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &"
-    alias qba="cd $HOME/WorkDir/quero/qb_app_rn"
-    alias quero="cd $HOME/WorkDir/quero"
-    alias screenrecord="xcrun simctl io booted recordVideo "Record from $(date).gif""
+    alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
+    alias qba='cd $HOME/WorkDir/quero/qb_app_rn'
+    alias quero='cd $HOME/WorkDir/quero'
+    alias screenrecord='xcrun simctl io booted recordVideo "Record from "$(date)".gif"'
   ;;
   linux*)
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
 esac
 
@@ -114,5 +106,16 @@ alias less="less -RFXx2"
 alias mv="mv -iv"
 alias rm="rm -iv"
 
-alias dotfiles="cd $HOME/WorkDir/dotfiles"
-alias wd="cd $HOME/WorkDir"
+alias dotfiles='cd $HOME/WorkDir/dotfiles'
+alias wd='cd $HOME/WorkDir'
+
+# Installs and sources ZIM if it isn't installed.
+if [[ ! -f "$ZIM_HOME/zimfw.zsh" ]]; then
+  curl --create-dirs -fLsS -o "$ZIM_HOME/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh" && source "$ZIM_HOME/zimfw.zsh" install
+fi
+
+# Update static initialization script if it's outdated, before sourcing it.
+if [[ "$ZIM_HOME/init.zsh" -ot "$ZSH_HOME/.zimrc" ]]; then
+  source "$ZIM_HOME/zimfw.zsh" init -q
+fi
+source "${ZIM_HOME}/init.zsh"
