@@ -40,12 +40,6 @@ sudo apt install build-essential curl file git zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ```
 
-#### Bundle `Brewfile`
-
-```sh
-brew bundle --verbose
-```
-
 ### macOS
 
 #### Install Xcode Command Line Tools
@@ -61,7 +55,7 @@ gem update --system
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#### Bundle `Brewfile`
+### Bundle `Brewfile`
 
 ```sh
 brew bundle --verbose
@@ -83,9 +77,16 @@ Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -Dis
 
 > NOTE: This requires you to be in a elevated PowerShell prompt.
 
-### Install Ruby on Rails
+### Install `node` and `yarn`
 
-Folow the instructions on [Install Rails](http://installrails.com).
+```sh
+export NVM_DIR="$HOME/.nvm"
+[[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
+source "$(brew --prefix)/opt/nvm/nvm.sh"
+source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+nvm install --lts
+npm install --global yarn
+```
 
 ### Deploy
 
@@ -136,3 +137,9 @@ wingrunr21.vscode-ruby
 wix.glean
 EOF
 ```
+
+## Credits and Thanks
+
+## Useful resources
+
+- [Install Rails](https://installrails.com)
