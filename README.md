@@ -51,7 +51,6 @@ xcode-select --install
 #### Install Homebrew
 
 ```sh
-sudo gem update --system
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
