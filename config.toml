@@ -1,36 +1,11 @@
 #
 # Macros
 #
-[macros.check_command]
-  prefix = ["command", "-v"]
-  suffix = [">/dev/null", "2>&1"]
-
 [macros.install_yarn_package]
-  deps = ["install_yarn"]
   prefix = ["yarn", "global", "add"]
 
 [macros.install_gem]
-  deps = ["install_rvm"]
   prefix = ["gem", "install"]
-
-#
-# Install tasks
-#
-[tasks.install_nodejs]
-  rejects = [["@check_command", "node"]]
-  cmds = [["nvm", "install", "--lts"]]
-
-[tasks.install_yarn]
-  deps = ["install_nodejs"]
-  rejects = [["@check_command", "yarn"]]
-  cmds = [["npm", "i", "-g", "yarn"]]
-
-[tasks.install_rvm]
-  rejects = [["@check_command", "rvm"]]
-  cmds = [
-    ["\curl", "-sSL", "https://get.rvm.io", "|", "bash", "-s", "--", "--ignore-dotfiles"],
-    ["rvm", "use", "ruby", "--install", "--default"],
-  ]
 
 #
 # Pseudo-package tasks
