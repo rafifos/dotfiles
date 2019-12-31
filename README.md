@@ -16,7 +16,7 @@ git update-index --skip-worktree zsh/ztoken
 
 ## Download `homemaker`
 
-Download the lastest version from [FooSoft Productions](https://foosoft.net/projects/homemaker/dl/homemaker_darwin_amd64.tar.gz) and place `homemaker` in this repository root.
+Download the lastest version from [FooSoft Productions](https://foosoft.net/projects/homemaker/#installation) and place `homemaker` in this repository root.
 
 ## Deploying
 
@@ -51,8 +51,8 @@ xcode-select --install
 #### Install Homebrew
 
 ```sh
-gem update --system
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+sudo gem update --system
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 ### Bundle `Brewfile`
@@ -116,10 +116,6 @@ VisualStudioExptTeam.vscodeintellicode
 aaron-bond.better-comments
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
-bierner.markdown-checkbox
-bierner.markdown-emoji
-bierner.markdown-preview-github-styles
-bierner.markdown-yaml-preamble
 bungcip.better-toml
 dbaeumer.vscode-eslint
 eamodio.gitlens
@@ -133,7 +129,6 @@ msjsdiag.vscode-react-native
 naumovs.color-highlight
 rebornix.ruby
 tombonnike.vscode-status-bar-format-toggle
-wingrunr21.vscode-ruby
 wix.glean
 EOF
 ```
