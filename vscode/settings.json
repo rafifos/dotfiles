@@ -74,6 +74,7 @@
   "files.simpleDialog.enable": true,
   "git.autofetch": true,
   "git.branchSortOrder": "alphabetically",
+  "git.confirmSync": false,
   "git.defaultCloneDirectory": "$HOME/WorkDir",
   "git.enableCommitSigning": true,
   "git.inputValidationLength": 80,
