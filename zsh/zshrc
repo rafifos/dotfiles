@@ -66,10 +66,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 case "$OSTYPE" in
   darwin*)
     [[ -d "/usr/local/sbin" ]] && export PATH="$PATH:/usr/local/sbin"
@@ -120,3 +116,7 @@ if [[ "$ZIM_HOME/init.zsh" -ot "$ZSH_HOME/.zimrc" ]]; then
   source "$ZIM_HOME/zimfw.zsh" init -q
 fi
 source "${ZIM_HOME}/init.zsh"
+
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
