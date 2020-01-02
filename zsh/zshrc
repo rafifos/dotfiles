@@ -9,6 +9,18 @@
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 
+# Set editor default keymap to emacs (\`-e\`) or vi (\`-v\`)
+bindkey -v
+
+# Determines how long to wait (in hundredths of a second) for additional
+# characters in sequence. This increases responsiveness when changing between
+# NORMAL and INSERT mode. Note that this can result in issues with other
+# terminal commands that depended on this delay. If you have issues try raising
+# the delay. Default is 0.4 seconds.
+#
+# 10ms for key sequences.
+export KEYTIMEOUT=1
+
 # Enable spelling correction prompts.
 # See http://zsh.sourceforge.net/Doc/Release/Options.html#index-CORRECT
 setopt CORRECT
