@@ -33,6 +33,10 @@ export SPROMPT='zsh: Correct %F{red}%R%f to %F{green}%r%f [n: no, y: yes, a: abo
 # "/", like on Bash.
 export WORDCHARS=''
 
+# Set a custom path for the completion dump file.
+# If none is provided, the default \${ZDOTDIR:-\${HOME}}/.zcompdump is used.
+#zstyle ':zim:completion' dumpfile \"\${ZDOTDIR:-\${HOME}}/.zcompdump-\${ZSH_VERSION}\"
+
 # Enable double-dot expansion.
 # This appends '../' to your input for each '.' you type after an initial '..'
 zstyle ':zim:input' double-dot-expand yes
