@@ -91,9 +91,8 @@ case "$OSTYPE" in
 
     if [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]]; then
       curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
-    else
-      source "$ZSH_HOME/.iterm2_shell_integration.zsh"
     fi
+    source "$ZSH_HOME/.iterm2_shell_integration.zsh"
 
     alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
     alias qba='cd $HOME/WorkDir/quero/qb_app_rn'
