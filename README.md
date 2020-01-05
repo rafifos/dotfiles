@@ -142,7 +142,6 @@ rocketseat.rocketseatreactjs
 rocketseat.rocketseatreactnative
 tombonnike.vscode-status-bar-format-toggle
 VisualStudioExptTeam.vscodeintellicode
-wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
 wix.glean
 EOF
