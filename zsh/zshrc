@@ -53,6 +53,12 @@ zstyle ':zim:termtitle' format '%n in %~ at %m'
 # alternative alias for it exists.
 export YSU_HARDCORE=1
 
+# The directory that will be used by nvm.
+export NVM_DIR="$ZSH_HOME/.nvm"
+
+# Enables nvm lazy loading b/c nvm is laggy as fuck.
+export NVM_LAZY_LOAD=true
+
 # Show user prompt section (true, false, always or needed).
 export SPACESHIP_USER_SHOW='always'
 
@@ -102,11 +108,6 @@ case "$OSTYPE" in
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
 esac
-
-export NVM_DIR="$ZSH_HOME/.nvm"
-[[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
-source "$(brew --prefix)/opt/nvm/nvm.sh"
-source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 
 # Overrides git with hub.
 eval "$(hub alias -s)"
