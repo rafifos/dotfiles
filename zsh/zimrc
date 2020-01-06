@@ -13,6 +13,7 @@ zmodule utility
 
 # External modules
 zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
+zmodule rafifos/ruby
 zmodule Valiev/almostontop
 
 # Prompt
