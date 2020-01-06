@@ -46,4 +46,5 @@ cinst linkshellextension -y
 cinst peazip -y
 cinst steam -y
 cinst stremio -y
+cinst terminus y
 cinst vscode -y
