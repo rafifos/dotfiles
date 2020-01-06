@@ -26,6 +26,7 @@ cask "kitematic"
 cask "ngrok"
 cask "postman"
 cask "slack"
+cask "tunnelblick"
 cask "visual-studio-code"
 cask "zeplin"
 
