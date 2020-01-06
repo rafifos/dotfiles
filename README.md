@@ -125,6 +125,7 @@ esbenp.prettier-vscode
 Gaardsholt.vscode-whatthecommit
 IBM.output-colorizer
 icrawl.discord-vscode
+merithayan.polar
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
 ms-azuretools.vscode-docker
@@ -138,8 +139,8 @@ PKief.material-icon-theme
 pnp.polacode
 rebornix.ruby
 richie5um2.vscode-sort-json
-rocketseat.rocketseatreactjs
-rocketseat.rocketseatreactnative
+rocketseat.RocketseatReactJS
+rocketseat.RocketseatReactNative
 tombonnike.vscode-status-bar-format-toggle
 VisualStudioExptTeam.vscodeintellicode
 wingrunr21.vscode-ruby
