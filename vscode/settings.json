@@ -125,6 +125,5 @@
   "workbench.editor.enablePreview": false,
   "workbench.fontAliasing": "antialiased",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.settings.useSplitJSON": true,
   "workbench.startupEditor": "readme"
 }
