@@ -1,9 +1,11 @@
 # ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
 # to set up aliases, functions, options, key bindings, etc.
 #
-[[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
-[[ -d "$HOME/.yarn/bin" ]] && export PATH="$PATH:$HOME/.yarn/bin"
-[[ -d "$HOME/bin" ]] && export PATH="$PATH:$HOME/bin"
+typeset -U path
+
+[[ -d "${HOME}/.local/bin" ]] && path+=("${HOME}/.local/bin")
+[[ -d "${HOME}/.yarn/bin" ]] && path+=("${HOME}/.yarn/bin")
+[[ -d "${HOME}/bin" ]] && path+=("${HOME}/bin")
 
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
@@ -54,7 +56,7 @@ zstyle ':zim:termtitle' format '%n in %~ at %m'
 export YSU_HARDCORE=1
 
 # The directory that will be used by nvm.
-export NVM_DIR="$ZSH_HOME/.nvm"
+export NVM_DIR="${HOME}/.nvm"
 
 # Enables nvm lazy loading b/c nvm is laggy as fuck.
 export NVM_LAZY_LOAD=true
@@ -87,17 +89,17 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
-case "$OSTYPE" in
+case ${OSTYPE} in
   darwin*)
-    [[ -d "/usr/local/sbin" ]] && export PATH="$PATH:/usr/local/sbin"
-    [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/build-tools"
-    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+    [[ -d '/usr/local/sbin' ]] && path=('/usr/local/sbin' "$path[@]")
+    [[ -d "${HOME}/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
+    [[ -d "${HOME}/Library/Android/sdk/build-tools" ]] && path+=("${HOME}/Library/Android/sdk/build-tools")
+    [[ -d "${HOME}/Library/Android/sdk/platform-tools" ]] && path+=("${HOME}/Library/Android/sdk/platform-tools")
 
-    if [[ ! -f "$ZSH_HOME/.iterm2_shell_integration.zsh" ]]; then
-      curl -fLsS -o "$ZSH_HOME/.iterm2_shell_integration.zsh" "https://iterm2.com/shell_integration/zsh"
+    if [[ ! -f "${HOME}/.iterm2_shell_integration.zsh" ]]; then
+      curl -fLsS -o "${HOME}/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
     fi
-    source "$ZSH_HOME/.iterm2_shell_integration.zsh"
+    source "${HOME}/.iterm2_shell_integration.zsh"
 
     alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
     alias qba='cd $HOME/WorkDir/quero/qb_app_rn'
@@ -112,23 +114,23 @@ esac
 # Overrides git with hub.
 eval "$(hub alias -s)"
 
-alias cp="cp -ipv"
-alias diff="diff -u"
-alias less="less -RFXx2"
-alias mv="mv -iv"
-alias rm="rm -iv"
+alias cp='cp -ipv'
+alias diff='diff -u'
+alias less='less -RFXx2'
+alias mv='mv -iv'
+alias rm='rm -iv'
 
 alias dotfiles='cd $HOME/WorkDir/dotfiles'
 alias wd='cd $HOME/WorkDir'
 
 # Installs and sources ZIM if it isn't installed.
-if [[ ! -f "$ZIM_HOME/zimfw.zsh" ]]; then
-  curl --create-dirs -fLsS -o "$ZIM_HOME/zimfw.zsh" "https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh" && source "$ZIM_HOME/zimfw.zsh" install
+if [[ ! -f "${ZIM_HOME}/zimfw.zsh" ]]; then
+  curl --create-dirs -fLsS -o "${ZIM_HOME}/zimfw.zsh" 'https://raw.githubusercontent.com/zimfw/zimfw/develop/zimfw.zsh' && source "${ZIM_HOME}/zimfw.zsh" install
 fi
 
 # Update static initialization script if it's outdated, before sourcing it.
-if [[ "$ZIM_HOME/init.zsh" -ot "$ZSH_HOME/.zimrc" ]]; then
-  source "$ZIM_HOME/zimfw.zsh" init -q
+if [[ "${ZIM_HOME}/init.zsh" -ot "${HOME}/.zimrc" ]]; then
+  source "${ZIM_HOME}/zimfw.zsh" init -q
 fi
 source "${ZIM_HOME}/init.zsh"
 
@@ -138,9 +140,9 @@ bindkey '^[[B' history-substring-search-down
 
 # Bind up and down keys.
 zmodload -F zsh/terminfo +p:terminfo
-if [[ -n ${terminfo[kcuu1]} && -n ${terminfo[kcud1]} ]]; then
-  bindkey ${terminfo[kcuu1]} history-substring-search-up
-  bindkey ${terminfo[kcud1]} history-substring-search-down
+if [[ -n "${terminfo[kcuu1]}" && -n "${terminfo[kcud1]}" ]]; then
+  bindkey "${terminfo[kcuu1]}" history-substring-search-up
+  bindkey "${terminfo[kcud1]}" history-substring-search-down
 fi
 
 bindkey '^P' history-substring-search-up

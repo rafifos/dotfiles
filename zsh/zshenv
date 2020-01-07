@@ -8,8 +8,7 @@
 # custom environment in such cases.  Note also that .zshenv should not contain
 # commands that produce output or assume the shell is attached to a tty.
 #
-export ZSH_HOME="${ZDOTDIR:-${HOME}}"
-export ZIM_HOME="$ZSH_HOME/.zim"
+export ZIM_HOME=${HOME}/.zim
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GPG_TTY=$(tty)
@@ -23,4 +22,4 @@ export LC_MONETARY="pt_BR.UTF-8"
 export LC_NUMERIC="pt_BR.UTF-8"
 export LC_TIME="pt_BR.UTF-8"
 
-source "$HOME/.ztoken"
+source ${HOME}/.ztoken
