@@ -11,6 +11,7 @@ brew "jq"
 brew "nvm"
 brew "pbzip2"
 brew "pigz"
+brew "shellcheck"
 brew "watchman"
 
 cask "adoptopenjdk8-openj9"
