@@ -1,19 +1,18 @@
-let vimplug_exists = stdpath('config') . 'autoload/plug.vim'
+let vimplug_exists=expand(stdpath('config') . '/autoload/plug.vim')
 let autoload_plug_path = stdpath('data') . '/plugged'
 
-" Installs Vim-Plug if it isn't installed
+" Installs vim-plug if it isn't installed
 if !filereadable(vimplug_exists)
   if !executable("curl")
     echoerr "You have to install curl or first install vim-plug yourself!"
     execute "q!"
   endif
-  
-  echo "Installing Vim-Plug..."
+
+  echo "Installing vim-plug..."
   echo ""
-  
-  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  
-  autocmd VimEnter * PlugInstall
+
+  exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall --sync
 endif
 
 " Specify a directory for plugins
