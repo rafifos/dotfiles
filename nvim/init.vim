@@ -22,7 +22,6 @@ endif
 call plug#begin(autoload_plug_path)
 
 Plug 'arcticicestudio/nord-vim'
-Plug 'tpope/vim-sensible'
 
 " Initialize plugin system
 call plug#end()
