@@ -79,6 +79,7 @@
   "git.enableCommitSigning": true,
   "git.inputValidationLength": 80,
   "git.inputValidationSubjectLength": null,
+  "git.path": "/usr/bin/git",
   "git.scanRepositories": ["$HOME/WorkDir"],
   "git.showPushSuccessNotification": true,
   "git.supportCancellation": true,
