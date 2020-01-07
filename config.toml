@@ -30,6 +30,11 @@
     ["${HM_DEST}/Library/Application Support/Code/User/settings.json", "vscode/settings.json"],
   ]
 
+[tasks.nvim]
+  links = [
+    ["${HM_DEST}/.config/nvim/init.vim", "nvim/init.vim"],
+  ]
+
 [tasks.zsh]
   links = [
     ["${HM_DEST}/.zimrc", "zsh/zimrc"],
@@ -57,6 +62,7 @@
   deps = [
     "git",
     "htop",
+    "nvim",
     "ssh",
     "vscode",
     "zsh",
@@ -73,6 +79,7 @@
   deps = [
     "git",
     "htop",
+    "nvim",
     "zsh",
   ]
   links = [
