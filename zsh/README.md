@@ -20,3 +20,7 @@ This shell configuration is powered by [ZIM - Zsh IMproved FrameWork](https://gi
 - If it **releases a resource** acquired at login: `.zlogout`
 
 Source: [Unix & Linux Stack Exchange](https://unix.stackexchange.com/a/487889)
+
+## Code Style
+
+This configuration follows the [ZIM Code Style Guide](https://github.com/zimfw/zimfw/wiki/Code-Style-Guide).
