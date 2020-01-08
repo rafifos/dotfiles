@@ -1,6 +1,7 @@
-# ~/.zimrc: Defines configuration for [ZIM](https://github.com/zimfw/zimfw).
+# `.zimrc`
 #
-
+# [Read by ZIM, inside `zshrc` (on interactive usage)]
+#
 # Modules
 zmodule archive
 zmodule directory

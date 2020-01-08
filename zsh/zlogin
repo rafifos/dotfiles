@@ -1,5 +1,14 @@
-# ~/.zlogin: Sourced by ZSH(1) when starting as a login shell (--login).
+# `.zlogin`
 #
-
+# [Read at login]
+#
+# This file is like `.zprofile`, but is read after `.zshrc`. You can consider
+# the shell to be fully set up at `.zlogin` execution time.
+#
+# So, I use it to launch external commands which do not modify shell behaviors
+# (e.g. a login manager).
+#
+# Source: https://unix.stackexchange.com/a/487889
+#
 # Initialize ZIM.
 source ${ZIM_HOME}/login_init.zsh -q &!

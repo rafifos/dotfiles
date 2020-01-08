@@ -1,12 +1,19 @@
-# ~/.zshenv: Sourced on ALL invocations of ZSH(1), unless the -f option is
-# set.
+# `.zshenv`
 #
-# NOTE: It should NOT normally contain commands to set the command search path,
-# or other common environment variables unless you really know what you're
-# doing. E.g. running "PATH=/custom/path gdb program" sources this file (when
-# gdb runs the program via $SHELL), so you want to be sure not to override a
-# custom environment in such cases.  Note also that .zshenv should not contain
-# commands that produce output or assume the shell is attached to a tty.
+# [Read every time]
+#
+# This file is always sourced, so it should set environment variables which
+# need to be updated frequently. PATH (or its associated counterpart path) is a
+# good example because you probably don't want to restart your whole session to
+# make it update. By setting it in that file, reopening a terminal emulator will
+# start a new Zsh instance with the PATH value updated.
+#
+# But be aware that this file is read even when Zsh is launched to run a single
+# command (with the -c option), even by another tool like make. You should be
+# very careful to not modify the default behavior of standard commands because it
+# may break some tools (by setting aliases for example).
+#
+# Source: https://unix.stackexchange.com/a/487889
 #
 export ZIM_HOME=${HOME}/.zim
 

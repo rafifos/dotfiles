@@ -1,2 +1,9 @@
-# ~/.zlogout: Sourced by ZSH(1) when a login shell exits.
+# `.zlogout`
+#
+# [Read at logout within a login shell]
+#
+# Here, you can clear your terminal or any other resource which was setup at
+# login.
+#
+# Source: https://unix.stackexchange.com/a/487889
 #

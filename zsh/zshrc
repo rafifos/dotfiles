@@ -1,5 +1,21 @@
-# ~/.zshrc: Sourced by ZSH(1) in interactive shells. It should contain commands
-# to set up aliases, functions, options, key bindings, etc.
+# `.zshrc`
+#
+# [Read when interactive]
+#
+# I put here everything needed only for interactive usage:
+#
+# - Prompt
+# - Command completion
+# - Command correction
+# - Command suggestion
+# - Command highlighting
+# - Output coloring
+# - Aliases
+# - Key bindings
+# - Commands history management
+# - Other miscellaneous interactive tools (`auto_cd`, `manydots-magic`)...
+#
+# Source: https://unix.stackexchange.com/a/487889
 #
 typeset -U path
 
