@@ -17,11 +17,10 @@
 #
 # Source: https://unix.stackexchange.com/a/487889
 #
-typeset -U path
-
-[[ -d "${HOME}/.local/bin" ]] && path+=("${HOME}/.local/bin")
-[[ -d "${HOME}/.yarn/bin" ]] && path+=("${HOME}/.yarn/bin")
-[[ -d "${HOME}/bin" ]] && path+=("${HOME}/bin")
+export EDITOR='nvim'
+export GPG_TTY="$(tty)"
+export VISUAL="${EDITOR}"
+export ZIM_HOME="${HOME}/.zim"
 
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
@@ -107,11 +106,6 @@ export ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
 case ${OSTYPE} in
   darwin*)
-    [[ -d '/usr/local/sbin' ]] && path=('/usr/local/sbin' "$path[@]")
-    [[ -d "${HOME}/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
-    [[ -d "${HOME}/Library/Android/sdk/build-tools" ]] && path+=("${HOME}/Library/Android/sdk/build-tools")
-    [[ -d "${HOME}/Library/Android/sdk/platform-tools" ]] && path+=("${HOME}/Library/Android/sdk/platform-tools")
-
     if [[ ! -f "${HOME}/.iterm2_shell_integration.zsh" ]]; then
       curl -fLsS -o "${HOME}/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
     fi
@@ -121,9 +115,6 @@ case ${OSTYPE} in
     alias qba='cd $HOME/WorkDir/quero/qb_app_rn'
     alias quero='cd $HOME/WorkDir/quero'
     alias screenrecord='xcrun simctl io booted recordVideo "Record from "$(date)".gif"'
-  ;;
-  linux*)
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
 esac
 

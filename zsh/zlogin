@@ -10,5 +10,11 @@
 #
 # Source: https://unix.stackexchange.com/a/487889
 #
+typeset -U path
+
+[[ -d "${HOME}/.local/bin" ]] && path+=("${HOME}/.local/bin")
+[[ -d "${HOME}/.yarn/bin" ]] && path+=("${HOME}/.yarn/bin")
+[[ -d "${HOME}/bin" ]] && path+=("${HOME}/bin")
+
 # Initialize ZIM.
 source ${ZIM_HOME}/login_init.zsh -q &!

@@ -15,11 +15,10 @@
 #
 # Source: https://unix.stackexchange.com/a/487889
 #
-export ZIM_HOME=${HOME}/.zim
+typeset -U path
+[[ -d '/usr/local/sbin' ]] && path=('/usr/local/sbin' "$path[@]")
 
-export EDITOR='nvim'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export GPG_TTY="$(tty)"
 export LANG='pt_BR.UTF-8'
 export LANGUAGE='pt_BR.UTF-8'
 export LC_ALL='pt_BR.UTF-8'
@@ -29,6 +28,17 @@ export LC_MESSAGES='pt_BR.UTF-8'
 export LC_MONETARY='pt_BR.UTF-8'
 export LC_NUMERIC='pt_BR.UTF-8'
 export LC_TIME='pt_BR.UTF-8'
-export VISUAL="${EDITOR}"
+
+case ${OSTYPE} in
+  darwin*)
+    typeset -U path
+    [[ -d "${HOME}/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
+    [[ -d "${HOME}/Library/Android/sdk/build-tools" ]] && path+=("${HOME}/Library/Android/sdk/build-tools")
+    [[ -d "${HOME}/Library/Android/sdk/platform-tools" ]] && path+=("${HOME}/Library/Android/sdk/platform-tools")
+  ;;
+  linux*)
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  ;;
+esac
 
 source "${HOME}/.ztoken"
