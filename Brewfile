@@ -14,6 +14,7 @@ brew "pbzip2"
 brew "pigz"
 brew "shellcheck"
 brew "watchman"
+brew "zstd"
 
 cask "adoptopenjdk8-openj9"
 cask "android-studio"
