@@ -1,4 +1,6 @@
-# ~/.ztoken: Sourced by ~/.zshenv.
+# `.ztoken`
 #
-# NOTE: DON'T EVER COMMIT TO THIS FILE.
+# [Read directly by `.zshenv` (every time)]
+#
+# DON'T EVER COMMIT TO THIS FILE.
 #
