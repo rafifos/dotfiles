@@ -68,7 +68,8 @@
     "zlogout": "shellscript",
     "zshenv": "shellscript",
     "zshrc": "shellscript",
-    "ztoken": "shellscript"
+    "ztoken": "shellscript",
+    "zprofile": "shellscript"
   },
   "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
