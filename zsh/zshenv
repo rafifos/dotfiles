@@ -18,7 +18,6 @@
 typeset -U path
 [[ -d '/usr/local/sbin' ]] && path=('/usr/local/sbin' "$path[@]")
 
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export LANG='pt_BR.UTF-8'
 export LANGUAGE='pt_BR.UTF-8'
 export LC_ALL='pt_BR.UTF-8'
