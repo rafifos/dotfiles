@@ -33,4 +33,5 @@ cask "tunnelblick"
 cask "visual-studio-code"
 cask "zeplin"
 
+mas "Lungo", id: 1263070803
 mas "Xcode", id: 497799835
