@@ -16,5 +16,10 @@ typeset -U path
 [[ -d "${HOME}/.yarn/bin" ]] && path+=("${HOME}/.yarn/bin")
 [[ -d "${HOME}/bin" ]] && path+=("${HOME}/bin")
 
+# * Loads nvm (and node) into the shell if it isn't already available (for
+# * example, on a non-interactive login shell).
+# ? I'm not sure this is the best way to do this.
+(( ! ${+commands[node]} )) && . $NVM_DIR/nvm.sh
+
 # Initialize ZIM.
 source ${ZIM_HOME}/login_init.zsh -q &!

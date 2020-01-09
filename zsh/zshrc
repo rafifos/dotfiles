@@ -21,7 +21,6 @@ export EDITOR='nvim'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GPG_TTY="$(tty)"
 export VISUAL="${EDITOR}"
-export ZIM_HOME="${HOME}/.zim"
 
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
@@ -70,9 +69,6 @@ zstyle ':zim:termtitle' format '%n in %~ at %m'
 # This will cause zsh to refuse to execute commands you have entered if an 
 # alternative alias for it exists.
 export YSU_HARDCORE=1
-
-# The directory that will be used by nvm.
-export NVM_DIR="${HOME}/.nvm"
 
 # Enables nvm lazy loading b/c nvm is laggy as fuck.
 export NVM_LAZY_LOAD=true
