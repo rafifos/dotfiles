@@ -110,6 +110,7 @@ You will need to install the extensions manually while I figure out a way of aut
 ```sh
 cat <<EOF | xargs -L 1 code --install-extension
 aaron-bond.better-comments
+adam-bender.commit-message-editor
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
 bierner.markdown-checkbox
@@ -136,7 +137,6 @@ naumovs.color-highlight
 nicoespeon.abracadabra
 Orta.vscode-jest
 PKief.material-icon-theme
-pnp.polacode
 rebornix.ruby
 richie5um2.vscode-sort-json
 rocketseat.RocketseatReactJS

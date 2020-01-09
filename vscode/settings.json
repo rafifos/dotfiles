@@ -66,10 +66,10 @@
     "zimrc": "shellscript",
     "zlogin": "shellscript",
     "zlogout": "shellscript",
+    "zprofile": "shellscript",
     "zshenv": "shellscript",
     "zshrc": "shellscript",
-    "ztoken": "shellscript",
-    "zprofile": "shellscript"
+    "ztoken": "shellscript"
   },
   "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
@@ -107,8 +107,6 @@
   "material-icon-theme.saturation": 0.6,
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "npm.packageManager": "yarn",
-  "polacode.backgroundColor": "#2E3440",
-  "polacode.transparentBackground": true,
   "problems.showCurrentInStatus": true,
   "ruby.codeCompletion": "rcodetools",
   "ruby.format": "rubocop",
