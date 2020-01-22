@@ -16,7 +16,7 @@ brew "shellcheck"
 brew "watchman"
 brew "zstd"
 
-cask "adoptopenjdk8-openj9"
+cask "adoptopenjdk11-openj9"
 cask "android-studio"
 cask "docker"
 cask "fanny"
