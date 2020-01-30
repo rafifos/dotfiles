@@ -35,7 +35,7 @@ Set-TaskbarOptions -UnLock
 Set-WindowsExplorerOptions -DisableShowHiddenFilesFoldersDrives -DisableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -DisableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder -EnableShowRibbon
 
 # Chocolatey packages
-cinst adoptopenjdk12openj9 -y
+cinst adoptopenjdk11openj9 -y
 cinst chocolateygui -y
 cinst discord -y
 cinst epicgameslauncher -y
