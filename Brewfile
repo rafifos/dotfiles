@@ -5,6 +5,7 @@ tap "homebrew/cask"
 
 brew "hub"
 brew "diff-so-fancy"
+brew "elixir"
 brew "htop"
 brew "httpie"
 brew "jq"
