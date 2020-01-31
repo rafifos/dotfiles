@@ -87,10 +87,6 @@ nvm install --lts
 npm install --global yarn
 ```
 
-### Install Ruby and Ruby on Rails
-
-For many reasons, it's recommended to use [`rvm`](https://rvm.io), you can follow the tutorial on [Install Rails](https://installrails.com) for more information.
-
 ### Deploy
 
 ```sh
