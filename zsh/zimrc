@@ -8,6 +8,7 @@ zmodule directory
 zmodule environment
 zmodule history
 zmodule input
+zmodule ruby
 zmodule ssh
 zmodule termtitle
 zmodule utility
@@ -15,7 +16,6 @@ zmodule utility
 # External modules
 zmodule lukechilds/zsh-nvm
 zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
-zmodule rafifos/ruby
 zmodule Valiev/almostontop
 
 # Prompt
