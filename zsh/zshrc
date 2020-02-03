@@ -114,9 +114,6 @@ case ${OSTYPE} in
   ;;
 esac
 
-# Overrides git with hub.
-eval "$(hub alias -s)"
-
 alias cp='cp -ipv'
 alias diff='diff -u'
 alias less='less -RFXx2'
