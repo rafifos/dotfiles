@@ -95,11 +95,27 @@ npm install --global yarn
 
 > NOTE: Variant can be `linux` and `darwin` atm.
 
-## Bugs and Workarounds
+## Visual Studio Code
 
-### Visual Studio Code
+This dotfiles include advanced support for:
 
-#### Extensions
+- JavaScript
+- TypeScript
+- React/React Native
+
+And basic support for:
+
+- Docker
+- Ruby
+- Elixir
+
+### Ruby Tools
+
+```sh
+gem install rubocop rcodetools
+```
+
+### Extensions
 
 You will need to install the extensions manually while I figure out a way of automating it's install procedure for this project.
 
@@ -122,6 +138,7 @@ esbenp.prettier-vscode
 Gaardsholt.vscode-whatthecommit
 IBM.output-colorizer
 icrawl.discord-vscode
+JakeBecker.elixir-ls
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
 ms-azuretools.vscode-docker
@@ -133,6 +150,7 @@ naumovs.color-highlight
 nicoespeon.abracadabra
 Orta.vscode-jest
 PKief.material-icon-theme
+pmneo.tsimporter
 rebornix.ruby
 richie5um2.vscode-sort-json
 rocketseat.RocketseatReactJS
