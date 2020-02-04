@@ -105,15 +105,7 @@ This dotfiles include advanced support for:
 
 And basic support for:
 
-- Docker
-- Ruby
 - Elixir
-
-### Ruby Tools
-
-```sh
-gem install rubocop rcodetools
-```
 
 ### Extensions
 
@@ -141,7 +133,6 @@ icrawl.discord-vscode
 JakeBecker.elixir-ls
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
-ms-azuretools.vscode-docker
 ms-vscode-remote.remote-wsl
 ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-tslint-plugin
@@ -151,14 +142,12 @@ nicoespeon.abracadabra
 Orta.vscode-jest
 PKief.material-icon-theme
 pmneo.tsimporter
-rebornix.ruby
 richie5um2.vscode-sort-json
 rocketseat.RocketseatReactJS
 rocketseat.RocketseatReactNative
 timonwong.shellcheck
 tombonnike.vscode-status-bar-format-toggle
 VisualStudioExptTeam.vscodeintellicode
-wingrunr21.vscode-ruby
 wix.glean
 EOF
 ```

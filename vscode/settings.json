@@ -63,6 +63,7 @@
   "editor.tabSize": 2,
   "eslint.packageManager": "yarn",
   "files.associations": {
+    "Brewfile": "ruby",
     "zimrc": "shellscript",
     "zlogin": "shellscript",
     "zlogout": "shellscript",
@@ -112,13 +113,6 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "npm.packageManager": "yarn",
   "problems.showCurrentInStatus": true,
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.format": "rubocop",
-  "ruby.intellisense": "rubyLocate",
-  "ruby.lint": {
-    "rubocop": true
-  },
-  "ruby.useLanguageServer": true,
   "search.enableSearchEditorPreview": true,
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
