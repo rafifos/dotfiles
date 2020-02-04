@@ -57,9 +57,6 @@ export WORDCHARS=''
 # This appends '../' to your input for each '.' you type after an initial '..'
 zstyle ':zim:input' double-dot-expand yes
 
-# Set a ruby version-management-tool. Options include 'rbenv' and 'rvm'.
-zstyle ':zim:ruby' version-management-tool 'rbenv'
-
 # Defines the identities (from ~/.ssh) that will be loaded and cached on login.
 zstyle ':zim:ssh' ids 'id_rsa'
 
