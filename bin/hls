@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Copyright (c) 2019 Rafael Julio
-#
-# This software is released under the MIT License.
-# https://opensource.org/licenses/MIT
-#
-# Downloads an encrypted HLS stream to from a manifest to a file.
+# Copyright (C) 2019-present Rafael Julio <hello.rjulio@gmail.com>
+
+# Project:     dotfiles
+# Repository:  https://github.com/rafifos/dotfiles
+# License:     MIT
+# Description: Downloads an encrypted HLS stream to from a manifest to a file.
 
 if [ $# -ne 2 ]; then
   echo "usage: hls URL [name to save]"
