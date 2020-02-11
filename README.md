@@ -142,12 +142,14 @@ nicoespeon.abracadabra
 Orta.vscode-jest
 PKief.material-icon-theme
 pmneo.tsimporter
+rebornix.ruby
 richie5um2.vscode-sort-json
 rocketseat.RocketseatReactJS
 rocketseat.RocketseatReactNative
 timonwong.shellcheck
 tombonnike.vscode-status-bar-format-toggle
 VisualStudioExptTeam.vscodeintellicode
+wingrunr21.vscode-ruby
 wix.glean
 EOF
 ```
