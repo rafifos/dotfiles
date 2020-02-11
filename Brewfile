@@ -6,6 +6,7 @@ tap "github/gh"
 
 brew "diff-so-fancy"
 brew "elixir"
+brew "ffsend"
 brew "gh"
 brew "htop"
 brew "httpie"
