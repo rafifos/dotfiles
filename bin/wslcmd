@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Copyright (C) 2020-present Rafael Julio <hello.rjulio@gmail.com>
+# Copyright (C) 2020 BizarreNULL <jonas.uliana@passwd.com.br>
+
+# Project:     dotfiles
+# Repository:  https://github.com/rafifos/dotfiles
+# License:     MIT
+# Description: Runs a Windows executable from within WSL.
+
+if [ -z "$1" ]; then
+  echo -e "\033[0;31mError:\033[0m Invalid argument supplied"
+else
+  if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
+    cmd.exe /c "$1"
+  fi
+fi
