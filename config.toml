@@ -21,6 +21,9 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
+[tasks.ngrok2]
+  links = [["${HM_DEST}/.ngrok2/ngrok.yml", "ngrok2/ngrok.yml"]]
+
 [tasks.ssh__darwin]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
@@ -63,6 +66,7 @@
   deps = [
     "git",
     "htop",
+    "ngrok2",
     "nvim",
     "ssh",
     "vscode",
@@ -81,6 +85,7 @@
   deps = [
     "git",
     "htop",
+    "ngrok2",
     "nvim",
     "zsh",
   ]
