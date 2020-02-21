@@ -105,8 +105,6 @@ case ${OSTYPE} in
     source "${HOME}/.iterm2_shell_integration.zsh"
 
     alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
-    alias qba='cd $HOME/WorkDir/quero/qb_app_rn'
-    alias quero='cd $HOME/WorkDir/quero'
     alias screenrecord='xcrun simctl io booted recordVideo "Record from "$(date)".gif"'
   ;;
 esac

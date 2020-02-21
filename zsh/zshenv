@@ -40,4 +40,4 @@ case ${OSTYPE} in
   ;;
 esac
 
-source "${HOME}/.ztoken"
+source "${HOME}/.zprivate"

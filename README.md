@@ -6,12 +6,12 @@
 
 ## Important notes
 
-This dotfiles's `zsh` configuration includes a specific [file](zsh/ztoken) for storing your tokens. **DO NOT** commit anything to this file.
+This dotfiles's `zsh` configuration includes a specific [file](zsh/zprivate) for storing your private configurations. **DO NOT** commit anything to this file.
 
 The file is tracked by `git`, and you probably don't want it to be. To disable tracking on this file, run:
 
 ```sh
-git update-index --skip-worktree zsh/ztoken
+git update-index --skip-worktree zsh/zprivate
 ```
 
 ## Download `homemaker`

@@ -70,7 +70,7 @@
     "zprofile": "shellscript",
     "zshenv": "shellscript",
     "zshrc": "shellscript",
-    "ztoken": "shellscript"
+    "zprivate": "shellscript"
   },
   "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
