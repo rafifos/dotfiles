@@ -102,10 +102,12 @@ This dotfiles include advanced support for:
 - JavaScript
 - TypeScript
 - React/React Native
+- Ruby
 
 And basic support for:
 
 - Elixir
+- Ruby on Rails
 
 ### Extensions
 
@@ -114,7 +116,6 @@ You will need to install the extensions manually while I figure out a way of aut
 ```sh
 cat <<EOF | xargs -L 1 code --install-extension
 aaron-bond.better-comments
-adam-bender.commit-message-editor
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
 bierner.markdown-checkbox
@@ -122,27 +123,27 @@ bierner.markdown-emoji
 bierner.markdown-preview-github-styles
 bierner.markdown-yaml-preamble
 bungcip.better-toml
+castwide.solargraph
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
-Gaardsholt.vscode-whatthecommit
-IBM.output-colorizer
 icrawl.discord-vscode
 JakeBecker.elixir-ls
 mgmcdermott.vscode-language-babel
 mikestead.dotenv
+ms-azuretools.vscode-docker
 ms-vscode-remote.remote-wsl
 ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-tslint-plugin
 msjsdiag.vscode-react-native
 naumovs.color-highlight
 nicoespeon.abracadabra
+nicoespeon.hocus-pocus
 Orta.vscode-jest
 PKief.material-icon-theme
 pmneo.tsimporter
-rebornix.ruby
 richie5um2.vscode-sort-json
 rocketseat.RocketseatReactJS
 rocketseat.RocketseatReactNative

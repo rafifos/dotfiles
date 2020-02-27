@@ -67,10 +67,10 @@
     "zimrc": "shellscript",
     "zlogin": "shellscript",
     "zlogout": "shellscript",
+    "zprivate": "shellscript",
     "zprofile": "shellscript",
     "zshenv": "shellscript",
-    "zshrc": "shellscript",
-    "zprivate": "shellscript"
+    "zshrc": "shellscript"
   },
   "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
@@ -113,19 +113,11 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   "npm.packageManager": "yarn",
   "problems.showCurrentInStatus": true,
-  "ruby.codeCompletion": "rcodetools",
-  "ruby.format": "rubocop",
-  "ruby.intellisense": "rubyLocate",
-  "ruby.lint": {
-    "rubocop": {
-      "lint": true,
-      "rails": true,
-      "useBundler": true
-    }
-  },
-  "ruby.useBundler": true,
-  "ruby.useLanguageServer": true,
   "search.enableSearchEditorPreview": true,
+  "solargraph.bundlerPath": "/Users/rafifos/.rbenv/shims/bundle",
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.useBundler": true,
   "terminal.external.osxExec": "iTerm2.app",
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.rendererType": "experimentalWebgl",
