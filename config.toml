@@ -40,6 +40,7 @@
 
 [tasks.zsh]
   links = [
+    ["${HM_DEST}/.p10k.zsh", "zsh/p10k.zsh"],
     ["${HM_DEST}/.zimrc", "zsh/zimrc"],
     ["${HM_DEST}/.zlogin", "zsh/zlogin"],
     ["${HM_DEST}/.zlogout", "zsh/zlogout"],
