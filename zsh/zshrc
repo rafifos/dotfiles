@@ -98,9 +98,6 @@ case ${OSTYPE} in
       curl -fLsS -o "${HOME}/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
     fi
     source "${HOME}/.iterm2_shell_integration.zsh"
-
-    alias emulator='$HOME/Library/Android/sdk/emulator/emulator -avd Pixel_3_API_29 &'
-    alias screenrecord='xcrun simctl io booted recordVideo "Record from "$(date)".gif"'
   ;;
 esac
 
