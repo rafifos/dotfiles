@@ -29,5 +29,4 @@ cask "spotify"
 cask "tunnelblick"
 cask "visual-studio-code"
 
-mas "Lungo", id: 1263070803
 mas "The Unarchiver", id: 425424353
