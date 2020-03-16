@@ -30,3 +30,4 @@ cask "tunnelblick"
 cask "visual-studio-code"
 
 mas "The Unarchiver", id: 425424353
+mas "Jira Cloud by Atlassian", id: 1475897096
