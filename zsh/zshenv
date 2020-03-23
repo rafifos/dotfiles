@@ -28,16 +28,16 @@ export LC_MONETARY='pt_BR.UTF-8'
 export LC_NUMERIC='pt_BR.UTF-8'
 export LC_TIME='pt_BR.UTF-8'
 
-case ${OSTYPE} in
+case "$OSTYPE" in
   darwin*)
     typeset -U path
-    [[ -d "${HOME}/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="${HOME}/Library/Android/sdk"
-    [[ -d "${HOME}/Library/Android/sdk/build-tools" ]] && path+=("${HOME}/Library/Android/sdk/build-tools")
-    [[ -d "${HOME}/Library/Android/sdk/platform-tools" ]] && path+=("${HOME}/Library/Android/sdk/platform-tools")
+    [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && path+=("$HOME/Library/Android/sdk/build-tools")
+    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && path+=("$HOME/Library/Android/sdk/platform-tools")
   ;;
   linux*)
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
 esac
 
-source "${HOME}/.zprivate"
+source "$HOME/.zprivate"

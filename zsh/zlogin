@@ -12,9 +12,9 @@
 #
 typeset -U path
 
-[[ -d "${HOME}/.local/bin" ]] && path+=("${HOME}/.local/bin")
-[[ -d "${HOME}/.yarn/bin" ]] && path+=("${HOME}/.yarn/bin")
-[[ -d "${HOME}/bin" ]] && path+=("${HOME}/bin")
+[[ -d "$HOME/.local/bin" ]] && path+=("$HOME/.local/bin")
+[[ -d "$HOME/.yarn/bin" ]] && path+=("$HOME/.yarn/bin")
+[[ -d "$HOME/bin" ]] && path+=("$HOME/bin")
 
 # * Loads nvm (and node) into the shell if it isn't already available (for
 # * example, on a non-interactive login shell).
@@ -22,4 +22,4 @@ typeset -U path
 [[ ! "${+commands[node]}" && ! -o 'login' ]] && . $NVM_DIR/nvm.sh
 
 # Initialize ZIM.
-source ${ZIM_HOME}/login_init.zsh -q &!
+source $ZIM_HOME/login_init.zsh -q &!

@@ -101,10 +101,10 @@ unset P10K_INSTANT_PROMPT_FILE
 
 case "$OSTYPE" in
   darwin*)
-    if [[ ! -f "${HOME}/.iterm2_shell_integration.zsh" ]]; then
-      curl -fLsS -o "${HOME}/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
+    if [[ ! -f "$HOME/.iterm2_shell_integration.zsh" ]]; then
+      curl -fLsS -o "$HOME/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
     fi
-    source "${HOME}/.iterm2_shell_integration.zsh"
+    source "$HOME/.iterm2_shell_integration.zsh"
   ;;
 esac
 
@@ -119,15 +119,15 @@ alias dotfiles='cd $HOME/WorkDir/dotfiles'
 alias wd='cd $HOME/WorkDir'
 
 # Installs and sources ZIM if it isn't installed.
-if [[ ! -f "${ZIM_HOME}/zimfw.zsh" ]]; then
-  curl --create-dirs -fLsS -o "${ZIM_HOME}/zimfw.zsh" 'https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh' && source "${ZIM_HOME}/zimfw.zsh" install
+if [[ ! -f "$ZIM_HOME/zimfw.zsh" ]]; then
+  curl --create-dirs -fLsS -o "$ZIM_HOME/zimfw.zsh" 'https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh' && source "$ZIM_HOME/zimfw.zsh" install
 fi
 
 # Update static initialization script if it's outdated, before sourcing it.
-if [[ "${ZIM_HOME}/init.zsh" -ot "$HOME/.zimrc" ]]; then
-  source "${ZIM_HOME}/zimfw.zsh" init -q
+if [[ "$ZIM_HOME/init.zsh" -ot "$HOME/.zimrc" ]]; then
+  source "$ZIM_HOME/zimfw.zsh" init -q
 fi
-source "${ZIM_HOME}/init.zsh"
+source "$ZIM_HOME/init.zsh"
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
 bindkey '^[[A' history-substring-search-up
