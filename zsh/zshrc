@@ -20,7 +20,7 @@
 export EDITOR='nvim'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export GPG_TTY="$(tty)"
-export VISUAL="${EDITOR}"
+export VISUAL="$EDITOR"
 
 # Sets the history file location.
 export HISTFILE="$HOME/.zhistory"
@@ -99,7 +99,7 @@ unset P10K_INSTANT_PROMPT_FILE
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-case ${OSTYPE} in
+case "$OSTYPE" in
   darwin*)
     if [[ ! -f "${HOME}/.iterm2_shell_integration.zsh" ]]; then
       curl -fLsS -o "${HOME}/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
@@ -124,7 +124,7 @@ if [[ ! -f "${ZIM_HOME}/zimfw.zsh" ]]; then
 fi
 
 # Update static initialization script if it's outdated, before sourcing it.
-if [[ "${ZIM_HOME}/init.zsh" -ot "${HOME}/.zimrc" ]]; then
+if [[ "${ZIM_HOME}/init.zsh" -ot "$HOME/.zimrc" ]]; then
   source "${ZIM_HOME}/zimfw.zsh" init -q
 fi
 source "${ZIM_HOME}/init.zsh"
