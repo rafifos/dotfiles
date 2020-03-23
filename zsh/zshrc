@@ -22,6 +22,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export GPG_TTY="$(tty)"
 export VISUAL="${EDITOR}"
 
+# Sets the history file location.
+export HISTFILE="$HOME/.zhistory"
+
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
 
