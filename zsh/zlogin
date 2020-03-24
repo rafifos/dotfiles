@@ -19,7 +19,7 @@ typeset -U path
 # * Loads nvm (and node) into the shell if it isn't already available (for
 # * example, on a non-interactive login shell).
 # ? I'm not sure this is the best way to do this.
-[[ ! "${+commands[node]}" && ! -o 'interactive' ]] && . $NVM_DIR/nvm.sh
+[[ ! "${+commands[node]}" && ! -o 'interactive' ]] && source "$NVM_DIR/nvm.sh"
 
 # Initialize ZIM.
-source $ZIM_HOME/login_init.zsh -q &!
+source "$ZIM_HOME/login_init.zsh" -q &!
