@@ -42,6 +42,7 @@ cinst epicgameslauncher -y
 cinst fluent-terminal -y
 cinst gitkraken -y
 cinst googlechrome -y
+cinst insomnia-rest-api-client -y
 cinst leagueoflegends -y
 cinst linkshellextension -y
 cinst peazip -y
