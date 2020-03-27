@@ -116,6 +116,7 @@ You will need to install the extensions manually while I figure out a way of aut
 ```sh
 cat <<EOF | xargs -L 1 code --install-extension
 aaron-bond.better-comments
+alefragnani.project-manager
 arcticicestudio.nord-visual-studio-code
 bierner.github-markdown-preview
 bierner.markdown-checkbox
@@ -127,7 +128,6 @@ castwide.solargraph
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
-EditorConfig.EditorConfig
 esbenp.prettier-vscode
 icrawl.discord-vscode
 JakeBecker.elixir-ls
@@ -137,6 +137,7 @@ ms-azuretools.vscode-docker
 ms-vscode-remote.remote-wsl
 ms-vscode.js-debug-nightly
 ms-vscode.vscode-typescript-tslint-plugin
+ms-vsliveshare.vsliveshare
 msjsdiag.vscode-react-native
 naumovs.color-highlight
 nicoespeon.abracadabra
