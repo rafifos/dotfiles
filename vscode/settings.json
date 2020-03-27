@@ -72,7 +72,6 @@
     "zshenv": "shellscript",
     "zshrc": "shellscript"
   },
-  "files.autoSave": "onFocusChange",
   "files.simpleDialog.enable": true,
   "git.autofetch": true,
   "git.branchSortOrder": "alphabetically",
