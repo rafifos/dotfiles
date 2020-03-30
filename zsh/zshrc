@@ -19,7 +19,6 @@
 #
 export EDITOR='nvim'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export GPG_TTY="$(tty)"
 export VISUAL="$EDITOR"
 
 # Sets the history file location.
@@ -105,6 +104,9 @@ case "$OSTYPE" in
       curl -fLsS -o "$HOME/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
     fi
     source "$HOME/.iterm2_shell_integration.zsh"
+  ;;
+  linux*)
+    [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
   ;;
 esac
 
