@@ -22,6 +22,7 @@ Set-ItemProperty -Path Registry::HKEY_CLASSES_ROOT\Wow6432Node\CLSID\'{018D5C66-
 Add-WindowsCapability -Online -Name NetFX3~~~~
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -NoRestart
+wsl --set-default-version 2
 
 # Windows configuration
 Disable-BingSearch
