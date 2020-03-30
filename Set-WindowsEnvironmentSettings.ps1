@@ -41,7 +41,7 @@ cinst chocolateygui -y
 cinst discord -y
 cinst epicgameslauncher -y
 cinst fluent-terminal -y
-cinst gitkraken -y
+cinst github-desktop -y
 cinst googlechrome -y
 cinst insomnia-rest-api-client -y
 cinst leagueoflegends -y
