@@ -37,6 +37,10 @@ case "$OSTYPE" in
   ;;
   linux*)
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+    # Workaround for WSL2 not freeing up resources after exit
+    # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-604707989
+    sudo /etc/init.d/cron start
   ;;
 esac
 
