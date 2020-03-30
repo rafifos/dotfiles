@@ -23,6 +23,7 @@ Download the lastest version from [FooSoft Productions](https://foosoft.net/proj
 Prerequisites:
 
 - Your `ssh` key to be already in the keyring
+- `zsh` to be your default _shell_.
 
 ### Linux (and WSL)
 
