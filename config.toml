@@ -18,8 +18,8 @@
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
-[tasks.ssh__darwin]
-  links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
+[tasks.ssh]
+  templates = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
 [tasks.vscode__darwin]
   links = [
