@@ -4,9 +4,6 @@
 [macros.install_yarn_package]
   prefix = ["yarn", "global", "add"]
 
-[macros.install_gem]
-  prefix = ["gem", "install"]
-
 #
 # Pseudo-package tasks
 #
@@ -20,9 +17,6 @@
 
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
-
-[tasks.ngrok2]
-  links = [["${HM_DEST}/.ngrok2/ngrok.yml", "ngrok2/ngrok.yml"]]
 
 [tasks.ssh__darwin]
   links = [["${HM_DEST}/.ssh/config", "ssh/config"]]
@@ -60,12 +54,11 @@
     ["sudo", "scutil", "--set", "LocalHostName", "A1708"],
     ["sudo", "scutil", "--set", "ComputerName", "A1708"],
     ["dscacheutil", "-flushcache"],
-    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
+    ["@install_yarn_package", "tldr"],
   ]
   deps = [
     "git",
     "htop",
-    "ngrok2",
     "nvim",
     "ssh",
     "vscode",
@@ -79,12 +72,11 @@
 
 [tasks.default__linux]
   cmds = [
-    ["@install_yarn_package", "commitizen", "cz-conventional-changelog"],
+    ["@install_yarn_package", "tldr"],
   ]
   deps = [
     "git",
     "htop",
-    "ngrok2",
     "nvim",
     "zsh",
   ]

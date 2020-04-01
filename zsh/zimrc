@@ -8,7 +8,6 @@ zmodule directory
 zmodule environment
 zmodule history
 zmodule input
-zmodule ruby
 zmodule ssh
 zmodule termtitle
 zmodule utility
