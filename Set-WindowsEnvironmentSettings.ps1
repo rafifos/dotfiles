@@ -44,7 +44,6 @@ cinst googlechrome -y
 cinst insomnia-rest-api-client -y
 cinst leagueoflegends -y
 cinst linkshellextension -y
-cinst minecraft -y
 cinst notable -y
 cinst peazip -y
 cinst steam -y
