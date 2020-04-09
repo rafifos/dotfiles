@@ -1,7 +1,7 @@
 tap "beeftornado/rmtree"
+tap "github/gh"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
-tap "github/gh"
 
 brew "diff-so-fancy"
 brew "gh"
