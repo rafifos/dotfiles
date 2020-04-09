@@ -1,4 +1,4 @@
-{{if eq .Env.OSTYPE "darwin*"}}
+{{if eq .Env.OS "OSX"}}
   Host *
     AddKeysToAgent yes
     UseKeychain yes

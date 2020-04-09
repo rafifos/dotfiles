@@ -91,7 +91,7 @@ npm install --global yarn
 ### Deploy
 
 ```sh
-env OSTYPE=$OSTYPE ./homemaker -clobber -verbose -variant=`variant` config.toml "$PWD"
+env OS=$OS ./homemaker -clobber -verbose -variant=`variant` config.toml "$PWD"
 ```
 
 > NOTE: Variant can be `linux` and `darwin` atm.
