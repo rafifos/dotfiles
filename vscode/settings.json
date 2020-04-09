@@ -45,6 +45,7 @@
   "gitlens.views.search.location": "gitlens",
   "glean.experiments": ["hooksForFunctionalComponents"],
   "jest.autoEnable": false,
+  "material-icon-theme.activeIconPack": "nest",
   "material-icon-theme.folders.color": "#616e88",
   "material-icon-theme.hidesExplorerArrows": true,
   "material-icon-theme.saturation": 0.6,
