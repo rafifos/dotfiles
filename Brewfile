@@ -4,6 +4,7 @@ tap "github/gh"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
 
+brew "aws-iam-authenticator"
 brew "awscli"
 brew "diff-so-fancy"
 brew "gh"
