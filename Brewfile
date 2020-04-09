@@ -4,6 +4,7 @@ tap "github/gh"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
 
+brew "awscli"
 brew "diff-so-fancy"
 brew "gh"
 brew "git-chglog"
