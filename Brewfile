@@ -1,10 +1,12 @@
 tap "beeftornado/rmtree"
+tap "git-chglog/git-chglog"
 tap "github/gh"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
 
 brew "diff-so-fancy"
 brew "gh"
+brew "git-chglog"
 brew "htop"
 brew "httpie"
 brew "nvim"
