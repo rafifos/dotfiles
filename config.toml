@@ -1,8 +1,8 @@
 #
 # Macros
 #
-[macros.install_yarn_package]
-  prefix = ["yarn", "global", "add"]
+[macros.install_npm_package]
+  prefix = ["npm", "install", "--global"]
 
 #
 # Pseudo-package tasks
@@ -54,7 +54,7 @@
     ["sudo", "scutil", "--set", "LocalHostName", "A1708"],
     ["sudo", "scutil", "--set", "ComputerName", "A1708"],
     ["dscacheutil", "-flushcache"],
-    ["@install_yarn_package", "prettier", "tldr"],
+    ["@install_npm_package", "prettier", "tldr"],
   ]
   deps = [
     "git",
@@ -72,7 +72,7 @@
 
 [tasks.default__linux]
   cmds = [
-    ["@install_yarn_package", "prettier", "tldr"],
+    ["@install_npm_package", "prettier", "tldr"],
   ]
   deps = [
     "git",

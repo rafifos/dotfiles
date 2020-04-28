@@ -83,9 +83,7 @@ Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -Dis
 export NVM_DIR="$HOME/.nvm"
 [[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
 source "$(brew --prefix)/opt/nvm/nvm.sh"
-source "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
 nvm install --lts
-npm install --global yarn
 ```
 
 ### Deploy
