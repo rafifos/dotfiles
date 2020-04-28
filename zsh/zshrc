@@ -68,9 +68,6 @@ zstyle ':zim:ssh' ids 'id_rsa'
 # For example, '%n@%m: %~' corresponds to 'username@host: /current/directory'.
 zstyle ':zim:termtitle' format '%n@%m: %~'
 
-# Enables nvm lazy loading b/c nvm is laggy as fuck.
-export NVM_LAZY_LOAD=true
-
 # Customize the style that the suggestions are shown with.
 # See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'

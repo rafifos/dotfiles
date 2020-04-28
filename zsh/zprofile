@@ -19,6 +19,3 @@
 # Source: https://unix.stackexchange.com/a/487889
 #
 export ZIM_HOME="$HOME/.zim"
-
-# The directory that will be used by nvm.
-export NVM_DIR="$HOME/.nvm"

@@ -77,22 +77,26 @@ Install-BoxstarterPackage -PackageName ./Set-WindowsEnvironmentSettings.ps1 -Dis
 
 > NOTE: This requires you to be in a elevated PowerShell prompt.
 
-### Install `node` and `yarn`
-
-```sh
-export NVM_DIR="$HOME/.nvm"
-[[ ! -d "$NVM_DIR" ]] && mkdir "$NVM_DIR"
-source "$(brew --prefix)/opt/nvm/nvm.sh"
-nvm install --lts
-```
-
 ### Deploy
 
 ```sh
-env OS=$OS ./homemaker -clobber -verbose -variant=`variant` config.toml "$PWD"
+env OS=$OS ./homemaker -clobber -verbose -variant=<variant> config.toml "$PWD"
 ```
 
-> NOTE: Variant can be `linux` and `darwin` atm.
+> NOTE: Variant can be either `linux` or `darwin`.
+
+### Install Node.js
+
+```sh
+# Injects asdf-vm into the current shell session.
+source "$(brew --prefix asdf)/asdf.sh"
+
+# Adds the Node.js plugin for asdf.
+asdf plugin add nodejs
+
+# Import the Node.js release team's OpenPGP keys to main keyring.
+bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+```
 
 ## Visual Studio Code
 

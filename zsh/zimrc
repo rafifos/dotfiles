@@ -13,7 +13,6 @@ zmodule termtitle
 zmodule utility
 
 # External modules
-zmodule lukechilds/zsh-nvm
 zmodule MichaelAquilina/zsh-you-should-use --name you-should-use
 zmodule Valiev/almostontop
 
