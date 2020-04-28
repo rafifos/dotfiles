@@ -11,9 +11,9 @@
 [tasks.git]
   links = [
     ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
+    ["${HM_DEST}/.gitconfig", "git/gitconfig"],
     ["${HM_DEST}/.gitignore", "git/gitignore"],
   ]
-  templates = [["${HM_DEST}/.gitconfig", "git/gitconfig"],]
 
 [tasks.htop]
   links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
