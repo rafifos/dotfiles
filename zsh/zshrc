@@ -133,6 +133,14 @@ if (( ${+WSL_INTEROP} )); then
   # Workaround for WSL2 not freeing up resources after exit.
   # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-604707989
   sudo /etc/init.d/cron start >/dev/null 2>&1
+
+  # Workarount for WSL2 AF_UNIX interop in wsl-ssh-agent.
+  export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+  ss -a | grep -q "$SSH_AUTH_SOCK"
+  if [ $? -ne 0 ]; then
+    rm -f "$SSH_AUTH_SOCK"
+    ( setsid socat UNIX-LISTEN:"$SSH_AUTH_SOCK",fork EXEC:"$HOME/.wsl/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork & ) >/dev/null 2>&1
+  fi
 fi
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
