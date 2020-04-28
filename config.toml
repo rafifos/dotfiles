@@ -9,7 +9,6 @@
 #
 [tasks.git]
   links = [
-    ["${HM_DEST}/.czrc", "git/czrc"],
     ["${HM_DEST}/.git-commit-msg", "git/git-commit-msg"],
     ["${HM_DEST}/.gitconfig", "git/gitconfig"],
     ["${HM_DEST}/.gitignore", "git/gitignore"],
