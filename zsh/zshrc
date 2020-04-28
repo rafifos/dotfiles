@@ -114,7 +114,7 @@ alias mv='mv -iv'
 alias rm='rm -iv'
 alias vim='nvim'
 
-alias dotfiles='cd $HOME/WorkDir/dotfiles'
+alias dotfiles='cd $HOME/.dotfiles'
 alias wd='cd $HOME/WorkDir'
 
 # Installs and sources ZIM if it isn't installed.
