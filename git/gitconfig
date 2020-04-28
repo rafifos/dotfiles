@@ -14,10 +14,6 @@
   ; Global .gitignore file.
   excludesfile = ~/.gitignore
 
-[tag]
-  ; Always sign annotated tags.
-  forceSignAnnotated = true
-
 [gpg]
   ; This is needed by MacOS
   program = gpg
