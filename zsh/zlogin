@@ -15,5 +15,8 @@ typeset -U path
 [[ -d "$HOME/.local/bin" ]] && path+=("$HOME/.local/bin")
 [[ -d "$HOME/bin" ]] && path+=("$HOME/bin")
 
+# Injects asdf-vm into the current shell session.
+source "$(brew --prefix asdf)/asdf.sh"
+
 # Initialize ZIM.
 source "$ZIM_HOME/login_init.zsh" -q &!

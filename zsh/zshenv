@@ -35,12 +35,6 @@ case "$OSTYPE" in
     [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && path+=("$HOME/Library/Android/sdk/build-tools")
     [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && path+=("$HOME/Library/Android/sdk/platform-tools")
   ;;
-  linux*)
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-    # Injects asdf-vm into the current shell session.
-    source "$(brew --prefix asdf)/asdf.sh"
-  ;;
 esac
 
 source "$HOME/.zprivate"
