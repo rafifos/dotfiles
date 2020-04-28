@@ -40,10 +40,6 @@ case "$OSTYPE" in
 
     # Injects asdf-vm into the current shell session.
     source "$(brew --prefix asdf)/asdf.sh"
-
-    # Workaround for WSL2 not freeing up resources after exit.
-    # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-604707989
-    sudo /etc/init.d/cron start
   ;;
 esac
 
