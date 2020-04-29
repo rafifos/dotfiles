@@ -134,8 +134,8 @@ source "$ZIM_HOME/init.zsh"
 # WSL2 overrides and fixes.
 if (( ${+WSL_INTEROP} )); then
   # Workaround for WSL2 not freeing up resources after exit.
-  # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-604707989
-  sudo /etc/init.d/cron start >/dev/null 2>&1
+  # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
+  [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
 fi
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init.
