@@ -21,12 +21,6 @@
 [tasks.ssh]
   templates = [["${HM_DEST}/.ssh/config", "ssh/config"]]
 
-[tasks.vscode__darwin]
-  links = [
-    ["${HM_DEST}/Library/Application Support/Code/User/snippets/markdown.json", "vscode/snippets/markdown.json"],
-    ["${HM_DEST}/Library/Application Support/Code/User/settings.json", "vscode/settings.json"],
-  ]
-
 [tasks.nvim]
   links = [
     ["${HM_DEST}/.config/nvim/init.vim", "nvim/init.vim"],
@@ -61,7 +55,6 @@
     "htop",
     "nvim",
     "ssh",
-    "vscode",
     "zsh",
   ]
   links = [
