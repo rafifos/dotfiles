@@ -4,6 +4,7 @@ tap "github/gh"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
 tap "nektos/tap"
+tap "tap homebrew/cask-versions"
 
 brew "act"
 brew "asdf"
@@ -32,7 +33,7 @@ cask "postman"
 cask "slack"
 cask "spotify"
 cask "tunnelblick"
-cask "visual-studio-code"
+cask "visual-studio-code-insiders"
 
 mas "Jira Cloud by Atlassian", id: 1475897096
 mas "The Unarchiver", id: 425424353
