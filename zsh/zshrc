@@ -101,8 +101,6 @@ case "$OSTYPE" in
   linux*)
     [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
 
-    # Injects Linuxbrew into the current shell session.
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   ;;
 esac
 
