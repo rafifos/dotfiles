@@ -53,7 +53,7 @@ export WORDCHARS=''
 
 # Set a custom path for the completion dump file.
 # If none is provided, the default \${ZDOTDIR:-\${HOME}}/.zcompdump is used.
-#zstyle ':zim:completion' dumpfile \"\${ZDOTDIR:-\${HOME}}/.zcompdump-\${ZSH_VERSION}\"
+zstyle ':zim:completion' dumpfile \"\${ZDOTDIR:-\${HOME}}/.zcompdump\"
 
 # Enable double-dot expansion.
 # This appends '../' to your input for each '.' you type after an initial '..'
