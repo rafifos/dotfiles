@@ -43,6 +43,9 @@ case "$OSTYPE" in
       #
       # NOTE: Don't forget to `flock` the cronjob.
       [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
+
+      # Workaround for using gpg without a graphical interface.
+      [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
     fi
 
     # Injects Linuxbrew into the current shell session.

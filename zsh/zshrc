@@ -98,10 +98,6 @@ case "$OSTYPE" in
     fi
     source "$HOME/.iterm2_shell_integration.zsh"
   ;;
-  linux*)
-    [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
-
-  ;;
 esac
 
 alias cp='cp -ipv'
