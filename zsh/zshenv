@@ -45,6 +45,5 @@ case "$OSTYPE" in
       [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
     fi
 
-source "$HOME/.zprivate"
   ;;
 esac

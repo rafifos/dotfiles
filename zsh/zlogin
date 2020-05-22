@@ -17,6 +17,8 @@ typeset -U path
 
 # Injects asdf-vm into the current shell session.
 source "$(brew --prefix asdf)/asdf.sh"
+# Loads private aliases and tokens into the current shell session.
+source "$HOME/.zprivate"
 
 # Initialize ZIM.
 source "$ZIM_HOME/login_init.zsh" -q &!
