@@ -108,7 +108,6 @@ alias diff='diff -u'
 alias less='less -RFXx2'
 alias mv='mv -iv'
 alias rm='rm -iv'
-alias vim='nvim'
 
 alias dotfiles='cd $HOME/.dotfiles'
 alias wd='cd $HOME/WorkDir'
