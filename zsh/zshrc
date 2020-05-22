@@ -100,6 +100,9 @@ case "$OSTYPE" in
   ;;
 esac
 
+# Injects asdf-vm into the current shell session.
+source "$(brew --prefix asdf)/asdf.sh"
+
 alias cp='cp -ipv'
 alias diff='diff -u'
 alias less='less -RFXx2'
