@@ -35,6 +35,16 @@ case "$OSTYPE" in
     [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && path+=("$HOME/Library/Android/sdk/build-tools")
     [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && path+=("$HOME/Library/Android/sdk/platform-tools")
   ;;
-esac
+  linux*)
+    # WSL2 overrides and fixes.
+    if (( ${+WSL_INTEROP} )); then
+      # Workaround for WSL2 not freeing up resources after exit.
+      # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
+      #
+      # NOTE: Don't forget to `flock` the cronjob.
+      [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
+    fi
 
 source "$HOME/.zprivate"
+  ;;
+esac
