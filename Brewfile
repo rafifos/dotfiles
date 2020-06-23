@@ -3,7 +3,6 @@ tap "github/gh"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
 
 brew "asdf"
 brew "aws-iam-authenticator"
@@ -34,7 +33,7 @@ cask "razer-synapse"
 cask "slack"
 cask "spotify"
 cask "tunnelblick"
-cask "visual-studio-code-insiders"
+cask "visual-studio-code"
 
 mas "Jira Cloud by Atlassian", id: 1475897096
 mas "The Unarchiver", id: 425424353
