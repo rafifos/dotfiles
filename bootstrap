@@ -47,10 +47,10 @@ __bootstrap::load_core_module() {
 
   # shellcheck disable=SC2048,SC2181
   for module in $*; do
-    module=$BOOTSTRAP_BASE_DIR/$module.sh
+    module=$BOOTSTRAP_BASE_DIR/$module
 
     if [ -f "$module" ]; then
-      . "$module"
+      . "$module += .sh"
       if [ $? -eq 0 ]; then
         __bootstrap::log_info "[$__self_name] Core module $(basename "$module") successfully loaded"
       else
@@ -68,5 +68,6 @@ export BOOTSTRAP_BASE_DIR="$(__bootstrap::get_base_dir)"
 # +--------------+
 # + Core Modules +
 # +--------------+
-__bootstrap::load_core_module core/utils core/apt core/flatpak
+__bootstrap::load_core_module core/utils core/homemaker core/apt core/flatpak
 
+__homemaker::install
