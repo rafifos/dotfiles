@@ -47,6 +47,7 @@
     ["sudo", "scutil", "--set", "HostName", "A1708"],
     ["sudo", "scutil", "--set", "LocalHostName", "A1708"],
     ["sudo", "scutil", "--set", "ComputerName", "A1708"],
+    ["defaults", "write", ".GlobalPreferences", "com.apple.mouse.scaling", "-1"],
     ["dscacheutil", "-flushcache"],
   ]
   deps = [

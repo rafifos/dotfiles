@@ -1,8 +1,8 @@
 tap "beeftornado/rmtree"
 tap "github/gh"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask"
-tap "homebrew/cask-versions"
 
 brew "asdf"
 brew "aws-iam-authenticator"
@@ -27,11 +27,14 @@ cask "github"
 cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "iterm2"
+cask "mos"
+cask "ngrok"
 cask "postman"
+cask "razer-synapse"
 cask "slack"
 cask "spotify"
 cask "tunnelblick"
-cask "visual-studio-code-insiders"
+cask "visual-studio-code"
 
 mas "Jira Cloud by Atlassian", id: 1475897096
 mas "The Unarchiver", id: 425424353
