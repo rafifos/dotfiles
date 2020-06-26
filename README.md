@@ -3,6 +3,7 @@
 ## TODO
 
 - ~~Migrate `zsh` to [Oh MY Zsh](https://github.com/robbyrussell/oh-my-zsh)~~ Migrated to [ZIM](https://github.com/zimfw/zimfw)
+- Migrate `homemaker` to [`dotbot`](https://github.com/anishathalye/dotbot)
 
 ## Important notes
 
