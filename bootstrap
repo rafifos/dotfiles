@@ -5,108 +5,121 @@
 # - https://github.com/arcticicestudio/igloo/blob/ac9f7bf7a3e931ff4825757a428e9c00fbb45543/snowblocks/bash/bootstrap
 # - https://misc.flogisoft.com/bash/tip_colors_and_formatting
 #
-export BOOTSTRAP_BASE_DIR="$(pwd)"
 
-__bootstrap::log_info() {
+##########
+# Functions
+#
+log_info() {
   printf "\e[34m[INFO]\e[0m %s\n" "$*"
 }
 
-__bootstrap::log_warn() {
+log_warn() {
   printf "\e[33m[WARN]\e[0m %s\n" "$*"
 }
 
-__bootstrap::log_error() {
+log_error() {
   printf "\e[31m[ERROR]\e[0m %s\n" "$*" 1>&2
 }
 
-__bootstrap::load_core_module() {
-  local module
-  
-  if [ "$#" -eq 0 ]; then
-    # shellcheck disable=SC2128
-    __bootstrap::log_info "Missing parameter while calling function $FUNCNAME"
-    __bootstrap::log_error "Error while loading core modules"
-    return 1
-  fi
-
-  # shellcheck disable=SC2048
-  for module in $*; do
-    module="$BOOTSTRAP_BASE_DIR/_bootstrap/$module.sh"
-
-    if [[ -f "$module" ]]; then
-      if source "$module"; then
-        __bootstrap::log_info "Core module $(basename "$module") successfully loaded"
-      else
-        __bootstrap::log_info "Error while loading core module $(basename "$module")"
-      fi
-    else
-      __bootstrap::log_error "Core module $(basename "$module") not found"
-      return 1
-    fi
-  done
-
-  __utils::pause_and_clear
+warn_elevation() {
+  log_warn "This operation requires elevation, you've been warned"
 }
 
+pause_and_clear() {
+  read -rsp $'Press any key to continue...\n' -n 1
+  clear
+}
+
+inject_linuxbrew() {
+  test -d "$HOME/.linuxbrew" && eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}
+
+##########
+# Script entrypoint
+#
 clear
 
-__bootstrap::load_core_module core/utils core/homemaker core/apt
-
 if ! hash zsh 2>/dev/null; then
-  __apt::install zsh
+  log_info "Installing zsh"
+  warn_elevation
+  sudo apt install zsh
 
   chsh -s "$(command -v zsh)" "$USER"
 
-  __bootstrap::log_warn "zsh was installed, please restart your shell and re-run this script"
+  log_warn "zsh was installed, please restart your shell and re-run this script"
   exit 0
 fi
 
-__apt::install build-essential
+sudo apt install build-essential network-manager-openvpn-gnome ngrok
+pause_and_clear
 
-__utils::inject_linuxbrew
+inject_linuxbrew
 if ! hash brew 2>/dev/null; then
-  __bootstrap::log_info "Installing Linuxbrew"
-  __utils::warn_elevation
+  log_info "Installing Linuxbrew"
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-  __utils::inject_linuxbrew
-  __utils::pause_and_clear
+  inject_linuxbrew
+  pause_and_clear
 fi
 
-__bootstrap::log_info "Installing cli packages via Linuxbrew Bundle"
+log_info "Installing cli packages via Linuxbrew Bundle"
 brew bundle --verbose
-__utils::pause_and_clear
+pause_and_clear
 
-__apt::install network-manager-openvpn-gnome ngrok
+log_info "Adding keys to apt"
+curl -fsSL 'https://packages.microsoft.com/keys/microsoft.asc' | sudo apt-key add -
+curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
+curl -fsSL 'https://packagecloud.io/shiftkey/desktop/gpgkey' | sudo apt-key add -
+curl -fsSL 'https://dl.google.com/linux/linux_signing_key.pub' | sudo apt-key add -
+pause_and_clear
 
-__apt::add-key 'https://packages.microsoft.com/keys/microsoft.asc' \
-               'https://download.docker.com/linux/ubuntu/gpg' \
-               'https://packagecloud.io/shiftkey/desktop/gpgkey' \
-               'https://dl.google.com/linux/linux_signing_key.pub'
+log_info "Adding repositories to apt"
+echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' | sudo tee /etc/apt/sources.list.d/vscode.list
+echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+echo 'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main' | sudo tee /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list
+echo 'deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome-stable.list
+sudo add-apt-repository 'ppa:openrazer/stable'
+sudo add-apt-repository 'ppa:polychromatic/stable'
+pause_and_clear
 
-__apt::add-repository 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' \
-                      'deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable' \
-                      'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main' \
-                      'deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main' \
-                      'ppa:openrazer/stable' 'ppa:polychromatic/stable'
+log_info "Updating apt sources"
+sleep 2
+sudo apt update
+pause_and_clear
 
-__apt::install code \
-               docker-ce docker-ce-cli containerd.io \
-               github-desktop \
-               google-chrome-stable \
-               openrazer-meta polychromatic
+log_info "Installing apt packages"
+sudo apt install code
+sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt install github-desktop
+sudo apt install google-chrome-stable
+sudo apt install openrazer-meta polychromatic
+pause_and_clear
 
-__flatpak::remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+log_info "Installing Flathub as a USER repository"
+flatpak remote-add --user --if-not-exists 'flathub' 'https://flathub.org/repo/flathub.flatpakrepo'
+pause_and_clear
 
-__flatpak::install com.getpostman.Postman \
-                   com.slack.Slack \
-                   com.spotify.Client
+log_info "Installing Flatpak packages"
+flatpak install --user flathub 'com.getpostman.Postman'
+flatpak install --user flathub 'com.slack.Slack'
+flatpak install --user flathub 'com.spotify.Client'
+pause_and_clear
 
+log_info "Installing Node.JS"
 source "$(brew --prefix asdf)/asdf.sh"
 asdf plugin add nodejs
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+pause_and_clear
 
+log_info "Deploying dotfiles using homemaker"
 if [[ ! -x "$(pwd)/homemaker" ]]; then
-  __homemaker::install
+  curl -s 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz'  | tar --extract --gzip
+  mv homemaker_linux_amd64/homemaker homemaker
+  chmod +x ./homemaker
+  rm -rf homemaker_linux_amd64/
 fi
+
+./homemaker -clobber -verbose config.toml "$PWD"
+__utils::pause_and_clear
