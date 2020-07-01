@@ -64,7 +64,7 @@ if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
   fi
 fi
 
-__apt::install build-essential git network-manager-openvpn-gnome
+__apt::install build-essential network-manager-openvpn-gnome
 
 if [[ "$(__utils::check_command brew)" -eq 1 ]]; then
   __bootstrap::log_info "Installing Linuxbrew"
