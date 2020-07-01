@@ -5,9 +5,11 @@
 # See: http://manpages.ubuntu.com/manpages/focal/man8/apt.8.html
 #
 __apt::add-key() {
-  __utils::check_command apt
-  __utils::check_command curl
-
+  if [[ ! "$(__utils::check_command curl)" ]]; then
+    __bootstrap::log_error "curl is not installed, exiting"
+    exit 1
+  fi
+  
   __bootstrap::log_info "Will add the following keys to apt: $*"
   __utils::warn_elevation
 
@@ -24,8 +26,6 @@ __apt::add-key() {
 }
 
 __apt::add-repository() {
-  __utils::check_command apt
-
   __bootstrap::log_info "Will add the following repositories to apt: $*"
   __utils::warn_elevation
 
@@ -40,8 +40,6 @@ __apt::add-repository() {
 }
 
 __apt::install() {
-  __utils::check_command apt
-
   __bootstrap::log_info "Will install the following packages using apt: $*"
   __utils::warn_elevation
 

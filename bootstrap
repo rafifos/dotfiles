@@ -50,10 +50,10 @@ __bootstrap::load_core_module() {
 
 __bootstrap::load_core_module core/utils core/homemaker core/apt
 
-if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
+if [[ ! "$(__utils::check_command zsh)" ]]; then
   __apt::install zsh
 
-  if [[ "$(__utils::check_command zsh)" -eq 0 ]]; then
+  if [[ "$(__utils::check_command zsh)" ]]; then
     chsh -s "$(command -v zsh)" $USER
 
     __bootstrap::log_warn "zsh was installed, please restart your shell and re-run this script"
@@ -66,7 +66,7 @@ fi
 
 __apt::install build-essential network-manager-openvpn-gnome
 
-if [[ "$(__utils::check_command brew)" -eq 1 ]]; then
+if [[ ! "$(__utils::check_command brew)" ]]; then
   __bootstrap::log_info "Installing Linuxbrew"
   __utils::warn_elevation
 
@@ -74,7 +74,7 @@ if [[ "$(__utils::check_command brew)" -eq 1 ]]; then
   test -d "$HOME/.linuxbrew" && eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
+  if [[ ! "$(__utils::check_command zsh)" ]]; then
     __bootstrap::log_error "There was an error installing Linuxbrew, exiting"
     exit 1
   fi
