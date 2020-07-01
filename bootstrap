@@ -49,7 +49,51 @@ __bootstrap::load_core_module() {
 # +--------------+
 # + Core Modules +
 # +--------------+
-__bootstrap::load_core_module core/utils core/homemaker core/apt core/flatpak
+__bootstrap::load_core_module core/utils core/homemaker core/apt
+
+if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
+  __apt::install zsh
+
+  if [[ "$(__utils::check_command zsh)" -eq 0 ]]; then
+    chsh -s "$(command -v zsh)" $USER
+
+    __bootstrap::log_warn "zsh was installed, please restart your shell and re-run this script"
+    __utils::pause_and_clear
+    exit 0
+  else
+    __bootstrap::log_error "There was an error installing zsh, exiting"
+    exit 1
+  fi
+fi
+
+__apt::install build-essential git
+
+if [[ "$(__utils::check_command brew)" -eq 1 ]]; then
+  __bootstrap::log_info "Installing Linuxbrew"
+  __utils::warn_elevation
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  test -d "$HOME/.linuxbrew" && eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
+    __bootstrap::log_error "There was an error installing Linuxbrew, exiting"
+    exit 1
+  fi
+
+  __utils::pause_and_clear
+fi
+
+__bootstrap::log_info "Installing cli packages via Linuxbrew Bundle"
+brew bundle --verbose
+__utils::pause_and_clear
+
+__bootstrap::log_info "Installing Docker"
+__utils::warn_elevation
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+__apt::add-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+__apt::install docker-ce docker-ce-cli containerd.io
+__utils::pause_and_clear
 
 if [[ ! -x "$(pwd)/homemaker" ]]; then
   __homemaker::install

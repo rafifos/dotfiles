@@ -6,13 +6,13 @@
 #
 __apt::add-repository() {
   __utils::check_command apt
+  __bootstrap::log_info "Will add the following repositories to apt: $*"
   __utils::warn_elevation
 
   local repository
 
   # shellcheck disable=SC2048
   for repository in $*; do
-    __bootstrap::log_info "Adding apt repository $repository"
     sudo add-apt-repository "$repository"
     sudo apt update
   done
@@ -20,13 +20,13 @@ __apt::add-repository() {
 
 __apt::install() {
   __utils::check_command apt
+  __bootstrap::log_info "Will install the following packages using apt: $*"
   __utils::warn_elevation
 
   local package
 
   # shellcheck disable=SC2048
   for package in $*; do
-    __bootstrap::log_info "Installing apt package $package"
     sudo apt install "$package"
   done
 }

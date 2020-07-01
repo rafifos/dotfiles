@@ -15,3 +15,8 @@ __utils::check_command() {
     exit 1
   fi
 }
+
+__utils::pause_and_clear() {
+  read -rsp $'Press any key to continue...\n' -n 1
+  clear
+}
