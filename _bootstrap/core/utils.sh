@@ -11,8 +11,7 @@ __utils::check_command() {
   if hash "$0" 2>/dev/null; then
     return 0
   else
-    __bootstrap::log_error "$0 isn't installed, exiting."
-    exit 1
+    return 1
   fi
 }
 
