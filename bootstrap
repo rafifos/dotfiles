@@ -122,4 +122,4 @@ if [[ ! -x "$(pwd)/homemaker" ]]; then
 fi
 
 ./homemaker -clobber -verbose config.toml "$PWD"
-__utils::pause_and_clear
+pause_and_clear
