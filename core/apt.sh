@@ -6,38 +6,27 @@
 #
 __apt::add-repository() {
   __utils::check_command apt
+  __utils::warn_elevation
 
-  if [ "$?" -eq 1 ]; then
-    __bootstrap::log_error "[$FUNCNAME] apt is not installed"
-    exit 1
-  elif [ "$#" -eq 0 ]; then
-    __bootstrap::log_error "[$FUNCNAME] Missing parameter while calling function $FUNCNAME"
-    exit 1
-  else
-    __bootstrap::log_warn "[$FUNCNAME] This operation requires elevation, you've been warned"
-    sudo add-apt-repository "$0"
+  local repository
+
+  # shellcheck disable=SC2048
+  for repository in $*; do
+    __bootstrap::log_info "Adding apt repository $repository"
+    sudo add-apt-repository "$repository"
     sudo apt update
-  fi
+  done
 }
 
 __apt::install() {
   __utils::check_command apt
+  __utils::warn_elevation
 
-  if [ "$?" -eq 1 ]; then
-    __bootstrap::log_error "[$FUNCNAME] apt is not installed"
-    exit 1
-  elif [ "$#" -eq 0 ]; then
-    __bootstrap::log_error "[$FUNCNAME] Missing parameter while calling function $FUNCNAME"
-    exit 1
-  else
-    __bootstrap::log_warn "[$FUNCNAME] This operation requires elevation, you've been warned"
-    
-    local package
+  local package
 
-    # shellcheck disable=SC2048
-    for package in $*; do
-      __bootstrap::log_info "[$FUNCNAME] Installing apt package $package"
-      sudo apt install --assume-yes "$package"
-    done
-  fi
+  # shellcheck disable=SC2048
+  for package in $*; do
+    __bootstrap::log_info "Installing apt package $package"
+    sudo apt install "$package"
+  done
 }

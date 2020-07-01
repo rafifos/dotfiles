@@ -4,18 +4,17 @@
 # Manages the local homemaker binary.
 #
 __homemaker::install() {
-  local __url='https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz'
+  local url='https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz'
 
-  __bootstrap::log_info "[$FUNCNAME] Downloading and installing homemaker"
+  __bootstrap::log_info "Downloading and installing homemaker"
 
-  if [ "$(wget --quiet "$__url" --output-document - | tar --extract --gzip)" ]; then
-    mv homemaker_linux_amd64/homemaker homemaker
-    rm -rf homemaker_linux_amd64/
-    chmod +x ./homemaker
+  curl -s "$url"  | tar --extract --gzip
+  mv homemaker_linux_amd64/homemaker homemaker
+  chmod +x ./homemaker
+  rm -rf homemaker_linux_amd64/
 
-    return 0
-  else
-    __bootstrap::log_error "[$FUNCNAME] Failed to install homemaker"
+  if [[ ! -x "$(pwd)/homemaker" ]]; then
+    __bootstrap::log_error "Failed to install homemaker"
     exit 1
   fi
 }

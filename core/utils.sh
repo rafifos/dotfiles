@@ -3,14 +3,15 @@
 #
 # Common utilities
 #
-__utils::check_command() {
-  local __self_name="$(__bootstrap::get_module_name)"
+__utils::warn_elevation() {
+  __bootstrap::log_warn "This operation requires elevation, you've been warned"
+}
 
-  if [ "$#" -eq 0 ]; then
-    __bootstrap::log_error "[$__self_name] Missing parameter while calling function $FUNCNAME"
-  elif hash "$0" 2>/dev/null; then
+__utils::check_command() {
+  if hash "$0" 2>/dev/null; then
     return 0
   else
-    return 1
+    __bootstrap::log_error "$0 isn't installed, exiting."
+    exit 1
   fi
 }
