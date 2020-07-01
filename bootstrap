@@ -48,6 +48,8 @@ __bootstrap::load_core_module() {
   __utils::pause_and_clear
 }
 
+clear
+
 __bootstrap::load_core_module core/utils core/homemaker core/apt
 
 if ! hash zsh 2>/dev/null; then
@@ -78,16 +80,16 @@ __utils::pause_and_clear
 
 __apt::install network-manager-openvpn-gnome ngrok
 
-__apt::add-key "https://packages.microsoft.com/keys/microsoft.asc" \
-               "https://download.docker.com/linux/ubuntu/gpg" \
-               "https://packagecloud.io/shiftkey/desktop/gpgkey" \
-               "https://dl.google.com/linux/linux_signing_key.pub"
+__apt::add-key 'https://packages.microsoft.com/keys/microsoft.asc' \
+               'https://download.docker.com/linux/ubuntu/gpg' \
+               'https://packagecloud.io/shiftkey/desktop/gpgkey' \
+               'https://dl.google.com/linux/linux_signing_key.pub'
 
-__apt::add-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" \
-                      "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
-                      "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main" \
-                      "deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main" \
-                      "ppa:openrazer/stable" "ppa:polychromatic/stable"
+__apt::add-repository 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' \
+                      'deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable' \
+                      'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main' \
+                      'deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main' \
+                      'ppa:openrazer/stable' 'ppa:polychromatic/stable'
 
 __apt::install code \
                docker-ce docker-ce-cli containerd.io \
