@@ -51,23 +51,6 @@ if ! hash zsh 2>/dev/null; then
   exit 0
 fi
 
-sudo apt install build-essential network-manager-openvpn-gnome ngrok
-pause_and_clear
-
-inject_linuxbrew
-if ! hash brew 2>/dev/null; then
-  log_info "Installing Linuxbrew"
-
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-  inject_linuxbrew
-  pause_and_clear
-fi
-
-log_info "Installing cli packages via Linuxbrew Bundle"
-brew bundle --verbose
-pause_and_clear
-
 log_info "Adding keys to apt"
 curl -fsSL 'https://packages.microsoft.com/keys/microsoft.asc' | sudo apt-key add -
 curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
@@ -90,10 +73,13 @@ sudo apt update
 pause_and_clear
 
 log_info "Installing apt packages"
+sudo apt install build-essential
 sudo apt install code
 sudo apt install docker-ce docker-ce-cli containerd.io
 sudo apt install github-desktop
 sudo apt install google-chrome-stable
+sudo apt install network-manager-openvpn-gnome
+sudo apt install ngrok
 sudo apt install openrazer-meta polychromatic
 pause_and_clear
 
@@ -105,6 +91,20 @@ log_info "Installing Flatpak packages"
 flatpak install --user flathub 'com.getpostman.Postman'
 flatpak install --user flathub 'com.slack.Slack'
 flatpak install --user flathub 'com.spotify.Client'
+pause_and_clear
+
+inject_linuxbrew
+if ! hash brew 2>/dev/null; then
+  log_info "Installing Linuxbrew"
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+  inject_linuxbrew
+  pause_and_clear
+fi
+
+log_info "Installing cli packages via Linuxbrew Bundle"
+brew bundle --verbose
 pause_and_clear
 
 log_info "Installing Node.JS"
