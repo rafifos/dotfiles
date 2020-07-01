@@ -31,7 +31,7 @@ __bootstrap::load_core_module() {
 
   # shellcheck disable=SC2048
   for module in $*; do
-    module="$BOOTSTRAP_BASE_DIR/$module.sh"
+    module="$BOOTSTRAP_BASE_DIR/_bootstrap/$module.sh"
 
     if [[ -f "$module" ]]; then
       if source "$module"; then
@@ -44,11 +44,10 @@ __bootstrap::load_core_module() {
       return 1
     fi
   done
+
+  __utils::pause_and_clear
 }
 
-# +--------------+
-# + Core Modules +
-# +--------------+
 __bootstrap::load_core_module core/utils core/homemaker core/apt
 
 if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
@@ -58,7 +57,6 @@ if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
     chsh -s "$(command -v zsh)" $USER
 
     __bootstrap::log_warn "zsh was installed, please restart your shell and re-run this script"
-    __utils::pause_and_clear
     exit 0
   else
     __bootstrap::log_error "There was an error installing zsh, exiting"
@@ -66,7 +64,7 @@ if [[ "$(__utils::check_command zsh)" -eq 1 ]]; then
   fi
 fi
 
-__apt::install build-essential git
+__apt::install build-essential git network-manager-openvpn-gnome
 
 if [[ "$(__utils::check_command brew)" -eq 1 ]]; then
   __bootstrap::log_info "Installing Linuxbrew"
@@ -88,12 +86,30 @@ __bootstrap::log_info "Installing cli packages via Linuxbrew Bundle"
 brew bundle --verbose
 __utils::pause_and_clear
 
-__bootstrap::log_info "Installing Docker"
-__utils::warn_elevation
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-__apt::add-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-__apt::install docker-ce docker-ce-cli containerd.io
-__utils::pause_and_clear
+__apt::add-key "https://download.docker.com/linux/ubuntu/gpg" \
+               "https://packagecloud.io/shiftkey/desktop/gpgkey" \
+               "https://dl.google.com/linux/linux_signing_key.pub" \
+               "https://packages.microsoft.com/keys/microsoft.asc"
+
+__apt::add-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+                      "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main" \
+                      "deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main" \
+                      "ppa:openrazer/stable" "ppa:polychromatic/stable" \
+                      "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+
+__apt::install docker-ce docker-ce-cli containerd.io \
+               github-desktop \
+               google-chrome-stable \
+               ngrok \
+               openrazer-meta polychromatic \
+               code
+
+__flatpak::remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
+
+__flatpak::install com.getpostman.Postman \
+                   com.slack.Slack \
+                   com.spotify.Client
+                   
 
 if [[ ! -x "$(pwd)/homemaker" ]]; then
   __homemaker::install
