@@ -5,10 +5,7 @@
 # See: http://manpages.ubuntu.com/manpages/focal/man8/apt.8.html
 #
 __apt::add-key() {
-  if [[ ! "$(__utils::check_command curl)" ]]; then
-    __bootstrap::log_error "curl is not installed, exiting"
-    exit 1
-  fi
+  __utils::check_command_and_exit curl
   
   __bootstrap::log_info "Will add the following keys to apt: $*"
   __utils::warn_elevation
