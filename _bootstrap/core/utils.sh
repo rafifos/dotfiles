@@ -18,3 +18,8 @@ __utils::pause_and_clear() {
   read -rsp $'Press any key to continue...\n' -n 1
   clear
 }
+
+__utils::inject_linuxbrew() {
+  test -d "$HOME/.linuxbrew" && eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+}

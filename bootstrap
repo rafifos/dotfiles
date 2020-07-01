@@ -61,14 +61,14 @@ fi
 
 __apt::install build-essential
 
+__utils::inject_linuxbrew
 if ! hash brew 2>/dev/null; then
   __bootstrap::log_info "Installing Linuxbrew"
   __utils::warn_elevation
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  test -d "$HOME/.linuxbrew" && eval "$("$HOME"/.linuxbrew/bin/brew shellenv)"
-  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+  __utils::inject_linuxbrew
   __utils::pause_and_clear
 fi
 
