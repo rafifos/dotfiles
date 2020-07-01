@@ -100,7 +100,10 @@ __flatpak::remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 __flatpak::install com.getpostman.Postman \
                    com.slack.Slack \
                    com.spotify.Client
-                   
+
+source "$(brew --prefix asdf)/asdf.sh"
+asdf plugin add nodejs
+bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 
 if [[ ! -x "$(pwd)/homemaker" ]]; then
   __homemaker::install

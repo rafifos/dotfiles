@@ -28,27 +28,17 @@ export LC_MONETARY='pt_BR.UTF-8'
 export LC_NUMERIC='pt_BR.UTF-8'
 export LC_TIME='pt_BR.UTF-8'
 
-case "$OSTYPE" in
-  darwin*)
-    typeset -U path
-    [[ -d "$HOME/Library/Android/sdk" ]] && export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
-    [[ -d "$HOME/Library/Android/sdk/build-tools" ]] && path+=("$HOME/Library/Android/sdk/build-tools")
-    [[ -d "$HOME/Library/Android/sdk/platform-tools" ]] && path+=("$HOME/Library/Android/sdk/platform-tools")
-  ;;
-  linux*)
-    # WSL2 overrides and fixes.
-    if (( ${+WSL_INTEROP} )); then
-      # Workaround for WSL2 not freeing up resources after exit.
-      # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
-      #
-      # NOTE: Don't forget to `flock` the cronjob.
-      [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
+# WSL2 overrides and fixes.
+if (( ${+WSL_INTEROP} )); then
+  # Workaround for WSL2 not freeing up resources after exit.
+  # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
+  #
+  # NOTE: Don't forget to `flock` the cronjob.
+  [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
 
-      # Workaround for using gpg without a graphical interface.
-      [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
-    fi
+  # Workaround for using gpg without a graphical interface.
+  [[ -o 'interactive' ]] && export GPG_TTY="$(tty)"
+fi
 
-    # Injects Linuxbrew into the current shell session.
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  ;;
-esac
+# Injects Linuxbrew into the current shell session.
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

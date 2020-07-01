@@ -18,3 +18,9 @@ __homemaker::install() {
     exit 1
   fi
 }
+
+__homemaker::deploy() {
+  __bootstrap::log_info "Deploying..."
+  ./homemaker -clobber -verbose config.toml "$PWD"
+  __utils::pause_and_clear
+}
