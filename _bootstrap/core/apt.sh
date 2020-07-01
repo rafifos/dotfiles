@@ -5,8 +5,6 @@
 # See: http://manpages.ubuntu.com/manpages/focal/man8/apt.8.html
 #
 __apt::add-key() {
-  __utils::check_command_and_exit curl
-  
   __bootstrap::log_info "Will add the following keys to apt: $*"
   __utils::warn_elevation
 

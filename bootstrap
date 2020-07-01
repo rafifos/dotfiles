@@ -59,7 +59,7 @@ if ! hash zsh 2>/dev/null; then
   exit 0
 fi
 
-__apt::install build-essential network-manager-openvpn-gnome
+__apt::install build-essential
 
 if ! hash brew 2>/dev/null; then
   __bootstrap::log_info "Installing Linuxbrew"
@@ -76,23 +76,24 @@ __bootstrap::log_info "Installing cli packages via Linuxbrew Bundle"
 brew bundle --verbose
 __utils::pause_and_clear
 
-__apt::add-key "https://download.docker.com/linux/ubuntu/gpg" \
-               "https://packagecloud.io/shiftkey/desktop/gpgkey" \
-               "https://dl.google.com/linux/linux_signing_key.pub" \
-               "https://packages.microsoft.com/keys/microsoft.asc"
+__apt::install network-manager-openvpn-gnome ngrok
 
-__apt::add-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+__apt::add-key "https://packages.microsoft.com/keys/microsoft.asc" \
+               "https://download.docker.com/linux/ubuntu/gpg" \
+               "https://packagecloud.io/shiftkey/desktop/gpgkey" \
+               "https://dl.google.com/linux/linux_signing_key.pub"
+
+__apt::add-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" \
+                      "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
                       "deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main" \
                       "deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main" \
-                      "ppa:openrazer/stable" "ppa:polychromatic/stable" \
-                      "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+                      "ppa:openrazer/stable" "ppa:polychromatic/stable"
 
-__apt::install docker-ce docker-ce-cli containerd.io \
+__apt::install code \
+               docker-ce docker-ce-cli containerd.io \
                github-desktop \
                google-chrome-stable \
-               ngrok \
-               openrazer-meta polychromatic \
-               code
+               openrazer-meta polychromatic
 
 __flatpak::remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 
