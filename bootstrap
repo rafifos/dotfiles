@@ -21,6 +21,11 @@ log_error() {
   printf "\e[31m[ERROR]\e[0m %s\n" "$*" 1>&2
 }
 
+log_and_sleep() {
+  log_info "$1"
+  sleep 3
+}
+
 warn_elevation() {
   log_warn "This operation requires elevation, you've been warned"
 }
@@ -41,7 +46,7 @@ inject_linuxbrew() {
 clear
 
 if ! hash zsh 2>/dev/null; then
-  log_info "Installing zsh"
+  log_and_sleep "Installing zsh"
   warn_elevation
   sudo apt install zsh
 
@@ -51,28 +56,27 @@ if ! hash zsh 2>/dev/null; then
   exit 0
 fi
 
-log_info "Adding keys to apt"
+log_and_sleep "Adding keys to apt"
 curl -fsSL 'https://packages.microsoft.com/keys/microsoft.asc' | sudo apt-key add -
 curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
 curl -fsSL 'https://packagecloud.io/shiftkey/desktop/gpgkey' | sudo apt-key add -
 curl -fsSL 'https://dl.google.com/linux/linux_signing_key.pub' | sudo apt-key add -
 pause_and_clear
 
-log_info "Adding repositories to apt"
+log_and_sleep "Adding repositories to apt"
 echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' | sudo tee /etc/apt/sources.list.d/vscode.list
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-echo 'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any/ any main' | sudo tee /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list
-echo 'deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo add-apt-repository 'ppa:openrazer/stable'
-sudo add-apt-repository 'ppa:polychromatic/stable'
+echo 'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main' | sudo tee /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list
+echo 'deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+echo "deb [arch=amd64] https://ppa.launchpad.net/openrazer/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/openrazer.list
+echo "deb [arch=amd64] https://ppa.launchpad.net/polychromatic/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/polychromatic.list
 pause_and_clear
 
-log_info "Updating apt sources"
-sleep 2
+log_and_sleep "Updating apt sources"
 sudo apt update
 pause_and_clear
 
-log_info "Installing apt packages"
+log_and_sleep "Installing apt packages"
 sudo apt install build-essential
 sudo apt install code
 sudo apt install docker-ce docker-ce-cli containerd.io
@@ -83,7 +87,7 @@ sudo apt install ngrok
 sudo apt install openrazer-meta polychromatic
 pause_and_clear
 
-log_info "Installing Flatpak packages"
+log_and_sleep "Installing Flatpak packages"
 flatpak remote-add --user --if-not-exists 'flathub' 'https://flathub.org/repo/flathub.flatpakrepo'
 flatpak install --user flathub 'com.getpostman.Postman'
 flatpak install --user flathub 'com.slack.Slack'
@@ -92,7 +96,7 @@ pause_and_clear
 
 inject_linuxbrew
 if ! hash brew 2>/dev/null; then
-  log_info "Installing Linuxbrew"
+  log_and_sleep "Installing Linuxbrew"
 
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -100,23 +104,24 @@ if ! hash brew 2>/dev/null; then
   pause_and_clear
 fi
 
-log_info "Installing cli packages via Linuxbrew Bundle"
+log_and_sleep "Installing cli packages via Linuxbrew Bundle"
 brew bundle --verbose
 pause_and_clear
 
-log_info "Installing Node.JS via asdf-vm"
+log_and_sleep "Installing Node.JS via asdf-vm"
 source "$(brew --prefix asdf)/asdf.sh"
 asdf plugin add nodejs
 bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 pause_and_clear
 
-log_info "Deploying dotfiles using homemaker"
 if [[ ! -x "$(pwd)/homemaker" ]]; then
-  curl -s 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz'  | tar --extract --gzip
+  log_warn "homemaker not found in current dir, downloading it now."
+  curl -s 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz' | tar --extract --gzip
   mv homemaker_linux_amd64/homemaker homemaker
   chmod +x ./homemaker
   rm -rf homemaker_linux_amd64/
 fi
 
+log_and_sleep "Deploying dotfiles using homemaker"
 ./homemaker -clobber -verbose config.toml "$PWD"
 pause_and_clear
