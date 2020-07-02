@@ -57,17 +57,11 @@ if ! hash zsh 2>/dev/null; then
 fi
 
 log_and_sleep "Adding keys to apt"
-curl -fsSL 'https://packages.microsoft.com/keys/microsoft.asc' | sudo apt-key add -
 curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
-curl -fsSL 'https://packagecloud.io/shiftkey/desktop/gpgkey' | sudo apt-key add -
-curl -fsSL 'https://dl.google.com/linux/linux_signing_key.pub' | sudo apt-key add -
 pause_and_clear
 
 log_and_sleep "Adding repositories to apt"
-echo 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main' | sudo tee /etc/apt/sources.list.d/vscode.list
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-echo 'deb [arch=amd64] https://packagecloud.io/shiftkey/desktop/any any main' | sudo tee /etc/apt/sources.list.d/packagecloud-shiftkey-desktop.list
-echo 'deb [arch=amd64] https://dl.google.com/linux/chrome/deb stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 echo "deb [arch=amd64] https://ppa.launchpad.net/openrazer/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/openrazer.list
 echo "deb [arch=amd64] https://ppa.launchpad.net/polychromatic/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/polychromatic.list
 pause_and_clear
@@ -88,10 +82,18 @@ sudo apt install openrazer-meta polychromatic
 pause_and_clear
 
 log_and_sleep "Installing Flatpak packages"
-flatpak remote-add --user --if-not-exists 'flathub' 'https://flathub.org/repo/flathub.flatpakrepo'
-flatpak install --user flathub 'com.getpostman.Postman'
-flatpak install --user flathub 'com.slack.Slack'
-flatpak install --user flathub 'com.spotify.Client'
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+curl -fsSLO https://origin.ostree.endlessm.com/keys/eos-flatpak-keyring.gpg
+flatpak remote-add --user --gpg-import=eos-flatpak-keyring.gpg eos-apps https://ostree.endlessm.com/ostree/eos-apps
+rm eos-flatpak-keyring.gpg
+
+flatpak install --user eos-apps com.google.Chrome
+flatpak install --user flathub com.axosoft.GitKraken
+flatpak install --user flathub com.getpostman.Postman
+flatpak install --user flathub com.slack.Slack
+flatpak install --user flathub com.spotify.Client
+flatpak install --user flathub com.visualstudio.code
 pause_and_clear
 
 inject_linuxbrew
