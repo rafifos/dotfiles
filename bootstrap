@@ -125,3 +125,5 @@ fi
 log_and_sleep "Deploying dotfiles using homemaker"
 ./homemaker -clobber -verbose config.toml "$PWD"
 pause_and_clear
+
+log_warn "Don't forget to grab Iosevka from https://github.com/be5invis/Iosevka"

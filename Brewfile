@@ -12,5 +12,3 @@ brew "neovim"
 brew "pbzip2"
 brew "pigz"
 brew "shellcheck"
-
-cask "font-iosevka"
