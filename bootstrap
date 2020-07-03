@@ -76,7 +76,8 @@ log_and_sleep "Installing apt packages"
 sudo apt install -y build-essential \
                     docker-ce docker-ce-cli containerd.io \
                     network-manager-openvpn-gnome \
-                    openrazer-meta polychromatic
+                    openrazer-meta polychromatic \
+                    tilix
 pause_and_clear
 
 log_and_sleep "Installing Flatpak packages"
@@ -123,6 +124,11 @@ if [[ ! -x "$(pwd)/homemaker" ]]; then
 fi
 
 log_and_sleep "Installing ngrok"
+curl -fsSLO 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
+unzip ngrok-stable-linux-amd64.zip
+chmod +x ngrok
+mv ngrok "$HOME/.local/bin/ngrok"
+rm ngrok-stable-linux-amd64.zip
 pause_and_clear
 
 log_and_sleep "Configuring Docker (adding $USER to the docker group)"
