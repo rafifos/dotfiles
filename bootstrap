@@ -48,7 +48,7 @@ clear
 if ! hash zsh 2>/dev/null; then
   log_and_sleep "Installing zsh"
   warn_elevation
-  sudo apt install zsh
+  sudo apt install -y zsh
 
   chsh -s "$(command -v zsh)" "$USER"
 
@@ -64,8 +64,8 @@ pause_and_clear
 
 log_and_sleep "Adding repositories to apt"
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-echo "deb [arch=amd64] https://ppa.launchpad.net/openrazer/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/openrazer.list
-echo "deb [arch=amd64] https://ppa.launchpad.net/polychromatic/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/polychromatic.list
+echo "deb [arch=amd64] http://ppa.launchpad.net/openrazer/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/openrazer.list
+echo "deb [arch=amd64] http://ppa.launchpad.net/polychromatic/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/polychromatic.list
 pause_and_clear
 
 log_and_sleep "Updating apt sources"
@@ -81,10 +81,9 @@ sudo apt install -y build-essential \
 pause_and_clear
 
 log_and_sleep "Installing Flatpak packages"
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 curl -fsSLO https://origin.ostree.endlessm.com/keys/eos-flatpak-keyring.gpg
-flatpak remote-add --user --gpg-import=eos-flatpak-keyring.gpg eos-apps https://ostree.endlessm.com/ostree/eos-apps
+flatpak remote-add --user --if-not-exists --gpg-import=eos-flatpak-keyring.gpg eos-apps https://ostree.endlessm.com/ostree/eos-apps
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 rm eos-flatpak-keyring.gpg
 
 flatpak install --user eos-apps com.google.Chrome
@@ -131,9 +130,9 @@ mv ngrok "$HOME/.local/bin/ngrok"
 rm ngrok-stable-linux-amd64.zip
 pause_and_clear
 
-log_and_sleep "Configuring Docker (adding $USER to the docker group)"
 sudo groupadd docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker "$USER"
+sudo gpasswd -a "$USER" plugdev
 log_warn "You need to restart your session for the changes to take effect"
 pause_and_clear
 
