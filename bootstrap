@@ -58,6 +58,8 @@ fi
 
 log_and_sleep "Adding keys to apt"
 curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add -
+curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x073e051d7b2aee37' | sudo apt-key add
+curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x96b9cd7c22e2c8c5' | sudo apt-key add
 pause_and_clear
 
 log_and_sleep "Adding repositories to apt"
@@ -71,14 +73,16 @@ sudo apt update
 pause_and_clear
 
 log_and_sleep "Installing apt packages"
-sudo apt install build-essential
-sudo apt install code
-sudo apt install docker-ce docker-ce-cli containerd.io
-sudo apt install github-desktop
-sudo apt install google-chrome-stable
-sudo apt install network-manager-openvpn-gnome
-sudo apt install ngrok
-sudo apt install openrazer-meta polychromatic
+sudo apt install -y build-essential \
+                    docker-ce docker-ce-cli containerd.io \
+                    network-manager-openvpn-gnome \
+                    openrazer-meta polychromatic
+pause_and_clear
+
+log_and_sleep "Configuring Docker (adding $USER to the docker group)"
+sudo groupadd docker
+sudo usermod -aG docker $USER
+log_warn "You need to restart your session for the changes to take effect"
 pause_and_clear
 
 log_and_sleep "Installing Flatpak packages"
