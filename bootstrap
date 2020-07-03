@@ -23,7 +23,7 @@ log_error() {
 
 log_and_sleep() {
   log_info "$1"
-  sleep 3
+  sleep 1
 }
 
 warn_elevation() {
@@ -79,12 +79,6 @@ sudo apt install -y build-essential \
                     openrazer-meta polychromatic
 pause_and_clear
 
-log_and_sleep "Configuring Docker (adding $USER to the docker group)"
-sudo groupadd docker
-sudo usermod -aG docker $USER
-log_warn "You need to restart your session for the changes to take effect"
-pause_and_clear
-
 log_and_sleep "Installing Flatpak packages"
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -122,11 +116,20 @@ pause_and_clear
 
 if [[ ! -x "$(pwd)/homemaker" ]]; then
   log_warn "homemaker not found in current dir, downloading it now."
-  curl -s 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz' | tar --extract --gzip
+  curl -fsSL 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz' | tar --extract --gzip
   mv homemaker_linux_amd64/homemaker homemaker
   chmod +x ./homemaker
   rm -rf homemaker_linux_amd64/
 fi
+
+log_and_sleep "Installing ngrok"
+pause_and_clear
+
+log_and_sleep "Configuring Docker (adding $USER to the docker group)"
+sudo groupadd docker
+sudo usermod -aG docker $USER
+log_warn "You need to restart your session for the changes to take effect"
+pause_and_clear
 
 log_and_sleep "Deploying dotfiles using homemaker"
 ./homemaker -clobber -verbose config.toml "$PWD"
