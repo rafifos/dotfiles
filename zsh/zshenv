@@ -29,7 +29,7 @@ export LC_NUMERIC='pt_BR.UTF-8'
 export LC_TIME='pt_BR.UTF-8'
 
 # WSL2 overrides and fixes.
-if (( ${+WSL_INTEROP} )); then
+if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   # Workaround for WSL2 not freeing up resources after exit.
   # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
   #
