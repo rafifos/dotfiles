@@ -4,7 +4,7 @@
 if [ -z "$1" ]; then
   echo -e "\033[0;31mError:\033[0m Invalid argument supplied"
 else
-  if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
+  if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
     cmd.exe /c "$1"
   fi
 fi

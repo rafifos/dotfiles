@@ -91,15 +91,6 @@ fi
 # To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
 [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
 
-case "$OSTYPE" in
-  darwin*)
-    if [[ ! -f "$HOME/.iterm2_shell_integration.zsh" ]]; then
-      curl -fLsS -o "$HOME/.iterm2_shell_integration.zsh" 'https://iterm2.com/shell_integration/zsh'
-    fi
-    source "$HOME/.iterm2_shell_integration.zsh"
-  ;;
-esac
-
 # Injects asdf-vm into the current shell session.
 source "$(brew --prefix asdf)/asdf.sh"
 
