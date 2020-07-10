@@ -18,10 +18,6 @@
   ; Always sign annotated tags.
   forceSignAnnotated = true
 
-[gpg]
-  ; This is needed by MacOS
-  program = gpg
-
 [commit]
   ; Template to be shown on the commit message prompt.
   template = ~/.git-commit-msg
