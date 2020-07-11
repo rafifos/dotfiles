@@ -129,6 +129,7 @@ log_and_sleep "Installing ngrok"
 curl -fsSLO 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
 unzip ngrok-stable-linux-amd64.zip
 chmod +x ngrok
+[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
 mv ngrok "$HOME/.local/bin/ngrok"
 rm ngrok-stable-linux-amd64.zip
 pause_and_clear
