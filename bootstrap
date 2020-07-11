@@ -82,9 +82,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
                       code \
                       google-chrome-stable \
                       docker-ce docker-ce-cli containerd.io \
-                      network-manager-openvpn-gnome \
-                      openrazer-meta polychromatic \
-                      tilix
+                      openrazer-meta polychromatic
   pause_and_clear
 
   log_and_sleep "Installing Flatpak packages"
