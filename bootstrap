@@ -79,6 +79,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
 
   log_and_sleep "Installing apt packages"
   sudo apt install -y build-essential \
+	              ubuntu-restricted-extras \
                       code \
                       google-chrome-stable \
                       docker-ce docker-ce-cli containerd.io \
