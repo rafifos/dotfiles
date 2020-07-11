@@ -88,6 +88,11 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   pause_and_clear
 
   log_and_sleep "Installing Flatpak packages"
+  if ! hash flatpak 2>/dev/null; then
+    log_error "Flatpak is not installed, exiting."
+    exit 1
+  fi
+
   flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
   flatpak install --user flathub com.axosoft.GitKraken
