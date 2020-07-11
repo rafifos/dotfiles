@@ -134,6 +134,7 @@ mv ngrok "$HOME/.local/bin/ngrok"
 rm ngrok-stable-linux-amd64.zip
 pause_and_clear
 
+log_and_sleep "Configuring Docker"
 sudo groupadd docker
 sudo usermod -aG docker "$USER"
 sudo gpasswd -a "$USER" plugdev
