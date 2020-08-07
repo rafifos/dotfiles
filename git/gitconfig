@@ -11,9 +11,6 @@
   ; LF endings on Mac and Linux systems and in the repository.
   autocrlf = input
 
-  ; Global .gitignore file.
-  excludesfile = ~/.gitignore
-
 [tag]
   ; Always sign annotated tags.
   forceSignAnnotated = true
