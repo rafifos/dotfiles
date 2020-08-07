@@ -1,0 +1,24 @@
+{
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120
+  },
+  "editor.rulers": [
+    80
+  ],
+  "editor.tabSize": 2,
+  "evenBetterToml.formatter.alignEntries": true,
+  "evenBetterToml.formatter.indentTables": true,
+  "evenBetterToml.formatter.reorderKeys": true,
+  "evenBetterToml.schema.links": true,
+  "files.associations": {
+    "Brewfile": "ruby",
+    "zimrc": "shellscript",
+    "zlogin": "shellscript",
+    "zlogout": "shellscript",
+    "zprivate": "shellscript",
+    "zprofile": "shellscript",
+    "zshenv": "shellscript",
+    "zshrc": "shellscript"
+  }
+}
