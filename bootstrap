@@ -99,6 +99,13 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   flatpak install --user flathub com.slack.Slack
   flatpak install --user flathub com.spotify.Client
   pause_and_clear
+
+  log_and_sleep "Configuring Docker"
+  sudo groupadd docker
+  sudo usermod -aG docker "$USER"
+  sudo gpasswd -a "$USER" plugdev
+  log_warn "You need to restart your session for the changes to take effect"
+  pause_and_clear
 fi
 
 inject_linuxbrew
@@ -136,13 +143,6 @@ chmod +x ngrok
 [[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
 mv ngrok "$HOME/.local/bin/ngrok"
 rm ngrok-stable-linux-amd64.zip
-pause_and_clear
-
-log_and_sleep "Configuring Docker"
-sudo groupadd docker
-sudo usermod -aG docker "$USER"
-sudo gpasswd -a "$USER" plugdev
-log_warn "You need to restart your session for the changes to take effect"
 pause_and_clear
 
 log_and_sleep "Deploying dotfiles using homemaker"
