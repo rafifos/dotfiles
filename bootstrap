@@ -96,6 +96,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
 
   flatpak install --user flathub com.axosoft.GitKraken
   flatpak install --user flathub com.getpostman.Postman
+  flatpak install --user flathub com.github.alecaddd.sequeler
   flatpak install --user flathub com.slack.Slack
   flatpak install --user flathub com.spotify.Client
   pause_and_clear
