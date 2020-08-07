@@ -43,7 +43,7 @@
     "zsh",
   ]
   links = [
-    ["${HM_DEST}/bin/colors", "bin/colors"],
-    ["${HM_DEST}/bin/hls", "bin/hls"],
-    ["${HM_DEST}/bin/wslcmd", "bin/wslcmd"],
+    ["${HM_DEST}/.local/bin/colors", "bin/colors"],
+    ["${HM_DEST}/.local/bin/hls", "bin/hls"],
+    ["${HM_DEST}/.local/bin/wslcmd", "bin/wslcmd"],
   ]
