@@ -16,7 +16,14 @@
 # - Other miscellaneous interactive tools (`auto_cd`, `manydots-magic`)...
 #
 # Source: https://unix.stackexchange.com/a/487889
-#
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Workaround for distros who doesn't run scripts in /etc/profile.d (looking at you, Ubuntu)
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
@@ -86,28 +93,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets root)
 typeset -A ZSH_HIGHLIGHT_STYLES
 export ZSH_HIGHLIGHT_STYLES[comment]='fg=10'
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
-[[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
-
-# Injects asdf-vm into the current shell session.
-source "$(brew --prefix asdf)/asdf.sh"
-
-alias cp='cp -ipv'
-alias diff='diff -u'
-alias less='less -RFXx2'
-alias mv='mv -iv'
-alias rm='rm -iv'
-
-alias dotfiles='cd $HOME/.dotfiles'
-alias wd='cd $HOME/WorkDir'
-
 # Installs and sources ZIM if it isn't installed.
 if [[ ! -f "$ZIM_HOME/zimfw.zsh" ]]; then
   curl --create-dirs -fLsS -o "$ZIM_HOME/zimfw.zsh" 'https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh' && source "$ZIM_HOME/zimfw.zsh" install
@@ -134,3 +119,22 @@ bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+# To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
+[[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
+
+# Injects asdf-vm into the current shell session.
+source "$(brew --prefix asdf)/asdf.sh"
+
+# Completions for kubectl and helm
+source <(helm completion zsh)
+source <(kubectl completion zsh)
+
+alias cp='cp -ipv'
+alias diff='diff -u'
+alias less='less -RFXx2'
+alias mv='mv -iv'
+alias rm='rm -iv'
+
+alias dotfiles='cd $HOME/.dotfiles'
+alias wd='cd $HOME/WorkDir'

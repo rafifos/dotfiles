@@ -17,5 +17,5 @@
 # `exec zsh --login`
 #
 # Source: https://unix.stackexchange.com/a/487889
-#
+
 export ZIM_HOME="$HOME/.zim"

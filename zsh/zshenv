@@ -14,7 +14,7 @@
 # may break some tools (by setting aliases for example).
 #
 # Source: https://unix.stackexchange.com/a/487889
-#
+
 typeset -U path
 [[ -d '/usr/local/sbin' ]] && path=('/usr/local/sbin' "$path[@]")
 

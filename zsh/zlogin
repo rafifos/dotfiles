@@ -9,7 +9,7 @@
 # (e.g. a login manager).
 #
 # Source: https://unix.stackexchange.com/a/487889
-#
+
 typeset -U path
 
 [[ -d "$HOME/.local/bin" ]] && path+=("$HOME/.local/bin")
