@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+# Runs zsh as a login shell.
+exec zsh --login "$@"

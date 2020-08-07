@@ -46,4 +46,5 @@
     ["${HM_DEST}/.local/bin/colors", "bin/colors"],
     ["${HM_DEST}/.local/bin/hls", "bin/hls"],
     ["${HM_DEST}/.local/bin/wslcmd", "bin/wslcmd"],
+    ["${HM_DEST}/.local/bin/zsh_login", "bin/zsh_login"],
   ]
