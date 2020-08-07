@@ -1,9 +1,11 @@
 tap "beeftornado/rmtree"
 tap "github/gh"
+tap "rs/tap"
 
 brew "asdf"
 brew "aws-iam-authenticator"
 brew "awscli"
+brew "curlie"
 brew "diff-so-fancy"
 brew "docker-compose"
 brew "gh"
