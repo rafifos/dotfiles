@@ -116,6 +116,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
 
   flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+  flatpak install --user flathub ca.desrt.dconf-editor
   flatpak install --user flathub com.axosoft.GitKraken
   flatpak install --user flathub com.getpostman.Postman
   flatpak install --user flathub com.github.alecaddd.sequeler
