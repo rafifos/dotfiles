@@ -77,3 +77,6 @@ homemaker
 
 # Homebrew Lockfile
 Brewfile.lock.json
+
+# Temporary files
+tmp/

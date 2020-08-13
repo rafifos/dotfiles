@@ -80,14 +80,32 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   pause_and_clear
 
   log_and_sleep "Installing apt packages"
-  sudo apt install -y build-essential \
-	                    ubuntu-restricted-extras \
-                      code \
-                      google-chrome-stable \
-                      docker-ce docker-ce-cli containerd.io \
-                      openrazer-meta polychromatic \
-                      openvpn-systemd-resolved \
-                      elementary-tweaks
+  sudo apt install -y \
+    build-essential \
+    ubuntu-restricted-extras \
+    code \
+    google-chrome-stable \
+    docker-ce docker-ce-cli containerd.io \
+    openrazer-meta polychromatic \
+    openvpn-systemd-resolved \
+    elementary-tweaks
+  pause_and_clear
+
+  log_and_sleep "Installing .deb packages"
+  TMPDIR="$PWD/tmp"
+
+  cd "$TMPDIR" || log_error "Error entering tmp directory, exiting." && exit 1
+
+  curl -fsSLO 'https://releases.hyper.is/download/deb'
+  sudo dpkg -i 'deb'
+  sudo apt -f -y install
+
+  curl -fsSLO 'https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb'
+  sudo dpkg -i 'session-manager-plugin.deb'
+
+  cd ..
+  rm -rf "$TMPDIR"
+  unset TMPDIR
   pause_and_clear
 
   log_and_sleep "Installing Flatpak packages"
@@ -103,6 +121,11 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   flatpak install --user flathub com.github.alecaddd.sequeler
   flatpak install --user flathub com.slack.Slack
   flatpak install --user flathub com.spotify.Client
+  pause_and_clear
+
+  log_and_sleep "Removing unneeded packages"
+  sudo apt autoremove --purge \
+    pantheon-terminal
   pause_and_clear
 
   log_and_sleep "Configuring Docker"

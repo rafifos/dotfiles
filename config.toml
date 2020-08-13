@@ -17,6 +17,9 @@ links = [
 [tasks.htop]
 links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 
+[tasks.hyper]
+links = [["${HM_DEST}/.hyper.js", "hyper/hyper.js"]]
+
 [tasks.nvim]
 links = [["${HM_DEST}/.config/nvim/init.vim", "nvim/init.vim"]]
 
@@ -33,10 +36,9 @@ links = [
 ]
 
 [tasks.default]
-deps  = ["asdf", "git", "htop", "nvim", "zsh"]
+deps  = ["asdf", "git", "htop", "hyper", "nvim", "zsh"]
 links = [
   ["${HM_DEST}/.local/bin/colors", "bin/colors"],
   ["${HM_DEST}/.local/bin/hls", "bin/hls"],
   ["${HM_DEST}/.local/bin/wslcmd", "bin/wslcmd"],
-  ["${HM_DEST}/.local/bin/zsh_login", "bin/zsh_login"],
 ]
