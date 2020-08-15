@@ -126,10 +126,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Injects asdf-vm into the current shell session.
 source "$(brew --prefix asdf)/asdf.sh"
 
-# Completions for kubectl and helm
-source <(helm completion zsh)
-source <(kubectl completion zsh)
-
 alias cp='cp -ipv'
 alias diff='diff -u'
 alias less='less -RFXx2'
