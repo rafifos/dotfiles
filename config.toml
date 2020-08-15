@@ -20,6 +20,9 @@ links = [["${HM_DEST}/.config/htop/htoprc", "htop/htoprc"]]
 [tasks.hyper]
 links = [["${HM_DEST}/.hyper.js", "hyper/hyper.js"]]
 
+[tasks.neofetch]
+links = [["${HM_DEST}/.config/neofetch/config.conf", "neofetch/config.conf"]]
+
 [tasks.nvim]
 links = [["${HM_DEST}/.config/nvim/init.vim", "nvim/init.vim"]]
 
