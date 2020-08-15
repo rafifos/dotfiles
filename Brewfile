@@ -1,18 +1,25 @@
+require 'socket'
+
+HOSTNAME = Socket.gethostname.strip
+
 tap "beeftornado/rmtree"
 tap "github/gh"
 tap "rs/tap"
 
 brew "asdf"
-brew "aws-iam-authenticator"
-brew "awscli"
 brew "curlie"
 brew "diff-so-fancy"
-brew "docker-compose"
 brew "gh"
-brew "helm"
-brew "kubectl"
 brew "neovim"
 brew "pbzip2"
 brew "pigz"
 brew "shellcheck"
-brew "terraform"
+
+unless HOSTNAME == 'GUARDIAN'
+  brew "aws-iam-authenticator"
+  brew "awscli"
+  brew "docker-compose"
+  brew "helm"
+  brew "kubectl"
+  brew "terraform"
+end
