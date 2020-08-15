@@ -83,11 +83,11 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   sudo apt install -y \
     build-essential \
     ubuntu-restricted-extras \
+    openvpn-systemd-resolved \
     code \
     google-chrome-stable \
     docker-ce docker-ce-cli containerd.io \
     openrazer-meta polychromatic \
-    openvpn-systemd-resolved \
     elementary-tweaks
   pause_and_clear
 
