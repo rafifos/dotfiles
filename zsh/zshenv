@@ -45,11 +45,6 @@ if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
       curl -fsSL https://raw.githubusercontent.com/docker/cli/master/contrib/completion/zsh/_docker | sudo tee /usr/share/zsh/vendor-completions/_docker >/dev/null
     fi
   fi
-
-elif [[ -o 'interactive' ]]; then
-  # Completions for kubectl and helm.
-  source <(helm completion zsh)
-  source <(kubectl completion zsh)
 fi
 
 # Injects Linuxbrew into the current shell session.
