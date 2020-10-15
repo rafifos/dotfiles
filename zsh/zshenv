@@ -49,3 +49,6 @@ fi
 
 # Injects Linuxbrew into the current shell session.
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Injects asdf-vm into the current shell session.
+source "$(brew --prefix asdf)/asdf.sh"
