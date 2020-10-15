@@ -6,6 +6,7 @@ tap "beeftornado/rmtree"
 tap "github/gh"
 tap "rs/tap"
 
+brew "asciinema"
 brew "asdf"
 brew "curlie"
 brew "diff-so-fancy"
