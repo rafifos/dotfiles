@@ -64,6 +64,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x073e051d7b2aee37' | sudo apt-key add
   curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x96b9cd7c22e2c8c5' | sudo apt-key add
   curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc42d52715a84c7d0d02fc740c1d89326b1c71ab9' | sudo apt-key add
+  curl -fsSL 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add
   pause_and_clear
 
   log_and_sleep "Adding repositories to apt"
@@ -73,6 +74,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   echo 'deb [arch=amd64] http://ppa.launchpad.net/openrazer/stable/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/openrazer.list
   echo 'deb [arch=amd64] http://ppa.launchpad.net/polychromatic/stable/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/polychromatic.list
   echo 'deb [arch=amd64] http://ppa.launchpad.net/philip.scott/elementary-tweaks/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/elementary-tweaks.list
+  echo "deb [arch=amd64] https://dl.bintray.com/beekeeper-studio/releases disco main" | sudo tee /etc/apt/sources.list.d/beekeeper-studio.list
   pause_and_clear
 
   log_and_sleep "Updating apt sources"
@@ -88,7 +90,8 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
     google-chrome-stable \
     docker-ce docker-ce-cli containerd.io \
     openrazer-meta polychromatic \
-    elementary-tweaks
+    elementary-tweaks \
+    beekeeper-studio
   pause_and_clear
 
   log_and_sleep "Installing .deb packages"
@@ -119,7 +122,6 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   flatpak install --user flathub ca.desrt.dconf-editor
   flatpak install --user flathub com.axosoft.GitKraken
   flatpak install --user flathub com.getpostman.Postman
-  flatpak install --user flathub com.github.alecaddd.sequeler
   flatpak install --user flathub com.slack.Slack
   flatpak install --user flathub com.spotify.Client
   pause_and_clear
