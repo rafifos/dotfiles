@@ -121,6 +121,7 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
 
   flatpak install --user flathub ca.desrt.dconf-editor
   flatpak install --user flathub com.axosoft.GitKraken
+  flatpak install --user flathub com.discordapp.Discord
   flatpak install --user flathub com.getpostman.Postman
   flatpak install --user flathub com.slack.Slack
   flatpak install --user flathub com.spotify.Client
