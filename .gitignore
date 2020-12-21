@@ -80,3 +80,6 @@ Brewfile.lock.json
 
 # Temporary files
 tmp/
+
+# Private configurations and aliases
+zsh/zprivate
