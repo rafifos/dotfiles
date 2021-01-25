@@ -12,10 +12,10 @@ module.exports = {
     fontSize: 12,
 
     // font family with optional fallbacks
-    fontFamily: '"Iosevka Term", monospace',
+    fontFamily: 'Iosevka, Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // font family to use for the UI with optional fallbacks
-    uiFontFamily: '"Inter Regular", sans-serif',
+    uiFontFamily: '"Inter Regular", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
 
     // default font weight: 'normal' or 'bold'
     fontWeight: 'normal',
@@ -30,10 +30,10 @@ module.exports = {
     letterSpacing: 0,
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: '#D8DEE9',
+    cursorColor: 'rgba(248,28,229,0.8)',
 
     // terminal text color under BLOCK cursor
-    cursorAccentColor: '#2E3440',
+    cursorAccentColor: '#000',
 
     // `'BEAM'` for |, `'UNDERLINE'` for _, `'BLOCK'` for █
     cursorShape: 'BLOCK',
@@ -49,7 +49,7 @@ module.exports = {
     backgroundColor: '#000',
 
     // terminal selection color
-    selectionColor: 'rgba(229,233,240,0.3)',
+    selectionColor: 'rgba(248,28,229,0.3)',
 
     // border color (window, tabs)
     borderColor: '#333',
@@ -59,6 +59,9 @@ module.exports = {
 
     // custom CSS to embed in the terminal window
     termCSS: '',
+
+    // set custom startup directory (must be an absolute path)
+    workingDirectory: '',
 
     // if you're using a Linux setup which show native menus, set to false
     // default: `true` on Linux, `true` on Windows, ignored on macOS
@@ -92,6 +95,8 @@ module.exports = {
       lightMagenta: '#FD7CFC',
       lightCyan: '#68FDFE',
       lightWhite: '#FFFFFF',
+      limeGreen: '#32CD32',
+      lightCoral: '#F08080',
     },
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
@@ -101,12 +106,22 @@ module.exports = {
     // - Make sure to use a full path if the binary name doesn't work
     // - Remove `--login` in shellArgs
     //
-    // Bash on Windows
-    // - Example: `C:\\Windows\\System32\\bash.exe`
+    // Windows Subsystem for Linux (WSL) - previously Bash on Windows
+    // - Example: `C:\\Windows\\System32\\wsl.exe`
+    //
+    // Git-bash on Windows
+    // - Example: `C:\\Program Files\\Git\\bin\\bash.exe`
     //
     // PowerShell on Windows
     // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-    shell: '/usr/bin/zsh',
+    //
+    // Cygwin
+    // - Example: `C:\\cygwin64\\bin\\bash.exe`
+    //
+    // Git Bash
+    // - Example: `C:\\Program Files\\Git\\git-cmd.exe`
+    // Then Add `--command=usr/bin/bash.exe` to shellArgs
+    shell: 'zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
@@ -119,16 +134,21 @@ module.exports = {
     windowSize: [1280, 720],
 
     // number of rows to be persisted in terminal buffer for scrolling
-    scrollback: 10000,
+    scrollback: 1000,
 
-    // set to `false` for no bell
+    // Supported Options:
+    //  1. 'SOUND' -> Enables the bell as a sound
+    //  2. false: turns off the bell
     bell: 'SOUND',
+
+    // An absolute file path to a sound file on the machine.
+    // bellSoundURL: '/path/to/sound/file',
 
     // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
     copyOnSelect: false,
 
     // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
-    defaultSSHApp: true,
+    defaultSSHApp: false,
 
     //behaviour of modifier keys to act as meta key
     modifierKeys: { altIsMeta: false },
@@ -142,12 +162,16 @@ module.exports = {
     // (inside tmux or vim with mouse mode enabled for example).
     macOptionSelectionMode: 'vertical',
 
-    // URL to custom bell
-    // bellSoundURL: 'http://example.com/bell.mp3',
-
     // Whether to use the WebGL renderer. Set it to false to use canvas-based
     // rendering (slower, but supports transparent backgrounds)
-    webGLRenderer: false,
+    webGLRenderer: true,
+
+    // keypress required for weblink activation: [ctrl|alt|meta|shift]
+    // todo: does not pick up config changes automatically, need to restart terminal :/
+    webLinksActivationKey: 'ctrl',
+
+    // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
+    disableLigatures: false,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
   },

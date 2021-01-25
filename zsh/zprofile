@@ -2,7 +2,7 @@
 #
 # [Read at login]
 #
-# I personally treat that file like `.zshenv` but for commands and variables 
+# I personally treat that file like `.zshenv` but for commands and variables
 # which should be set once or which don't need to be updated frequently:
 #
 # - Environment variables to configure tools (flags for compilation, data folder
