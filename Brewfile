@@ -23,4 +23,5 @@ unless HOSTNAME == 'GUARDIAN'
   brew "helm"
   brew "kubectl"
   brew "terraform"
+  brew "watchman"
 end
