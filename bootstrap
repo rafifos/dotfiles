@@ -179,8 +179,9 @@ source "$(brew --prefix asdf)/asdf.sh"
 # :/
 if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
 log_info "==> Ruby"
-  asdf plugin add ruby
   export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+  asdf plugin add ruby
   asdf install ruby latest:3
   asdf global ruby "$(asdf latest ruby 3)"
 
@@ -188,6 +189,17 @@ log_info "==> Ruby"
   asdf plugin-add postgres
   asdf install postgres latest:12
   asdf global postgres "$(asdf latest postgres 12)"
+  pause
+
+  log_info "==> Erlang"
+  export KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=$(brew --prefix openssl@1.1)"
+
+  asdf plugin-add erlang
+  log_info "===> Deferring build."
+
+  log_info "==> Elixir"
+  asdf plugin-add elixir
+  log_info "===> Deferring build."
   pause
 fi
 

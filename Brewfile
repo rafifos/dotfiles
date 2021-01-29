@@ -8,15 +8,16 @@ tap "rs/tap"
 
 brew "asdf"
 brew "curl"
-brew "git"
-brew "git-delta"
 brew "gh"
+brew "git-delta"
+brew "git"
 brew "httpie"
 brew "neofetch"
 brew "neovim"
 brew "pbzip2"
 brew "pigz"
 brew "shellcheck"
+brew "unzip"
 brew "zsh"
 
 unless HOSTNAME == 'GUARDIAN'
@@ -30,16 +31,29 @@ unless HOSTNAME == 'GUARDIAN'
 end
 
 # Common dependencies
+brew "autoconf"
+brew "libffi"
+brew "ncurses"
 brew "openssl"
 brew "readline"
 brew "zlib"
-brew "libffi"
+
+# asdf-erlang/kerl build dependencies
+brew "libssh"
+brew "unixodbc"
+brew "wxmac"
+
+# asdf-ruby/ruby-build dependencies
+brew "berkeley-db"
+brew "bison"
+brew "gdbm"
+brew "libyaml"
 
 # asdf-nodejs dependencies
 brew "coreutils"
 brew "curl"
-brew "gnupg"
 brew "gawk"
+brew "gnupg"
 
 # asdf-python/python-build dependencies
 brew "bzip2"
@@ -47,11 +61,3 @@ brew "libxml2"
 brew "libxmlsec1"
 brew "sqlite"
 brew "xz"
-
-# asdf-ruby/ruby-build dependencies
-brew "autoconf"
-brew "bison"
-brew "libyaml"
-brew "ncurses"
-brew "gdbm"
-brew "berkeley-db"
