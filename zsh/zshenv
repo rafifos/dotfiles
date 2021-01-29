@@ -28,6 +28,10 @@ export LC_MONETARY='pt_BR.UTF-8'
 export LC_NUMERIC='pt_BR.UTF-8'
 export LC_TIME='pt_BR.UTF-8'
 
+# Enable BuildKit builds on Docker
+# See: https://docs.docker.com/develop/develop-images/build_enhancements/#to-enable-buildkit-builds
+export DOCKER_BUILDKIT=1
+
 # WSL2 overrides and fixes.
 if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   # Workaround for using gpg without a graphical interface.
