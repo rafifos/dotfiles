@@ -30,9 +30,12 @@ warn_elevation() {
   log_warn "This operation requires elevation, you've been warned"
 }
 
-pause_and_clear() {
+pause() {
   read -rsp $'Press any key to continue...\n' -n 1
-  clear
+}
+
+pause_and_clear() {
+  pause && clear
 }
 
 inject_linuxbrew() {
@@ -45,16 +48,10 @@ inject_linuxbrew() {
 #
 clear
 
-if ! hash zsh 2>/dev/null; then
-  log_and_sleep "Installing zsh"
-  warn_elevation
-  sudo apt install -y zsh
-
-  chsh -s "$(command -v zsh)" "$USER"
-
-  log_warn "zsh was installed, please restart your shell and re-run this script"
-  exit 0
-fi
+log_and_sleep "Installing development packages"
+warn_elevation
+sudo apt install -y linux-headers-"$(uname -r)" build-essential
+pause_and_clear
 
 if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   log_and_sleep "Adding keys to apt"
@@ -63,8 +60,8 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   curl -fsSL 'https://download.docker.com/linux/ubuntu/gpg' | sudo apt-key add
   curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x073e051d7b2aee37' | sudo apt-key add
   curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x96b9cd7c22e2c8c5' | sudo apt-key add
-  curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc42d52715a84c7d0d02fc740c1d89326b1c71ab9' | sudo apt-key add
   curl -fsSL 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add
+  curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc42d52715a84c7d0d02fc740c1d89326b1c71ab9' | sudo apt-key add
   pause_and_clear
 
   log_and_sleep "Adding repositories to apt"
@@ -73,8 +70,8 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   echo 'deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable' | sudo tee /etc/apt/sources.list.d/docker.list
   echo 'deb [arch=amd64] http://ppa.launchpad.net/openrazer/stable/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/openrazer.list
   echo 'deb [arch=amd64] http://ppa.launchpad.net/polychromatic/stable/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/polychromatic.list
-  echo 'deb [arch=amd64] http://ppa.launchpad.net/philip.scott/elementary-tweaks/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/elementary-tweaks.list
   echo "deb [arch=amd64] https://dl.bintray.com/beekeeper-studio/releases disco main" | sudo tee /etc/apt/sources.list.d/beekeeper-studio.list
+  echo 'deb [arch=amd64] http://ppa.launchpad.net/philip.scott/elementary-tweaks/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/elementary-tweaks.list
   pause_and_clear
 
   log_and_sleep "Updating apt sources"
@@ -82,17 +79,18 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   pause_and_clear
 
   log_and_sleep "Installing apt packages"
+
+  # shellcheck disable=SC2006,SC2046
   sudo apt install -y \
-    build-essential \
     ubuntu-restricted-extras \
-    openvpn-systemd-resolved \
+    openvpn-systemd-resolved \ # Integrates OpenVPN with `systemd-resolved`
     code \
     google-chrome-stable \
     docker-ce docker-ce-cli containerd.io \
     openrazer-meta polychromatic \
-    elementary-tweaks \
-    beekeeper-studio
-  pause_and_clear
+    beekeeper-studio \
+    elementary-tweaks
+    pause_and_clear
 
   log_and_sleep "Installing .deb packages"
   TMPDIR="$PWD/tmp"
@@ -138,6 +136,15 @@ if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
   sudo gpasswd -a "$USER" plugdev
   log_warn "You need to restart your session for the changes to take effect"
   pause_and_clear
+
+  log_and_sleep "Installing ngrok"
+  curl -fsSLO 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
+  unzip ngrok-stable-linux-amd64.zip
+  chmod +x ngrok
+  [[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
+  mv ngrok "$HOME/.local/bin/ngrok"
+  rm ngrok-stable-linux-amd64.zip
+  pause_and_clear
 fi
 
 inject_linuxbrew
@@ -154,12 +161,6 @@ log_and_sleep "Installing cli packages via Linuxbrew Bundle"
 brew bundle --verbose
 pause_and_clear
 
-log_and_sleep "Installing Node.JS via asdf-vm"
-source "$(brew --prefix asdf)/asdf.sh"
-asdf plugin add nodejs
-bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-pause_and_clear
-
 if [[ ! -x "$(pwd)/homemaker" ]]; then
   log_warn "homemaker not found in current dir, downloading it now."
   curl -fsSL 'https://foosoft.net/projects/homemaker/dl/homemaker_linux_amd64.tar.gz' | tar --extract --gzip
@@ -168,17 +169,48 @@ if [[ ! -x "$(pwd)/homemaker" ]]; then
   rm -rf homemaker_linux_amd64/
 fi
 
-log_and_sleep "Installing ngrok"
-curl -fsSLO 'https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip'
-unzip ngrok-stable-linux-amd64.zip
-chmod +x ngrok
-[[ ! -d "$HOME/.local/bin" ]] && mkdir -p "$HOME/.local/bin"
-mv ngrok "$HOME/.local/bin/ngrok"
-rm ngrok-stable-linux-amd64.zip
-pause_and_clear
-
 log_and_sleep "Deploying dotfiles using homemaker"
 ./homemaker -clobber -verbose config.toml "$PWD"
+pause_and_clear
+
+log_and_sleep "Installing asdf-vm plugins"
+source "$(brew --prefix asdf)/asdf.sh"
+
+# :/
+if [[ ! "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
+log_info "==> Ruby"
+  asdf plugin add ruby
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+  asdf install ruby latest:3
+  asdf global ruby "$(asdf latest ruby 3)"
+
+  log_info "==> PostgreSQL"
+  asdf plugin-add postgres
+  asdf install postgres latest:12
+  asdf global postgres "$(asdf latest postgres 12)"
+  pause
+fi
+
+log_info "==> Node.js"
+asdf plugin add nodejs
+bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+asdf install nodejs latest:14
+asdf global nodejs "$(asdf latest nodejs 14)"
+pause
+
+log_info "==> Python (2 and 3)"
+asdf plugin-add python
+asdf install python latest:2
+asdf install python latest:3
+asdf global python "$(asdf latest python 2)"
+asdf global python "$(asdf latest python 3)"
+update-alternatives --install "$HOME/.local/bin/python" python "$(command -v python3)" 1
+pause_and_clear
+
+log_info "Setting \"zsh\" as the default shell for user $USER"
+warn_elevation
+sudo sh -c "echo $(command -v zsh) >> /etc/shells"
+chsh -s "$(command -v zsh)" "$USER"
 pause_and_clear
 
 log_warn "Don't forget to grab Iosevka from https://github.com/be5invis/Iosevka"

@@ -4,7 +4,7 @@
 [tasks.asdf]
 links = [
   ["${HM_DEST}/.asdfrc", "asdf/asdfrc"],
-  ["${HM_DEST}/.tool-versions", "asdf/tool-versions"],
+  ["${HM_DEST}/.default-gems", "asdf/default-gems"],
   ["${HM_DEST}/.default-npm-packages", "asdf/default-npm-packages"],
 ]
 
