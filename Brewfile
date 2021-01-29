@@ -7,6 +7,8 @@ tap "github/gh"
 tap "rs/tap"
 
 brew "asdf"
+brew "curl"
+brew "git"
 brew "git-delta"
 brew "gh"
 brew "httpie"
