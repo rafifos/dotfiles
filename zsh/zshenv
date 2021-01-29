@@ -30,12 +30,6 @@ export LC_TIME='pt_BR.UTF-8'
 
 # WSL2 overrides and fixes.
 if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
-  # Workaround for WSL2 not freeing up resources after exit.
-  # See: https://github.com/microsoft/WSL/issues/4166#issuecomment-618159162
-  #
-  # NOTE: Don't forget to `flock` the cronjob.
-  [ -z "$(ps -ef | grep cron | grep -v grep)" ] && sudo /etc/init.d/cron start >/dev/null 2>&1
-
   # Workaround for using gpg without a graphical interface.
   export GPG_TTY="$(tty)"
 
