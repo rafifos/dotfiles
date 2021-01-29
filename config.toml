@@ -5,7 +5,7 @@
 links = [
   ["${HM_DEST}/.asdfrc", "asdf/asdfrc"],
   ["${HM_DEST}/.tool-versions", "asdf/tool-versions"],
-  ["${HM_DEST}/.default-npm-packages", "asdf/nodejs/default-npm-packages"],
+  ["${HM_DEST}/.default-npm-packages", "asdf/default-npm-packages"],
 ]
 
 [tasks.git]
