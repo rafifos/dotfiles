@@ -1,0 +1,13 @@
+[
+  {
+    "clean": ["$HOME/.config/nvim"]
+  },
+  {
+    "link": {
+      "$HOME/.config/nvim/init.vim": {
+        "create": true,
+        "path": "init.vim"
+      }
+    }
+  }
+]

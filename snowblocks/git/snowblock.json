@@ -1,0 +1,36 @@
+[
+  {
+    "clean": [
+      "$HOME",
+      "$HOME/.config/git",
+      "$HOME/.config/git/includes",
+      "$HOME/.config/git/includes/templates"
+    ]
+  },
+  {
+    "link": {
+      "$HOME/.config/git/includes/templates/commit.txt": {
+        "create": true,
+        "path": "includes/templates/commit.txt"
+      },
+      "$HOME/.config/git/includes/user.conf": {
+        "create": true,
+        "hosts": {
+          "GUARDIAN": "includes/user-rafifos.conf"
+        }
+      },
+      "$HOME/.gitattributes": {
+        "create": true,
+        "path": "attributes.conf"
+      },
+      "$HOME/.gitconfig": {
+        "create": true,
+        "path": "config.conf"
+      },
+      "$HOME/.gitignore": {
+        "create": true,
+        "path": "ignore.conf"
+      }
+    }
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "clean": ["$HOME/.config/htop"]
+  },
+  {
+    "link": {
+      "$HOME/.config/htop/htoprc": {
+        "create": true,
+        "path": "htoprc"
+      }
+    }
+  }
+]

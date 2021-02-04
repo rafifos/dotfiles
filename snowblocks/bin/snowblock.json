@@ -1,0 +1,23 @@
+[
+  {
+    "clean": ["$HOME/.local/bin"]
+  },
+  {
+    "link": {
+      "$HOME/.local/bin/colors": {
+        "create": true,
+        "path": "colors"
+      },
+      "$HOME/.local/bin/hls": {
+        "create": true,
+        "path": "hls"
+      },
+      "$HOME/.local/bin/wslcmd": {
+        "create": true,
+        "hosts": {
+          "GUARDIAN": "wslcmd"
+        }
+      }
+    }
+  }
+]

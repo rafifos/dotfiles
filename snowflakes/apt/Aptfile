@@ -1,0 +1,39 @@
+#!/usr/bin/env -S bin/aptfile
+# shellcheck disable=SC2096
+
+update
+
+# Common dependencies which should be present on almost all systems by default.
+package "build-essential"
+package "git"
+package "pinentry-gnome3"
+package "software-properties-common"
+
+# Provides non-free media codecs and Microsoft Fonts.
+package "ubuntu-restricted-extras"
+
+# OpenRazer is an entirely open source driver and user-space daemon that allows
+# you to manage your Razer peripherals on GNU/Linux.
+ppa "ppa:openrazer/stable"
+package "openrazer-meta"
+
+# Polychromatic is a frontend for OpenRazer that enables Razer devices to
+# control lighting effects and more on GNU/Linux.
+ppa "ppa:polychromatic/stable"
+package "polychromatic"
+
+# Google Chrome is the browser built by Google.
+package_from_url "google-chrome-stable" "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+
+# Visual Studio Code is a lightweight but powerful source code editor.
+package_from_url "code" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+
+# Docker Engine is an open source containerization technology for building and
+# containerizing your applications.
+key "https://download.docker.com/linux/ubuntu/gpg"
+repository "docker-ce.list" "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# Beekeeper Studio is the smoothest, best looking, and easiest to use SQL client
+# for MySQL, Postgres, SQLite, SQL Server, and more.
+key "https://bintray.com/user/downloadSubjectPublicKey?username=bintray"
+repository "beekeeper-studio.list" "deb https://dl.bintray.com/beekeeper-studio/releases $(lsb_release -cs) main"

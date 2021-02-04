@@ -1,0 +1,57 @@
+# Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (c) 2016-present Sven Greb <development@svengreb.de>
+# Copyright (c) 2021 Rafael Julio <hello@rafifos.dev>
+
+# Project:    dotfiles
+# Repository: https://github.com/rafifos/dotfiles
+# License:    MIT License
+
+# Creates and defines the "Nord" color palettes as `ZSH_NORD_COLORS` hash.
+# When the terminal supports 24-bit colors ("true color") the values are defined as HEX triplets,
+# otherwise the terminal's 16 base colors are used.
+# See:
+#   1. https://www.nordtheme.com
+autoload -Uz colors && colors
+autoload -Uz has_true_color
+
+typeset -Agx ZSH_NORD_COLORS
+
+if has_true_color; then
+  ZSH_NORD_COLORS[0]="#2E3440"
+  ZSH_NORD_COLORS[1]="#3B4252"
+  ZSH_NORD_COLORS[2]="#434C5E"
+  ZSH_NORD_COLORS[3]="#4C566A"
+  ZSH_NORD_COLORS[4]="#D8DEE9"
+  ZSH_NORD_COLORS[5]="#E5E9F0"
+  ZSH_NORD_COLORS[6]="#ECEFF4"
+  ZSH_NORD_COLORS[7]="#8FBCBB"
+  ZSH_NORD_COLORS[8]="#88C0D0"
+  ZSH_NORD_COLORS[9]="#81A1C1"
+  ZSH_NORD_COLORS[10]="#5E81AC"
+  ZSH_NORD_COLORS[11]="#BF616A"
+  ZSH_NORD_COLORS[12]="#D08770"
+  ZSH_NORD_COLORS[13]="#EBCB8B"
+  ZSH_NORD_COLORS[14]="#A3BE8C"
+  ZSH_NORD_COLORS[15]="#B48EAD"
+  # The comment color with increased brightness base on `nord3`.
+  # See https://github.com/arcticicestudio/nord/issues/94 for more details.
+  ZSH_NORD_COLORS[comment]="#616E88"
+else
+  ZSH_NORD_COLORS[0]=-1
+  ZSH_NORD_COLORS[1]=0
+  ZSH_NORD_COLORS[2]=0
+  ZSH_NORD_COLORS[3]=8
+  ZSH_NORD_COLORS[4]=-1
+  ZSH_NORD_COLORS[5]=7
+  ZSH_NORD_COLORS[6]=15
+  ZSH_NORD_COLORS[7]=14
+  ZSH_NORD_COLORS[8]=6
+  ZSH_NORD_COLORS[9]=4
+  ZSH_NORD_COLORS[10]=12
+  ZSH_NORD_COLORS[11]=1
+  ZSH_NORD_COLORS[12]=11
+  ZSH_NORD_COLORS[13]=3
+  ZSH_NORD_COLORS[14]=2
+  ZSH_NORD_COLORS[15]=5
+  ZSH_NORD_COLORS[comment]=8
+fi

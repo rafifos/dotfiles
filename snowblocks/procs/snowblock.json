@@ -1,0 +1,14 @@
+[
+  {
+    "clean": ["$HOME/.config/procs"]
+  },
+  {
+    "link": {
+      "$HOME/.config/procs/config.toml": {
+        "create": true,
+        "force": true,
+        "path": "config.toml"
+      }
+    }
+  }
+]

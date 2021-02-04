@@ -1,0 +1,13 @@
+[
+  {
+    "clean": ["$HOME/.config/bat"]
+  },
+  {
+    "link": {
+      "$HOME/.config/bat/config": {
+        "create": true,
+        "path": "config"
+      }
+    }
+  }
+]

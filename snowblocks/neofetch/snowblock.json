@@ -1,0 +1,13 @@
+[
+  {
+    "clean": ["$HOME/.config/neofetch"]
+  },
+  {
+    "link": {
+      "$HOME/.config/neofetch/config.conf": {
+        "create": true,
+        "path": "config.conf"
+      }
+    }
+  }
+]
