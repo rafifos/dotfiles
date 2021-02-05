@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Rafael Julio <hello@rafifos.dev>
+# Copyright (c) 2021 Rafael Julio <development@rafifos.dev>
 
 # Project:    dotfiles
 # Repository: https://github.com/rafifos/dotfiles
