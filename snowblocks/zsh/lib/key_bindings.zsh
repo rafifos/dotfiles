@@ -38,8 +38,8 @@ fi
 # or [Del].
 # See:
 #   1. [← Left]/[→ Right]/[↑ Up]/[↓ Down] U+2190/U+2192/U+2191/U+2193 (https://en.wikipedia.org/wiki/Arrow_keys)
-#   2. [↹ Tab] U+21B9 (https://en.wikipedia.org/wiki/Tab_key)
-#   3. [⇧ Shift] U+21E7 (https://en.wikipedia.org/wiki/Shift_key)
+#   2. [⇧ Shift] U+21E7 (https://en.wikipedia.org/wiki/Shift_key)
+#   3. [↹ Tab] U+21B9 (https://en.wikipedia.org/wiki/Tab_key)
 #   4. [⇱ Home] U+21F1 (https://en.wikipedia.org/wiki/Home_key)
 #   5. [⇲ End] U+21F2 (https://en.wikipedia.org/wiki/End_key)
 #   6. [⌫ Backspace] U+232B (https://en.wikipedia.org/wiki/Backspace)
@@ -60,58 +60,46 @@ key[Backspace]="${terminfo[kbs]}"
 key[Control]='\C-'
 key[Control-Left]='^[[1;5D'
 key[Control-Right]='^[[1;5C'
-key[Delete]="${terminfo[kdch1]}"
+key[Del]="${terminfo[kdch1]}"
 key[Page-Up]="${terminfo[kpp]}"
 key[Page-Down]="${terminfo[knp]}"
 key[Insert]="${terminfo[kich1]}"
 
-# <Ctrl-x><Ctrl-e> to edit command-line in EDITOR
+# Common keybindings.
 [[ -n "${key[Left]}" ]] && bindkey -- "${key[Left]}" backward-char
-zle -N edit-command-line
-[[ -n "${key[Control]}" ]] && bindkey -- "${key[Control]}x${key[Control]}e" edit-command-line
-
-# Smart URL pasting and escaping.
-zle -N bracketed-paste 
-zle -N bracketed-paste-url-magic
-# zle -N self-insert
-zle -N url-quote-magic
-
-zle_double_dot_expand() {
-  # Expand .. at the beginning, after space, or after any of ! " & ' / ; < > |
-  if [[ ${LBUFFER} == (|*[[:space:]!\"\&\'/\;\<\>|]).. ]]; then
-    LBUFFER+='/..'
-  else
-    LBUFFER+='.'
-  fi
-}
-
-zle -N zle_double_dot_expand
-bindkey '.' zle_double_dot_expand
-bindkey -M isearch '.' self-insert
-
-# Autoload required widgets.
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-
+[[ -n "${key[Right]}" ]] && bindkey -- "${key[Right]}" forward-char
 [[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}" backward-delete-char
-[[ -n "${key[Delete]}" ]] && bindkey -- "${key[Delete]}" delete-char
+[[ -n "${key[Del]}" ]] && bindkey -- "${key[Del]}" delete-char
 [[ -n "${key[Home]}" ]] && bindkey -- "${key[Home]}" beginning-of-line
 [[ -n "${key[End]}" ]] && bindkey -- "${key[End]}" end-of-line
+[[ -n "${key[Up]}" ]] && bindkey -- "${key[Up]}" up-line-or-history
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-history
 [[ -n "${key[Page-Up]}" ]] && bindkey -- "${key[Page-Up]}" up-line-or-history
 [[ -n "${key[Page-Down]}" ]] && bindkey -- "${key[Page-Down]}" down-line-or-history
 [[ -n "${key[Insert]}" ]] && bindkey -- "${key[Insert]}" overwrite-mode
-[[ -n "${key[Up]}" ]] && bindkey -- "${key[Up]}" up-line-or-history
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-history
-[[ -n "${key[Left]}" ]] && bindkey -- "${key[Left]}" backward-char
-[[ -n "${key[Right]}" ]] && bindkey -- "${key[Right]}" forward-char
 [[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}" reverse-menu-complete
-
-# Allow to only show the past history events matching the current line up to the current
-# cursor position will be shown when ↑ or ↓ keys are pressed.
-[[ -n "${key[Up]}" ]] && bindkey -- "${key[Up]}" up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 # Allow to use ^← to move to the beginning of the previous word and ^→ to move to
 # the beginning of the next word.
 [[ -n "${key[Control-Left]}" ]] && bindkey -- "${key[Control-Left]}" backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+
+# Smart URL pasting and escaping.
+zle -N bracketed-paste bracketed-paste-url-magic
+zle -N self-insert url-quote-magic
+
+# Allow to only show the past history events matching the current line up to the current
+# cursor position will be shown when ↑ or ↓ keys are pressed.
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+[[ -n "${key[Up]}" ]] && bindkey -- "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+# <Ctrl-x><Ctrl-e> to edit command-line in EDITOR
+zle -N edit-command-line
+[[ -n "${key[Control]}" ]] && bindkey -- "${key[Control]}x${key[Control]}e" edit-command-line
+
+# Expand .. at the beginning, after space, or after any of ! " & ' / ; < > |
+zle -N zle_double_dot_expand
+bindkey '.' zle_double_dot_expand
+bindkey -M isearch '.' self-insert
