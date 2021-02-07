@@ -6,6 +6,9 @@
 # Repository: https://github.com/rafifos/dotfiles
 # License:    MIT License
 
+# Load compiled files first, this drastically improves startup times.
+[[ -f $ZDOTDIR/lib/compile.zsh ]] && source $ZDOTDIR/lib/compile.zsh
+
 # Tie (`-T`) the `FPATH` environment variable for unique (`-U`) entries.
 # Extend the ZSH function search path where system-wide functions should always take precedence.
 export -TU FPATH fpath

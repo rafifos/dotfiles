@@ -45,6 +45,10 @@
         "create": true,
         "path": "lib/aliases.zsh"
       },
+      "$HOME/.config/zsh/lib/compile.zsh": {
+        "create": true,
+        "path": "lib/compile.zsh"
+      },
       "$HOME/.config/zsh/lib/config.zsh": {
         "create": true,
         "path": "lib/config.zsh"

@@ -42,9 +42,6 @@ zplug "Valiev/almostontop"
 # A zsh plugin that reminds you that you should use one of your existing aliases for a command you just typed.
 zplug "MichaelAquilina/zsh-you-should-use"
 
-# Clean-room implementation of the Fish shell's history search feature.
-zplug "zsh-users/zsh-history-substring-search"
-
 # Additional completion definitions for Zsh.
 zplug "zsh-users/zsh-completions"
 
