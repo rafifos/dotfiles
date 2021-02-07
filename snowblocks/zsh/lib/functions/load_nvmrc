@@ -1,0 +1,35 @@
+# Copyright (c) 2021 Rafael Julio <hello@rafifos.dev>
+
+# Project:    dotfiles
+# Repository: https://github.com/rafifos/dotfiles
+# License:    MIT License
+
+# Verifies for the presence of a .nvmrc file when cd-ing into a directory.
+# If it exists and it's content has an invalid Node version (either doesn't have
+# any content at all or it's has any other content than a string like "12.0.0",
+# nvm installs the latest Node version, if there's a valid Node version inside
+# it, then nvm tries to use this version.
+
+# This function also cleanups the shell when cd-ing to a directory that doesn't
+# have a .npmrc file. When this happens, nvm then reverts to the default Node
+# version set by the user.
+
+# It's usage is with the chpwd zle hook.
+#    add-zsh-hook chpwd load_nvmrc
+# See:
+#   1. https://github.com/zsh-users/zsh/blob/master/Functions/Misc/add-zsh-hook
+NODE_VERSION="$(nvm version)"
+NVMRC_PATH="$(nvm_find_nvmrc)"
+
+if [ -n "$NVMRC_PATH" ]; then
+  NVMRC_NODE_VERSION=$(nvm version "$(cat "${NVMRC_PATH}")")
+
+  if [ "$NVMRC_NODE_VERSION" = "N/A" ]; then
+    nvm install
+  elif [ "$NVMRC_NODE_VERSION" != "$NODE_VERSION" ]; then
+    nvm use
+  fi
+elif [ "$NODE_VERSION" != "$(nvm version default)" ]; then
+  echo "Reverting to nvm default version"
+  nvm use default
+fi

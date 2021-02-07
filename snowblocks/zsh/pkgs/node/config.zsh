@@ -17,26 +17,13 @@ if [[ ! -d $NVM_DIR ]]; then
   nvm install --lts
 fi
 
+# nvm itself doesn't provide native Zsh completions, instead it uses bashcompinit.
+# Be aware of this.
+# See:
+#   1. https://github.com/nvm-sh/nvm/blob/0fad5ec5755c0519ff30182b69761c84abca9f2b/bash_completion#L83
+fpath=($NVM_DIR $fpath)
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-load-nvmrc() {
-  local NODE_VERSION="$(nvm version)"
-  local NVMRC_PATH="$(nvm_find_nvmrc)"
-
-  if [ -n "$NVMRC_PATH" ]; then
-    local NVMRC_NODE_VERSION=$(nvm version "$(cat "${NVMRC_PATH}")")
-
-    if [ "$NVMRC_NODE_VERSION" = "N/A" ]; then
-      nvm install
-    elif [ "$NVMRC_NODE_VERSION" != "$NODE_VERSION" ]; then
-      nvm use
-    fi
-  elif [ "$NODE_VERSION" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# Setups the shell for the first time use.
+load_nvmrc
