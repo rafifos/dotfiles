@@ -35,25 +35,6 @@ prompt_rh_setup() {
   # See:
   #   1. https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 
-  # Show more information about the identity of commits checked out as a detached HEAD.
-  # Control the behavior by setting one of these values:
-  #   contains  Relative to newer annotated tag (v1.6.3.2~35)
-  #   branch    Relative to newer tag or branch (master~4)
-  #   describe  Relative to older annotated tag (v1.6.3.1-13-gdd42c2f)
-  #   tag       Relative to any older tag (v1.6.3.1-13-gdd42c2f)
-  #   default   Exactly matching tag
-  GIT_PS1_DESCRIBE_STYLE=${GIT_PS1_DESCRIBE_STYLE:-branch}
-
-  # Disable `__git_ps1` output when the current working directory is set up to be ignored by Git.
-  # Also configurable per repository via `git config bash.hideIfPwdIgnored`.
-
-  GIT_PS1_HIDE_IF_PWD_IGNORED=${GIT_PS1_HIDE_IF_PWD_IGNORED:-false}
-
-  # Show colored hints about the current dirty state.
-  # The colors are based on the colored output of `git status -sb`.
-  # NOTE: Only available when using `__git_ps1` via ZSH's `precmd` hook function!
-  GIT_PS1_SHOWCOLORHINTS=${GIT_PS1_SHOWCOLORHINTS:-true}
-
   # Show unstaged (*) and staged (+) changes.
   # Also configurable per repository via `git config bash.showDirtyState`.
   GIT_PS1_SHOWDIRTYSTATE=${GIT_PS1_SHOWDIRTYSTATE:-true}
@@ -82,7 +63,30 @@ prompt_rh_setup() {
   #
   # By default, `__git_ps1` will compare HEAD to SVN upstream (`@{upstream}` if not available).
   # Also configurable per repository via `git config bash.showUpstream`.
-  GIT_PS1_SHOWUPSTREAM=${GIT_PS1_SHOWUPSTREAM:="auto name verbose"}
+  GIT_PS1_SHOWUPSTREAM=${GIT_PS1_SHOWUPSTREAM:="auto"}
+
+  # When the repository has a sparse-checkout, a notification of the form
+  # "|SPARSE" will be included in the prompt.  This can be shortened to a
+  # single '?' character by setting GIT_PS1_COMPRESSSPARSESTATE.
+  GIT_PS1_COMPRESSSPARSESTATE=${GIT_PS1_COMPRESSSPARSESTATE:=true}
+
+  # Show more information about the identity of commits checked out as a detached HEAD.
+  # Control the behavior by setting one of these values:
+  #   contains  Relative to newer annotated tag (v1.6.3.2~35)
+  #   branch    Relative to newer tag or branch (master~4)
+  #   describe  Relative to older annotated tag (v1.6.3.1-13-gdd42c2f)
+  #   tag       Relative to any older tag (v1.6.3.1-13-gdd42c2f)
+  #   default   Exactly matching tag
+  GIT_PS1_DESCRIBE_STYLE=${GIT_PS1_DESCRIBE_STYLE:-branch}
+
+  # Show colored hints about the current dirty state.
+  # The colors are based on the colored output of `git status -sb`.
+  # NOTE: Only available when using `__git_ps1` via ZSH's `precmd` hook function!
+  GIT_PS1_SHOWCOLORHINTS=${GIT_PS1_SHOWCOLORHINTS:-true}
+
+  # Disable `__git_ps1` output when the current working directory is set up to be ignored by Git.
+  # Also configurable per repository via `git config bash.hideIfPwdIgnored`.
+  GIT_PS1_HIDE_IF_PWD_IGNORED=${GIT_PS1_HIDE_IF_PWD_IGNORED:-$(true)}
 
   # +-----------------+
   # + Style Constants +
