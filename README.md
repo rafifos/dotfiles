@@ -1,9 +1,15 @@
 # rafifos does dotfiles, managed by snowsaw
 
-## TODO
+```sh
+#  ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
+#  ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
+#  ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
+#  ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║
+#  ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║
+#  ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
+```
 
-- ~~Migrate `zsh` to [Oh MY Zsh](https://github.com/robbyrussell/oh-my-zsh)~~ Migrated to [ZIM](https://github.com/zimfw/zimfw)
-- ~~Migrate `homemaker` to [`dotbot`](https://github.com/anishathalye/dotbot)~~ Migrated to [snowsaw](https://github.com/arcticicestudio/snowsaw/tree/epic/gh-33-the-way-to-go)
+> I was told to leave it alone, but I have this thing called OCD, you see
 
 ## Important notes
 
