@@ -1,6 +1,6 @@
 # Homebrew
 
-> [Homebrew][] - The missing package manager for ~~macOS~~ Linux
+> [Homebrew][] - 🍺 The missing package manager for macOS (or Linux)
 
 ## Usage
 

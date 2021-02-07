@@ -25,6 +25,9 @@ package "polychromatic"
 # Google Chrome is the browser built by Google.
 package_from_url "google-chrome-stable" "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
+# Legendary Git GUI client for Windows, Mac & Linux
+package_from_url "gitkraken" "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
+
 # Visual Studio Code is a lightweight but powerful source code editor.
 package_from_url "code" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
 
