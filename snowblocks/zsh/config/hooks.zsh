@@ -10,4 +10,5 @@
 # See:
 #   1. http://zsh.sourceforge.net/Doc/Release/Functions.html#Hook-Functions
 
-autoload -U add-zsh-hook
+# Sets up Node.js with nvm when cd-ing into directories.
+add-zsh-hook chpwd load_nvmrc

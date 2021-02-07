@@ -27,7 +27,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
   function zle_application_mode_start { echoti smkx }
   function zle_application_mode_stop { echoti rmkx }
 
-  autoload -Uz add-zle-hook-widget
   add-zle-hook-widget -Uz line-init zle_application_mode_start
   add-zle-hook-widget -Uz line-finish zle_application_mode_stop
 fi
@@ -67,12 +66,11 @@ key[Page-Down]="${terminfo[knp]}"
 key[Insert]="${terminfo[kich1]}"
 
 # <Ctrl-x><Ctrl-e> to edit command-line in EDITOR
-autoload -Uz edit-command-line
+[[ -n "${key[Left]}" ]] && bindkey -- "${key[Left]}" backward-char
 zle -N edit-command-line
 [[ -n "${key[Control]}" ]] && bindkey -- "${key[Control]}x${key[Control]}e" edit-command-line
 
 # Smart URL pasting and escaping.
-autoload -Uz bracketed-paste-url-magic url-quote-magic
 zle -N bracketed-paste 
 zle -N bracketed-paste-url-magic
 # zle -N self-insert
@@ -92,7 +90,6 @@ bindkey '.' zle_double_dot_expand
 bindkey -M isearch '.' self-insert
 
 # Autoload required widgets.
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
