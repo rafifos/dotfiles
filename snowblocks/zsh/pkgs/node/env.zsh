@@ -13,7 +13,6 @@ export NVM_BIN=$PATH_USER_BIN
 # Configuration for Node.js.
 # See:
 #   1. https://nodejs.org/api/cli.html#cli_environment_variables
-export NODE_ENV=production
-export NODE_PENDING_DEPRECATION=1
+export NODE_ENV=development
 export NODE_PRESERVE_SYMLINKS=1
 export NODE_OPTIONS="--max-old-space-size=4096"
