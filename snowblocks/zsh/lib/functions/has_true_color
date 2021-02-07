@@ -7,10 +7,10 @@
 # License:    MIT License
 
 # Checks if the terminal has 24-bit color ("true color") support and if it has not been disabled via the custom
-# `ZSH_NO_TRUE_COLOR` environment variable.
+# `ZSH_NO_TRUE_COLOR` environment variable. It also have a specific check for Windows Terminal because Microsoft.
 # Note that support for 24-bit ("true color") terminals is only available for ZSH versions >=5.7 that allows
 # to use HEX triplets when specifying colors for prompts and line editor highlighting.
 # See:
 #   1. http://zsh.sourceforge.net/releases.html ("Changes between 5.6.2 and 5.7")
 autoload is-at-least
-is-at-least 5.7 && [[ $ZSH_NO_TRUE_COLOR != true ]] && [[ $COLORTERM = *(24bit|truecolor)* ]]
+is-at-least 5.7 && [[ $ZSH_NO_TRUE_COLOR != true ]] && ([[ $COLORTERM = *(24bit|truecolor)* ]] || (( ${+WT_SESSION} )))

@@ -8,9 +8,9 @@
 # See:
 #   1. https://www.nordtheme.com
 #   2. https://github.com/zsh-users/zsh-autosuggestions#configuration
-autoload -Uz use_nord_colors && use_nord_colors
+use_nord_colors
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_NORD_COLORS[11]"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$ZSH_NORD_COLORS[comment]"
 
 # Configurations for the zsh-users/zsh-autosuggestions plugin.
 # See:

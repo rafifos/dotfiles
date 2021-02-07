@@ -9,7 +9,7 @@
 # Tie (`-T`) the `FPATH` environment variable for unique (`-U`) entries.
 # Extend the ZSH function search path where system-wide functions should always take precedence.
 export -TU FPATH fpath
-fpath=($PATH_USER_FUNC $ZDOTDIR/lib/functions $fpath)
+fpath=($PATH_USER_FUNC $ZDOTDIR/lib/functions $ZDOTDIR/lib/themes $fpath)
 
 # Tie (`-T`) the `INFOPATH` environment variable for unique (`-U`) entries.
 # Extend the info search path where user-level manuals should always take precedence.
@@ -65,3 +65,6 @@ function {
 
 # Load and setup ZSH plugins with zplug.
 [[ -f $ZDOTDIR/lib/plugins.zsh ]] && source $ZDOTDIR/lib/plugins.zsh
+
+# Set the prompt theme. The shell is fully set up at this point.
+prompt $ZSH_PROMPT_THEME_NAME

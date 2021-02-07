@@ -27,6 +27,9 @@ export PATH_USER_VIDEOS="${PATH_USER_VIDEOS:-${XDG_VIDEOS_DIR:-HOME/Videos}}"
 # The custom path for the ZSH cache directory.
 export ZSH_PATH_CACHE=$PATH_USER_CACHE/zsh
 
+# The name of the ZSH prompt theme.
+export ZSH_PROMPT_THEME_NAME="${ZSH_PROMPT_THEME_NAME:-rh}"
+
 # Allows to disable support for 24-bit colors ("true color").
 # This variable is read for different configurations in order to disable the usage of HEX triplets
 # when specifying colors for prompts and line editor highlighting.

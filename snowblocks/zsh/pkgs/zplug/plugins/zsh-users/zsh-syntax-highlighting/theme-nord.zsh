@@ -10,7 +10,7 @@
 #   1. https://www.nordtheme.com
 #   2. https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 #   3. https://github.com/zsh-users/zsh-syntax-highlighting/tree/master/docs/highlighters
-autoload -Uz use_nord_colors && use_nord_colors
+use_nord_colors
 
 # Configurations for the `brackets` highlighter that highlights brackets and parentheses, and matches them.
 # See:

@@ -6,7 +6,9 @@
 # Repository: https://github.com/rafifos/dotfiles
 # License:    MIT
 
+use_nord_colors
+
 # Set the style of the sudo prompt.
 # See:
 #   1. sudo(8)
-export SUDO_PROMPT=$(print -P "%B%F{0}%K{6}sudo%b%f%k %B%F{14}%n%b%f@%F{4}%m%f: ")
+export SUDO_PROMPT=$(print -P "%B%F{\${ZSH_NORD_COLORS[6]}}%K{\${ZSH_NORD_COLORS[11]}}sudo%b%f%k %B%F{\${ZSH_NORD_COLORS[15]}}%n%b%f@%F{\${ZSH_NORD_COLORS[13]}%m%f: ")

@@ -11,7 +11,7 @@
 #   1. https://github.com/junegunn/fzf
 #   2. https://github.com/junegunn/fzf.vim
 #   3. https://github.com/sharkdp/fd#using-fd-with-fzf
-autoload -Uz use_nord_colors && use_nord_colors
+use_nord_colors
 
 FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS
 # Use fzf in fullscreen mode with command line at the bottom, allow to cycle through results when moving out

@@ -11,6 +11,10 @@
 # otherwise the terminal's 16 base colors are used.
 # See:
 #   1. https://www.nordtheme.com
+
+# Gracefully exists if the ZSH_NORD_COLORS hash has already been set.
+(( ${+ZSH_NORD_COLORS} )) && return 0
+
 autoload -Uz colors && colors
 autoload -Uz has_true_color
 
@@ -55,3 +59,5 @@ else
   ZSH_NORD_COLORS[15]=5
   ZSH_NORD_COLORS[comment]=8
 fi
+
+export ZSH_NORD_COLORS

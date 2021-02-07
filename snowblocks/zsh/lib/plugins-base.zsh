@@ -48,9 +48,6 @@ zplug "zsh-users/zsh-history-substring-search"
 # Additional completion definitions for Zsh.
 zplug "zsh-users/zsh-completions"
 
-# Spaceship - Zsh prompt for Astronauts.
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-
 # Suggests commands while typing based on history and completions.
 zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-autosuggestions"
 

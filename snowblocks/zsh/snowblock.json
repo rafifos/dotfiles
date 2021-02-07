@@ -37,6 +37,10 @@
         "create": true,
         "path": "lib/functions"
       },
+      "$HOME/.config/zsh/lib/themes": {
+        "create": true,
+        "path": "lib/themes"
+      },
       "$HOME/.config/zsh/lib/aliases.zsh": {
         "create": true,
         "path": "lib/aliases.zsh"

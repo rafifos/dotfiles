@@ -5,3 +5,14 @@
 # Project:    dotfiles
 # Repository: https://github.com/rafifos/dotfiles
 # License:    MIT License
+
+# Initialisation for new style completion. This mainly contains some helper
+# functions and setup.
+# See:
+#   1. https://github.com/zsh-users/zsh/blob/master/Completion/compinit
+autoload -Uz compinit
+
+# Enable and initialize ZSH's prompt theme and configuration support.
+# See:
+#   1. http://zsh.sourceforge.net/Doc/Release/User-Contributions.html#Prompt-Themes
+autoload -Uz promptinit && promptinit
