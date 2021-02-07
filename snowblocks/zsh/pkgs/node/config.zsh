@@ -12,6 +12,7 @@ if [[ ! -d $NVM_DIR ]]; then
   {
     echo 'npm'
     echo 'yarn'
+    echo 'terser'
   } >$NVM_DIR/default-packages
 
   nvm install --lts
