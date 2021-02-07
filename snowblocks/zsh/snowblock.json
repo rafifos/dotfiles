@@ -41,6 +41,10 @@
         "create": true,
         "path": "lib/themes"
       },
+      "$HOME/.config/zsh/lib/upstream": {
+        "create": true,
+        "path": "lib/upstream"
+      },
       "$HOME/.config/zsh/lib/aliases.zsh": {
         "create": true,
         "path": "lib/aliases.zsh"

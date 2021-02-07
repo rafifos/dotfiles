@@ -50,6 +50,12 @@ function {
   for lib_func ($ZDOTDIR/lib/functions/**/*) autoload -Uz $lib_func
 }
 
+# Sources upstream scripts.
+function {
+  local lib_up
+  for lib_up ($ZDOTDIR/lib/upstream/**/*) source $lib_up
+}
+
 # Load custom aliases.
 [[ -f $ZDOTDIR/lib/aliases.zsh ]] && source $ZDOTDIR/lib/aliases.zsh
 
