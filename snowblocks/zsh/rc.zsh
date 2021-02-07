@@ -26,15 +26,6 @@ manpath=($PATH_USER_MAN $manpath)
 export -TU PATH path
 path=($PATH_USER_BIN $path)
 
-# Load custom configurations.
-[[ -f $ZDOTDIR/lib/config.zsh ]] && source $ZDOTDIR/lib/config.zsh
-
-# Load package environment variables.
-function {
-  local pkg_env
-  for pkg_env ($ZDOTDIR/pkgs/**/env.zsh) source $pkg_env
-}
-
 # Load all ZSH related configurations.
 [[ -f $ZDOTDIR/config/autoload.zsh ]] && source $ZDOTDIR/config/autoload.zsh
 [[ -f $ZDOTDIR/config/completion.zsh ]] && source $ZDOTDIR/config/completion.zsh
@@ -44,8 +35,11 @@ function {
 [[ -f $ZDOTDIR/config/hooks.zsh ]] && source $ZDOTDIR/config/hooks.zsh
 [[ -f $ZDOTDIR/config/zle.zsh ]] && source $ZDOTDIR/config/zle.zsh
 
-# Load custom aliases.
-[[ -f $ZDOTDIR/lib/aliases.zsh ]] && source $ZDOTDIR/lib/aliases.zsh
+# Load custom configurations.
+[[ -f $ZDOTDIR/lib/config.zsh ]] && source $ZDOTDIR/lib/config.zsh
+
+# Load the ZSH line editor key bindings.
+[[ -f $ZDOTDIR/lib/key_bindings.zsh ]] && source $ZDOTDIR/lib/key_bindings.zsh
 
 # Autoload all custom functions.
 function {
@@ -53,15 +47,16 @@ function {
   for lib_func ($ZDOTDIR/lib/functions/**/*) autoload -Uz $lib_func
 }
 
-# Load all package configurations and aliases.
-function {
-  local pkg_aliases pkg_config
-  for pkg_aliases ($ZDOTDIR/pkgs/**/aliases.zsh) source $pkg_aliases
-  for pkg_config ($ZDOTDIR/pkgs/**/config.zsh) source $pkg_config
-}
+# Load custom aliases.
+[[ -f $ZDOTDIR/lib/aliases.zsh ]] && source $ZDOTDIR/lib/aliases.zsh
 
-# Load the ZSH line editor key bindings.
-[[ -f $ZDOTDIR/lib/key_bindings.zsh ]] && source $ZDOTDIR/lib/key_bindings.zsh
+# Load all package environment variables, configurations and aliases.
+function {
+  local pkg_env pkg_config pkg_aliases
+  for pkg_env ($ZDOTDIR/pkgs/**/env.zsh) source $pkg_env
+  for pkg_config ($ZDOTDIR/pkgs/**/config.zsh) source $pkg_config
+  for pkg_aliases ($ZDOTDIR/pkgs/**/aliases.zsh) source $pkg_aliases
+}
 
 # Load and setup ZSH plugins with zplug.
 [[ -f $ZDOTDIR/lib/plugins.zsh ]] && source $ZDOTDIR/lib/plugins.zsh
