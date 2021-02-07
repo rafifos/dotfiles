@@ -35,17 +35,17 @@
   done
 
   # Compile Zsh config files
-  for zfile in $ZDOTDIR/config/**/*(N-.); do
+  for zfile in $ZDOTDIR/config/**/*.zsh(N-.); do
     zrecompile -p ${1} ${zfile} || return 1
   done
 
   # Compile Zsh lib files
-  for zfile in $ZDOTDIR/lib/**/*(N-.); do
+  for zfile in $ZDOTDIR/lib/**/*.zsh(N-.); do
     zrecompile -p ${1} ${zfile} || return 1
   done
 
   # Compile Zsh pkg files
-  for zfile in $ZDOTDIR/pkgs/**/*(N-.); do
+  for zfile in $ZDOTDIR/pkgs/**/*.zsh(N-.); do
     zrecompile -p ${1} ${zfile} || return 1
   done
 }
