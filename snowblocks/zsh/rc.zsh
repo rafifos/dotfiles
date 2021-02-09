@@ -31,7 +31,6 @@ path=($PATH_USER_BIN $path)
 
 # Load all ZSH related configurations.
 [[ -f $ZDOTDIR/config/autoload.zsh ]] && source $ZDOTDIR/config/autoload.zsh
-[[ -f $ZDOTDIR/config/completion.zsh ]] && source $ZDOTDIR/config/completion.zsh
 [[ -f $ZDOTDIR/config/history.zsh ]] && source $ZDOTDIR/config/history.zsh
 [[ -f $ZDOTDIR/config/options.zsh ]] && source $ZDOTDIR/config/options.zsh
 [[ -f $ZDOTDIR/config/style.zsh ]] && source $ZDOTDIR/config/style.zsh
@@ -69,6 +68,10 @@ function {
 
 # Load and setup ZSH plugins with zplug.
 [[ -f $ZDOTDIR/lib/plugins.zsh ]] && source $ZDOTDIR/lib/plugins.zsh
+
+# Sets up the completion system after everything to make sure functions
+# installed by plugins get their completions loaded.
+[[ -f $ZDOTDIR/lib/completion.zsh ]] && source $ZDOTDIR/lib/completion.zsh
 
 # Set the prompt theme. The shell is fully set up at this point.
 prompt $ZSH_PROMPT_THEME_NAME
