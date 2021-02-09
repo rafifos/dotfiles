@@ -12,9 +12,17 @@
 if (( ${+commands[aria2c]} )); then
   alias get='aria2c --max-connection-per-server=8 --continue'
 elif (( ${+commands[http]} )); then
-  alias get='http --check-status --follow --download --continue'
+  alias get='http --check-status --follow --download'
 elif (( ${+commands[wget]} )); then
   alias get='wget --continue --progress=bar --timestamping'
 elif (( ${+commands[curl]} )); then
   alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 fi
+
+# If pbzip2/pigz are available, alias them as they are drop-in replacements for bzip2/gzip, respectively.
+# See:
+#   1. https://github.com/zimfw/archive/blob/master/init.zsh
+if (( ${+commands[pbzip2]} )) alias bzip2='pbzip2'
+if (( ${+commands[pbunzip2]} )) alias bunzip2='pbunzip2'
+if (( ${+commands[pigz]} )) alias gzip='pigz'
+if (( ${+commands[unpigz]} )) alias gunzip='unpigz'
