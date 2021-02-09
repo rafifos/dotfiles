@@ -1,17 +1,35 @@
 [
   {
-    "clean": ["$HOME", "$HOME/.config/zsh"]
+    "clean": [
+      "$HOME",
+      "$HOME/.config/zsh"
+    ]
   },
   {
     "link": {
-      "$HOME/.zshenv": "main.zsh",
+      "$HOME/.config/zsh/.zlogin": {
+        "create": true,
+        "path": "login.zsh"
+      },
+      "$HOME/.config/zsh/.zlogout": {
+        "create": true,
+        "path": "logout.zsh"
+      },
+      "$HOME/.config/zsh/.zprofile": {
+        "create": true,
+        "path": "profile.zsh"
+      },
+      "$HOME/.config/zsh/.zshenv": {
+        "create": true,
+        "path": "env.zsh"
+      },
+      "$HOME/.config/zsh/.zshrc": {
+        "create": true,
+        "path": "rc.zsh"
+      },
       "$HOME/.config/zsh/config/autoload.zsh": {
         "create": true,
         "path": "config/autoload.zsh"
-      },
-      "$HOME/.config/zsh/config/completion.zsh": {
-        "create": true,
-        "path": "config/completion.zsh"
       },
       "$HOME/.config/zsh/config/history.zsh": {
         "create": true,
@@ -33,18 +51,6 @@
         "create": true,
         "path": "config/zle.zsh"
       },
-      "$HOME/.config/zsh/lib/functions": {
-        "create": true,
-        "path": "lib/functions"
-      },
-      "$HOME/.config/zsh/lib/themes": {
-        "create": true,
-        "path": "lib/themes"
-      },
-      "$HOME/.config/zsh/lib/upstream": {
-        "create": true,
-        "path": "lib/upstream"
-      },
       "$HOME/.config/zsh/lib/aliases.zsh": {
         "create": true,
         "path": "lib/aliases.zsh"
@@ -53,6 +59,10 @@
         "create": true,
         "path": "lib/compile.zsh"
       },
+      "$HOME/.config/zsh/lib/completion.zsh": {
+        "create": true,
+        "path": "lib/completion.zsh"
+      },
       "$HOME/.config/zsh/lib/config.zsh": {
         "create": true,
         "path": "lib/config.zsh"
@@ -60,6 +70,10 @@
       "$HOME/.config/zsh/lib/env.zsh": {
         "create": true,
         "path": "lib/env.zsh"
+      },
+      "$HOME/.config/zsh/lib/functions": {
+        "create": true,
+        "path": "lib/functions"
       },
       "$HOME/.config/zsh/lib/key_bindings.zsh": {
         "create": true,
@@ -74,6 +88,14 @@
         "hosts": {
           "GUARDIAN": "lib/plugins.guardian.zsh"
         }
+      },
+      "$HOME/.config/zsh/lib/themes": {
+        "create": true,
+        "path": "lib/themes"
+      },
+      "$HOME/.config/zsh/lib/upstream": {
+        "create": true,
+        "path": "lib/upstream"
       },
       "$HOME/.config/zsh/pkgs/coreutils/aliases.zsh": {
         "create": true,
@@ -197,15 +219,19 @@
       },
       "$HOME/.config/zsh/pkgs/systemd/xdg/env.zsh": {
         "create": true,
-        "paths": "pkgs/systemd/xdg/env.zsh"
+        "path": "pkgs/systemd/xdg/env.zsh"
       },
       "$HOME/.config/zsh/pkgs/tilix/config.zsh": {
         "create": true,
-        "paths": "pkgs/tilix/config.zsh"
+        "path": "pkgs/tilix/config.zsh"
       },
       "$HOME/.config/zsh/pkgs/wget/env.zsh": {
         "create": true,
         "path": "pkgs/wget/env.zsh"
+      },
+      "$HOME/.config/zsh/pkgs/zplug/env.zsh": {
+        "create": true,
+        "path": "pkgs/zplug/env.zsh"
       },
       "$HOME/.config/zsh/pkgs/zplug/plugins/b4b4r07/enhancd/env.zsh": {
         "create": true,
@@ -223,30 +249,7 @@
         "create": true,
         "path": "pkgs/zplug/plugins/zsh-users/zsh-syntax-highlighting/theme-nord.zsh"
       },
-      "$HOME/.config/zsh/pkgs/zplug/env.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/env.zsh"
-      },
-      "$HOME/.config/zsh/.zshenv": {
-        "create": true,
-        "path": "env.zsh"
-      },
-      "$HOME/.config/zsh/.zlogin": {
-        "create": true,
-        "path": "login.zsh"
-      },
-      "$HOME/.config/zsh/.zlogout": {
-        "create": true,
-        "path": "logout.zsh"
-      },
-      "$HOME/.config/zsh/.zprofile": {
-        "create": true,
-        "path": "profile.zsh"
-      },
-      "$HOME/.config/zsh/.zshrc": {
-        "create": true,
-        "path": "rc.zsh"
-      }
+      "$HOME/.zshenv": "main.zsh"
     }
   }
 ]
