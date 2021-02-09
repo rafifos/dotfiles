@@ -39,6 +39,9 @@ zplug "Valiev/almostontop"
 # A zsh plugin that reminds you that you should use one of your existing aliases for a command you just typed.
 zplug "MichaelAquilina/zsh-you-should-use"
 
+# docker-compose completions
+zplug "docker/compose", use:contrib/completion/zsh
+
 # Additional completion definitions for Zsh.
 zplug "zsh-users/zsh-completions"
 
