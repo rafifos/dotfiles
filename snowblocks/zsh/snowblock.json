@@ -99,6 +99,10 @@
         "create": true,
         "path": "pkgs/docker/env.zsh"
       },
+      "$HOME/.config/zsh/pkgs/exa/aliases.zsh": {
+        "create": true,
+        "path": "pkgs/exa/aliases.zsh"
+      },
       "$HOME/.config/zsh/pkgs/fzf/config.zsh": {
         "create": true,
         "path": "pkgs/fzf/config.zsh"

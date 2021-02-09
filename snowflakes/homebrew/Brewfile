@@ -3,6 +3,7 @@ tap "github/gh"
 tap "rs/tap"
 
 brew "bat"
+brew "exa"
 brew "fzf"
 brew "gh"
 brew "git-crypt"
