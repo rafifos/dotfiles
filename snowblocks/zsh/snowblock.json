@@ -171,6 +171,14 @@
         "create": true,
         "path": "pkgs/priv/env.zsh"
       },
+      "$HOME/.config/zsh/pkgs/rip/aliases.zsh": {
+        "create": true,
+        "path": "pkgs/rip/aliases.zsh"
+      },
+      "$HOME/.config/zsh/pkgs/rip/env.zsh": {
+        "create": true,
+        "path": "pkgs/rip/env.zsh"
+      },
       "$HOME/.config/zsh/pkgs/rsync/aliases.zsh": {
         "create": true,
         "path": "pkgs/rsync/aliases.zsh"
