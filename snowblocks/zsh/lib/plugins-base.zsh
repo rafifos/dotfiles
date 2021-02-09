@@ -27,9 +27,6 @@ fi
 # "zsh-users/zsh-autosuggestions".
 zplug "Aloxaf/fzf-tab", defer:2
 
-# Provides archive and unarchive functions for easy archive manipulation.
-zplug "zimfw/archive"
-
 # Provides a convenient way to load ssh-agent. This enables one-time login and caching of ssh credentials per session.
 zplug "zimfw/ssh"
 
