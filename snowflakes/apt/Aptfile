@@ -1,13 +1,25 @@
-#!/usr/bin/env -S bin/aptfile
+#!/usr/bin/env -S .bash-aptfile/bin/aptfile
 # shellcheck disable=SC2096
+set -euo pipefail
+IFS=$'\n\t'
 
+# The script can only be run as root.
+if [[ $UID -ne 0 ]]; then
+  sudo -p 'Restarting as root, password: ' bash $0 "$@"
+  exit $?
+fi
+
+# Updates the software repositories before anything.
 update
 
 # Common dependencies which should be present on almost all systems by default.
 package "build-essential"
 package "git"
+package "neovim"
 package "pinentry-gnome3"
 package "software-properties-common"
+package "subversion"
+package "zsh"
 
 # Provides non-free media codecs and Microsoft Fonts.
 package "ubuntu-restricted-extras"
@@ -25,8 +37,8 @@ package "polychromatic"
 # Google Chrome is the browser built by Google.
 package_from_url "google-chrome-stable" "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
-# Legendary Git GUI client for Windows, Mac & Linux
-package_from_url "gitkraken" "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
+# # Legendary Git GUI client for Windows, Mac & Linux
+package_from_url "gitkraken" "https://release.axocdn.com/linux/gitkraken-amd64.deb"
 
 # Visual Studio Code is a lightweight but powerful source code editor.
 package_from_url "code" "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
