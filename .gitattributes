@@ -2,3 +2,4 @@
 **/priv/** filter=git-crypt diff=git-crypt
 
 /snowflakes/Bootstrap-WindowsMachine eol=crlf
+/snowflakes/windows-terminal eol=crlf

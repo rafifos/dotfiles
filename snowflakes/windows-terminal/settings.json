@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
+  "defaultProfile": "",
+  "disabledProfileSources": [
+    "Windows.Terminal.Azure"
+  ],
+  "wordDelimiters": " ./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}~?│",
+  "copyOnSelect": false,
+  "copyFormatting": false,
+  "multiLinePasteWarning": false,
+  "theme": "system",
+  "profiles": {
+    "defaults": {
+      "fontFace": "Iosevka Term",
+      "fontSize": 12,
+      "antialiasingMode": "cleartype",
+      "bellStyle": "visual",
+      "cursorShape": "vintage",
+      "historySize": 4096
+    },
+    "list": [
+      {
+        "guid": "",
+        "hidden": false,
+        "name": "Pengwin",
+        "icon": "pengwin.ico",
+        "source": "Windows.Terminal.Wsl",
+        "colorScheme": "Nord",
+        "tabColor": "#2E3440"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "Nord",
+      "background": "#2E3440",
+      "foreground": "#E5E9F0",
+      "cursorColor": "#E5E9F0",
+      "selectionBackground": "#E5E9F0",
+      "black": "#3B4252",
+      "blue": "#81A1C1",
+      "cyan": "#88C0D0",
+      "green": "#8FBCBB",
+      "purple": "#B48EAD",
+      "red": "#BF616A",
+      "white": "#4C566A",
+      "yellow": "#EBCB8B",
+      "brightBlack": "#3B4252",
+      "brightBlue": "#5E81AC",
+      "brightCyan": "#88C0D0",
+      "brightGreen": "#A3BE8C",
+      "brightPurple": "#B48EAD",
+      "brightRed": "#BF616A",
+      "brightWhite": "#E5E9F0",
+      "brightYellow": "#EBCB8B"
+    }
+  ],
+  "actions": [
+    {
+      "command": "find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "vertical",
+        "splitMode": "duplicate"
+      },
+      "keys": "ctrl+d"
+    },
+    {
+      "command": {
+        "action": "splitPane",
+        "split": "horizontal",
+        "splitMode": "duplicate"
+      },
+      "keys": "ctrl+shift+d"
+    }
+  ]
+}
