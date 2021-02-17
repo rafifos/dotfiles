@@ -1,2 +1,4 @@
 *.crypt filter=git-crypt diff=git-crypt
 **/priv/** filter=git-crypt diff=git-crypt
+
+/snowflakes/Bootstrap-WindowsMachine eol=crlf
