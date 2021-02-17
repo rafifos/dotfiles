@@ -4,9 +4,9 @@
   },
   {
     "link": {
-      "$HOME/.config/bat/config": {
+      "$HOME/.config/bat/bat.conf": {
         "create": true,
-        "path": "config"
+        "path": "bat.conf"
       }
     }
   }
