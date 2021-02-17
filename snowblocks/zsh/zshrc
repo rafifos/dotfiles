@@ -45,13 +45,10 @@ zinit atinit'_omz_ssh_atinit' for OMZP::/ssh-agent
 # Prezto
 # See: https://github.com/sorin-ionescu/prezto
 zinit wait for PZTM::command-not-found \
-  as'null' svn atpull'zinit creinstall -q .' PZTM::archive
+  as'null' svn PZTM::archive
 
 # A next-generation cd command with an interactive filter ✨
 zinit wait atinit'_enhancd_atinit' for b4b4r07/enhancd
-
-# Replace zsh's default completion selection menu with fzf!
-zinit wait for Aloxaf/fzf-tab
 
 # A tool designed to help you use git more efficiently.
 zinit wait for wfxr/forgit
@@ -66,27 +63,33 @@ zinit wait for Valiev/almostontop
 zinit wait for MichaelAquilina/zsh-you-should-use
 
 # docker and docker-compose completions.
-zinit wait for greymd/docker-zsh-completion
+zinit wait blockf for greymd/docker-zsh-completion
 
 # Better completion for npm.
-zinit wait for lukechilds/zsh-better-npm-completion
+zinit wait blockf for lukechilds/zsh-better-npm-completion
 
 # Additional completions for Zsh.
-zinit wait blockf atpull'zinit creinstall -q .' for zsh-users/zsh-completions
+zinit wait blockf for zsh-users/zsh-completions
 
 # Loads completions bundled with the system.
-zinit wait pack for system-completions
+zinit wait pack blockf for system-completions
 
-# Fish-like fast/unobtrusive autosuggestions for zsh.
-zinit wait atload'_zsh_autosuggestions_atload' for zsh-users/zsh-autosuggestions
+# Initializes the completion system and replays cached completions.
+zicompinit && zicdreplay
 
 # 🐠 ZSH port of Fish history search (up arrow).
 zinit wait atload'_zsh_history_substring_search_atload' \
   bindmap'UPAR -> history-substring-search-up; DOWNAR history-substring-search-down' \
   for zsh-users/zsh-history-substring-search
 
+# Replace zsh's default completion selection menu with fzf!
+zinit wait for Aloxaf/fzf-tab
+
 # Feature rich syntax highlighting for Zsh.
 zinit wait atload'_zsh_syntax_highlighting_atload' for zsh-users/zsh-syntax-highlighting
+
+# Fish-like fast/unobtrusive autosuggestions for zsh.
+zinit wait atload'_zsh_autosuggestions_atload' for zsh-users/zsh-autosuggestions
 
 # A plugin that auto-closes, deletes and skips over matching delimiters in zsh intelligently. Hopefully.
 # NOTE: This should always come last (even after zsh-completions).
