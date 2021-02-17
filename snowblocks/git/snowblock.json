@@ -9,11 +9,11 @@
   },
   {
     "link": {
-      "$HOME/.config/git/includes/templates/commit.txt": {
+      "$HOME/.config/git/commit_msg": {
         "create": true,
         "path": "includes/templates/commit.txt"
       },
-      "$HOME/.config/git/includes/user.conf": {
+      "$HOME/.config/git/user": {
         "create": true,
         "hosts": {
           "GUARDIAN": "includes/user-rafifos.conf"
