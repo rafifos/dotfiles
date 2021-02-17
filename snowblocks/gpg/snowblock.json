@@ -1,10 +1,16 @@
 [
   {
-    "clean": ["$HOME/.gnupg"]
+    "clean": [
+      "$HOME/.config/gnupg"
+    ]
   },
   {
     "link": {
-      "$HOME/.gnupg/gpg.conf": {
+      "$HOME/.config/gnupg/gpg-agent.conf": {
+        "create": true,
+        "path": "gpg-agent.conf"
+      },
+      "$HOME/.config/gnupg/gpg.conf": {
         "create": true,
         "path": "gpg.conf"
       }
