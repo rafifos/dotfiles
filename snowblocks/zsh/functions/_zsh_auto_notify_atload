@@ -1,0 +1,18 @@
+# Configurations for zsh-auto-notify, a zsh plugin that automatically sends out a notification when a long running task
+# has completed.
+# See: https://github.com/MichaelAquilina/zsh-auto-notify#configuration
+
+# Only send notifications after n seconds.
+export AUTO_NOTIFY_THRESHOLD=15
+
+# Notification title.
+export AUTO_NOTIFY_TITLE='Hey! %command has just finished'
+
+# Notification body.
+export AUTO_NOTIFY_BODY='It completed in %elapsed seconds with exit code %exit_code'
+
+# The notification will automatically expire after n **milliseconds**.
+export AUTO_NOTIFY_EXPIRE_TIME=8192
+
+# Commands that don't trigger notifications.
+export AUTO_NOTIFY_IGNORE=('docker' 'less' 'man' 'nvim' 'sleep')

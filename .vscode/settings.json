@@ -1,51 +1,7 @@
 {
-  "[markdown]": {
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120
-  },
-  "editor.rulers": [80],
-  "editor.tabSize": 2,
-  "evenBetterToml.formatter.alignEntries": true,
-  "evenBetterToml.formatter.indentTables": true,
-  "evenBetterToml.formatter.reorderKeys": true,
-  "evenBetterToml.schema.links": true,
   "files.associations": {
     "*.crypt": "shellscript",
     "aptfile": "shellscript",
     "Brewfile": "ruby"
-  },
-  "psi-header.changes-tracking": {
-    "autoHeader": "manualSave",
-    "enforceHeader": true,
-    "include": ["shellscript"],
-    "isActive": true
-  },
-  "psi-header.config": {
-    "license": "MIT"
-  },
-  "psi-header.lang-config": [
-    {
-      "begin": "",
-      "blankLinesAfter": 1,
-      "end": "",
-      "forceToTop": true,
-      "language": "*",
-      "prefix": "",
-      "rootDirFileName": "bootstrap",
-      "suffix": ""
-    }
-  ],
-  "psi-header.templates": [
-    {
-      "language": "*",
-      "template": [
-        "# Copyright (c) <<yeartoyear(2021, now)>> <<author>> <<<authoremail>>>",
-        "",
-        "# Project:    <<projectname>>",
-        "# Repository: https://github.com/<<authorUsername>>/<<projectname>>",
-        "# License:    <<licensename>>"
-      ]
-    }
-  ],
-  "psi-header.variables": [["projectname", "dotfiles"]]
+  }
 }

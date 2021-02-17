@@ -7,249 +7,74 @@
   },
   {
     "link": {
+      "$HOME/.zshenv": {
+        "create": true,
+        "path": "zshim"
+      },
       "$HOME/.config/zsh/.zlogin": {
         "create": true,
-        "path": "login.zsh"
+        "path": "zlogin"
       },
       "$HOME/.config/zsh/.zlogout": {
         "create": true,
-        "path": "logout.zsh"
+        "path": "zlogout"
       },
       "$HOME/.config/zsh/.zprofile": {
         "create": true,
-        "path": "profile.zsh"
+        "path": "zprofile"
       },
       "$HOME/.config/zsh/.zshenv": {
         "create": true,
-        "path": "env.zsh"
+        "path": "zshenv"
       },
       "$HOME/.config/zsh/.zshrc": {
         "create": true,
-        "path": "rc.zsh"
+        "path": "zshrc"
       },
-      "$HOME/.config/zsh/config/autoload.zsh": {
+      "$HOME/.config/zsh/functions": {
         "create": true,
-        "path": "config/autoload.zsh"
+        "path": "functions"
       },
-      "$HOME/.config/zsh/config/history.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---config": {
         "create": true,
-        "path": "config/history.zsh"
+        "path": "plugins/config"
       },
-      "$HOME/.config/zsh/config/hooks.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---docker": {
         "create": true,
-        "path": "config/hooks.zsh"
+        "path": "plugins/docker"
       },
-      "$HOME/.config/zsh/config/options.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---exa": {
         "create": true,
-        "path": "config/options.zsh"
+        "path": "plugins/exa"
       },
-      "$HOME/.config/zsh/config/style.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---fzf": {
         "create": true,
-        "path": "config/style.zsh"
+        "path": "plugins/fzf"
       },
-      "$HOME/.config/zsh/config/zle.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---gpg": {
         "create": true,
-        "path": "config/zle.zsh"
+        "path": "plugins/gpg"
       },
-      "$HOME/.config/zsh/lib/aliases.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---httpie": {
         "create": true,
-        "path": "lib/aliases.zsh"
+        "path": "plugins/httpie"
       },
-      "$HOME/.config/zsh/lib/compile.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---private": {
         "create": true,
-        "path": "lib/compile.zsh"
+        "path": "plugins/private"
       },
-      "$HOME/.config/zsh/lib/completion.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---rip": {
         "create": true,
-        "path": "lib/completion.zsh"
+        "path": "plugins/rip"
       },
-      "$HOME/.config/zsh/lib/config.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---ripgrep": {
         "create": true,
-        "path": "lib/config.zsh"
+        "path": "plugins/ripgrep"
       },
-      "$HOME/.config/zsh/lib/env.zsh": {
+      "$HOME/.local/share/zinit/plugins/_local---rsync": {
         "create": true,
-        "path": "lib/env.zsh"
-      },
-      "$HOME/.config/zsh/lib/functions": {
-        "create": true,
-        "path": "lib/functions"
-      },
-      "$HOME/.config/zsh/lib/key_bindings.zsh": {
-        "create": true,
-        "path": "lib/key_bindings.zsh"
-      },
-      "$HOME/.config/zsh/lib/plugins-base.zsh": {
-        "create": true,
-        "path": "lib/plugins-base.zsh"
-      },
-      "$HOME/.config/zsh/lib/plugins.zsh": {
-        "create": true,
-        "hosts": {
-          "GUARDIAN": "lib/plugins.guardian.zsh"
-        }
-      },
-      "$HOME/.config/zsh/lib/themes": {
-        "create": true,
-        "path": "lib/themes"
-      },
-      "$HOME/.config/zsh/lib/upstream": {
-        "create": true,
-        "path": "lib/upstream"
-      },
-      "$HOME/.config/zsh/pkgs/coreutils/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/coreutils/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/coreutils/env.zsh": {
-        "create": true,
-        "path": "pkgs/coreutils/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/diff/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/diff/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/dircolors/config.zsh": {
-        "create": true,
-        "path": "pkgs/dircolors/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/docker/config.zsh": {
-        "create": true,
-        "path": "pkgs/docker/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/docker/env.zsh": {
-        "create": true,
-        "path": "pkgs/docker/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/exa/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/exa/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/fzf/config.zsh": {
-        "create": true,
-        "path": "pkgs/fzf/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/fzf/env.zsh": {
-        "create": true,
-        "path": "pkgs/fzf/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/git/config-base.zsh": {
-        "create": true,
-        "path": "pkgs/git/config-base.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/git/config.zsh": {
-        "create": true,
-        "hosts": {
-          "GUARDIAN": "pkgs/git/config.guardian.zsh"
-        }
-      },
-      "$HOME/.config/zsh/pkgs/gnome/env.zsh": {
-        "create": true,
-        "hosts": {
-          "drifter": "pkgs/gnome/env.drifter.zsh"
-        }
-      },
-      "$HOME/.config/zsh/pkgs/gnupg/env.zsh": {
-        "create": true,
-        "path": "pkgs/gnupg/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/grep/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/grep/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/grep/env.zsh": {
-        "create": true,
-        "path": "pkgs/grep/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/homebrew/config.zsh": {
-        "create": true,
-        "path": "pkgs/homebrew/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/homebrew/env.zsh": {
-        "create": true,
-        "path": "pkgs/homebrew/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/less/env.zsh": {
-        "create": true,
-        "path": "pkgs/less/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/node/config.zsh": {
-        "create": true,
-        "path": "pkgs/node/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/node/env.zsh": {
-        "create": true,
-        "path": "pkgs/node/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/priv/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/priv/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/priv/config.zsh": {
-        "create": true,
-        "path": "pkgs/priv/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/priv/env.zsh": {
-        "create": true,
-        "path": "pkgs/priv/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/rip/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/rip/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/rip/env.zsh": {
-        "create": true,
-        "path": "pkgs/rip/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/rsync/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/rsync/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/ssh/env.zsh": {
-        "create": true,
-        "path": "pkgs/ssh/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/sudo/aliases.zsh": {
-        "create": true,
-        "path": "pkgs/sudo/aliases.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/sudo/env.zsh": {
-        "create": true,
-        "path": "pkgs/sudo/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/systemd/xdg/env.zsh": {
-        "create": true,
-        "path": "pkgs/systemd/xdg/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/tilix/config.zsh": {
-        "create": true,
-        "path": "pkgs/tilix/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/wget/env.zsh": {
-        "create": true,
-        "path": "pkgs/wget/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/zplug/env.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/zplug/plugins/b4b4r07/enhancd/env.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/plugins/b4b4r07/enhancd/env.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/zplug/plugins/zsh-users/zsh-autosuggestions/config.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/plugins/zsh-users/zsh-autosuggestions/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/zplug/plugins/zsh-users/zsh-syntax-highlighting/config.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/plugins/zsh-users/zsh-syntax-highlighting/config.zsh"
-      },
-      "$HOME/.config/zsh/pkgs/zplug/plugins/zsh-users/zsh-syntax-highlighting/theme-nord.zsh": {
-        "create": true,
-        "path": "pkgs/zplug/plugins/zsh-users/zsh-syntax-highlighting/theme-nord.zsh"
-      },
-      "$HOME/.zshenv": "main.zsh"
+        "path": "plugins/rsync"
+      }
     }
   }
 ]

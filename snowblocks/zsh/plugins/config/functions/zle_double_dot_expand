@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+# Reset's the shell options to their default values and applies some opinionated options.
+# See: https://github.com/zdharma/Zsh-100-Commits-Club/blob/master/Zsh-Plugin-Standard.adoc#standard-recommended-options
+emulate -L zsh
+setopt extended_glob warn_create_global typeset_silent no_short_loops rc_quotes no_auto_pushd
+
+# Expands .. at the beginning, after space, or after any of ! " & ' / ; < > |
+# See: https://github.com/zimfw/input/blob/2f95e2aeed9b4cc3e383adcb41c7a9e8d9f8d89d/init.zsh#L76
+if [[ ${LBUFFER} == (|*[[:space:]!\"\&\'/\;\<\>|]).. ]]; then
+  LBUFFER+='/..'
+else
+  LBUFFER+='.'
+fi

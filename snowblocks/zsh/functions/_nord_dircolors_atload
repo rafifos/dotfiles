@@ -1,0 +1,5 @@
+# Sets the colors for all completions.
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Set's the LS_COLORS variable.
+eval "$(dircolors src/dir_colors)"

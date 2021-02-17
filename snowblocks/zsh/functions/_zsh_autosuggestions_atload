@@ -1,0 +1,14 @@
+# Configurations for the zsh-users/zsh-autosuggestions plugin.
+# See: https://github.com/zsh-users/zsh-autosuggestions#configuration
+
+# Suggestion style.
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
+
+# Disable autosuggestions for large buffers.
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+# Try to find a suggestion from your history, fallbacks to the completion engine.
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+# Fetch suggestions asynchronously.
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
