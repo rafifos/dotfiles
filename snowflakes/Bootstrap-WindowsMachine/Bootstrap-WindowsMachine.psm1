@@ -68,6 +68,11 @@ Install-WinGetPackage -Package "Ubisoft.Connect"
 # Free cheats & trainers for your favorite PC games in one easy app.
 Install-WinGetPackage -Package "WeMod.WeMod"
 
+# Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experience for greater
+# productivity. Inspired by the Windows 95 era PowerToys project, this reboot provides power users with ways to squeeze
+# more efficiency out of the Windows 10 shell and customize it for individual workflows.
+Install-WinGetPackage -Package "Microsoft.PowerToys"
+
 # End of package installation, WinGet does not _yet_ supports installing packages from the Microsoft Store.
 Write-Host "Install completed."
 Write-Host "Microsoft Store packages needs to be installed manually."
