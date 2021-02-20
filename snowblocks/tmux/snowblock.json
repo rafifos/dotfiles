@@ -1,0 +1,16 @@
+[
+  {
+    "clean": [
+      "$HOME"
+    ]
+  },
+  {
+    "link": {
+      "$HOME/.tmux.conf": {
+        "create": true,
+        "force": true,
+        "path": "tmux.conf"
+      }
+    }
+  }
+]
