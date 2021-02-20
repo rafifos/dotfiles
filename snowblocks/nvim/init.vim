@@ -20,11 +20,21 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(autoload_plug_path)
 
-Plug 'arcticicestudio/nord-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'arcticicestudio/nord-vim'
 
 " Initialize plugin system
 call plug#end()
 
-" Custom colorscheme
-colorscheme nord
+" Set colorsceme to nord
+silent! colorscheme nord
+" Activate nord airline theme
+let g:airline_theme='nord'
