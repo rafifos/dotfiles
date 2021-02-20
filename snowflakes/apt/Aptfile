@@ -18,7 +18,6 @@ package "git"
 package "neovim"
 package "pinentry-gnome3"
 package "software-properties-common"
-package "subversion"
 package "zsh"
 
 # Provides non-free media codecs and Microsoft Fonts.
