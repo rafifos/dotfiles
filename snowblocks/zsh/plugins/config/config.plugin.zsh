@@ -10,7 +10,7 @@ if [[ $PMSPEC != *f* ]] {
 
 # Adds binaries to $path.
 if [[ $PMSPEC != *b* ]] {
-  path+=( "${PWD}/bin" )
+  path+=( "${0:h}/bin" )
 }
 
 # Configure ZSH feature options.
@@ -168,6 +168,18 @@ unsetopt MENU_COMPLETE
 # Disable start/stop characters in shell editor.
 unsetopt FLOW_CONTROL
 
+# Workaround for handling TERM variable in multiple tmux sessions properly.
+# See: http://sourceforge.net/p/tmux/mailman/message/32751663
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
+  case $(tmux showenv TERM 2>/dev/null) in
+    *256color) ;&
+    TERM=fbterm)
+      TERM=screen-256color ;;
+    *)
+      TERM=screen
+  esac
+fi
+
 # XDG base directories specification.
 # See:
 #   1. https://wiki.archlinux.org/index.php/XDG_Base_Directory
@@ -323,6 +335,11 @@ zle -N zle_double_dot_expand
 # the home path of the current user.
 # See: https://gnunn1.github.io/tilix-web/manual/vteconfig
 [[ -n $TILIX_ID || -n $VTE_VERSION && -f /etc/profile.d/vte.sh ]] && source /etc/profile.d/vte.sh
+
+# When Zsh is started attach to the current tmux session or create a new one.
+if [[ -z "$TMUX" ]]; then
+  tmux attach -t TMUX || tmux new -s TMUX
+fi
 
 # Handy alias to automagically switch to a temporary folder.
 alias mktempd='cd "$(mktemp -d)"'

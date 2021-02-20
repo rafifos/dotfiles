@@ -5,7 +5,7 @@
 
 # Adds functions to $fpath.
 if [[ $PMSPEC != *f* ]] {
-  fpath+=( "${PWD}/functions" )
+  fpath+=( "${0:h}/functions" )
 }
 
 # Handy alias to download a remote file using httpie.

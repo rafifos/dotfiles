@@ -5,7 +5,7 @@
 
 # Adds functions to $fpath.
 if [[ $PMSPEC != *f* ]] {
-  fpath+=( "${PWD}/functions" )
+  fpath+=( "${0:h}/functions" )
 }
 
 # rsync based file system operations with detailed process and status information.

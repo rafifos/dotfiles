@@ -6,7 +6,7 @@
 
 # Adds functions to $fpath.
 if [[ $PMSPEC != *f* ]] {
-  fpath+=( "${PWD}/functions" )
+  fpath+=( "${0:h}/functions" )
 }
 
 # The file to which fzf's history will be saved.

@@ -5,7 +5,7 @@
 
 # Adds functions to $fpath.
 if [[ $PMSPEC != *f* ]] {
-  fpath+=( "${PWD}/functions" )
+  fpath+=( "${0:h}/functions" )
 }
 
 # Provides a simple and accesible alias for directory listing.
