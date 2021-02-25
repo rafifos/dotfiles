@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+
+# Enable xtrace if the DEBUG environment variable is set
+if [[ ${DEBUG-} =~ ^1|yes|true$ ]]; then
+  set -o xtrace # Trace the execution of the script (debug)
+fi
+
+# Only enable these shell behaviours if we're not being sourced
+# Approach via: https://stackoverflow.com/a/28776166/8787985
+if ! (return 0 2>/dev/null); then
+  # A better class of script...
+  set -o errexit  # Exit on most errors (see the manual)
+  set -o nounset  # Disallow expansion of unset variables
+  set -o pipefail # Use last non-zero exit code in a pipeline
+fi
+
+# Enable errtrace or the error trap handler will not work as expected
+set -o errtrace # Ensure the error trap handler is inherited
+
+# Sets `\n\t` as the word separator for the Interal Field Separator,
+# this tells bash how to separate words, and governs how it will
+# iterate through a sequence.
+IFS=$'\n\t'
+
+function deb_from_url() {
+  local cwd="$PWD"
+  local tmpd
+
+  tmpd="$(mktemp -d)"
+
+  cd "$tmpd"
+  curl -fsSLO "$1"
+  sudo dpkg -i ./*.deb && sudo apt -f install
+  cd "$cwd"
+}
+
+sudo apt update
+sudo apt install -y -y build-essential git software-properties-common
+
+if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
+
+# Legendary Git GUI client for Windows, Mac & Linux.
+deb_from_url 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
+
+if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
+  # My setup uses Pengwin and and X410, this is why I'm installing GUI
+  # applications. Also, using `pinentry-gnome3` on this kind of setup enables
+  # vscode to sign commits using `gpg`, which is currently not possible with
+  # `pinentry-curses` and `pinentry-tty`.
+  sudo apt install -y pinentry-gnome3
+else
+  # Non-free codecs and file archiving formats.
+  sudo apt install -y ubuntu-restricted-extras
+
+  # An entirely open source driver and user-space daemon that allows you to
+  # manage your Razer peripherals on GNU/Linux.
+  sudo add-apt-repository -yu ppa:openrazer/stable && sudo apt install -y openrazer-meta
+
+  # A cross-distro front-end for the OpenRazer project.
+  sudo add-apt-repository -yu ppa:polychromatic/stable && sudo apt install -y polychromatic
+
+  # Docker Engine is an open source containerization technology for building and
+  # containerizing your applications.
+  sudo apt remove docker docker-engine docker.io containerd runc
+  curl -fsSL https://get.docker.com | sudo sh
+  sudo usermod -aG docker
+
+  # The browser built by Google.
+  deb_from_url 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+
+  # Code editing. Redefined.
+  deb_from_url 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64'
+
+  # Open Source SQL Editor and Database Manager.
+  curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
+  echo 'deb https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+  sudo apt update
+  sudo apt install -y beekeeper-studio
+
+  # Installs flatpak packages.
+  sudo add-apt-repository -yu ppa:alexlarsson/flatpak && sudo apt install -y flatpak
+  flatpak install --user --yes ./**/*.flatpakref
+fi
+
+# Common configurations.
+CONFIG='config.yaml'
+DOTBOT_DIR='.dotbot'
+DOTBOT_BIN='bin/dotbot'
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

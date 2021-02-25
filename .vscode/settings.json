@@ -1,4 +1,7 @@
 {
+  "[fish]": {
+    "editor.tabSize": 4
+  },
   "files.associations": {
     "*.crypt": "shellscript",
     "aptfile": "shellscript",

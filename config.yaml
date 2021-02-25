@@ -1,0 +1,34 @@
+- defaults:
+    link:
+      create: true
+      force: true
+      relative: true
+
+- clean: ["~", "~/.config"]
+
+- link:
+    ~/.config/bat/bat.conf: bat/bat.conf
+    ~/.config/fish/conf.d/environment.fish: fish/conf.d/environment.fish
+    ~/.config/fish/conf.d/fisher.fish: fish/conf.d/fisher.fish
+    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
+    ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/grc.fish: fish/functions/grc.fish
+    ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
+    ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
+    ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/private.fish: fish/private.fish
+    ~/.config/git/commit_msg: git/includes/templates/commit.txt
+    ~/.config/git/user: git/includes/user-rafifos.conf
+    ~/.config/htop/htoprc: htop/htoprc
+    ~/.config/neofetch/config.conf: neofetch/config.conf
+    ~/.config/nvim/init.vim: nvim/init.vim
+    ~/.config/procs/config.toml: procs/config.toml
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/.gitattributes: git/attributes.conf
+    ~/.gitconfig: git/config.conf
+    ~/.gitignore: git/ignore.conf
+
+- shell:
+    - git submodule update --init --recursive

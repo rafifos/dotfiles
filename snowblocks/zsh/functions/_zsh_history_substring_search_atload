@@ -1,8 +1,0 @@
-# Registers the zsh-history-substring-search plugin.
-# See: https://github.com/zsh-users/zsh-history-substring-search#usage
-
-# How the query should be highlighted inside a matching command.
-export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=7;bg=6,bold'
-
-# How the query should be highlighted when no commands in the history match it.
-export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=7;bg=1'
