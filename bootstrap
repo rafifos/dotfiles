@@ -35,7 +35,13 @@ function deb_from_url() {
 }
 
 sudo apt update
-sudo apt install -y -y build-essential git software-properties-common
+sudo apt install -y build-essential git software-properties-common
+
+# My setup uses Pengwin and and X410, this is why I'm installing GUI
+# applications. Also, using `pinentry-gnome3` on this kind of setup enables
+# vscode to sign commits using `gpg`, which is currently not possible with
+# `pinentry-curses` and `pinentry-tty`.
+sudo apt install -y pinentry-gnome3
 
 if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -46,13 +52,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 # Legendary Git GUI client for Windows, Mac & Linux.
 deb_from_url 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
 
-if [[ "$(</proc/sys/kernel/osrelease)" == *microsoft* ]]; then
-  # My setup uses Pengwin and and X410, this is why I'm installing GUI
-  # applications. Also, using `pinentry-gnome3` on this kind of setup enables
-  # vscode to sign commits using `gpg`, which is currently not possible with
-  # `pinentry-curses` and `pinentry-tty`.
-  sudo apt install -y pinentry-gnome3
-else
+if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # Non-free codecs and file archiving formats.
   sudo apt install -y ubuntu-restricted-extras
 
@@ -65,9 +65,10 @@ else
 
   # Docker Engine is an open source containerization technology for building and
   # containerizing your applications.
-  sudo apt remove docker docker-engine docker.io containerd runc
-  curl -fsSL https://get.docker.com | sudo sh
-  sudo usermod -aG docker
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+  sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io
+  sudo groupadd docker && sudo usermod -aG docker "$USER" && newgrp docker
 
   # The browser built by Google.
   deb_from_url 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
@@ -77,13 +78,14 @@ else
 
   # Open Source SQL Editor and Database Manager.
   curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
-  echo 'deb https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
-  sudo apt update
-  sudo apt install -y beekeeper-studio
+  echo 'deb [arch=amd64] https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+  sudo apt update && sudo apt install -y beekeeper-studio
 
   # Installs flatpak packages.
   sudo add-apt-repository -yu ppa:alexlarsson/flatpak && sudo apt install -y flatpak
-  flatpak install --user --yes ./**/*.flatpakref
+  for file in **/*.flatpakref; do
+    flatpak install --user --yes "$file"
+  done
 fi
 
 # Common configurations.
