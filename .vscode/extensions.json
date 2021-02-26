@@ -1,3 +1,7 @@
 {
-  "recommendations": ["timonwong.shellcheck", "bmalehorn.vscode-fish"]
+  "recommendations": [
+    "timonwong.shellcheck",
+    "bmalehorn.vscode-fish",
+    "foxundermoon.shell-format"
+  ]
 }
