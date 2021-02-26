@@ -75,11 +75,24 @@ if status --is-interactive
         abbr -a -g e 'exa -@aghl'
     end
 
-    # Loads ssh and github identities using keychain.
-    type -q keychain; and keychain --agents gpg,ssh --quiet --quick id_ed25519 B95B60CE
-
     # Handy abbr to download a remote file using httpie.
     type -q http; and abbr -a -g download 'http --follow --download'
+
+    # Loads ssh identities and gpg keys using keychain.
+    if type -q keychain
+        set -l __keychain_identities
+        set -l host (hostname)
+
+        type -q ssh; and set -a __keychain_identities id_ed25519
+
+        if test $host = GUARDIAN
+            set -a __keychain_identities B95B60CE
+        else if test $host = drifter
+            set -a __keychain_identities 080131B7
+        end
+
+        keychain --agents gpg,ssh --quick $__keychain_identities
+    end
 
     # Prints some info about TARGET before prompting for action.
     type -q rip; and abbr -a -g rip 'rip --inspect'
