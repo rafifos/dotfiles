@@ -49,9 +49,6 @@ fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 
-# Legendary Git GUI client for Windows, Mac & Linux.
-deb_from_url 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
-
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # Non-free codecs and file archiving formats.
   sudo apt install -y ubuntu-restricted-extras
@@ -86,6 +83,9 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   for file in **/*.flatpakref; do
     flatpak install --user --yes "$file"
   done
+else
+  # Legendary Git GUI client for Windows, Mac & Linux.
+  deb_from_url 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
 fi
 
 # Common configurations.

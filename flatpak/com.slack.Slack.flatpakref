@@ -1,7 +1,7 @@
 [Flatpak Ref]
-Name=org.gnome.Tau
+Name=com.slack.Slack
 Branch=stable
-Title=org.gnome.Tau from flathub
+Title=com.slack.Slack from flathub
 IsRuntime=false
 Url=https://dl.flathub.org/repo/
 SuggestRemoteName=flathub
