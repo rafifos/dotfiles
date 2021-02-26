@@ -98,7 +98,7 @@ if status --is-interactive
             set -a __keychain_identities 080131B7
         end
 
-        keychain --agents gpg,ssh --quick $__keychain_identities
+        keychain --quick --ignore-missing --host $host --agents gpg,ssh --inherit any $__keychain_identities
     end
 
     # Hooks npq to npm and yarn.
