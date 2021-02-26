@@ -1,4 +1,7 @@
 function fish_prompt --description "Based on joelwanner/theme-boxfish."
+    # Prevents fish from showing stuff on the right of the prompt.
+    set -g fish_right_prompt
+
     set -l last_command_status $status
     set -l cwd
 
