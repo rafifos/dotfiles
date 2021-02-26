@@ -8,8 +8,8 @@
 
 - link:
     ~/.config/bat/bat.conf: bat/bat.conf
-    ~/.config/fish/conf.d/environment.fish: fish/conf.d/environment.fish
-    ~/.config/fish/conf.d/fisher.fish: fish/conf.d/fisher.fish
+    ~/.config/fish/conf.d/environment.fish: fish/conf.d/00-environment.fish
+    ~/.config/fish/conf.d/fisher.fish: fish/conf.d/01-fisher.fish
     ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
     ~/.config/fish/functions/grc.fish: fish/functions/grc.fish
