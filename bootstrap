@@ -35,7 +35,7 @@ function deb_from_url() {
 }
 
 sudo apt update
-sudo apt install -y build-essential git keychain software-properties-common
+sudo apt install -y build-essential file fortune git keychain software-properties-common
 
 # My setup uses Pengwin and and X410, this is why I'm installing GUI
 # applications. Also, using `pinentry-gnome3` on this kind of setup enables
@@ -85,7 +85,7 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   done
 else
   # Legendary Git GUI client for Windows, Mac & Linux.
-  deb_from_url 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
+  flatpak install --user --yes "./flatpak/com.jetbrains.WebStorm.flatpakref"
 fi
 
 # Common configurations.
