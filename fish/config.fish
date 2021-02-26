@@ -14,16 +14,23 @@ if not test -d ~/.asdf
     replay 'bash -c \'${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring\''
 
     # asdf-nodejs default packages, I know this is ugly, blame fish for it.
-    echo >~/.default-npm-packages 'npm'
-    echo >>~/.default-npm-packages 'terser'
-    echo >>~/.default-npm-packages 'tldr'
-    echo >>~/.default-npm-packages 'yarn'
+    echo >~/.default-npm-packages npm
+    echo >>~/.default-npm-packages npq
+    echo >>~/.default-npm-packages terser
+    echo >>~/.default-npm-packages tldr
+    echo >>~/.default-npm-packages yarn
 
     echo >~/.asdfrc 'legacy_version_file = yes'
 
     asdf install nodejs lts
     asdf global nodejs lts
 else
+    # Node.js configurations
+    # See: https://nodejs.org/api/cli.html#cli_environment_variables
+    set -gx NODE_ENV development
+    set -gx NODE_PRESERVE_SYMLINKS 1
+    set -gx NODE_OPTIONS '--max-old-space-size=4096'
+
     source ~/.asdf/asdf.fish
 end
 
@@ -93,6 +100,11 @@ if status --is-interactive
 
         keychain --agents gpg,ssh --quick $__keychain_identities
     end
+
+    # Hooks npq to npm and yarn.
+    # See: https://github.com/lirantal/npq#embed-in-your-day-to-day
+    type -q npm; and alias npm npq-hero
+    type -q yarn; and alias yarn "NPQ_PKG_MGR=yarn npq-hero"
 
     # Prints some info about TARGET before prompting for action.
     type -q rip; and abbr -a -g rip 'rip --inspect'
