@@ -18,8 +18,13 @@
     ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/private.fish: fish/private.fish
-    ~/.config/git/commit_msg: git/includes/templates/commit.txt
-    ~/.config/git/user: git/includes/user-rafifos.conf
+    ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
+    ~/.config/git/user-rafifos.conf:
+      if: '[ "$HOSTNAME" = GUARDIAN ]'
+      path: git/includes/user-rafifos.conf
+    ~/.config/git/user-mesalva.conf:
+      if: '[ "$HOSTNAME" = drifter ]'
+      path: git/includes/user-mesalva.conf
     ~/.config/htop/htoprc: htop/htoprc
     ~/.config/neofetch/config.conf: neofetch/config.conf
     ~/.config/nvim/init.vim: nvim/init.vim
