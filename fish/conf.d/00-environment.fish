@@ -119,6 +119,9 @@ test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/bre
 # See: https://docs.docker.com/develop/develop-images/build_enhancements
 type -q docker; and set -gx DOCKER_BUILDKIT 1
 
+# Sets the HOSTNAME if fish doesn't inherits it.
+set -q HOSTNAME; or set -gx HOSTNAME (hostname)
+
 # Environment variables for interactive shells.
 if status --is-interactive
     # An arctic, north-bluish clean and elegant dircolors theme.
