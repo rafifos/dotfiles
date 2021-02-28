@@ -85,22 +85,6 @@ if status --is-interactive
     # Handy abbr to download a remote file using httpie.
     type -q http; and abbr -a -g download 'http --follow --download'
 
-    # Loads ssh identities and gpg keys using keychain.
-    if type -q keychain
-        set -l __keychain_identities
-        set -l host (hostname)
-
-        type -q ssh; and set -a __keychain_identities id_ed25519
-
-        if test $host = GUARDIAN
-            set -a __keychain_identities B95B60CE
-        else if test $host = drifter
-            set -a __keychain_identities 080131B7
-        end
-
-        keychain --quick --ignore-missing --host $host --agents gpg,ssh --inherit any $__keychain_identities
-    end
-
     # Hooks npq to npm and yarn.
     # See: https://github.com/lirantal/npq#embed-in-your-day-to-day
     type -q npm; and alias npm npq-hero
@@ -115,12 +99,4 @@ if status --is-interactive
         alias cpr 'rsync --archive --executability -hh --partial --info=name2 --info=progress2 --info=stats1 --modify-window=1'
         alias mvr 'cpr --remove-source-files'
     end
-end
-
-begin
-    set -l HOSTNAME (hostname)
-
-    # Sources the environment variables file specific to the host under ~/.keychain if it exists.
-    test -f ~/.keychain/$HOSTNAME-fish; and source ~/.keychain/$HOSTNAME-fish
-    test -f ~/.keychain/$HOSTNAME-fish-gpg; and source ~/.keychain/$HOSTNAME-fish-gpg
 end
