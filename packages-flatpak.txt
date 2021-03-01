@@ -2,3 +2,4 @@ com.axosoft.GitKraken
 com.jetbrains.WebStorm
 com.slack.Slack
 com.spotify.Client
+org.gimp.GIMP
