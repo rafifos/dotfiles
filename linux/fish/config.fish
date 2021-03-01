@@ -1,7 +1,3 @@
-# Loads Homebrew if it's available.
-test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
 # Prepends local binary directory if it's present.
 test -d ~/.local/bin; and set -gx PATH ~/.local/bin $PATH
 
@@ -32,19 +28,14 @@ if not test -d ~/.asdf
 
     asdf install nodejs lts
     asdf global nodejs lts
-else
-    # Node.js configurations
-    # See: https://nodejs.org/api/cli.html#cli_environment_variables
-    set -gx NODE_ENV development
-    set -gx NODE_PRESERVE_SYMLINKS 1
-    set -gx NODE_OPTIONS '--max-old-space-size=4096'
-
-    source ~/.asdf/asdf.fish
 end
+
+# Makes the shell aware of asdf's existence.
+source ~/.asdf/asdf.fish
 
 if status --is-interactive
     # An arctic, north-bluish clean and elegant dircolors theme.
-    test -f $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors; and eval (dircolors -c $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors)
+    eval (dircolors -c $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors)
 
     # Load the VTE shell profile configuration to enable inheritance of the current working directory
     # when opening a new terminal tab or splitting the current one.
@@ -72,7 +63,7 @@ if status --is-interactive
     end
 
     # Use the ncurses-based pinentry program for interactive shells.
-    type -q gpg; or type -q gpg2; and set -gx GPG_TTY (tty)
+    set -gx GPG_TTY (tty)
 
     # Loads the GNOME Keyring daemon if it isn't running.
     if type -q gnome-keyring-daemon; and test -n "$DESKTOP_SESSION"
@@ -109,35 +100,30 @@ if status --is-interactive
     # Shortcut to ~/.dotfiles
     abbr -a -g dot 'cd ~/.dotfiles'
 
-    if type -q exa
-        # Provides a simple and accesible alias for directory listing.
-        alias exa 'exa -aF --git --group-directories-first'
+    # Provides a simple and accesible alias for directory listing.
+    alias exa 'exa -aF --git --group-directories-first'
 
-        # Shows directories in a list instead of a grid.
-        abbr -a -g ee 'exa -1'
+    # Shows directories in a list instead of a grid.
+    abbr -a -g ee 'exa -1'
 
-        # Shows directories in a tree instead of a grid.
-        abbr -a -g et 'exa -TL 1'
+    # Shows directories in a tree instead of a grid.
+    abbr -a -g et 'exa -TL 1'
 
-        # Makes exa extra-verbose by default.
-        abbr -a -g e 'exa -@aghl'
-    end
+    # Makes exa extra-verbose by default.
+    abbr -a -g e 'exa -@aghl'
 
     # Handy abbr to download a remote file using httpie.
-    type -q http; and abbr -a -g download 'http --follow --download'
+    abbr -a -g download 'http --follow --download'
 
     # Hooks npq to npm and yarn.
     # See: https://github.com/lirantal/npq#embed-in-your-day-to-day
-    type -q npm; and alias npm npq-hero
-    type -q yarn; and alias yarn "NPQ_PKG_MGR=yarn npq-hero"
+    alias npm npq-hero
+    alias yarn "NPQ_PKG_MGR=yarn npq-hero"
 
     # Prints some info about TARGET before prompting for action.
-    type -q rip; and abbr -a -g rip 'rip --inspect'
+    abbr -a -g rip 'rip --inspect'
 
-    # rsync aliases
-    if type -q rsync
-        # rsync based file system operations with detailed process and status information.
-        alias cpr 'rsync --archive --executability -hh --partial --info=name2 --info=progress2 --info=stats1 --modify-window=1'
-        alias mvr 'cpr --remove-source-files'
-    end
+    # rsync based file system operations with detailed process and status information.
+    alias cpr 'rsync --archive --executability -hh --partial --info=name2 --info=progress2 --info=stats1 --modify-window=1'
+    alias mvr 'cpr --remove-source-files'
 end

@@ -98,6 +98,14 @@ if not type -q universal_variables_set
     #   2. terminfo(5)
     set -Ux GREP_COLORS 'fn=34:ln=01;30:mt=01;34:se=30'
 
+    # Loads Homebrew into the shell.
+    set -Ux HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew"
+    set -Ux HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar"
+    set -Ux HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew"
+    set -Ux PATH "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $PATH
+    set -Ux MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH
+    set -Ux INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH
+
     # Sets the HOSTNAME.
     set -Ux HOSTNAME (hostname)
 
@@ -148,6 +156,12 @@ if not type -q universal_variables_set
     set -Ux EDITOR nvim
     set -Ux VISUAL $EDITOR
     set -Ux MANPAGER 'nvim -R +MANPAGER -'
+
+    # Node.js configurations
+    # See: https://nodejs.org/api/cli.html#cli_environment_variables
+    set -Ux NODE_ENV development
+    set -Ux NODE_PRESERVE_SYMLINKS 1
+    set -Ux NODE_OPTIONS '--max-old-space-size=4096'
 
     # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
     set -Ux SHELL $__fish_bin_dir/fish
