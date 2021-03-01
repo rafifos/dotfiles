@@ -42,7 +42,7 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
   # Code editing. Redefined.
-  curl -fsSLO 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' code_amd64.deb
+  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
 
   # Install downloaded .deb files.
   sudo apt install ./*.deb
