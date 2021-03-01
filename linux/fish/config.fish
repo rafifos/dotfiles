@@ -1,6 +1,3 @@
-# Prepends local binary directory if it's present.
-test -d ~/.local/bin; and set -gx PATH ~/.local/bin $PATH
-
 # Private data.
 source $__fish_user_config_dir/private.fish
 

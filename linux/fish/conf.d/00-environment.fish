@@ -163,6 +163,9 @@ if not type -q universal_variables_set
     set -Ux NODE_PRESERVE_SYMLINKS 1
     set -Ux NODE_OPTIONS '--max-old-space-size=4096'
 
+    # Prepends local binary directory if it's present.
+    set -Ux PATH ~/.local/bin $PATH
+
     # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
     set -Ux SHELL $__fish_bin_dir/fish
 
