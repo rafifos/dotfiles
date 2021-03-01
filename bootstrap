@@ -22,70 +22,78 @@ set -o errtrace # Ensure the error trap handler is inherited
 # iterate through a sequence.
 IFS=$'\n\t'
 
-function deb_from_url() {
-  local cwd="$PWD"
-  local tmpd
+# Install base packages.
+xargs <packages-base.txt sudo apt install --assume-yes
 
-  tmpd="$(mktemp -d)"
-
-  cd "$tmpd"
-  curl -fsSLO "$1"
-  sudo dpkg -i ./*.deb && sudo apt -f install
-  cd "$cwd"
-}
-
-sudo apt update
-sudo apt install -y build-essential file git keychain software-properties-common
-
-# My setup uses Pengwin and and X410, this is why I'm installing GUI
-# applications. Also, using `pinentry-gnome3` on this kind of setup enables
-# vscode to sign commits using `gpg`, which is currently not possible with
-# `pinentry-curses` and `pinentry-tty`.
-sudo apt install -y pinentry-gnome3
-
+# Homebrew is a great way to install packages without messing with dependencies system-wide.
 if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
 fi
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
-  # Non-free codecs and file archiving formats.
-  sudo apt install -y ubuntu-restricted-extras
+  CWD="$PWD"
+  TMPD="$(mktemp -d)"
+
+  # Don't clutter CWD with downloaded packages.
+  cd "$TMPD"
+
+  # The browser built by Google.
+  curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+
+  # Code editing. Redefined.
+  curl -fsSLO 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' code_amd64.deb
+
+  # Install downloaded .deb files.
+  sudo apt install ./*.deb
+
+  # Go back to our current directory.
+  cd "$CWD"
 
   # An entirely open source driver and user-space daemon that allows you to
   # manage your Razer peripherals on GNU/Linux.
-  sudo add-apt-repository -yu ppa:openrazer/stable && sudo apt install -y openrazer-meta
+  sudo add-apt-repository -yu ppa:openrazer/stable
+  sudo gpasswd -a "$USER" plugdev
 
   # A cross-distro front-end for the OpenRazer project.
-  sudo add-apt-repository -yu ppa:polychromatic/stable && sudo apt install -y polychromatic
+  sudo add-apt-repository -yu ppa:polychromatic/stable
 
   # Docker Engine is an open source containerization technology for building and
   # containerizing your applications.
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-  sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io
-  sudo groupadd docker && sudo usermod -aG docker "$USER" && newgrp docker
-
-  # The browser built by Google.
-  deb_from_url 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-
-  # Code editing. Redefined.
-  deb_from_url 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64'
+  sudo usermod -aG docker "$USER" && sudo newgrp docker
 
   # Open Source SQL Editor and Database Manager.
   curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
   echo 'deb [arch=amd64] https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
-  sudo apt update && sudo apt install -y beekeeper-studio
 
-  # Installs flatpak packages.
-  sudo add-apt-repository -yu ppa:alexlarsson/flatpak && sudo apt install -y flatpak
-  for file in **/*.flatpakref; do
-    flatpak install --user --yes "$file"
-  done
+  # The biggest Flatpak repository for Linux.
+  flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  # Install GNOME specific packages.
+  xargs <packages-gnome.txt sudo apt install --assume-yes
+
+  # Install Flatpak software.
+  xargs <packages-flatpak.txt flatpak install --user --if-not-exists --noninteractive
 else
+  CWD="$PWD"
+  TMPD="$(mktemp -d)"
+
+  # Don't clutter CWD with downloaded packages.
+  cd "$TMPD"
+
   # Legendary Git GUI client for Windows, Mac & Linux.
-  flatpak install --user --yes "./flatpak/com.jetbrains.WebStorm.flatpakref"
+  curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
+
+  # Install downloaded .deb files.
+  sudo apt install ./*.deb
+
+  # Go back to our current directory.
+  cd "$CWD"
+
+  # Install WSL specific packages.
+  xargs <packages-wsl.txt sudo apt install --assume-yes
 fi
 
 # Common configurations.
