@@ -1,4 +1,12 @@
-test -f "$__fish_user_config_dir"/private.fish; and source "$__fish_user_config_dir"/private.fish
+# Loads Homebrew if it's available.
+test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# Prepends local binary directory if it's present.
+test -d ~/.local/bin; and set -gx PATH ~/.local/bin $PATH
+
+# Private data.
+source $__fish_user_config_dir/private.fish
 
 # asdf-vm setup.
 # See: https://asdf-vm.com/#/core-manage-asdf?id=install
@@ -35,8 +43,41 @@ else
 end
 
 if status --is-interactive
-    # Disables the greeting by default.
-    set fish_greeting
+    # An arctic, north-bluish clean and elegant dircolors theme.
+    test -f $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors; and eval (dircolors -c $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors)
+
+    # Load the VTE shell profile configuration to enable inheritance of the current working directory
+    # when opening a new terminal tab or splitting the current one.
+    # The script is necessary since some Linux distributions like Arch Linux only execute scripts in
+    # `/etc/profile.d` for login shells while not for non-login based shells which results in the state
+    # that the current directory is nve reported by VTE. This means when splitting terminals in Tilix
+    # instead of inheriting the directory from the current terminal the split terminal always opens in
+    # the home path of the current user.
+    # See: https://gnunn1.github.io/tilix-web/manual/vteconfig
+    if test -n $TILIX_ID; or test -n $VTE_VERSION; and test -f /etc/profile.d/vte.sh
+        replay 'source /etc/profile.d/vte.sh'
+    end
+
+    # Workaround for handling TERM variable in multiple tmux sessions properly.
+    # See: http://sourceforge.net/p/tmux/mailman/message/32751663
+    if test -n $TMUX; and type -q tmux
+        switch (tmux showenv TERM 2>/dev/null)
+            case '*256color'
+                set -g TERM screen-256color
+            case '*'
+                set -g TERM screen
+        end
+
+        tmux attach -t TMUX; or tmux new -s TMUX
+    end
+
+    # Use the ncurses-based pinentry program for interactive shells.
+    type -q gpg; or type -q gpg2; and set -gx GPG_TTY (tty)
+
+    # Loads the GNOME Keyring daemon if it isn't running.
+    if type -q gnome-keyring-daemon; and test -n "$DESKTOP_SESSION"
+        set -gx (gnome-keyring-daemon --start | string split "=")
+    end
 
     # Add "safety net" for basic but irreversible file system operations by using
     # verbose and interactive command modes.
