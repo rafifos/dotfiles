@@ -19,7 +19,7 @@
 
 These dotfiles are extremely volatile, because they're **my** dotfiles, and I'm volatile. But feel free to make a contribution and to use them as a base for your own dotfiles.
 
-# Package management
+## Package management
 
 My personal configuration uses [Homebrew](https://brew.sh) for managing CLI-only applications, I'm not a fan of installing dependencies directly into the system.
 

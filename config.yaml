@@ -7,19 +7,19 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.config/bat/bat.conf: bat/bat.conf
-    ~/.config/fish/conf.d/00-environment.fish: fish/conf.d/00-environment.fish
-    ~/.config/fish/conf.d/01-fisher.fish: fish/conf.d/01-fisher.fish
-    ~/.config/fish/conf.d/02-keychain.fish: fish/conf.d/02-keychain.fish
-    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
-    ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
-    ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
-    ~/.config/fish/functions/grc.fish: fish/functions/grc.fish
-    ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
-    ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
-    ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
-    ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/private.fish: fish/private.fish
+    ~/.config/bat/bat.conf: linux/bat/bat.conf
+    ~/.config/fish/conf.d/00-environment.fish: linux/fish/conf.d/00-environment.fish
+    ~/.config/fish/conf.d/01-fisher.fish: linux/fish/conf.d/01-fisher.fish
+    ~/.config/fish/conf.d/02-keychain.fish: linux/fish/conf.d/02-keychain.fish
+    ~/.config/fish/functions/diff.fish: linux/fish/functions/diff.fish
+    ~/.config/fish/functions/fish_greeting.fish: linux/fish/functions/fish_greeting.fish
+    ~/.config/fish/functions/fish_prompt.fish: linux/fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/grc.fish: linux/fish/functions/grc.fish
+    ~/.config/fish/functions/mkd.fish: linux/fish/functions/mkd.fish
+    ~/.config/fish/functions/mktempd.fish: linux/fish/functions/mktempd.fish
+    ~/.config/fish/lib/nord-dircolors: linux/fish/lib/nord-dircolors
+    ~/.config/fish/config.fish: linux/fish/config.fish
+    ~/.config/fish/private.fish: linux/fish/private.fish
     ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
     ~/.config/git/user-rafifos.conf:
       if: '[ "$HOSTNAME" = GUARDIAN ]'
@@ -27,10 +27,10 @@
     ~/.config/git/user-mesalva.conf:
       if: '[ "$HOSTNAME" = drifter ]'
       path: git/includes/user-mesalva.conf
-    ~/.config/htop/htoprc: htop/htoprc
-    ~/.config/neofetch/config.conf: neofetch/config.conf
-    ~/.config/nvim/init.vim: nvim/init.vim
-    ~/.config/procs/config.toml: procs/config.toml
+    ~/.config/htop/htoprc: linux/htop/htoprc
+    ~/.config/neofetch/config.conf: linux/neofetch/config.conf
+    ~/.config/nvim/init.vim: linux/nvim/init.vim
+    ~/.config/procs/config.toml: linux/procs/config.toml
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.gitattributes: git/attributes.conf
