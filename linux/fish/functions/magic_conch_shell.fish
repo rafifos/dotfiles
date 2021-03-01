@@ -10,10 +10,6 @@ function magic_conch_shell --description "Prints a random quote from the Magic C
 
     set -l __magic_conch_answer (random choice $__magic_conch_answers)
 
-    # Because of the '+' character, we need to subtract 2 from the terminal width.
-    set -l __term_separator +(printf "%*s" (math (tput cols) - 2) | sed "s/ /-/g")+
-
-    printf "\n%s\n" $__term_separator
-    printf "\nHere's what the %s has to say:\n" (set_color -i B48EAD)"Magic Conch shell"(set_color normal)
-    printf "> %s\n" $__magic_conch_answer
+    echo Here\'s what the (set_color -i B48EAD)"Magic Conch shell"(set_color normal) has to say:
+    echo "> $__magic_conch_answer"
 end

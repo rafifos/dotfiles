@@ -1,5 +1,5 @@
 function fish_greeting --description "Prints basic system information from time to time."
-    set -l __greeting_shown $HOME/.greeting_shown
+    set -l __greeting_shown $__fish_user_data_dir/greeting_shown
 
     # The logic is based on motd, only show if the file exists and it's older than 7 days.
     if not test -f $__greeting_shown
@@ -16,18 +16,19 @@ function fish_greeting --description "Prints basic system information from time 
         end
     end
 
-    set -q WSLENV; and set -l is_wsl true
-    test $WSL_DISTRO_NAME = WLinux; and set -l is_pengwin true
-
     # WSL specific information.
-    if test is_wsl
+    if test -n WSLENV
         # Prints basic system information if running on Pengwin.
-        if test is_pengwin
+        if test -n WSL_DISTRO_NAME; and test WSL_DISTRO_NAME = WLinux
             # Fish doesn't seem to be handling the WSL2 variable well.
             set -q WSL2; or set -q WSL_INTEROP; and set -lx WSL2 1
 
             # Prints basic system information.
             test -f /etc/update-motd.d/40-environment && bash -c 'source /etc/environment; source /etc/update-motd.d/40-environment'
+
+            # Because of the '+' character, we need to subtract 2 from the terminal width.
+            set -l __term_separator \n+(printf "%*s" (math (tput cols) - 2) | sed "s/ /-/g")+\n
+            echo "$__term_separator"
         end
     end
 
