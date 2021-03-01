@@ -9,7 +9,7 @@ if type -q keychain
     not status --is-interactive; and set -a __keychain_optional_params --noask
 
     if type -q gpg
-        test $HOSTNAME = GUARDIAN; and set -a __keychain_identities B95B60CE
+        test $HOSTNAME = GUARDIAN; and set -a __keychain_identities 9ED719BA
         test $HOSTNAME = drifter; and set -a __keychain_identities 080131B7
 
         # Support for gpg-agent in keychain isn't idempotent.
