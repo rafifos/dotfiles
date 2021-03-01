@@ -10,7 +10,6 @@
     ~/.config/bat/bat.conf: linux/bat/bat.conf
     ~/.config/fish/conf.d/00-environment.fish: linux/fish/conf.d/00-environment.fish
     ~/.config/fish/conf.d/01-fisher.fish: linux/fish/conf.d/01-fisher.fish
-    ~/.config/fish/conf.d/02-keychain.fish: linux/fish/conf.d/02-keychain.fish
     ~/.config/fish/functions/diff.fish: linux/fish/functions/diff.fish
     ~/.config/fish/functions/fish_greeting.fish: linux/fish/functions/fish_greeting.fish
     ~/.config/fish/functions/fish_prompt.fish: linux/fish/functions/fish_prompt.fish
@@ -18,6 +17,7 @@
     ~/.config/fish/functions/magic_conch_shell.fish: linux/fish/functions/magic_conch_shell.fish
     ~/.config/fish/functions/mkd.fish: linux/fish/functions/mkd.fish
     ~/.config/fish/functions/mktempd.fish: linux/fish/functions/mktempd.fish
+    ~/.config/fish/functions/resetenv.fish: linux/fish/functions/resetenv.fish
     ~/.config/fish/lib/nord-dircolors: linux/fish/lib/nord-dircolors
     ~/.config/fish/config.fish: linux/fish/config.fish
     ~/.config/fish/private.fish: linux/fish/private.fish
