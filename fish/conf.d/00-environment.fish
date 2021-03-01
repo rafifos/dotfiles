@@ -115,6 +115,9 @@ end
 test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
+# Prepends local binary directory if it's present.
+test -d ~/.local/bin; and set -gx PATH ~/.local/bin $PATH
+
 # Enables BuildKit.
 # See: https://docs.docker.com/develop/develop-images/build_enhancements
 type -q docker; and set -gx DOCKER_BUILDKIT 1
