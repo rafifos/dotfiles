@@ -31,25 +31,13 @@ if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
 fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 
+CWD="$PWD"
+TMPD="$(mktemp -d)"
+
+# Don't clutter CWD with downloaded packages.
+cd "$TMPD"
+
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
-  CWD="$PWD"
-  TMPD="$(mktemp -d)"
-
-  # Don't clutter CWD with downloaded packages.
-  cd "$TMPD"
-
-  # The browser built by Google.
-  curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-
-  # Code editing. Redefined.
-  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
-
-  # Install downloaded .deb files.
-  sudo apt install ./*.deb
-
-  # Go back to our current directory.
-  cd "$CWD"
-
   # An entirely open source driver and user-space daemon that allows you to
   # manage your Razer peripherals on GNU/Linux.
   sudo add-apt-repository -yu ppa:openrazer/stable
@@ -76,25 +64,28 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
 
   # Install Flatpak software.
   xargs <packages-flatpak.txt flatpak install --user --if-not-exists --noninteractive
-else
-  CWD="$PWD"
-  TMPD="$(mktemp -d)"
 
-  # Don't clutter CWD with downloaded packages.
-  cd "$TMPD"
+  # The browser built by Google.
+  curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+
+  # Code editing. Redefined.
+  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
+else
+  # Install WSL specific packages.
+  xargs <packages-wsl.txt sudo apt install --assume-yes
 
   # Legendary Git GUI client for Windows, Mac & Linux.
   curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-
-  # Install downloaded .deb files.
-  sudo apt install ./*.deb
-
-  # Go back to our current directory.
-  cd "$CWD"
-
-  # Install WSL specific packages.
-  xargs <packages-wsl.txt sudo apt install --assume-yes
 fi
+
+# End-to-end encryption for things that matter.
+curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
+
+# Install downloaded .deb files.
+sudo apt install --assume-yes ./*.deb
+
+# Go back to our current directory.
+cd "$CWD"
 
 # Common configurations.
 CONFIG='config.yaml'
