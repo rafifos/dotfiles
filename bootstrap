@@ -50,7 +50,7 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # containerizing your applications.
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-  sudo usermod -aG docker "$USER" && sudo newgrp docker
+  sudo usermod -aG docker "$USER"
 
   # Open Source SQL Editor and Database Manager.
   curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
