@@ -65,6 +65,11 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # Don't clutter CWD with downloaded packages.
   cd "$TMPD"
 
+  # Manage your tools the easy way.
+  curl -fsSL 'https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz' | tar -xzv
+  mv jetbrains-toolbox-1.20.7940/jetbrains-toolbox ~/.local/bin/jetbrains-toolbox
+  chmod +x ~/.local/bin/jetbrains-toolbox
+
   # Fast, private browser with unique features.
   curl -fsSLO 'https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb'
 
