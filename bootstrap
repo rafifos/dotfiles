@@ -68,6 +68,9 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # The browser built by Google.
   curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 
+  # Fight surveillance because you love Freedom.
+  curl -fsSLO 'https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb'
+
   # Code editing. Redefined.
   curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
 else
