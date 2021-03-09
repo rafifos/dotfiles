@@ -34,9 +34,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 CWD="$PWD"
 TMPD="$(mktemp -d)"
 
-# Don't clutter CWD with downloaded packages.
-cd "$TMPD"
-
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # An entirely open source driver and user-space daemon that allows you to
   # manage your Razer peripherals on GNU/Linux.
@@ -65,8 +62,11 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # Install Flatpak software.
   xargs <packages-flatpak.txt flatpak install --user --noninteractive
 
-  # The browser built by Google.
-  curl -fsSLO "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+  # Don't clutter CWD with downloaded packages.
+  cd "$TMPD"
+
+  # Fast, private browser with unique features.
+  curl -fsSLO 'https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb'
 
   # Fight surveillance because you love Freedom.
   curl -fsSLO 'https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb'
@@ -76,6 +76,9 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
 else
   # Install WSL specific packages.
   xargs <packages-wsl.txt sudo apt install --assume-yes
+
+  # Don't clutter CWD with downloaded packages.
+  cd "$TMPD"
 
   # Legendary Git GUI client for Windows, Mac & Linux.
   curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
