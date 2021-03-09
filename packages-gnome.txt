@@ -2,6 +2,7 @@ beekeeper-studio
 containerd.io
 docker-ce
 docker-ce-cli
+lm-sensors
 openrazer-meta
 polychromatic
 ubuntu-restricted-extras
