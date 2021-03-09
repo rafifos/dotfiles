@@ -34,6 +34,8 @@
     ~/.config/procs/config.toml: linux/procs/config.toml
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/.asdfrc: linux/asdf/asdfrc
+    ~/.default-npm-packages: linux/asdf/nodejs/default-npm-packages
     ~/.gitattributes: git/attributes.conf
     ~/.gitconfig: git/config.conf
     ~/.gitignore: git/ignore.conf

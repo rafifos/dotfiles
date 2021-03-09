@@ -14,15 +14,6 @@ if not test -d ~/.asdf
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
     replay 'bash -c \'${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring\''
 
-    # asdf-nodejs default packages, I know this is ugly, blame fish for it.
-    echo >~/.default-npm-packages npm
-    echo >>~/.default-npm-packages npq
-    echo >>~/.default-npm-packages terser
-    echo >>~/.default-npm-packages tldr
-    echo >>~/.default-npm-packages yarn
-
-    echo >~/.asdfrc 'legacy_version_file = yes'
-
     asdf install nodejs lts
     asdf global nodejs lts
 else
