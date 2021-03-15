@@ -17,7 +17,7 @@
     ~/.config/fish/functions/magic_conch_shell.fish: linux/fish/functions/magic_conch_shell.fish
     ~/.config/fish/functions/mkd.fish: linux/fish/functions/mkd.fish
     ~/.config/fish/functions/mktempd.fish: linux/fish/functions/mktempd.fish
-    ~/.config/fish/functions/resetenv.fish: linux/fish/functions/resetenv.fish
+    ~/.config/fish/functions/refreshenv.fish: linux/fish/functions/refreshenv.fish
     ~/.config/fish/lib/nord-dircolors: linux/fish/lib/nord-dircolors
     ~/.config/fish/config.fish: linux/fish/config.fish
     ~/.config/fish/private.fish: linux/fish/private.fish
