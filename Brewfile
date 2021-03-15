@@ -1,8 +1,17 @@
+require 'socket'
+
 tap "beeftornado/rmtree"
 tap "clementtsang/bottom"
 tap "github/gh"
+tap "linuxbrew/fonts"
 tap "rafifos/homebrew-tap"
 tap "rs/tap"
+
+if Socket.gethostname === 'drifter'
+  # Fonts
+  brew "font-inter"
+  brew "font-vollkorn"
+end
 
 brew "android-sdk-platform-tools"
 brew "bat"
