@@ -11,6 +11,8 @@ if Socket.gethostname === 'drifter'
   # Fonts
   brew "font-inter"
   brew "font-vollkorn"
+
+  brew "awscli"
 end
 
 brew "android-sdk-platform-tools"
