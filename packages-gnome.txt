@@ -2,6 +2,7 @@ beekeeper-studio
 containerd.io
 docker-ce
 docker-ce-cli
+libasound2-dev
 lm-sensors
 openrazer-meta
 polychromatic
