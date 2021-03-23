@@ -4,6 +4,7 @@ tap "beeftornado/rmtree"
 tap "clementtsang/bottom"
 tap "github/gh"
 tap "linuxbrew/fonts"
+tap "nektos/tap"
 tap "rafifos/homebrew-tap"
 tap "rs/tap"
 
@@ -15,6 +16,7 @@ if Socket.gethostname === 'drifter'
   brew "awscli"
 end
 
+brew "act"
 brew "android-sdk-platform-tools"
 brew "bat"
 brew "bottom"
