@@ -71,10 +71,6 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   mv jetbrains-toolbox-1.20.7940/jetbrains-toolbox ~/.local/bin/jetbrains-toolbox
   chmod +x ~/.local/bin/jetbrains-toolbox
 
-  curl -fsSLO https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
-  mv betterdiscordctl ~/.local/bin/betterdiscordctl
-  chmod +x ~/.local/bin/betterdiscordctl
-
   # Fast, private browser with unique features.
   curl -fsSLO 'https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb'
 
