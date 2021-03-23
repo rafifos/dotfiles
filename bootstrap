@@ -25,14 +25,15 @@ IFS=$'\n\t'
 # Install base packages.
 xargs <packages-base.txt sudo apt install --assume-yes
 
-# Homebrew is a great way to install packages without messing with dependencies system-wide.
-if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
-fi
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
+function install-packages() {
+  # Homebrew is a great way to install packages without messing with dependencies system-wide.
+  if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+  fi
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && brew bundle --verbose
 
-CWD="$PWD"
-TMPD="$(mktemp -d)"
+  CWD="$PWD"
+  TMPD="$(mktemp -d)"
 
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   # An entirely open source driver and user-space daemon that allows you to
@@ -40,8 +41,8 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   sudo add-apt-repository -yu ppa:openrazer/stable
   sudo gpasswd -a "$USER" plugdev
 
-  # A cross-distro front-end for the OpenRazer project.
-  sudo add-apt-repository -yu ppa:polychromatic/stable
+    # A cross-distro front-end for the OpenRazer project.
+    sudo add-apt-repository -yu ppa:polychromatic/stable
 
   # Docker Engine is an open source containerization technology for building and
   # containerizing your applications.
@@ -49,15 +50,15 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
   echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
   sudo usermod -aG docker "$USER"
 
-  # Open Source SQL Editor and Database Manager.
-  curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
-  echo 'deb [arch=amd64] https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+    # Open Source SQL Editor and Database Manager.
+    curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
+    echo 'deb [arch=amd64] https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
 
-  # The biggest Flatpak repository for Linux.
-  flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    # The biggest Flatpak repository for Linux.
+    flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-  # Install GNOME specific packages.
-  xargs <packages-gnome.txt sudo apt install --assume-yes
+    # Install GNOME specific packages.
+    xargs <packages-gnome.txt sudo apt install --assume-yes
 
   # Install Flatpak software.
   xargs <packages-flatpak.txt flatpak install --user --noninteractive
@@ -89,24 +90,30 @@ else
   curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 fi
 
-# End-to-end encryption for things that matter.
-curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
+  # End-to-end encryption for things that matter.
+  curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
 
-# Install downloaded .deb files.
-sudo apt install --assume-yes ./*.deb
+  # Install downloaded .deb files.
+  sudo apt install --assume-yes ./*.deb
 
-# Go back to our current directory.
-cd "$CWD"
+  # Go back to our current directory.
+  cd "$CWD"
+}
 
-# Common configurations.
-CONFIG='config.yaml'
-DOTBOT_DIR='.dotbot'
-DOTBOT_BIN='bin/dotbot'
+function link-targets() {
+  # Common configurations.
+  CONFIG='config.yaml'
+  DOTBOT_DIR='.dotbot'
+  DOTBOT_BIN='bin/dotbot'
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
+  cd "${BASEDIR}"
+  git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+  git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}" --verbose
+}
+
+# install-packages
+link-targets "$@"
