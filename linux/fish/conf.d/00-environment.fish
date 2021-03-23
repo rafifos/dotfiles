@@ -27,7 +27,7 @@ if not type -q universal_variables_set
     set -U fish_color_operator 81A1C1
     set -U fish_color_escape EBCB8B
     set -U fish_color_cwd 8FBCBB
-    set -U fish_color_autosuggestion 3B4252
+    set -U fish_color_autosuggestion 4C566A
     set -U fish_color_user 81A1C1
     set -U fish_color_host 81A1C1
     set -U fish_color_host_remote 81A1C1
@@ -35,7 +35,7 @@ if not type -q universal_variables_set
     set -U fish_pager_color_progress normal --background=8FBCBB
     set -U fish_pager_color_background normal
     set -U fish_pager_color_prefix normal --bold --underline
-    set -U fish_pager_color_completion 3B4252
+    set -U fish_pager_color_completion 4C566A
     set -U fish_pager_color_description 2E3440 --background=ECEFF4
 
     # Additional variables used by the default theme.
