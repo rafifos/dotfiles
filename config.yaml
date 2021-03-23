@@ -29,6 +29,7 @@
       if: '[ "$HOSTNAME" = drifter ]'
       path: git/includes/user-mesalva.conf
     ~/.config/htop/htoprc: linux/htop/htoprc
+    ~/.config/jesseduffield/lazydocker/config.yml: linux/lazydocker/config.yml
     ~/.config/neofetch/config.conf: linux/neofetch/config.conf
     ~/.config/nvim/init.vim: linux/nvim/init.vim
     ~/.config/procs/config.toml: linux/procs/config.toml
