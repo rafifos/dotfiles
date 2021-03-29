@@ -6,6 +6,5 @@ if not type -q fisher; and status is-interactive
     fisher install gazorby/fish-abbreviation-tips
     fisher install jorgebucaran/autopair.fish
     fisher install jorgebucaran/replay.fish
-    fisher install laughedelic/pisces
     fisher install wfxr/forgit
 end
