@@ -16,6 +16,7 @@ if not test -d ~/.asdf
 
     asdf install nodejs lts
     asdf global nodejs lts
+    npmup
 else
     source ~/.asdf/asdf.fish
 end
