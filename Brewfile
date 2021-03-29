@@ -14,6 +14,7 @@ if Socket.gethostname === 'drifter'
   brew "font-vollkorn"
 
   brew "awscli"
+  brew "hostess"
 end
 
 brew "act"

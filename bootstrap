@@ -36,6 +36,9 @@ function install-packages() {
   TMPD="$(mktemp -d)"
 
 if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
+    # Workaround for CORS issues with @mesalva/api
+    sudo "$(which hostess)" add local.mesalva.com 127.0.0.1
+
   # An entirely open source driver and user-space daemon that allows you to
   # manage your Razer peripherals on GNU/Linux.
   sudo add-apt-repository -yu ppa:openrazer/stable
