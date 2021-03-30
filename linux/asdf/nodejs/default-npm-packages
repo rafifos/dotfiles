@@ -1,7 +1,5 @@
-depcheck
 npm
 npq
 terser
 tldr
-types-installer
 yarn

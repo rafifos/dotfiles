@@ -22,10 +22,10 @@ set -o errtrace # Ensure the error trap handler is inherited
 # iterate through a sequence.
 IFS=$'\n\t'
 
-# Install base packages.
-xargs <packages-base.txt sudo apt install --assume-yes
-
 function install-packages() {
+  # Install base packages.
+  xargs <packages-base.txt sudo apt install --assume-yes
+
   # Homebrew is a great way to install packages without messing with dependencies system-wide.
   if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
@@ -35,24 +35,26 @@ function install-packages() {
   CWD="$PWD"
   TMPD="$(mktemp -d)"
 
-if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
-  # An entirely open source driver and user-space daemon that allows you to
-  # manage your Razer peripherals on GNU/Linux.
-  sudo add-apt-repository -yu ppa:openrazer/stable
-  sudo gpasswd -a "$USER" plugdev
+  if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
+    # Workaround for CORS issues with @mesalva/api
+    sudo "$(which hostess)" add local.mesalva.com 127.0.0.1
+
+    # Releases of Firefox from the beta channel.
+    sudo add-apt-repository -yu ppa:mozillateam/firefox-next
+
+    # An entirely open source driver and user-space daemon that allows you to
+    # manage your Razer peripherals on GNU/Linux.
+    sudo add-apt-repository -yu ppa:openrazer/stable
+    sudo gpasswd -a "$USER" plugdev
 
     # A cross-distro front-end for the OpenRazer project.
     sudo add-apt-repository -yu ppa:polychromatic/stable
 
-  # Docker Engine is an open source containerization technology for building and
-  # containerizing your applications.
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-  sudo usermod -aG docker "$USER"
-
-    # Open Source SQL Editor and Database Manager.
-    curl -fsSL 'https://deb.beekeeperstudio.io/beekeeper.key' | sudo apt-key add -
-    echo 'deb [arch=amd64] https://deb.beekeeperstudio.io stable main' | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+    # Docker Engine is an open source containerization technology for building and
+    # containerizing your applications.
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+    sudo usermod -aG docker "$USER"
 
     # The biggest Flatpak repository for Linux.
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -60,38 +62,30 @@ if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
     # Install GNOME specific packages.
     xargs <packages-gnome.txt sudo apt install --assume-yes
 
-  # Install Flatpak software.
-  xargs <packages-flatpak.txt flatpak install --user --noninteractive
+    # Install Flatpak software.
+    xargs <packages-flatpak.txt flatpak install --user --noninteractive
 
-  # Don't clutter CWD with downloaded packages.
-  cd "$TMPD"
+    # Don't clutter CWD with downloaded packages.
+    cd "$TMPD"
 
-  # Manage your tools the easy way.
-  curl -fsSL 'https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz' | tar -xzv
-  mv jetbrains-toolbox-1.20.7940/jetbrains-toolbox ~/.local/bin/jetbrains-toolbox
-  chmod +x ~/.local/bin/jetbrains-toolbox
+    # Fight surveillance because you love Freedom.
+    curl -fsSLO 'https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb'
 
-  # Fast, private browser with unique features.
-  curl -fsSLO 'https://downloads.vivaldi.com/stable/vivaldi-stable_3.6.2165.40-1_amd64.deb'
+    # Code editing. Redefined.
+    curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
+  else
+    # Install WSL specific packages.
+    xargs <packages-wsl.txt sudo apt install --assume-yes
 
-  # Fight surveillance because you love Freedom.
-  curl -fsSLO 'https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb'
+    # Don't clutter CWD with downloaded packages.
+    cd "$TMPD"
 
-  # Code editing. Redefined.
-  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
-else
-  # Install WSL specific packages.
-  xargs <packages-wsl.txt sudo apt install --assume-yes
+    # Legendary Git GUI client for Windows, Mac & Linux.
+    curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
 
-  # Don't clutter CWD with downloaded packages.
-  cd "$TMPD"
-
-  # Legendary Git GUI client for Windows, Mac & Linux.
-  curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-fi
-
-  # End-to-end encryption for things that matter.
-  curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
+    # End-to-end encryption for things that matter.
+    curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
+  fi
 
   # Install downloaded .deb files.
   sudo apt install --assume-yes ./*.deb
@@ -115,5 +109,5 @@ function link-targets() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}" --verbose
 }
 
-# install-packages
+install-packages
 link-targets "$@"

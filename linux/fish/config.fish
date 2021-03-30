@@ -16,6 +16,7 @@ if not test -d ~/.asdf
 
     asdf install nodejs lts
     asdf global nodejs lts
+    npmup
 else
     source ~/.asdf/asdf.fish
 end
@@ -23,7 +24,7 @@ end
 if status --is-interactive
     # Loads the GNOME Keyring daemon if it isn't running.
     if type -q gnome-keyring-daemon; and test -n "$DESKTOP_SESSION"
-        set -gx (gnome-keyring-daemon --start | string split "=")
+        set -Ux (gnome-keyring-daemon --start | string split "=")
     end
 
     # Add "safety net" for basic but irreversible file system operations by using
