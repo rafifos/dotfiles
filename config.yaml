@@ -10,6 +10,7 @@
     ~/.config/bat/bat.conf: linux/bat/bat.conf
     ~/.config/fish/conf.d/00-environment.fish: linux/fish/conf.d/00-environment.fish
     ~/.config/fish/conf.d/01-fisher.fish: linux/fish/conf.d/01-fisher.fish
+    ~/.config/fish/conf.d/02-asdf.fish: linux/fish/conf.d/02-asdf.fish
     ~/.config/fish/functions/diff.fish: linux/fish/functions/diff.fish
     ~/.config/fish/functions/fish_greeting.fish: linux/fish/functions/fish_greeting.fish
     ~/.config/fish/functions/fish_prompt.fish: linux/fish/functions/fish_prompt.fish
