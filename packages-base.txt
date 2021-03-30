@@ -2,4 +2,3 @@ android-sdk-platform-tools-common
 build-essential
 file
 git
-software-properties-common
