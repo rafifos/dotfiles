@@ -20,8 +20,6 @@ Foreach ($import in @($Private)) {
 }
 
 Install-WinGetPackage -Package "AdoptOpenJDK.OpenJDK" -Version "11.0.10"
-Install-WinGetPackage -Package "beekeeper-studio.beekeeper-studio"
-Install-WinGetPackage -Package "Bitwarden.Bitwarden"
 Install-WinGetPackage -Package "CodecGuide.K-LiteCodecPackStandard"
 Install-WinGetPackage -Package "Discord.Discord"
 Install-WinGetPackage -Package "Docker.DockerDesktop"
@@ -32,17 +30,13 @@ Install-WinGetPackage -Package "Git.Git"
 Install-WinGetPackage -Package "GnuPG.GnuPG"
 Install-WinGetPackage -Package "GOG.Galaxy"
 Install-WinGetPackage -Package "Google.BackupAndSync"
-Install-WinGetPackage -Package "JetBrains.Toolbox"
 Install-WinGetPackage -Package "Keybase.Keybase"
 Install-WinGetPackage -Package "Microsoft.PowerToys"
 Install-WinGetPackage -Package "Microsoft.VisualStudioCode-User-x64"
-Install-WinGetPackage -Package "Notion.Notion"
-Install-WinGetPackage -Package "Plex.PlexMediaServer"
 Install-WinGetPackage -Package "Python.Python"
 Install-WinGetPackage -Package "Stremio.Stremio"
 Install-WinGetPackage -Package "Ubisoft.Connect"
 Install-WinGetPackage -Package "Valve.Steam"
-Install-WinGetPackage -Package "VivaldiTechnologies.Vivaldi"
 Install-WinGetPackage -Package "WeMod.WeMod"
 
 Enable-WindowsSubsystemForLinux
