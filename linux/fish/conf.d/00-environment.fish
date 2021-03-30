@@ -176,7 +176,7 @@ if status --is-interactive
     end
 
     # enhancd configurations.
-    # See:
+    # See: https://github.com/b4b4r07/enhancd#configurations
     if type -q enhancd
         # The number of directories that enhancd will recurse into.
         set -Ux ENHANCD_HYPHEN_NUM 16
