@@ -2,7 +2,13 @@
     link:
       create: true
       force: true
-      relative: true
+
+- shell:
+    - git submodule update --init --recursive
+    - pip3 install --user pynvim
+    - command: curl -sLf https://spacevim.org/install.sh | bash
+      stdin: true
+      stdout: true
 
 - clean: ["~", "~/.config"]
 
@@ -23,6 +29,8 @@
     ~/.config/fish/lib/nord-dircolors: linux/fish/lib/nord-dircolors
     ~/.config/fish/config.fish: linux/fish/config.fish
     ~/.config/fish/private.fish: linux/fish/private.fish
+    ~/.SpaceVim.d/init.toml: linux/spacevim/init.toml
+    ~/.SpaceVim.d/autoload/bootstrap.vim: linux/spacevim/autoload/bootstrap.vim
     ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
     ~/.config/git/user-rafifos.conf:
       if: '[ "$HOSTNAME" = GUARDIAN ]'
@@ -32,8 +40,6 @@
       path: git/includes/user-mesalva.conf
     ~/.config/htop/htoprc: linux/htop/htoprc
     ~/.config/jesseduffield/lazydocker/config.yml: linux/lazydocker/config.yml
-    # ~/.config/nvim/init.vim: linux/nvim/init.vim
-    ~/.config/nvim/init.vim: linux/nvim/init.vim
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
     ~/.asdfrc: linux/asdf/asdfrc
@@ -41,6 +47,3 @@
     ~/.gitattributes: git/attributes.conf
     ~/.gitconfig: git/config.conf
     ~/.gitignore: git/ignore.conf
-
-- shell:
-    - git submodule update --init --recursive
