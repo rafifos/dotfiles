@@ -57,20 +57,6 @@ if status --is-interactive
     # Shortcut to ~/.dotfiles
     abbr -a -g dot 'cd ~/.dotfiles'
 
-    if type -q exa
-        # Provides a simple and accesible alias for directory listing.
-        alias exa 'exa -aF --git --group-directories-first'
-
-        # Shows directories in a list instead of a grid.
-        abbr -a -g ee 'exa -1'
-
-        # Shows directories in a tree instead of a grid.
-        abbr -a -g et 'exa -TL 1'
-
-        # Makes exa extra-verbose by default.
-        abbr -a -g e 'exa -@aghl'
-    end
-
     # Handy abbr to download a remote file using httpie.
     type -q http; and abbr -a -g download 'http --follow --download'
 
