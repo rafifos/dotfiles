@@ -3,12 +3,13 @@ require 'socket'
 tap "beeftornado/rmtree"
 tap "clementtsang/bottom"
 tap "github/gh"
-tap "linuxbrew/fonts"
 tap "nektos/tap"
 tap "rafifos/homebrew-tap"
 tap "rs/tap"
 
 if Socket.gethostname === 'drifter'
+  tap "linuxbrew/fonts"
+
   # Fonts
   brew "font-inter"
   brew "font-vollkorn"
