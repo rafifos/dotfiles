@@ -39,9 +39,6 @@ function install-packages() {
     # Workaround for CORS issues with @mesalva/api
     sudo "$(which hostess)" add local.mesalva.com 127.0.0.1
 
-    # Releases of Firefox from the beta channel.
-    sudo add-apt-repository -yu ppa:mozillateam/firefox-next
-
     # An entirely open source driver and user-space daemon that allows you to
     # manage your Razer peripherals on GNU/Linux.
     sudo add-apt-repository -yu ppa:openrazer/stable
@@ -73,6 +70,9 @@ function install-packages() {
 
     # Code editing. Redefined.
     curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
+
+    # The web browser from Google.
+    curl -fsSLO 'https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb'
   else
     # Install WSL specific packages.
     xargs <packages-wsl.txt sudo apt install --assume-yes
