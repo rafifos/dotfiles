@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      create: true
+      force: true
+      relative: true
+
+- clean: ["~"]
+
+- link:
+    ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
+    ~/.config/git/user-rafifos.conf: git/includes/user-rafifos.conf
+    ~/.gitattributes: git/attributes.conf
+    ~/.gitconfig: git/config.conf
+    ~/.gitignore: git/ignore.conf
+    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json: Microsoft.WindowsTerminal/settings.json
+
+- shell:
+    - git submodule update --init --recursive

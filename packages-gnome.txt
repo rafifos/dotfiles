@@ -1,8 +1,0 @@
-containerd.io
-docker-ce
-docker-ce-cli
-firefox
-lm-sensors
-openrazer-meta
-polychromatic
-ubuntu-restricted-extras
