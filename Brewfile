@@ -15,6 +15,7 @@ if Socket.gethostname === 'drifter'
 
   brew "awscli"
   brew "hostess"
+  brew "terraform"
 end
 
 brew "act"
