@@ -13,24 +13,24 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.config/bat/bat.conf: linux/bat/bat.conf
-    ~/.config/fish/conf.d/00-environment.fish: linux/fish/conf.d/00-environment.fish
-    ~/.config/fish/conf.d/01-fisher.fish: linux/fish/conf.d/01-fisher.fish
-    ~/.config/fish/conf.d/02-asdf.fish: linux/fish/conf.d/02-asdf.fish
-    ~/.config/fish/functions/diff.fish: linux/fish/functions/diff.fish
-    ~/.config/fish/functions/fish_greeting.fish: linux/fish/functions/fish_greeting.fish
-    ~/.config/fish/functions/fish_prompt.fish: linux/fish/functions/fish_prompt.fish
-    ~/.config/fish/functions/grc.fish: linux/fish/functions/grc.fish
-    ~/.config/fish/functions/magic_conch_shell.fish: linux/fish/functions/magic_conch_shell.fish
-    ~/.config/fish/functions/mkd.fish: linux/fish/functions/mkd.fish
-    ~/.config/fish/functions/mktempd.fish: linux/fish/functions/mktempd.fish
-    ~/.config/fish/functions/npmup.fish: linux/fish/functions/npmup.fish
-    ~/.config/fish/functions/refreshenv.fish: linux/fish/functions/refreshenv.fish
-    ~/.config/fish/lib/nord-dircolors: linux/fish/lib/nord-dircolors
-    ~/.config/fish/config.fish: linux/fish/config.fish
-    ~/.config/fish/private.fish: linux/fish/private.fish
-    ~/.SpaceVim.d/init.toml: linux/spacevim/init.toml
-    ~/.SpaceVim.d/autoload/bootstrap.vim: linux/spacevim/autoload/bootstrap.vim
+    ~/.config/bat/bat.conf: bat/bat.conf
+    ~/.config/fish/conf.d/00-environment.fish: fish/conf.d/00-environment.fish
+    ~/.config/fish/conf.d/01-fisher.fish: fish/conf.d/01-fisher.fish
+    ~/.config/fish/conf.d/02-asdf.fish: fish/conf.d/02-asdf.fish
+    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
+    ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
+    ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/grc.fish: fish/functions/grc.fish
+    ~/.config/fish/functions/magic_conch_shell.fish: fish/functions/magic_conch_shell.fish
+    ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
+    ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
+    ~/.config/fish/functions/npmup.fish: fish/functions/npmup.fish
+    ~/.config/fish/functions/refreshenv.fish: fish/functions/refreshenv.fish
+    ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/private.fish: fish/private.fishs
+    ~/.SpaceVim.d/init.toml: spacevim/init.toml
+    ~/.SpaceVim.d/autoload/bootstrap.vim: spacevim/autoload/bootstrap.vim
     ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
     ~/.config/git/user-rafifos.conf:
       if: '[ "$HOSTNAME" = GUARDIAN ]'
@@ -38,12 +38,12 @@
     ~/.config/git/user-mesalva.conf:
       if: '[ "$HOSTNAME" = drifter ]'
       path: git/includes/user-mesalva.conf
-    ~/.config/htop/htoprc: linux/htop/htoprc
-    ~/.config/jesseduffield/lazydocker/config.yml: linux/lazydocker/config.yml
+    ~/.config/htop/htoprc: htop/htoprc
+    ~/.config/jesseduffield/lazydocker/config.yml: lazydocker/config.yml
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.gnupg/gpg.conf: gnupg/gpg.conf
-    ~/.asdfrc: linux/asdf/asdfrc
-    ~/.default-npm-packages: linux/asdf/nodejs/default-npm-packages
+    ~/.asdfrc: asdf/asdfrc
+    ~/.default-npm-packages: asdf/nodejs/default-npm-packages
     ~/.gitattributes: git/attributes.conf
     ~/.gitconfig: git/config.conf
     ~/.gitignore: git/ignore.conf

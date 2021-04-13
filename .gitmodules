@@ -4,6 +4,6 @@ url = https://github.com/anishathalye/dotbot
 ignore = dirty
 
 [submodule "dircolors"]
-path = linux/fish/lib/nord-dircolors
+path = fish/lib/nord-dircolors
 url =https://github.com/arcticicestudio/nord-dircolors.git
 ignore = dirty
