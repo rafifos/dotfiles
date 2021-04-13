@@ -1,8 +1,7 @@
 containerd.io
 docker-ce
 docker-ce-cli
-firefox
-lm-sensors
+gnome-usage
 openrazer-meta
 polychromatic
 ubuntu-restricted-extras
