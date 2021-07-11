@@ -34,6 +34,7 @@ Install-Package -Name "Google.BackupAndSync" -Provider WinGet
 Install-Package -Name "Keybase.Keybase" -Provider WinGet
 Install-Package -Name "Microsoft.PowerToys" -Provider WinGet
 Install-Package -Name "Microsoft.VisualStudioCode-User-x64" -Provider WinGet
+Install-Package -Name "Nushell.Nushell" -Provider WinGet
 Install-Package -Name "Python.Python" -Provider WinGet
 Install-Package -Name "Stremio.Stremio" -Provider WinGet
 Install-Package -Name "Ubisoft.Connect" -Provider WinGet
