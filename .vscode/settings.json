@@ -4,7 +4,6 @@
   },
   "files.associations": {
     "*.crypt": "shellscript",
-    "aptfile": "shellscript",
     "Brewfile": "ruby"
   }
 }

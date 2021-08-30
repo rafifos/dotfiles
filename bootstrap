@@ -22,6 +22,13 @@ set -o errtrace # Ensure the error trap handler is inherited
 # iterate through a sequence.
 IFS=$'\n\t'
 
+# Keep-alive: update existing `sudo` time stamp until we're finished.
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done 2>/dev/null &
+
 function install-packages() {
   # Install base packages.
   xargs <packages-base.txt sudo apt install --assume-yes
@@ -44,14 +51,13 @@ function install-packages() {
     sudo add-apt-repository -yu ppa:openrazer/stable
     sudo gpasswd -a "$USER" plugdev
 
-    # A cross-distro front-end for the OpenRazer project.
-    sudo add-apt-repository -yu ppa:polychromatic/stable
+    # Open source RGB lighting control that doesn't depend on manufacturer software.
+    sudo add-apt-repository -yu ppa:thopiekar/openrgb
 
     # Docker Engine is an open source containerization technology for building and
     # containerizing your applications.
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
-    sudo usermod -aG docker "$USER"
 
     # The biggest Flatpak repository for Linux.
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -61,6 +67,9 @@ function install-packages() {
 
     # Install Flatpak software.
     xargs <packages-flatpak.txt flatpak install --user --noninteractive
+
+    # Post-install tasks
+    sudo usermod -aG docker "$USER"
 
     # Don't clutter CWD with downloaded packages.
     cd "$TMPD"
@@ -72,7 +81,10 @@ function install-packages() {
     curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
 
     # The web browser from Google.
-    curl -fsSLO 'https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb'
+    curl -fsSLO 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+
+    # Encrypt everything.
+    curl -fsSLO 'https://prerelease.keybase.io/keybase_amd64.deb'
   else
     # Install WSL specific packages.
     xargs <packages-wsl.txt sudo apt install --assume-yes

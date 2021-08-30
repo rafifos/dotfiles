@@ -13,24 +13,14 @@
 - clean: ["~", "~/.config"]
 
 - link:
-    ~/.config/bat/bat.conf: bat/bat.conf
-    ~/.config/fish/conf.d/00-environment.fish: fish/conf.d/00-environment.fish
-    ~/.config/fish/conf.d/01-fisher.fish: fish/conf.d/01-fisher.fish
-    ~/.config/fish/conf.d/02-asdf.fish: fish/conf.d/02-asdf.fish
-    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
-    ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
-    ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
-    ~/.config/fish/functions/grc.fish: fish/functions/grc.fish
-    ~/.config/fish/functions/magic_conch_shell.fish: fish/functions/magic_conch_shell.fish
-    ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
-    ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
-    ~/.config/fish/functions/npmup.fish: fish/functions/npmup.fish
-    ~/.config/fish/functions/refreshenv.fish: fish/functions/refreshenv.fish
-    ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
-    ~/.config/fish/config.fish: fish/config.fish
-    ~/.config/fish/private.fish: fish/private.fishs
-    ~/.SpaceVim.d/init.toml: spacevim/init.toml
-    ~/.SpaceVim.d/autoload/bootstrap.vim: spacevim/autoload/bootstrap.vim
+    # GnuPG
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+
+    # git
+    ~/.gitattributes: git/attributes.conf
+    ~/.gitconfig: git/config.conf
+    ~/.gitignore: git/ignore.conf
     ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
     ~/.config/git/user-rafifos.conf:
       if: '[ "$HOSTNAME" = GUARDIAN ]'
@@ -38,12 +28,34 @@
     ~/.config/git/user-mesalva.conf:
       if: '[ "$HOSTNAME" = drifter ]'
       path: git/includes/user-mesalva.conf
-    ~/.config/htop/htoprc: htop/htoprc
+
+    # bat
+    ~/.config/bat/bat.conf: bat/bat.conf
+
+    # lazydocker
     ~/.config/jesseduffield/lazydocker/config.yml: lazydocker/config.yml
-    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
-    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+
+    # asdf-vm
     ~/.asdfrc: asdf/asdfrc
     ~/.default-npm-packages: asdf/nodejs/default-npm-packages
-    ~/.gitattributes: git/attributes.conf
-    ~/.gitconfig: git/config.conf
-    ~/.gitignore: git/ignore.conf
+
+    # SpaceVim
+    ~/.SpaceVim.d/init.toml: spacevim/init.toml
+    ~/.SpaceVim.d/autoload/bootstrap.vim: spacevim/autoload/bootstrap.vim
+
+    # fish shell
+    ~/.config/fish/conf.d/00-environment.fish: fish/conf.d/00-environment.fish
+    ~/.config/fish/conf.d/01-fisher.fish: fish/conf.d/01-fisher.fish
+    ~/.config/fish/conf.d/02-asdf.fish: fish/conf.d/02-asdf.fish
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
+    ~/.config/fish/functions/cat.fish: fish/functions/cat.fish
+    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
+    ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
+    ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/magic_conch_shell.fish: fish/functions/magic_conch_shell.fish
+    ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
+    ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
+    ~/.config/fish/functions/npmup.fish: fish/functions/npmup.fish
+    ~/.config/fish/functions/refreshenv.fish: fish/functions/refreshenv.fish
+    ~/.config/fish/private.fish: fish/private.fish

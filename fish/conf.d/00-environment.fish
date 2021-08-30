@@ -131,7 +131,7 @@ if status --is-interactive
     set -Ux SHELL $__fish_bin_dir/fish
 
     # Use the ncurses-based pinentry program for interactive shells.
-    set -Ux GPG_TTY (tty)
+    set -gx GPG_TTY (tty)
 
     # Load the VTE shell profile configuration to enable inheritance of the current working directory
     # when opening a new terminal tab or splitting the current one.
@@ -158,11 +158,19 @@ if status --is-interactive
         tmux attach -t TMUX; or tmux new -s TMUX
     end
 
+    # Additional command colorizers for grc.
+    # See:
+    #   1. http://www.gnu.org/software/grc/manual/html_node/Colorizing-Output.html
+    #   2. https://github.com/oh-my-fish/plugin-grc
+    #   3. https://github.com/zpm-zsh/colorize
+    set -U grc_plugin_execs as cat cvs df diff dig du env free g++ gas gcc ifconfig last ld ls \
+        lsblk make mount mtr netstat ping ping6 ps tail traceroute wdiff
+
     # Sets nvim as the default editor if it's installed.
     if type -q nvim
         set -Ux EDITOR nvim
         set -Ux VISUAL $EDITOR
-        set -Ux MANPAGER 'nvim -R +MANPAGER -'
+        set -Ux MANPAGER 'nvim -c "set ft=man" -'
     end
 
     # An arctic, north-bluish clean and elegant dircolors theme.
