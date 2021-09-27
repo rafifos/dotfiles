@@ -11,7 +11,6 @@ if status --is-interactive
     # verbose and interactive command modes.
     abbr -a -g cp 'cp -vi'
     abbr -a -g mv 'mv -vi'
-    abbr -a -g rm 'rm -vi'
 
     # Enable colorized long listing with human-readable size- and ISO-8601 date formats.
     # The time style is inherited from the TIME_STYLE environment variable.
@@ -43,15 +42,6 @@ if status --is-interactive
     # Hooks npq to npm and yarn.
     # See: https://github.com/lirantal/npq#embed-in-your-day-to-day
     type -q npm; and alias npm npq-hero
+    type -q pnpm; and alias pnpm "NPQ_PKG_MGR=pnpm npq-hero"
     type -q yarn; and alias yarn "NPQ_PKG_MGR=yarn npq-hero"
-
-    # Prints some info about TARGET before prompting for action.
-    type -q rip; and abbr -a -g rip 'rip --inspect'
-
-    # rsync aliases
-    if type -q rsync
-        # rsync based file system operations with detailed process and status information.
-        alias cpr 'rsync --archive --executability -hh --partial --info=name2 --info=progress2 --info=stats1 --modify-window=1'
-        alias mvr 'cpr --remove-source-files'
-    end
 end

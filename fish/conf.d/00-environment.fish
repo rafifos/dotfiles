@@ -2,20 +2,32 @@
 set -q HOSTNAME; or set -Ux HOSTNAME (hostname)
 
 # Set's "Portuguese (Brazil)" as the fallback language.
-not set -q LC_ALL; or set -Ux LC_ALL pt_BR.UTF-8
+# See: https://www.gnu.org/software/gettext/manual/html_node/Locale-Environment-Variables.html
+set -q LC_ALL; and set -e LC_ALL
+set -Ux LANG pt_BR.UTF-8
 
 # Set's the output of various programs to use the ISO 8601 format.
 # See: https://www.gnu.org/software/coreutils/manual/html_node/Formatting-file-timestamps.html
 set -Ux TIME_STYLE iso
 
-# Sets the XDG Base Directory Specification directories if they're not set.
-set -q XDG_CONFIG_HOME; or set -Ux XDG_CONFIG_HOME $HOME/.config
-set -q XDG_CACHE_HOME; or set -Ux XDG_CACHE_HOME $HOME/.cache
-set -q XDG_DATA_HOME; or set -Ux XDG_DATA_HOME $HOME/.local/share
+# Sets the XDG Base Directory Specification directories.
+# See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_RUNTIME_DIR $HOME/.local/run
+set -Ux XDG_STATE_HOME $HOME/.local/state
+set -Ux XDG_DATA_HOME $HOME/.local/share
+
+# Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
+set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
+set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
 
 # Sets fish's config and data directories.
 set -U __fish_user_data_dir $XDG_DATA_HOME/fish
 set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
+
+# Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
+set -Ux SHELL $__fish_bin_dir/fish
 
 # Forces 24bit support for the current session.
 set -U fish_term24bit 1
@@ -115,7 +127,7 @@ test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/bre
 # Prepends local binary directory if it's present.
 test -d ~/.local/bin; and fish_add_path ~/.local/bin
 
-# Enables BuildKit.
+# Enables Docker BuildKit.
 # See: https://docs.docker.com/develop/develop-images/build_enhancements
 type -q docker; and set -Ux DOCKER_BUILDKIT 1
 
@@ -123,14 +135,11 @@ type -q docker; and set -Ux DOCKER_BUILDKIT 1
 # See: https://nodejs.org/api/cli.html#cli_environment_variables
 set -Ux NODE_ENV development
 set -Ux NODE_PRESERVE_SYMLINKS 1
-set -Ux NODE_OPTIONS '--max-old-space-size=4096'
 
 # Environment variables for interactive shells.
 if status --is-interactive
-    # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
-    set -Ux SHELL $__fish_bin_dir/fish
-
-    # Use the ncurses-based pinentry program for interactive shells.
+    # Configure pinentry to use the correct TTY.
+    # See: https://wiki.archlinux.org/title/GnuPG#:~:text=gpg-agent%20%5B3%5D.-,Configure%20pinentry%20to%20use%20the%20correct%20TTY,-Also%20set%20the
     set -gx GPG_TTY (tty)
 
     # Load the VTE shell profile configuration to enable inheritance of the current working directory
@@ -147,7 +156,7 @@ if status --is-interactive
 
     # Workaround for handling TERM variable in multiple tmux sessions properly.
     # See: http://sourceforge.net/p/tmux/mailman/message/32751663
-    if test -n $TMUX; and type -q tmux
+    if type -q tmux; and test -n $TMUX
         switch (tmux showenv TERM 2>/dev/null)
             case '*256color'
                 set -g TERM screen-256color
@@ -163,8 +172,7 @@ if status --is-interactive
     #   1. http://www.gnu.org/software/grc/manual/html_node/Colorizing-Output.html
     #   2. https://github.com/oh-my-fish/plugin-grc
     #   3. https://github.com/zpm-zsh/colorize
-    set -U grc_plugin_execs as cat cvs df diff dig du env free g++ gas gcc ifconfig last ld ls \
-        lsblk make mount mtr netstat ping ping6 ps tail traceroute wdiff
+    set -U grc_plugin_execs as cvs df dig du env free g++ gas gcc ifconfig last ld lsblk make mount mtr netstat ping ping6 ps tail traceroute wdiff
 
     # Sets nvim as the default editor if it's installed.
     if type -q nvim
@@ -176,11 +184,15 @@ if status --is-interactive
     # An arctic, north-bluish clean and elegant dircolors theme.
     test -f $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors; and eval (dircolors -c $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors)
 
-    # forgit options.
-    # See: https://github.com/wfxr/forgit#--options
+    # bat(1) customizations.
+    # See: https://github.com/sharkdp/bat#customization
     if type -q bat
-        set -Ux FORGIT_PAGER 'bat --color always'
-        set -Ux FORGIT_IGNORE_PAGER 'bat -l gitignore --color always'
+        set -Ux BAT_CONFIG_PATH $XDG_CONFIG_HOME/bat/bat.conf
+
+        # Also set bat as the pager for forgit.
+        # See: https://github.com/wfxr/forgit#--options
+        set -Ux FORGIT_PAGER 'bat'
+        set -Ux FORGIT_IGNORE_PAGER 'bat -l gitignore'
     end
 
     # enhancd configurations.
