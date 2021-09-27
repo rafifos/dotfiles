@@ -58,4 +58,5 @@
     ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
     ~/.config/fish/functions/npmup.fish: fish/functions/npmup.fish
     ~/.config/fish/functions/refreshenv.fish: fish/functions/refreshenv.fish
+    ~/.config/fish/functions/rm.fish: fish/functions/rm.fish
     ~/.config/fish/private.fish: fish/private.fish
