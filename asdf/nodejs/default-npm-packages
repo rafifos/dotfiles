@@ -1,6 +1,7 @@
+cost-of-modules
 heroku
 eslint
 npq
-terser
+prettier
 tldr
 yarn
