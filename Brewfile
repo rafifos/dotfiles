@@ -8,12 +8,6 @@ tap "nektos/tap"
 tap "rafifos/homebrew-tap"
 
 if Socket.gethostname === 'drifter'
-  tap "linuxbrew/fonts"
-
-  # Fonts
-  brew "font-inter"
-  brew "font-vollkorn"
-
   brew "android-sdk-platform-tools"
   brew "hostess"
 end
