@@ -12,12 +12,6 @@ if status --is-interactive
     abbr -a -g cp 'cp -vi'
     abbr -a -g mv 'mv -vi'
 
-    # Enable colorized long listing with human-readable size- and ISO-8601 date formats.
-    # The time style is inherited from the TIME_STYLE environment variable.
-    alias ls 'ls -AGgh --color=auto --group-directories-first --time-style="+"'
-    abbr -a -g ll 'ls -l'
-    abbr -a -g l ls
-
     # Print permission bits in octal (%a) and file type in human readable form (%A)
     # and quote file name with dereference for symbolic links (%N).
     abbr -a -g lsp 'stat -c "%A %a %N"'
