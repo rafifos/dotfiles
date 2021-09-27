@@ -94,9 +94,6 @@ function install-packages() {
 
     # Legendary Git GUI client for Windows, Mac & Linux.
     curl -fsSLO "https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-
-    # End-to-end encryption for things that matter.
-    curl -fsSLO "https://prerelease.keybase.io/keybase_amd64.deb"
   fi
 
   # Install downloaded .deb files.
