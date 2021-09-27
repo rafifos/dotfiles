@@ -1,4 +1,3 @@
 com.axosoft.GitKraken
-com.discordapp.Discord
 com.slack.Slack
 com.spotify.Client
