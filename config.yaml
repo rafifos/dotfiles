@@ -56,6 +56,7 @@
     ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
     ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/htop.fish: fish/functions/htop.fish
     ~/.config/fish/functions/ls.fish: fish/functions/ls.fish
     ~/.config/fish/functions/magic_conch_shell.fish: fish/functions/magic_conch_shell.fish
     ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
