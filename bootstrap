@@ -64,6 +64,7 @@ function install-packages() {
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     # Install GNOME specific packages.
+    echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
     xargs <packages-gnome.txt sudo apt install --assume-yes
 
     # Install Flatpak software.
