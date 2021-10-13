@@ -12,7 +12,7 @@ function fish_greeting --description "Prints basic system information from time 
             # File is newer than 7 days, don't show anything.
             return 0
         else
-            rm $__greeting_shown
+            command rm $__greeting_shown
         end
     end
 
