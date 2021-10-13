@@ -1,5 +1,5 @@
 # First boot, install and setup plugins.
-if not type -q fisher; and status is-interactive
+if status is-interactive; and not type -q fisher
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
     fisher install b4b4r07/enhancd
