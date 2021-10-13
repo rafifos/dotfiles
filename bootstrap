@@ -31,7 +31,7 @@ done 2>/dev/null &
 
 function install-packages() {
   # Install base packages.
-  xargs <packages-base.txt sudo apt install --assume-yes
+  xargs <install-base.txt sudo apt install --assume-yes
 
   # Homebrew is a great way to install packages without messing with dependencies system-wide.
   if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
@@ -43,6 +43,10 @@ function install-packages() {
   TMPD="$(mktemp -d)"
 
   if [[ "$(</proc/sys/kernel/osrelease)" != *microsoft* ]]; then
+    # Remove unneeded packages.
+    xargs <remove-gnome.txt sudo apt autoremove --purge --assume-yes
+    sudo rm -rfv /usr/share/fonts/truetype/libreoffice
+
     # Workaround for CORS issues with @mesalva/api
     sudo "$(which hostess)" add local.mesalva.com 127.0.0.1
 
@@ -65,10 +69,10 @@ function install-packages() {
 
     # Install GNOME specific packages.
     echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
-    xargs <packages-gnome.txt sudo apt install --assume-yes
+    xargs <install-gnome.txt sudo apt install --assume-yes
 
     # Install Flatpak software.
-    xargs <packages-flatpak.txt flatpak install --user --noninteractive
+    xargs <install-flatpak.txt flatpak install --user --noninteractive
 
     # Post-install tasks
     # sudo usermod -aG docker "$USER"
@@ -89,7 +93,7 @@ function install-packages() {
     curl -fsSLO 'https://prerelease.keybase.io/keybase_amd64.deb'
   else
     # Install WSL specific packages.
-    xargs <packages-wsl.txt sudo apt install --assume-yes
+    xargs <install-wsl.txt sudo apt install --assume-yes
 
     # Don't clutter CWD with downloaded packages.
     cd "$TMPD"

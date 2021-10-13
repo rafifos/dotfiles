@@ -1,0 +1,8 @@
+baobab
+evince
+gnome-font-viewer
+gucharmap
+ibus-libpinyin
+firefox*
+libreoffice*
+popsicle
