@@ -1,5 +1,7 @@
+gir1.2-gtop-2.0
 gnome-tweaks
 gnome-usage
+lm-sensors
 openrazer-meta
 openrgb
 tilix
