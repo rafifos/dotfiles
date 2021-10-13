@@ -36,7 +36,7 @@
     ~/.config/bottom/bottom.toml: bottom/bottom.toml
 
     # lazydocker
-    ~/.config/jesseduffield/lazydocker/config.yml: lazydocker/config.yml
+    # ~/.config/jesseduffield/lazydocker/config.yml: lazydocker/config.yml
 
     # asdf-vm
     ~/.asdfrc: asdf/asdfrc
