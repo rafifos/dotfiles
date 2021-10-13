@@ -15,7 +15,7 @@ end
 brew "act"
 brew "bat"
 brew "bottom"
-brew "docker-compose"
+# brew "docker-compose"
 brew "exa"
 brew "fd"
 brew "fish"
@@ -30,3 +30,10 @@ brew "neovim"
 brew "rm-improved"
 brew "topgrade"
 brew "uutils-coreutils"
+
+# Make docker-compose available to docker-cli as a plugin.
+# docker_plugins_dir = Pathname.new(ENV["HOME"]).dirname.join(".docker/cli-plugins")
+# docker_compose_bin = Pathname.new(ENV["HOMEBREW_PREFIX"]).dirname.join("/opt/docker-compose/bin/docker-compose")
+
+# system( "mkdir -p #{docker_plugins_dir}" )
+# system( "ln -sfn #{docker_compose_bin} #{docker_plugins_dir}/docker-compose" )

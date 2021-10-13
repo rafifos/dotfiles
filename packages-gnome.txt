@@ -1,6 +1,3 @@
-containerd.io
-docker-ce
-docker-ce-cli
 gnome-tweak-tool
 gnome-usage
 openrazer-meta

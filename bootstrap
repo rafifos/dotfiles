@@ -56,8 +56,9 @@ function install-packages() {
 
     # Docker Engine is an open source containerization technology for building and
     # containerizing your applications.
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+    # Packages: containerd.io docker-ce docker-ce-cli
+    # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    # echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
 
     # The biggest Flatpak repository for Linux.
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -69,7 +70,7 @@ function install-packages() {
     xargs <packages-flatpak.txt flatpak install --user --noninteractive
 
     # Post-install tasks
-    sudo usermod -aG docker "$USER"
+    # sudo usermod -aG docker "$USER"
 
     # Don't clutter CWD with downloaded packages.
     cd "$TMPD"
