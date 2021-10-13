@@ -1,7 +1,6 @@
 require 'socket'
 
 tap "beeftornado/rmtree"
-tap "clementtsang/bottom"
 tap "github/gh"
 tap "jesseduffield/lazydocker"
 tap "nektos/tap"
@@ -14,7 +13,7 @@ end
 
 brew "act"
 brew "bat"
-brew "bottom"
+brew "bottom", args: ["build-from-source"]
 # brew "docker-compose"
 brew "exa"
 brew "fd"
