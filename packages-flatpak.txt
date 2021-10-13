@@ -1,3 +1,4 @@
 com.axosoft.GitKraken
 com.slack.Slack
 com.spotify.Client
+org.gnome.Extensions
