@@ -178,7 +178,7 @@ if status --is-interactive
     if type -q nvim
         set -Ux EDITOR nvim
         set -Ux VISUAL $EDITOR
-        set -Ux MANPAGER 'nvim -c "set ft=man" -'
+        set -Ux MANPAGER 'nvim +Man!'
     end
 
     # An arctic, north-bluish clean and elegant dircolors theme.
@@ -191,7 +191,7 @@ if status --is-interactive
 
         # Also set bat as the pager for forgit.
         # See: https://github.com/wfxr/forgit#--options
-        set -Ux FORGIT_PAGER 'bat'
+        set -Ux FORGIT_PAGER bat
         set -Ux FORGIT_IGNORE_PAGER 'bat -l gitignore'
     end
 
