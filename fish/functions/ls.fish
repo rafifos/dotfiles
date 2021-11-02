@@ -5,7 +5,6 @@ function ls --wraps ls --wraps exa --description "Replaces ls(1) with exa(1)"
         set -a exa_args --oneline
         set -a exa_args --long
         set -a exa_args --classify
-        set -a exa_args --icons
         set -a exa_args --all
         set -a exa_args --group-directories-first
         set -a exa_args --header
