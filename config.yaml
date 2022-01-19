@@ -50,18 +50,24 @@
     ~/.config/fish/conf.d/00-environment.fish: fish/conf.d/00-environment.fish
     ~/.config/fish/conf.d/01-fisher.fish: fish/conf.d/01-fisher.fish
     ~/.config/fish/conf.d/02-asdf.fish: fish/conf.d/02-asdf.fish
-    ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/lib/nord-dircolors: fish/lib/nord-dircolors
-    ~/.config/fish/functions/cat.fish: fish/functions/cat.fish
-    ~/.config/fish/functions/diff.fish: fish/functions/diff.fish
+    ~/.config/fish/functions/_bind_bang.fish: fish/functions/_bind_bang.fish
+    ~/.config/fish/functions/_bind_dollar.fish: fish/functions/_bind_dollar.fish
+    ~/.config/fish/functions/_bind_self.fish: fish/functions/_bind_self.fish
+    ~/.config/fish/functions/_bind_status.fish: fish/functions/_bind_status.fish
     ~/.config/fish/functions/fish_greeting.fish: fish/functions/fish_greeting.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
-    ~/.config/fish/functions/htop.fish: fish/functions/htop.fish
-    ~/.config/fish/functions/ls.fish: fish/functions/ls.fish
+    ~/.config/fish/functions/fish_user_key_bindings.fish: fish/functions/fish_user_key_bindings.fish
     ~/.config/fish/functions/magic_conch_shell.fish: fish/functions/magic_conch_shell.fish
     ~/.config/fish/functions/mkd.fish: fish/functions/mkd.fish
     ~/.config/fish/functions/mktempd.fish: fish/functions/mktempd.fish
     ~/.config/fish/functions/npmup.fish: fish/functions/npmup.fish
     ~/.config/fish/functions/refreshenv.fish: fish/functions/refreshenv.fish
-    ~/.config/fish/functions/rm.fish: fish/functions/rm.fish
+    ~/.config/fish/functions/cat.fish: fish/shims/cat.fish
+    ~/.config/fish/functions/diff.fish: fish/shims/diff.fish
+    ~/.config/fish/functions/htop.fish: fish/shims/htop.fish
+    ~/.config/fish/functions/ls.fish: fish/shims/ls.fish
+    ~/.config/fish/functions/rm.fish: fish/shims/rm.fish
+    ~/.config/fish/config.fish: fish/config.fish
+    ~/.config/fish/fish_plugins: fish/fish_plugins
     ~/.config/fish/private.fish: fish/private.fish
