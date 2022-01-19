@@ -1,5 +1,4 @@
-- link:
-    /etc/sudoers.d/00-custom-options: sudoers.d/00-custom-options
-
 - shell:
+    - cp sudoers.d/00-custom-options /etc/sudoers.d/00-custom-options
+    - chown root:root /etc/sudoers.d/00-custom-options
     - chmod 0440 /etc/sudoers.d/00-custom-options
