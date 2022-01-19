@@ -1,0 +1,3 @@
+- link:
+    ~/.asdfrc: asdf/asdfrc
+    ~/.default-npm-packages: asdf/nodejs/default-npm-packages

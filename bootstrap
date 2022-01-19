@@ -140,7 +140,7 @@ function install-packages() {
 function link-targets() {
   # Common configurations.
   CONFIG='config.yaml'
-  DOTBOT_DIR='.dotbot'
+  DOTBOT_DIR='meta/dotbot'
   DOTBOT_BIN='bin/dotbot'
 
   BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -152,5 +152,5 @@ function link-targets() {
   "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}" --verbose
 }
 
-install-packages
+# install-packages
 link-targets "$@"

@@ -1,0 +1,11 @@
+- link:
+    ~/.gitattributes: git/attributes.conf
+    ~/.gitconfig: git/config.conf
+    ~/.gitignore: git/ignore.conf
+    ~/.config/git/commit_msg.txt: git/includes/templates/commit.txt
+    ~/.config/git/user-personal.conf:
+      if: '[ "$HOSTNAME" = GUARDIAN ]'
+      path: git/includes/user-personal.conf
+    ~/.config/git/user-work.conf:
+      if: '[ "$HOSTNAME" = drifter ]'
+      path: git/includes/user-work.conf

@@ -1,0 +1,7 @@
+- defaults:
+    link:
+      create: true
+      force: true
+    shell:
+      stdout: true
+      stderr: true
