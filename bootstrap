@@ -29,6 +29,33 @@ while true; do
   kill -0 "$$" || exit
 done 2>/dev/null &
 
+function install-android-udev-rules() {
+  # Install M0Rf30's udev rules for the Android USB driver
+  # See: https://github.com/M0Rf30/android-udev-rules#other-distros
+  git clone https://github.com/M0Rf30/android-udev-rules.git
+  cd android-udev-rules
+
+  # Copy files
+  sudo cp -v 51-android.rules /etc/udev/rules.d/51-android.rules
+  sudo cp -v android-udev.conf /usr/lib/sysusers.d/
+
+  # Set permissions
+  sudo chmod --verbose 0644 /etc/udev/rules.d/51-android.rules
+  sudo chmod --verbose 0644 /usr/lib/sysusers.d/android-udev.conf
+
+  # Create the `adbusers` group
+  sudo systemd-sysusers
+
+  # Add the current user to `adbusers`
+  sudo usermod -aG adbusers "$USER"
+
+  # Restart UDEV
+  sudo udevadm control --reload-rules
+  sudo systemctl restart systemd-udevd.service
+
+  cd ..
+}
+
 function install-packages() {
   # Install base packages.
   xargs <install-base.txt sudo apt install --assume-yes
@@ -80,8 +107,8 @@ function install-packages() {
     # Don't clutter CWD with downloaded packages.
     cd "$TMPD"
 
-    # Fight surveillance because you love Freedom.
-    curl -fsSLO 'https://updates.safing.io/latest/linux_amd64/packages/portmaster-installer.deb'
+    # Install the latest version of the Chrome browser.
+    install-android-udev-rules
 
     # Code editing. Redefined.
     curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
