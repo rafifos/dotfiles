@@ -1,2 +1,0 @@
-/includes/user-personal.conf filter=git-crypt diff=git-crypt
-/includes/user-work.conf filter=git-crypt diff=git-crypt
