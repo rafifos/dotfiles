@@ -2,6 +2,7 @@ gir1.2-gtop-2.0
 gnome-tweaks
 lm-sensors
 openrazer-meta
-openrgb
+polychromatic
 tilix
 ubuntu-restricted-extras
+x11-utils
