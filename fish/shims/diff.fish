@@ -1,9 +1,9 @@
 function diff --wraps diff --description "Colorizes diff output, with support for delta and diff-so-fancy."
     if type -q delta
-        diff "$argv" | delta
+        command diff "$argv" | command delta
     else if type -q diff-so-fancy
-        diff "$argv" | diff-so-fancy
+        command diff "$argv" | command diff-so-fancy
     else
-        diff --color "$argv"
+        command diff --color "$argv"
     end
 end
