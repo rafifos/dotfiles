@@ -1,12 +1,12 @@
-function fish_greeting --description "Prints basic system information from time to time."
+function fish_greeting --description "Prints basic system information and a greeting from time to time."
     set -l __greeting_shown $__fish_user_data_dir/greeting_shown
 
     # The logic is based on motd, only show if the file exists and it's older than 7 days.
     if not test -f $__greeting_shown
         touch $__greeting_shown
     else
-        set -l file_time_max (date -d 'now - 7 days' +%s)
-        set -l file_time (date -r "$__greeting_shown" +%s)
+        set -l file_time_max (command date -d 'now - 7 days' +%s)
+        set -l file_time (command date -r "$__greeting_shown" +%s)
 
         if test $file_time -gt $file_time_max
             # File is newer than 7 days, don't show anything.
@@ -27,7 +27,7 @@ function fish_greeting --description "Prints basic system information from time 
             test -f /etc/update-motd.d/40-environment && bash -c 'source /etc/environment; source /etc/update-motd.d/40-environment'
 
             # Because of the '+' character, we need to subtract 2 from the terminal width.
-            set -l __term_separator \n+(printf "%*s" (math (tput cols) - 2) | sed "s/ /-/g")+\n
+            set -l __term_separator \n+(printf "%*s" (math (tput cols) - 2) | command sed "s/ /-/g")+\n
             echo "$__term_separator"
         end
     end

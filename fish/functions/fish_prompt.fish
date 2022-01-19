@@ -1,4 +1,4 @@
-function fish_prompt --description "Based on joelwanner/theme-boxfish."
+function fish_prompt --description "A theme originally based on joelwanner/theme-boxfish."
     # Prevents fish from showing stuff on the right of the prompt.
     set -g fish_right_prompt
 
@@ -23,7 +23,7 @@ function fish_prompt --description "Based on joelwanner/theme-boxfish."
     echo -n " $cwd "
 
     # git branch and dirty state
-    set -l git_branch (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
+    set -l git_branch (command git symbolic-ref HEAD 2> /dev/null | command sed -e 's|^refs/heads/||')
     set -l git_dirty (command git status -s --ignore-submodules=dirty 2> /dev/null)
     if test -n "$git_branch"
         if test -n "$git_dirty"
