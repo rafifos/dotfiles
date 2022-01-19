@@ -27,6 +27,9 @@ if status --is-interactive
     # Colorizes output.
     abbr -a -g ip 'ip --color=auto'
 
+    # Prints some info about TARGET before prompting for action.
+    abbr -a -g rip 'rip --inspect'
+
     # Shortcut to ~/.dotfiles
     abbr -a -g dot 'cd ~/.dotfiles'
 
