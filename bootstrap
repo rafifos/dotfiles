@@ -80,10 +80,10 @@ function install-packages() {
     # An entirely open source driver and user-space daemon that allows you to
     # manage your Razer peripherals on GNU/Linux.
     sudo add-apt-repository -yu ppa:openrazer/stable
-    sudo gpasswd -a "$USER" plugdev
 
-    # Open source RGB lighting control that doesn't depend on manufacturer software.
-    sudo add-apt-repository -yu ppa:thopiekar/openrgb
+    # A frontend for OpenRazer that enables Razer devices to control lighting
+    # effects and more on GNU/Linux.
+    sudo add-apt-repository ppa:polychromatic/stable
 
     # Docker Engine is an open source containerization technology for building and
     # containerizing your applications.
@@ -134,6 +134,7 @@ function install-packages() {
 
   # Go back to our current directory.
   cd "$CWD"
+  sudo usermod -aG plugdev "$USER"
 }
 
 function link-targets() {
