@@ -1,0 +1,9 @@
+[submodule "dotbot"]
+	path = meta/dotbot
+	url = git@github.com:anishathalye/dotbot
+	branch = master
+
+[submodule "nord-dircolors"]
+	path = fish/lib/nord-dircolors
+	url = git@github.com:arcticicestudio/nord-dircolors
+	branch = develop
