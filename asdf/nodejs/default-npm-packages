@@ -2,6 +2,7 @@ cgx
 cost-of-modules
 eslint
 heroku
+localtunnel
 npq
 nx
 prettier
