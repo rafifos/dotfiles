@@ -2,21 +2,6 @@
 test -f "$__fish_user_config_dir"/private.fish; and source "$__fish_user_config_dir"/private.fish
 
 if status --is-interactive
-    if type -q keychain
-        set -a keychain_args --agents gpg,ssh
-        set -a keychain_args --ignore-missing
-        set -a keychain_args --quick
-
-        if type -q gpg2
-            set -a keychain_args --gpg2
-        end
-
-        keychain $keychain_args $keychain_keys
-
-        test -f "$HOME/.keychain/$HOSTNAME-fish"; and source $HOME/.keychain/$HOSTNAME-fish
-        test -f "$HOME/.keychain/$HOSTNAME-fish-gpg"; and source $HOME/.keychain/$HOSTNAME-fish-gpg
-    end
-
     # Loads the GNOME Keyring daemon if it isn't running.
     if type -q gnome-keyring-daemon; and test -n "$DESKTOP_SESSION"
         set -Ux (gnome-keyring-daemon --start | string split "=")
