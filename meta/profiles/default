@@ -7,4 +7,4 @@ gnupg
 lazydocker
 lm-sensors-sudo
 spacevim
-sudoers.d
+sudoers.d-sudo
