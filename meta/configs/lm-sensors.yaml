@@ -1,0 +1,5 @@
+- shell:
+    - kernelstub -a 'acpi_enforce_resources=lax'
+    - cp lm-sensors/TUF-GAMING-X570-PLUS.conf /etc/sensors.d/TUF-GAMING-X570-PLUS.conf
+    - chown root:root /etc/sensors.d/TUF-GAMING-X570-PLUS.conf
+    - chmod 0644 /etc/sensors.d/TUF-GAMING-X570-PLUS.conf
