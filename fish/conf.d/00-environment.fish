@@ -133,7 +133,6 @@ type -q docker; and set -Ux DOCKER_BUILDKIT 1
 
 # Node.js configurations
 # See: https://nodejs.org/api/cli.html#cli_environment_variables
-set -Ux NODE_ENV development
 set -Ux NODE_PRESERVE_SYMLINKS 1
 
 # Environment variables for interactive shells.
