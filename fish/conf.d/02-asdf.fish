@@ -17,6 +17,7 @@ if not test -d ~/.asdf
     asdf install nodejs lts
     asdf install nodejs lts-fermium
     asdf install nodejs lts-erbium
+    asdf install nodejs lts-gallium
     asdf install yarn latest
 
     asdf global nodejs lts
