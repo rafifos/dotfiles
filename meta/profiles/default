@@ -9,3 +9,4 @@ lm-sensors-sudo
 spacevim
 sudoers.d-sudo
 sysctl.d-sudo
+user-tmpfiles.d
