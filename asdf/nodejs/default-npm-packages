@@ -12,7 +12,6 @@ stylelint-config-recess-order
 stylelint-config-standard
 stylelint-config-standard-scss
 stylelint-prettier
-stylelint-selector-bem-pattern
 terser
 tldr
 all-the-package-names
