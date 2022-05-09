@@ -29,39 +29,6 @@ set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
 # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
 set -Ux SHELL $__fish_bin_dir/fish
 
-# Forces 24bit support for the current session.
-set -U fish_term24bit 1
-
-# An arctic, north-bluish color scheme.
-set -U fish_color_normal ECEFF4
-set -U fish_color_command 88C0D0
-set -U fish_color_quote A3BE8C
-set -U fish_color_redirection B48EAD
-set -U fish_color_end D08770
-set -U fish_color_error EBCB8B
-set -U fish_color_param E5E9F0
-set -U fish_color_comment 4C566A
-set -U fish_color_match 434C5E --background=D8DEE9
-set -U fish_color_selection 434C5E --background=D8DEE9
-set -U fish_color_search_match 434C5E --background=D8DEE9
-set -U fish_color_operator 81A1C1
-set -U fish_color_escape EBCB8B
-set -U fish_color_cwd 8FBCBB
-set -U fish_color_autosuggestion 4C566A
-set -U fish_color_user 81A1C1
-set -U fish_color_host 81A1C1
-set -U fish_color_host_remote 81A1C1
-set -U fish_color_cancel -r
-set -U fish_pager_color_progress normal --background=8FBCBB
-set -U fish_pager_color_background normal
-set -U fish_pager_color_prefix normal --bold --underline
-set -U fish_pager_color_completion 4C566A
-set -U fish_pager_color_description 2E3440 --background=ECEFF4
-
-# Additional variables used by the default theme.
-set -U fish_color_history_current --bold
-set -U fish_color_cwd_root 8FBCBB --bold
-set -U fish_color_valid_path --underline
 
 # Set the terminfo capability substrings for the color environment variable interpreted by the
 # "termcap" compatibility application interface.
@@ -118,7 +85,7 @@ set -Ux LESS_TERMCAP_ue \e\[0m
 
 # Set the style of the sudo prompt.
 # See: sudo(8)
-set -Ux SUDO_PROMPT (set_color 2E3440 --background $fish_color_error; echo -n ' ! '; set_color --background D08770; echo -n " sudo "; set_color normal; echo -n ' ')
+set -Ux SUDO_PROMPT (set_color $nord0 --background $fish_color_error; echo -n ' ! '; set_color --background $nord11; echo -n " sudo "; set_color normal; echo -n ' ')
 
 # Loads Homebrew if it's available.
 test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
