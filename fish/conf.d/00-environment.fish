@@ -29,59 +29,6 @@ set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
 # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
 set -Ux SHELL $__fish_bin_dir/fish
 
-# Set the terminfo capability substrings for the color environment variable interpreted by the
-# "termcap" compatibility application interface.
-#
-# fn - File names prefixing any content line.
-# ln - Line numbers prefixing any content line.
-# mt - Matching non-empty text in any matching line.
-# se - Separators that are inserted between selected line fields (`:`), context line fields (`-`) and
-#      groups of adjacent lines when nonzero context is specified (`--`)
-# See:
-#   1. http://www.gnu.org/software/grep/manual/grep.html
-#   2. terminfo(5)
-set -Ux GREP_COLORS 'fn=34:ln=01;30:mt=01;34:se=30'
-
-# Pass options by default to...
-# - only display ANSI "color" escape sequences in "raw" form (`-R`, `--RAW-CONTROL-CHARS`)
-# - automatically exit if the entire file can be displayed on the first screen (`-F`, `--quit-if-one-screen`)
-# - disable sending the termcap (de)initialization strings to the terminal to avoid unnecessary operations like
-#   clearing the screen (`-X`, `--no-init`)
-# - use two tab stops (`-x2`, `--tabs=n`)
-set -Ux LESS -RFXx2
-
-# Set's the charset to UTF-8.
-set -Ux LESSCHARSET utf-8
-
-# Set the terminfo variables of the "termcap" compatibility application interface.
-# Provides colored output for the `man` command.
-#
-# Escape Sequences Comparison Table
-# ==================================
-# termcap  terminfo  function
-# -------  --------  --------
-# ks       smkx      Send commands via keypad
-# ke       rmkx      Send digits via keypad
-# vb       flash     Emit visual bell
-# mb       blink     Start blink
-# md       bold      Start bold
-# me       sgr0      Turn off bold, blink and underline
-# so       smso      Start standout (reverse video)
-# se       rmso      Stop standout
-# us       smul      Start underline
-# ue       rmul      Stop underline
-#
-# See:
-#   1. https://www.gnu.org/software/less
-#   2. terminfo(5)
-set -Ux LESS_TERMCAP_mb \e\[01\X3B34m
-set -Ux LESS_TERMCAP_md \e\[01\X3B34m
-set -Ux LESS_TERMCAP_me \e\[0m
-set -Ux LESS_TERMCAP_so \e\[01\X3B30m
-set -Ux LESS_TERMCAP_se \e\[0m
-set -Ux LESS_TERMCAP_us \e\[01\X3B34m
-set -Ux LESS_TERMCAP_ue \e\[0m
-
 # Loads Homebrew if it's available.
 test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
