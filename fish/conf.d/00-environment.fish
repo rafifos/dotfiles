@@ -29,40 +29,6 @@ set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
 # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
 set -Ux SHELL $__fish_bin_dir/fish
 
-# Forces 24bit support for the current session.
-set -U fish_term24bit 1
-
-# An arctic, north-bluish color scheme.
-set -U fish_color_normal ECEFF4
-set -U fish_color_command 88C0D0
-set -U fish_color_quote A3BE8C
-set -U fish_color_redirection B48EAD
-set -U fish_color_end D08770
-set -U fish_color_error EBCB8B
-set -U fish_color_param E5E9F0
-set -U fish_color_comment 4C566A
-set -U fish_color_match 434C5E --background=D8DEE9
-set -U fish_color_selection 434C5E --background=D8DEE9
-set -U fish_color_search_match 434C5E --background=D8DEE9
-set -U fish_color_operator 81A1C1
-set -U fish_color_escape EBCB8B
-set -U fish_color_cwd 8FBCBB
-set -U fish_color_autosuggestion 4C566A
-set -U fish_color_user 81A1C1
-set -U fish_color_host 81A1C1
-set -U fish_color_host_remote 81A1C1
-set -U fish_color_cancel -r
-set -U fish_pager_color_progress normal --background=8FBCBB
-set -U fish_pager_color_background normal
-set -U fish_pager_color_prefix normal --bold --underline
-set -U fish_pager_color_completion 4C566A
-set -U fish_pager_color_description 2E3440 --background=ECEFF4
-
-# Additional variables used by the default theme.
-set -U fish_color_history_current --bold
-set -U fish_color_cwd_root 8FBCBB --bold
-set -U fish_color_valid_path --underline
-
 # Set the terminfo capability substrings for the color environment variable interpreted by the
 # "termcap" compatibility application interface.
 #
@@ -116,10 +82,6 @@ set -Ux LESS_TERMCAP_se \e\[0m
 set -Ux LESS_TERMCAP_us \e\[01\X3B34m
 set -Ux LESS_TERMCAP_ue \e\[0m
 
-# Set the style of the sudo prompt.
-# See: sudo(8)
-set -Ux SUDO_PROMPT (set_color 2E3440 --background $fish_color_error; echo -n ' ! '; set_color --background D08770; echo -n " sudo "; set_color normal; echo -n ' ')
-
 # Loads Homebrew if it's available.
 test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -137,6 +99,156 @@ set -Ux NODE_PRESERVE_SYMLINKS 1
 
 # Environment variables for interactive shells.
 if status --is-interactive
+    # An arctic, north-bluish color scheme.
+    set -l nord0 2E3440
+    set -l nord1 3B4252
+    set -l nord2 434C5E
+    set -l nord3 4C566A
+    set -l nord4 D8DEE9
+    set -l nord5 E5E9F0
+    set -l nord6 ECEFF4
+    set -l nord7 8FBCBB
+    set -l nord8 88C0D0
+    set -l nord9 81A1C1
+    set -l nord10 5E81AC
+    set -l nord11 BF616A
+    set -l nord12 D08770
+    set -l nord13 EBCB8B
+    set -l nord14 A3BE8C
+    set -l nord15 B48EAD
+
+    # default color
+    set -U fish_color_normal normal
+
+    # commands like echo
+    set -U fish_color_command $nord9
+
+    # keywords like if - this falls back on the command color if unset
+    set -U fish_color_keyword $nord9
+
+    # quoted text like abc
+    set -U fish_color_quote $nord14
+
+    # IO redirections like >/dev/null
+    set -U fish_color_redirection $nord15
+
+    # process separators like; and &
+    set -U fish_color_end $nord8
+
+    # syntax errors
+    set -U fish_color_error $nord13
+
+    # ordinary command parameters
+    set -U fish_color_param $nord6
+
+    # options starting with “-”, up to the first “--” parameter
+    set -U fish_color_option $nord6
+
+    # comments like ‘# important’
+    set -U fish_color_comment $nord3
+
+    # selected text in vi visual mode
+    set -U fish_color_selection white --bold --background=brblack
+
+    # parameter expansion operators like * and ~
+    set -U fish_color_operator $nord9
+
+    # character escapes like \n and \x70
+    set -U fish_color_escape $nord13
+
+    # autosuggestions (the proposed rest of a command)
+    set -U fish_color_autosuggestion $nord1
+
+    # the current working directory in the default prompt
+    set -U fish_color_cwd green
+
+    # the username in the default prompt
+    set -U fish_color_user brgreen
+
+    # the hostname in the default prompt
+    set -U fish_color_host normal
+
+    # the hostname in the default prompt for remote sessions (like ssh)
+    set -U fish_color_host_remote normal
+
+    # the ‘^C’ indicator on a canceled command
+    set -U fish_color_cancel -r
+
+    # history search matches and selected pager items (background only)
+    set -U fish_color_search_match bryellow --background=brblack # todo
+
+    # the progress bar at the bottom left corner
+    set -U fish_pager_color_progress brwhite --background=cyan
+
+    # the prefix string, i.e. the string that is to be completed
+    set -U fish_pager_color_prefix normal --bold --underline
+
+    # the completion itself, i.e. the proposed rest of the string
+    set -U fish_pager_color_completion normal
+
+    # the completion description
+    set -U fish_pager_color_description $nord13 yellow
+
+    # background of the selected completion
+    set -U fish_pager_color_selected_background --background=brblack
+
+    # Set the terminfo capability substrings for the color environment variable interpreted by the
+    # "termcap" compatibility application interface.
+    #
+    # fn - File names prefixing any content line.
+    # ln - Line numbers prefixing any content line.
+    # mt - Matching non-empty text in any matching line.
+    # se - Separators that are inserted between selected line fields (`:`), context line fields (`-`) and
+    #      groups of adjacent lines when nonzero context is specified (`--`)
+    # See:
+    #   1. http://www.gnu.org/software/grep/manual/grep.html
+    #   2. terminfo(5)
+    set -Ux GREP_COLORS 'fn=34:ln=01;30:mt=01;34:se=30'
+
+    # Pass options by default to...
+    # - only display ANSI "color" escape sequences in "raw" form (`-R`, `--RAW-CONTROL-CHARS`)
+    # - automatically exit if the entire file can be displayed on the first screen (`-F`, `--quit-if-one-screen`)
+    # - disable sending the termcap (de)initialization strings to the terminal to avoid unnecessary operations like
+    #   clearing the screen (`-X`, `--no-init`)
+    # - use two tab stops (`-x2`, `--tabs=n`)
+    set -Ux LESS -RFXx2
+
+    # Set's the charset to UTF-8.
+    set -Ux LESSCHARSET utf-8
+
+    # Set the terminfo variables of the "termcap" compatibility application interface.
+    # Provides colored output for the `man` command.
+    #
+    # Escape Sequences Comparison Table
+    # ==================================
+    # termcap  terminfo  function
+    # -------  --------  --------
+    # ks       smkx      Send commands via keypad
+    # ke       rmkx      Send digits via keypad
+    # vb       flash     Emit visual bell
+    # mb       blink     Start blink
+    # md       bold      Start bold
+    # me       sgr0      Turn off bold, blink and underline
+    # so       smso      Start standout (reverse video)
+    # se       rmso      Stop standout
+    # us       smul      Start underline
+    # ue       rmul      Stop underline
+    #
+    # See:
+    #   1. https://www.gnu.org/software/less
+    #   2. terminfo(5)
+    set -Ux LESS_TERMCAP_mb \e\[01\X3B34m
+    set -Ux LESS_TERMCAP_md \e\[01\X3B34m
+    set -Ux LESS_TERMCAP_me \e\[0m
+    set -Ux LESS_TERMCAP_so \e\[01\X3B30m
+    set -Ux LESS_TERMCAP_se \e\[0m
+    set -Ux LESS_TERMCAP_us \e\[01\X3B34m
+    set -Ux LESS_TERMCAP_ue \e\[0m
+
+    # Set the style of the sudo prompt.
+    # See: sudo(8)
+    set -Ux SUDO_PROMPT (set_color $nord0 --background $fish_color_error; echo -n ' ! '; set_color --background $nord11; echo -n " sudo "; set_color normal; echo -n ' ')
+
     # Configure pinentry to use the correct TTY.
     # See: https://wiki.archlinux.org/title/GnuPG#:~:text=gpg-agent%20%5B3%5D.-,Configure%20pinentry%20to%20use%20the%20correct%20TTY,-Also%20set%20the
     set -gx GPG_TTY (tty)
