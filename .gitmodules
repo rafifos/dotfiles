@@ -8,6 +8,11 @@
 	url = git@github.com:dein0s/dotbot_plugin_aptget
 	branch = master
 
+[submodule "dotbot/plugins/sudo"]
+	path = meta/plugins/sudo
+	url = git@github.com:DrDynamic/dotbot-sudo
+	branch = master
+
 [submodule "nord-dircolors"]
 	path = fish/lib/nord-dircolors
 	url = git@github.com:arcticicestudio/nord-dircolors
