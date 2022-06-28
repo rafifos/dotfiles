@@ -3,6 +3,11 @@
 	url = git@github.com:anishathalye/dotbot
 	branch = master
 
+[submodule "dotbot/plugins/aptget"]
+	path = meta/plugins/aptget
+	url = git@github.com:dein0s/dotbot_plugin_aptget
+	branch = master
+
 [submodule "nord-dircolors"]
 	path = fish/lib/nord-dircolors
 	url = git@github.com:arcticicestudio/nord-dircolors

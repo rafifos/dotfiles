@@ -7,6 +7,7 @@ CONFIG_SUFFIX=".yaml"
 
 META_DIR="meta"
 CONFIG_DIR="configs"
+PLUGIN_DIR="plugins"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
@@ -40,12 +41,13 @@ for config in "${@}"; do
   suffix="-sudo"
   echo -e "$(<"${BASE_DIR}/${META_DIR}/${BASE_CONFIG}${CONFIG_SUFFIX}")\n$(<"${BASE_DIR}/${META_DIR}/${CONFIG_DIR}/${config%"$suffix"}${CONFIG_SUFFIX}")" >"$configFile"
 
-  cmd=("${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" -c "$configFile")
+  cmd=("${BASE_DIR}/${META_DIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASE_DIR}" --plugin-dir "${BASE_DIR}/${META_DIR}/${PLUGIN_DIR}/*" -c "$configFile")
 
   if [[ $config == *"sudo"* ]]; then
     cmd=(sudo "${cmd[@]}")
   fi
 
+  echo "Execute: ${cmd[@]}"
   "${cmd[@]}"
   rm -f "$configFile"
 done
