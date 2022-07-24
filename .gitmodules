@@ -3,12 +3,12 @@
 	url = git@github.com:anishathalye/dotbot
 	branch = master
 
-[submodule "dotbot/plugins/aptget"]
+[submodule "dotbot-plugins/aptget"]
 	path = meta/plugins/aptget
 	url = git@github.com:dein0s/dotbot_plugin_aptget
 	branch = master
 
-[submodule "dotbot/plugins/sudo"]
+[submodule "dotbot-plugins/sudo"]
 	path = meta/plugins/sudo
 	url = git@github.com:DrDynamic/dotbot-sudo
 	branch = master
