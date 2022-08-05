@@ -3,6 +3,7 @@
     "timonwong.shellcheck",
     "bmalehorn.vscode-fish",
     "foxundermoon.shell-format",
-    "tamasfe.even-better-toml"
+    "tamasfe.even-better-toml",
+    "redhat.vscode-yaml"
   ]
 }
