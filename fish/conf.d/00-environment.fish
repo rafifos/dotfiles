@@ -208,6 +208,12 @@ if status --is-interactive
     set -Ux LESS_TERMCAP_us \e\[01\X3B34m
     set -Ux LESS_TERMCAP_ue \e\[0m
 
+    # Set the path to the UNIX socket used by ssh to communicate with 1Password.
+    # See:
+    #   1. ssh(1)
+    #   2. https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
+    set -Ux SSH_AUTH_SOCK ~/.1password/agent.sock
+
     # Set the style of the sudo prompt.
     # See: sudo(8)
     set -Ux SUDO_PROMPT (set_color $nord0 --background $fish_color_error; echo -n ' ! '; set_color --background $nord11; echo -n " sudo "; set_color normal; echo -n ' ')
