@@ -4,6 +4,7 @@ cost-of-modules
 eslint
 heroku
 localtunnel
+loki
 npq
 prettier
 stylelint
