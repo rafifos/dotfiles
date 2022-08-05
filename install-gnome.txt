@@ -3,6 +3,7 @@ gnome-tweaks
 lm-sensors
 openrazer-meta
 polychromatic
+openssh-server
 tilix
 ubuntu-restricted-extras
 x11-utils
