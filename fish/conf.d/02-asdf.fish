@@ -15,8 +15,8 @@ if not test -d ~/.asdf
     replay 'bash -c \'${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring\''
 
     asdf install nodejs lts
-    asdf install nodejs lts-fermium
     asdf install nodejs lts-erbium
+    asdf install nodejs lts-fermium
     asdf install nodejs lts-gallium
     asdf install yarn latest
 
