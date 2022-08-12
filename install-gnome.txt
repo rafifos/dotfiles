@@ -1,3 +1,6 @@
+containerd.io
+docker-ce
+docker-ce-cli
 gir1.2-gtop-2.0
 gnome-tweaks
 lm-sensors
