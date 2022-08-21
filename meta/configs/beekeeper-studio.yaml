@@ -1,0 +1,14 @@
+- defaults:
+    shell:
+      stdout: false
+
+- sudo:
+    - shell:
+        - command: curl -sS https://deb.beekeeperstudio.io/beekeeper.key | gpg --dearmor --yes --output /usr/share/keyrings/beekeeper-studio-archive-keyring.gpg
+          description: "[Beekeeper Studio] Import archive keyring"
+
+    - shell:
+        - command: echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/beekeeper-studio-archive-keyring.gpg] https://deb.beekeeperstudio.io stable main' | tee /etc/apt/sources.list.d/beekeeper-studio.list
+          description: "[Beekeeper Studio] Add apt repository"
+
+    - aptget: [beekeeper-studio]
