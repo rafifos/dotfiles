@@ -1,0 +1,10 @@
+- sudo:
+  - shell:
+    - command: cp sudoers.d/00-custom-options /etc/sudoers.d/00-custom-options
+      description: "[sudoers.d] Copy custom options"
+
+    - command: chown root:root /etc/sudoers.d/00-custom-options
+      description: "[sudoers.d] Set permissions (1/2)"
+
+    - command: chmod 0440 /etc/sudoers.d/00-custom-options
+      description: "[sudoers.d] Set permissions (2/2)"

@@ -7,5 +7,5 @@
       if: '[ "$HOSTNAME" = GUARDIAN ]'
       path: git/includes/user-personal.conf
     ~/.config/git/user-work.conf:
-      if: '[ "$HOSTNAME" = drifter ]'
+      if: '[ "$HOSTNAME" = drifter ] || [ "$HOSTNAME" = "immortal-bastion" ]'
       path: git/includes/user-work.conf

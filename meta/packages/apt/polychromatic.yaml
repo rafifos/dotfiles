@@ -1,0 +1,5 @@
+- sudo:
+  - aptget:
+      polychromatic:
+        ppa_source: ppa:polychromatic/stable
+        upgrade: true

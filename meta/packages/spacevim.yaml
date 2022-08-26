@@ -1,0 +1,7 @@
+- shell:
+  - command: pip3 install --user pynvim
+    description: "[SpaceVim] Install dependencies"
+
+- shell:
+  - command: curl -sLf https://spacevim.org/install.sh | bash
+    description: "[SpaceVim] Install"

@@ -36,6 +36,9 @@ test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/bre
 # Prepends local binary directory if it's present.
 test -d ~/.local/bin; and fish_add_path ~/.local/bin
 
+#
+test -d ~/.profile.d; and replay 'source ~/.profile.d/*.sh'
+
 # Enables Docker BuildKit.
 # See: https://docs.docker.com/develop/develop-images/build_enhancements
 type -q docker; and set -Ux DOCKER_BUILDKIT 1

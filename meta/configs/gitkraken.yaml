@@ -1,3 +1,0 @@
-- shell:
-    - curl -SO# https://raw.githubusercontent.com/JonBunator/gitkraken-custom-themes/master/Themes/Nord/nord-dark.jsonc
-    - mv nord-dark.jsonc ~/.gitkraken/themes/nord-dark.jsonc

@@ -1,19 +1,24 @@
 [submodule "dotbot"]
 	path = meta/dotbot
-	url = git@github.com:anishathalye/dotbot
+	url = https://github.com/anishathalye/dotbot.git
 	branch = master
 
 [submodule "dotbot-plugins/aptget"]
 	path = meta/plugins/aptget
-	url = git@github.com:dein0s/dotbot_plugin_aptget
+	url = https://github.com/dein0s/dotbot_plugin_aptget.git
+	branch = master
+
+[submodule "dotbot-plugins/flatpak"]
+	path = meta/plugins/flatpak
+	url = https://github.com/DrDynamic/dotbot-flatpak.git
 	branch = master
 
 [submodule "dotbot-plugins/sudo"]
 	path = meta/plugins/sudo
-	url = git@github.com:DrDynamic/dotbot-sudo
+	url = https://github.com/DrDynamic/dotbot-sudo.git
 	branch = master
 
 [submodule "nord-dircolors"]
 	path = fish/lib/nord-dircolors
-	url = git@github.com:arcticicestudio/nord-dircolors
+	url = https://github.com/arcticicestudio/nord-dircolors.git
 	branch = develop

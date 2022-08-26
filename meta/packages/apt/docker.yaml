@@ -1,0 +1,18 @@
+- sudo:
+    - shell:
+        - command: curl -sS https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor --yes --output /usr/share/keyrings/docker-archive-keyring.gpg
+          description: "[Docker] Import archive keyring"
+
+    - shell:
+        - command: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list
+          description: "[Docker] Add apt repository"
+
+    - shell:
+        - command: usermod -aG plugdev "$USER"
+          description: "[Docker] Add current user to 'plugdev' group"
+
+    - shell:
+        - command: usermod -aG docker "$USER"
+          description: "[Docker] Create and add current user to 'docker' group"
+
+    - aptget: [docker-ce, docker-ce-cli, containerd.io, docker-compose-plugin]

@@ -1,0 +1,6 @@
+- shell:
+  - command: curl -SO# https://raw.githubusercontent.com/JonBunator/gitkraken-custom-themes/master/Themes/Nord/nord-dark.jsonc
+    description: "[GitKraken] Download Nord theme"
+
+  - command: mv nord-dark.jsonc ~/.gitkraken/themes/nord-dark.jsonc
+    description: "[GitKraken] Install Nord theme"

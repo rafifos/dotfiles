@@ -1,0 +1,6 @@
+- sudo:
+  - shell:
+    - command: echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+      description: "[package-install] Auto-select mscorefonts-eula"
+
+  - aptget: [openssh-server, gir1.2-gtop-2.0, gnome-tweaks, lm-sensors, tilix, ubuntu-restricted-extras, x11-utils]

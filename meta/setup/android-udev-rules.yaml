@@ -1,0 +1,40 @@
+- shell:
+  - command: git -C ./android-udev-rules pull || git clone https://github.com/M0Rf30/android-udev-rules.git
+    description: "[Android USB driver] Clone repository"
+
+- sudo:
+  - shell:
+    - command: cp ./android-udev-rules/51-android.rules /etc/udev/rules.d/51-android.rules
+      description: "[Android USB driver] Copy files (1/2)"
+
+  - shell:
+    - command: cp ./android-udev-rules/android-udev.conf /usr/lib/sysusers.d/android-udev.conf
+      description: "[Android USB driver] Copy files (2/2)"
+
+  - shell:
+    - command: chmod 0644 /etc/udev/rules.d/51-android.rules
+      description: "[Android USB driver] Set permissions (/2)"
+
+  - shell:
+    - command: chmod 0644 /usr/lib/sysusers.d/android-udev.conf
+      description: "[Android USB driver] Set permissions (/2)"
+
+  - shell:
+    - command: systemd-sysusers
+      description: "[Android USB driver] Create 'adbusers' group"
+
+  - shell:
+    - command: usermod -aG adbusers "$USER"
+      description: "[Android USB driver] Add current user to 'adbusers' group"
+
+  - shell:
+    - command: udevadm control --reload-rules
+      description: "[Android USB driver] Restart UDEV (1/2)"
+
+  - shell:
+    - command: systemctl restart systemd-udevd.service
+      description: "[Android USB driver] Restart UDEV (1/2)"
+
+- shell:
+  - command: command rm -rf ./android-udev-rules
+    description: "[Android USB driver] Cleanup"

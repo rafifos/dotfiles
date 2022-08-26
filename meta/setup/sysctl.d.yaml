@@ -1,0 +1,10 @@
+- sudo:
+  - shell:
+    - command: cp sysctl.d/99-swappiness.conf /etc/sysctl.d/99-swappiness.conf
+      description: "[sysctl.d] Copy swappiness configuration"
+
+    - command: chown root:root /etc/sysctl.d/99-swappiness.conf
+      description: "[sysctl.d] Set permissions (1/2)"
+
+    - command: chmod 0644 /etc/sysctl.d/99-swappiness.conf
+      description: "[sysctl.d] Set permissions (2/2)"

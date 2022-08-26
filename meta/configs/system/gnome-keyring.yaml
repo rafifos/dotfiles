@@ -1,0 +1,7 @@
+- shell:
+  - command: mkdir -p ~/.config/autostart
+    description: "[GNOME Keyring] Disable autostart (1/2)"
+
+- shell:
+  - command: echo "Hidden=true" > ~/.config/autostart/gnome-keyring-ssh.desktop
+    description: "[GNOME Keyring] Disable autostart (2/2)"
