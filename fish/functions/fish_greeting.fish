@@ -33,5 +33,5 @@ function fish_greeting --description "Prints basic system information and a gree
     end
 
     # What does the Magic Conch shell has to say?
-    magic_conch_shell
+    test -f $__fish_user_config_dir/lib/magic_conch_shell.fish; and source $__fish_user_config_dir/lib/magic_conch_shell.fish && magic_conch_shell
 end

@@ -16,20 +16,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "${BASE_DIR}"
 git submodule update --init --recursive --remote
 
-echo -e "\nInstall necessary dependency: yaml"
-if command -v python3 &>/dev/null; then
-  python3 -c "\
-import pip
-
-def import_or_install(package):
-    try:
-        __import__(package)
-    except ImportError:
-        pip.main(['install', package])
-
-import_or_install('yaml')
-"
-else
+if [ ! "$(which python3)" ]; then
   echo -e "\npython3 is not installed, please install it first."
   exit 1
 fi

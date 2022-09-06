@@ -53,7 +53,7 @@ set -g fish_color_text_on_dark $nord6
 set -g fish_color_git_dirty_bg $nord9
 set -g fish_color_git_bg $nord3
 
-function fish_prompt --description "A theme originally based on joelwanner/theme-boxfish."
+function fish_prompt --description "boxfish: A theme originally based on joelwanner/theme-boxfish."
     # Prevents fish from showing stuff on the right of the prompt.
     set -g fish_right_prompt
 

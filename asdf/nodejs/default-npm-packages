@@ -7,6 +7,7 @@ localtunnel
 loki
 npq
 prettier
+sass
 stylelint
 stylelint-config-prettier
 stylelint-config-recess-order

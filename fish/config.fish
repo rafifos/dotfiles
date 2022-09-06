@@ -1,12 +1,12 @@
+# Additional environment variables.
+# This is intended to be similar to the files located at /etc/profile.d
+# See: https://unix.stackexchange.com/a/64262
+test -d ~/.profile.d; and replay 'source ~/.profile.d/*.sh'
+
 # Private data.
 test -f "$__fish_user_config_dir"/private.fish; and source "$__fish_user_config_dir"/private.fish
 
 if status --is-interactive
-    # Loads the GNOME Keyring daemon if it isn't running.
-    if type -q gnome-keyring-daemon; and test -n "$DESKTOP_SESSION"
-        set -Ux (gnome-keyring-daemon --start | string split "=")
-    end
-
     # Add "safety net" for basic but irreversible file system operations by using
     # verbose and interactive command modes.
     abbr -a -g cp 'cp -vi'

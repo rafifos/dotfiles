@@ -68,3 +68,5 @@ fi
 
 # Install downloaded .deb files.
 sudo apt install --assume-yes ./*.deb
+
+# https://github.com/lassekongo83/adw-gtk3/releases
