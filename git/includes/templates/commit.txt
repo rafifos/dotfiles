@@ -7,9 +7,8 @@
 # [optional body]
 #
 # [optional footer(s)]
-# [developer certificate of origin (dco)]
+# [optional developer certificate of origin (dco)]
 #
-# See: https://www.conventionalcommits.org/en/v1.0.0/#summary
-# See: https://developercertificate.org
-#
-
+# See:
+#   1. https://www.conventionalcommits.org/en/v1.0.0/#summary
+#   2. https://developercertificate.org
