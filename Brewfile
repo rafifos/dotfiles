@@ -13,7 +13,7 @@ end
 
 brew "act"
 brew "bat"
-brew "bottom", args: ["build-from-source"]
+brew "bottom"
 brew "docker-compose"
 brew "exa"
 brew "fd"
