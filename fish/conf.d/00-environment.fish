@@ -40,6 +40,12 @@ test -d ~/.local/bin; and fish_add_path ~/.local/bin
 # See: https://docs.docker.com/develop/develop-images/build_enhancements
 type -q docker; and set -Ux DOCKER_BUILDKIT 1
 
+# Make docker-compose available to docker-cli as a plugin.
+if type -q docker-compose; and not test -f ~/.docker/cli-plugins/docker-compose
+    not test -d ~/.docker/cli-plugins; and mkdir -p ~/.docker/cli-plugins
+    ln -sfn (command -s docker-compose) ~/.docker/cli-plugins/docker-compose
+end
+
 # Node.js configurations
 # See: https://nodejs.org/api/cli.html#cli_environment_variables
 set -Ux NODE_PRESERVE_SYMLINKS 1
