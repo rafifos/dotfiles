@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Setups the hosts file for the current machine.
+
+{{- template "shellscript" -}}
+
+# Default hosts entries.
+# See: ttps://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+run_as_root $(command -v hostess) add localhost 127.0.0.1
+run_as_root $(command -v hostess) add localhost.localdomain 127.0.0.1
+run_as_root $(command -v hostess) add pop-os 127.0.0.1
+run_as_root $(command -v hostess) add pop-os.localdomain 127.0.0.1
+run_as_root $(command -v hostess) add local 127.0.0.1
+run_as_root $(command -v hostess) add broadcasthost 255.255.255.255
+run_as_root $(command -v hostess) add localhost ::1
+run_as_root $(command -v hostess) add ip6-localhost ::1
+run_as_root $(command -v hostess) add ip6-loopback ::1
+run_as_root $(command -v hostess) add ip6-localnet ff00::0
+run_as_root $(command -v hostess) add ip6-mcastprefix ff00::0
+run_as_root $(command -v hostess) add ip6-allnodes ff02::1
+run_as_root $(command -v hostess) add ip6-allrouters ff02::2
+run_as_root $(command -v hostess) add ip6-allhosts ff02::3
+run_as_root $(command -v hostess) add 0.0.0.0 0.0.0.0
+
+# Custom entries
+run_as_root $(command -v hostess) add local.mesalva.com 127.0.0.1
+run_as_root $(command -v hostess) add local.mesalva.net 127.0.0.1

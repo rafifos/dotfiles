@@ -14,7 +14,6 @@ end
 brew "act"
 brew "bat"
 brew "bottom"
-brew "docker-compose"
 brew "exa"
 brew "fd"
 brew "fish"

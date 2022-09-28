@@ -1,0 +1,8 @@
+# My default configuration file.
+
+[mpm]
+exclude = ["apm", "apt-mint", "brew", "cargo", "cask", "composer", "gem", "pip", "pipx", "vscode", "yarn"]
+verbosity = "INFO"
+
+[mpm.search]
+exact = true

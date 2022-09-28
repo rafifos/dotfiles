@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Enables systemd-tmpfiles, which is used to create and manage volatile and
+# temporary files and directories.
+# See: https://wiki.archlinux.org/title/Systemd#systemd-tmpfiles_-_temporary_files
+
+{{- template "shellscript" -}}
+
+systemctl --user enable --now systemd-tmpfiles-setup.service

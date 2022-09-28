@@ -1,4 +1,0 @@
-- sudo:
-  - shell:
-    - command: $(which hostess) add local.mesalva.com 127.0.0.1
-      description: "[hosts] Add local.mesalva.com to hosts"

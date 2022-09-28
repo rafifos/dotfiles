@@ -1,3 +1,0 @@
-- shell:
-  - command: systemctl --user enable --now systemd-tmpfiles-setup.service
-    description: "[user-tmpfiles.d] Enable and start service"

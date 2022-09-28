@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Sets custom options for sudo using a drop-in configuration file.
+# See: https://wiki.archlinux.org/title/Sudo#Configure_sudo_using_drop-in_files_in_/etc/sudoers.d
+
+{{- template "shellscript" -}}
+
+readonly options_file="/etc/sudoers.d/00-custom-options"
+
+verbose_print "Applying custom options to sudo"
+run_as_root tee "$options_file" &>/dev/null <<EOF
+#
+# As of Debian version 1.7.2p1-1, the default /etc/sudoers file created on
+# installation of the package now includes the directive:
+#
+# 	@includedir /etc/sudoers.d
+#
+# This will cause sudo to read and parse any files in the /etc/sudoers.d
+# directory that do not end in '~' or contain a '.' character.
+#
+# Note that there must be at least one file in the sudoers.d directory (this
+# one will do), and all files in this directory should be mode 0440.
+#
+Defaults pwfeedback
+Defaults insults
+EOF
+
+verbose_print "Setting sudoers file permissions"
+run_as_root chown -c root:root "$options_file"
+run_as_root chmod -c 0440 "$options_file"

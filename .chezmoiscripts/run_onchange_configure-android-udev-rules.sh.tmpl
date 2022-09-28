@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Disables gnome-keyring-daemon components, this is needed in order to use the
+# ssh-agent provided by 1Password.
+# See:
+#   1. https://developer.1password.com/docs/ssh/agent/compatibility#ssh-auth-sock
+#   2. https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components
+
+{{- template "shellscript" -}}
+
+readonly curr_dir="$PWD"
+readonly tmp_dir="$(mktemp -d)"
+readonly age_file="${XDG_STATE_HOME:-$HOME/.local/state}/last-run-onchange-configure-android-udev-rules.sh.tmpl"
+readonly days_for_update=30
+
+function install_android_udev_rules() {
+  cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+  verbose_print "Downloading android-udev-rules"
+  git clone https://github.com/M0Rf30/android-udev-rules.git
+  cd android-udev-rules
+
+  verbose_print "Copying files"
+  run_as_root cp ./51-android.rules /etc/udev/rules.d/51-android.rules
+  run_as_root cp ./android-udev.conf /usr/lib/sysusers.d/android-udev.conf
+
+  verbose_print "Changing permissions"
+  run_as_root chmod -c 0644 /etc/udev/rules.d/51-android.rules
+  run_as_root chmod -c 0644 /usr/lib/sysusers.d/android-udev.conf
+
+  verbose_print "Reloading users and groups"
+  run_as_root systemd-sysusers
+
+  verbose_print "Adding $USER to the required groups"
+  run_as_root usermod -a -G plugdev "$USER"
+  run_as_root usermod -a -G adbusers "$USER"
+
+  verbose_print "Reloading udev rules"
+  run_as_root udevadm control --reload-rules
+
+  verbose_print "Reloading udev"
+  run_as_root udevadm trigger
+  run_as_root systemctl restart systemd-udevd.service
+
+  verbose_print "Updating age file"
+  rm "$age_file" && touch "$age_file"
+
+  verbose_print "Cleaning up"
+  cd "$curr_dir" || script_exit "Unable to change directory!" 1
+  rm -rf "$tmp_dir"
+}
+
+if [[ ! -f $age_file ]]; then
+  touch "$age_file"
+  install_android_udev_rules
+fi
+
+if [[ $(find "$age_file" -mtime +$days_for_update -print) ]]; then
+  install_android_udev_rules
+fi
