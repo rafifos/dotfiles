@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.sh.tmpl": "shellscript",
+    "personal": "shellscript",
+    "shellscript": "shellscript",
+    "work": "shellscript",
+    "dot_gitconfig.tmpl": "gitconfig",
+    "dot_gitignore.tmpl": "gitignore",
+  }
+}
