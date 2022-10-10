@@ -5,6 +5,7 @@
 # See: https://wiki.archlinux.org/title/lm_sensors#Adjusting_values
 
 {{- template "shellscript" -}}
+{{- template "work" . -}}
 
 readonly board_name="$(run_as_root dmidecode -s baseboard-product-name)"
 
