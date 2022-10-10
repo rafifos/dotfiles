@@ -2,7 +2,7 @@
 # shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
 
 # Ensures the required package managers and packages are installed before
-# setting up the host
+# setting up the host.
 
 {{- template "shellscript" . -}}
 
@@ -11,19 +11,8 @@ cd "{{- .chezmoi.sourceDir -}}" || script_exit "Unable to change directory!" 1
 readonly curr_dir="$PWD"
 readonly tmp_dir="$(mktemp -d)"
 
-# Remove unused packages.
-run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
-run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
-
-# Auto-select mscorefonts-eula
-echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
-
-run_as_root apt install --assume-yes build-essential file git \
-  gnome-tweaks \
-  lm-sensors \
-  openssh-server \
-  tilix \
-  ubuntu-restricted-extras
+# Base packages.
+run_as_root apt install --assume-yes build-essential file git
 
 # Homebrew is a great way to install packages without messing with
 # dependencies system-wide.
@@ -54,8 +43,21 @@ if ! check_binary "docker"; then
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | run_as_root tee /etc/apt/sources.list.d/docker.list
 fi
 
-# machine-specific configuration
 {{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
+# Remove unused packages.
+run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
+run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
+
+# Auto-select mscorefonts-eula
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
+
+run_as_root apt install --assume-yes build-essential file git \
+  gnome-tweaks \
+  lm-sensors \
+  openssh-server \
+  tilix \
+  ubuntu-restricted-extras
+
 if ! check_binary "openrazer-daemon"; then
   # A community-led effort to support Razer peripherals on Linux.
   run_as_root add-apt-repository --yes ppa:openrazer/stable

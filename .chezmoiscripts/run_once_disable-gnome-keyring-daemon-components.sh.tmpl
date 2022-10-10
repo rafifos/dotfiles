@@ -8,6 +8,7 @@
 #   2. https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components
 
 {{- template "shellscript" -}}
+{{- template "work" . -}}
 
 readonly gnome_keyring_ssh_desktop="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
 readonly autostart_entry_path="${HOME}/.config/autostart/gnome-keyring-ssh.desktop"
