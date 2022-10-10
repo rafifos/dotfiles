@@ -6,16 +6,15 @@
 #   4. https://git-scm.com/docs/git-config#Documentation/git-config.txt---show-origin
 
 # machine-specific configuration
-{{- if eq .chezmoi.hostname "GUARDIAN" }}
 [user]
 name = Rafael Julio
 email = development@rafifos.dev
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
-{{- else if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
-[user]
-name = Rafael Julio
-email = rafael.julio@mesalva.com
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKQyTLKH8iw6H5/pcbF5ST7iCzWsI+AmHItg19St4i8
+
+# Uses 1Password to sign commits.
+{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
+[gpg "ssh"]
+program = "/opt/1Password/op-ssh-sign"
 {{- end }}
 
 [core]
@@ -53,10 +52,6 @@ gpgSign = true
 # Enables commit signing using a SSH key.
 [gpg]
 format = ssh
-
-# Uses 1Password to sign commits.
-[gpg "ssh"]
-program = "/opt/1Password/op-ssh-sign"
 
 [interactive]
 # delta as the default diff filter, tweaked to match "Nord".
