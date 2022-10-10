@@ -1,5 +1,0 @@
-- sudo:
-  - aptget:
-      openrazer-meta:
-        ppa_source: ppa:openrazer/stable
-        upgrade: true

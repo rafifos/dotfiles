@@ -6,31 +6,14 @@
 
 ## Featuring
 
-- [fish](https://fishshell.com/) as the shell.
-- [asdf-vm](https://asdf-vm.com/) as the version manager.
+- [chezmoi](https://www.chezmoi.io) as the dotfiles manager.
+- [fish](https://fishshell.com) as the shell.
+- [asdf-vm](https://asdf-vm.com) as the version manager.
+- [Nord](https://www.nordtheme.com) as the color scheme.
 - Others, as the others.
 
 <br>
 
-![The interactive shell](./assets/shell.png)
-> Font: Iosevka 14
->
 ## Hic sunt dracones
 
-These dotfiles are extremely volatile, because they're **my** dotfiles, and I'm volatile. But feel free to make a contribution and to use them as a base for your own dotfiles.
-
-## Package management
-
-My personal configuration uses [Homebrew](https://brew.sh) for managing CLI-only applications, I'm not a fan of installing dependencies directly into the system.
-
-As for GUI applications, I'm using `apt`, it's very easy to mass install packages with it. You just need to redirect a file into `xargs`, and you're good to go.
-
-```shell-session
-xargs <packages.txt sudo apt install --assume-yes
-```
-
-There are additional steps for some apps, like adding `ppa`s and downloading `.deb`s for files that aren't shipped by a repository.
-
-## Credits
-
-- [Sven Greb](https://github.com/arcticicestudio), i've used many parts of his [dotfiles](https://github.com/arcticicestudio/igloo).
+Don't expect any versioning or support for this repository. It's just a personal collection of dotfiles and configurations that I use for my personal machines. Feel free to use it as a reference or inspiration for your own dotfiles.

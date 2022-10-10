@@ -1,8 +1,0 @@
-- sudo:
-  - shell:
-    - command: apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
-      description: "[package-uninstall] Uninstall unneeded packages"
-
-  - shell:
-    - command: rm -rf /usr/share/fonts/truetype/libreoffice
-      description: "[package-uninstall] Cleanup"
