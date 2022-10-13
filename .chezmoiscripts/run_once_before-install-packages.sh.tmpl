@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Ensures the required package managers and packages are installed before
+# setting up the host.
+
+{{- template "shellscript" . -}}
+
+cd "{{- .chezmoi.sourceDir -}}" || script_exit "Unable to change directory!" 1
+
+readonly curr_dir="$PWD"
+readonly tmp_dir="$(mktemp -d)"
+
+# Base packages.
+run_as_root apt install --assume-yes build-essential file git
+
+# Homebrew is a great way to install packages without messing with
+# dependencies system-wide.
+if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+fi
+
+# Injects the Homebrew path into the current shell.
+if ! check_binary "brew"; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Install packages from the Brewfile.
+brew bundle --verbose
+
+# Temporary directory for downloaded packages.
+cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+# Docker is an open platform for developing, shipping, and running applications.
+# Docker enables you to separate your applications from your infrastructure so
+# you can deliver software quickly. With Docker, you can manage your
+# infrastructure in the same ways you manage your applications. By taking
+# advantage of Docker’s methodologies for shipping, testing, and deploying code
+# quickly, you can significantly reduce the delay between writing code and
+# running it in production.
+if ! check_binary "docker"; then
+  curl -sS https://download.docker.com/linux/ubuntu/gpg | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/docker-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | run_as_root tee /etc/apt/sources.list.d/docker.list
+fi
+
+{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
+# Remove unused packages.
+run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
+run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
+
+# Auto-select mscorefonts-eula
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
+
+run_as_root apt install --assume-yes build-essential file git \
+  gnome-tweaks \
+  lm-sensors \
+  openssh-server \
+  tilix \
+  ubuntu-restricted-extras
+
+if ! check_binary "openrazer-daemon"; then
+  # A community-led effort to support Razer peripherals on Linux.
+  run_as_root add-apt-repository --yes ppa:openrazer/stable
+  run_as_root apt install --assume-yes openrazer-meta
+fi
+
+if ! check_binary "polychromatic-controller"; then
+  # Polychromatic is a frontend for OpenRazer that enables Razer devices to
+  # control lighting effects and more on GNU/Linux.
+  run_as_root add-apt-repository --yes ppa:polychromatic/stable
+  run_as_root apt install --assume-yes polychromatic
+fi
+
+# The world’s most-loved password manager.
+if ! check_binary "1password"; then
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/1password-archive-keyring.gpg
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | run_as_root tee /etc/apt/sources.list.d/1password.list
+  run_as_root mkdir -p /etc/debsig/policies/AC2D62742012EA22
+  curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | run_as_root tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+  run_as_root mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc | run_as_root gpg --dearmor --yes --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+  run_as_root apt update && run_as_root apt install --assume-yes 1password 1password-cli
+fi
+
+# The SQL Editor and Database Manager Of Your Dreams.
+if ! check_binary "beekeeper-studio"; then
+  curl -sS https://deb.beekeeperstudio.io/beekeeper.key | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/beekeeper-studio-archive-keyring.gpg
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/beekeeper-studio-archive-keyring.gpg] https://deb.beekeeperstudio.io stable main' | run_as_root tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+  run_as_root apt update && run_as_root apt install --assume-yes beekeeper-studio
+fi
+
+# Code editing. Redefined.
+if ! check_binary "code"; then
+  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
+  run_as_root apt install --assume-yes code_amd64.deb
+fi
+
+# The web browser from Google.
+if ! check_binary "google-chrome"; then
+  curl -fsSLO 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
+  run_as_root apt install --assume-yes ./google-chrome-stable_current_amd64.deb
+fi
+
+# Encrypt everything.
+if ! check_binary "keybase"; then
+  curl -fsSLO 'https://prerelease.keybase.io/keybase_amd64.deb'
+  run_as_root apt install --assume-yes ./keybase_amd64.deb
+fi
+
+# Syncthing is a continuous file synchronization program. It synchronizes files
+# between two or more computers in real time, safely protected from prying eyes.
+if ! check_binary "syncthing"; then
+  curl -sS https://syncthing.net/release-key.gpg | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/syncthing-archive-keyring.gpg
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable' | run_as_root tee /etc/apt/sources.list.d/syncthing.list
+  run_as_root apt update && run_as_root apt install --assume-yes syncthing
+fi
+{{- end }}
+
+# Cleanup
+cd $curr_dir || script_exit "Unable to change directory!" 1
+rm -rf "$tmp_dir"

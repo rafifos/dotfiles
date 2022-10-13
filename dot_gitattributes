@@ -1,0 +1,7 @@
+# Global Git attributes.
+# See:
+#   1. https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#Keyword-Expansion
+#   2. https://git-scm.com/docs/gitattributes
+.gitattributes !filter !diff
+.gitignore !filter !diff
+.gitmodules !filter !diff

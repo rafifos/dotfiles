@@ -1,4 +1,0 @@
-- shell:
-    - cp sysctl.d/99-swappiness.conf /etc/sysctl.d/99-swappiness.conf
-    - chown root:root /etc/sysctl.d/99-swappiness.conf
-    - chmod 0644 /etc/sysctl.d/99-swappiness.conf

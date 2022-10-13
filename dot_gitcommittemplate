@@ -1,0 +1,14 @@
+
+
+# The commit message should be structured as follows:
+#
+# <type>[optional scope]: <description>
+#
+# [optional body]
+#
+# [optional footer(s)]
+# [optional developer certificate of origin (dco)]
+#
+# See:
+#   1. https://www.conventionalcommits.org/en/v1.0.0/#summary
+#   2. https://developercertificate.org

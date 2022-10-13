@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Disables gnome-keyring-daemon components, this is needed in order to use the
+# ssh-agent provided by 1Password.
+# See:
+#   1. https://developer.1password.com/docs/ssh/agent/compatibility#ssh-auth-sock
+#   2. https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components
+
+{{- template "shellscript" -}}
+{{- template "work" . -}}
+
+readonly gnome_keyring_ssh_desktop="/etc/xdg/autostart/gnome-keyring-ssh.desktop"
+readonly autostart_entry_path="${HOME}/.config/autostart/gnome-keyring-ssh.desktop"
+
+if [[ -f $gnome_keyring_ssh_desktop ]]; then
+  verbose_print "Disabling gnome-keyring daemon components"
+  cp -f "$gnome_keyring_ssh_desktop" "$autostart_entry_path"
+  echo "Hidden=true" >>"$autostart_entry_path"
+fi

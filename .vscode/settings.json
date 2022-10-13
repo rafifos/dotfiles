@@ -1,9 +1,10 @@
 {
-  "[fish]": {
-    "editor.tabSize": 4
-  },
   "files.associations": {
-    "*.crypt": "shellscript",
-    "Brewfile": "ruby"
+    "*.sh.tmpl": "shellscript",
+    "personal": "shellscript",
+    "shellscript": "shellscript",
+    "work": "shellscript",
+    "dot_gitconfig.tmpl": "gitconfig",
+    "dot_gitignore.tmpl": "gitignore",
   }
 }

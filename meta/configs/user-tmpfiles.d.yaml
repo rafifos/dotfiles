@@ -1,5 +1,0 @@
-- link:
-    ~/.config/user-tmpfiles.d/discord-rpc.conf: user-tmpfiles.d/discord-rpc.conf
-
-- shell:
-    - systemctl --user enable --now systemd-tmpfiles-setup.service
