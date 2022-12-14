@@ -1,0 +1,12 @@
+# 1Password for SSH agent
+# See:
+#   1. https://developer.1password.com/docs/ssh/agent
+Host *
+	IdentityAgent ~/.1password/agent.sock
+
+# Forces the SSH agent to use a specified key
+# See:
+#   1. https://developer.1password.com/docs/ssh/agent/advanced#match-key-with-host
+Host github.com
+  IdentityFile ~/.ssh/id_ed25519.pub
+  IdentitiesOnly yes
