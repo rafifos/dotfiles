@@ -9,12 +9,19 @@
 [user]
 name = Rafael Julio
 email = development@rafifos.dev
+
+{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
 
+# Enables commit signing using a SSH key.
+[gpg]
+format = ssh
+
 # Uses 1Password to sign commits.
-{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
 [gpg "ssh"]
 program = "/opt/1Password/op-ssh-sign"
+{{- else }}
+signingkey = 4C3BDB4F9ED719BA
 {{- end }}
 
 [core]
@@ -48,10 +55,6 @@ template = ~/.gitcommittemplate
 
 # By default, signs commit with GnuPG.
 gpgSign = true
-
-# Enables commit signing using a SSH key.
-[gpg]
-format = ssh
 
 [interactive]
 # delta as the default diff filter, tweaked to match "Nord".
