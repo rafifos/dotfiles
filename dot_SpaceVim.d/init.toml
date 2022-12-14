@@ -43,22 +43,27 @@
   name = "fzf"
 
 [[layers]]
-  name = 'git'
+  name = "git"
+  git_plugin = "fugitive"
 
 [[layers]]
-  name = "lang#c"
-  enable_clang_syntax_highlight = true
+  name = "sudo"
 
 [[layers]]
-  name = "lang#javascript"
+  name = "treesitter"
 
 [[layers]]
-  name = "lang#typescript"
+  name = "ui"
+  enable_sidebar = true
+  enable_scrollbar = true
+  enable_indentline = true
+  enable_cursorword = true
+  indentline_char = "|"
+  conceallevel = 0
+  concealcursor = ""
+  cursorword_delay = 50
+  cursorword_exclude_filetype = []
+  indentline_exclude_filetype = []
 
 [[layers]]
-  name = "shell"
-  default_position = "top"
-  default_height = 30
-
-[[layers]]
-  name = 'VersionControl'
+  name = "VersionControl"
