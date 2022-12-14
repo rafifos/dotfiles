@@ -1,1 +1,5 @@
+# See the docs for explanations: <https://asdf-vm.com/manage/configuration.html>
+
+# Plugins with support can read the versions files used by other version managers, for example,
+# `.ruby-version` in the case of Ruby's `rbenv`.
 legacy_version_file = yes
