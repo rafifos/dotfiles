@@ -1,0 +1,4 @@
+# See: https://github.com/twpayne/chezmoi/issues/1347#issuecomment-903076568
+{{ if ( or ( contains "microsoft" ( lower .chezmoi.kernel.osrelease )) ( contains "wsl" ( lower .chezmoi.kernel.osrelease ))) }}
+exit 0
+{{ end }}

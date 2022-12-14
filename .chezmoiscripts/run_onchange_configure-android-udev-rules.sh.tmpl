@@ -8,7 +8,7 @@
 #   2. https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components
 
 {{- template "shellscript" -}}
-{{- template "work" . -}}
+{{- template "not-wsl" . -}}
 
 readonly curr_dir="$PWD"
 readonly tmp_dir="$(mktemp -d)"
