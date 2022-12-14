@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.sh.tmpl": "shellscript",
+    "not-wsl": "shellscript",
     "personal": "shellscript",
     "shellscript": "shellscript",
     "work": "shellscript",
