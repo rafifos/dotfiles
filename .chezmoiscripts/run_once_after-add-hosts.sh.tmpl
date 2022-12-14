@@ -4,24 +4,23 @@
 # Setups the hosts file for the current machine.
 
 {{- template "shellscript" -}}
-{{- template "work" . -}}
 
 # Default hosts entries.
 # See: ttps://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 readonly hostess="$(command -v hostess)"
 
-run_as_root "$hostess" add localhost 127.0.0.1
-run_as_root "$hostess" add localhost.localdomain 127.0.0.1
-run_as_root "$hostess" add local 127.0.0.1
+run_as_root "$hostess" add 0.0.0.0 0.0.0.0
 run_as_root "$hostess" add broadcasthost 255.255.255.255
-run_as_root "$hostess" add localhost ::1
-run_as_root "$hostess" add ip6-localhost ::1
-run_as_root "$hostess" add ip6-loopback ::1
-run_as_root "$hostess" add ip6-localnet ff00::0
-run_as_root "$hostess" add ip6-mcastprefix ff00::0
+run_as_root "$hostess" add ip6-allhosts ff02::3
 run_as_root "$hostess" add ip6-allnodes ff02::1
 run_as_root "$hostess" add ip6-allrouters ff02::2
-run_as_root "$hostess" add ip6-allhosts ff02::3
-run_as_root "$hostess" add 0.0.0.0 0.0.0.0
+run_as_root "$hostess" add ip6-localhost ::1
+run_as_root "$hostess" add ip6-localnet ff00::0
+run_as_root "$hostess" add ip6-loopback ::1
+run_as_root "$hostess" add ip6-mcastprefix ff00::0
+run_as_root "$hostess" add local 127.0.0.1
+run_as_root "$hostess" add localhost ::1
+run_as_root "$hostess" add localhost 127.0.0.1
+run_as_root "$hostess" add localhost.localdomain 127.0.0.1
 
 # Custom entries
