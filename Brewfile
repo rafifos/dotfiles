@@ -1,32 +1,33 @@
 require 'socket'
 
 tap "beeftornado/rmtree"
-tap "github/gh"
-tap "jesseduffield/lazydocker"
-tap "nektos/tap"
-tap "rafifos/homebrew-tap"
 
 if Socket.gethostname === 'drifter'
+  tap "github/gh"
+  tap "jesseduffield/lazydocker"
+  tap "nektos/tap"
+  tap "rafifos/homebrew-tap"
+
+  brew "act"
   brew "android-sdk-platform-tools"
-  brew "hostess"
+  brew "docker-compose"
+  brew "gh"
+  brew "lazydocker"
 end
 
-brew "act"
 brew "bat"
 brew "bottom"
-brew "docker-compose"
 brew "exa"
 brew "fd"
 brew "fish"
 brew "fzf"
-brew "gh"
 brew "git"
 brew "git-crypt"
 brew "git-delta"
 brew "grc"
+brew "hostess"
 brew "httpie"
 brew "httpstat"
-brew "lazydocker"
 brew "neovim"
 brew "openssh"
 brew "rm-improved"
