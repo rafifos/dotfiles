@@ -6,109 +6,106 @@
 #   4. https://git-scm.com/docs/git-config#Documentation/git-config.txt---show-origin
 
 # machine-specific configuration
-[user]
-name = Rafael Julio
-email = development@rafifos.dev
-
 {{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
+[user]
+  name = Rafael Julio
+  email = development@rafifos.dev
 
 # Enables commit signing using a SSH key.
 [gpg]
-format = ssh
+  format = ssh
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
 
 # Uses 1Password to sign commits.
 [gpg "ssh"]
-program = "/opt/1Password/op-ssh-sign"
-{{- else }}
-signingkey = 4C3BDB4F9ED719BA
+  program = "/opt/1Password/op-ssh-sign"
 {{- end }}
 
 [core]
-# CRLF endings in Windows checkouts.
-# LF endings on Mac and Linux systems and in the repository.
-autocrlf = input
+  # CRLF endings in Windows checkouts.
+  # LF endings on Mac and Linux systems and in the repository.
+  autocrlf = input
 
-# Retains the execution bit from files at checkout/commit.
-filemode = true
+  # Retains the execution bit from files at checkout/commit.
+  filemode = true
 
-# Text editor to be used on commands that launch a text editor.
-editor = nvim
+  # Text editor to be used on commands that launch a text editor.
+  editor = nvim
 
-# delta as the default pager, tweaked to match the theme "Nord".
-pager = delta --hyperlinks
+  # delta as the default pager, tweaked to match the theme "Nord".
+  pager = delta --hyperlinks
 
 [init]
-defaultBranch = main
+  defaultBranch = main
 
 [status]
-# Show all untracked files by default.
-showUntrackedFiles = all
+  # Show all untracked files by default.
+  showUntrackedFiles = all
 
 [pull]
-# Only allows pulls to use the fast-forward method.
-ff = only
+  # Only allows pulls to use the fast-forward method.
+  ff = only
 
 [commit]
-# Template to be shown on the commit message prompt.
-template = ~/.gitcommittemplate
+  # Template to be shown on the commit message prompt.
+  template = ~/.gitcommittemplate
 
-# By default, signs commit with GnuPG.
-gpgSign = true
+  # By default, signs commit with GnuPG.
+  gpgSign = true
 
 [interactive]
-# delta as the default diff filter, tweaked to match "Nord".
-diffFilter = delta --color-only
+  # delta as the default diff filter, tweaked to match "Nord".
+  diffFilter = delta --color-only
 
 [merge]
-# Visual Studio Code 3-way merge editor as the default mergetool.
-tool = code
+  # Visual Studio Code 3-way merge editor as the default mergetool.
+  tool = code
 
 [mergetool "code"]
-# Visual Studio Code 3-way merge editor.
-# See: https://code.visualstudio.com/updates/v1_70#_command-line-option-merge
-cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  # Visual Studio Code 3-way merge editor.
+  # See: https://code.visualstudio.com/updates/v1_70#_command-line-option-merge
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 
 [delta]
-features = side-by-side line-numbers keep-plus-minus-markers
-tabs = 2
-syntax-theme = Nord
-commit-style = "normal #88C0D0"
-file-style = "box #8FBCBB"
-hunk-style = "normal #81A1C1"
-minus-style = "syntax #8B454B"
-minus-emph-style = "normal #BF616A"
-plus-style = "normal #4C6584"
-plus-emph-style = "normal #5E81AC"
+  features = side-by-side line-numbers keep-plus-minus-markers
+  tabs = 2
+  syntax-theme = Nord
+  commit-style = "normal #88C0D0"
+  file-style = "box #8FBCBB"
+  hunk-style = "normal #81A1C1"
+  minus-style = "syntax #8B454B"
+  minus-emph-style = "normal #BF616A"
+  plus-style = "normal #4C6584"
+  plus-emph-style = "normal #5E81AC"
 
 [alias]
-# Commits staged changes with a COMMIT_MSG fetched from whatthecommit.com.
-yolo = !git commit -S -m \"$(curl --silent --fail http://whatthecommit.com/index.txt)\"
-co = checkout
-cob = checkout -b
-coo = !git fetch && git checkout
-br = branch
-brd = branch -d
-st = status
-aa = add -A .
-unstage = reset --soft HEAD^
-c = commit -S -s
-cm = commit -S -s -m
-amend = commit -S --amend -m
-fix = commit --fixup
-undo = reset HEAD~1
-rv = revert
-cp = cherry-pick
-pu = !git push origin `git branch --show-current`
-fush = push -f
-mg = merge --no-ff
-rb = rebase
-rbc = rebase --continue
-rba = rebase --abort
-rbs = rebase --skip
-rom = !git fetch && git rebase -i origin/master --autosquash
-save = stash push
-pop = stash pop
-apply = stash apply
-rl = reflog
-fa = fetch --all
+  # Commits staged changes with a COMMIT_MSG fetched from whatthecommit.com.
+  yolo = !git commit -S -m \"$(curl --silent --fail http://whatthecommit.com/index.txt)\"
+  co = checkout
+  cob = checkout -b
+  coo = !git fetch && git checkout
+  br = branch
+  brd = branch -d
+  st = status
+  aa = add -A .
+  unstage = reset --soft HEAD^
+  c = commit -S -s
+  cm = commit -S -s -m
+  amend = commit -S --amend -m
+  fix = commit --fixup
+  undo = reset HEAD~1
+  rv = revert
+  cp = cherry-pick
+  pu = !git push origin `git branch --show-current`
+  fush = push -f
+  mg = merge --no-ff
+  rb = rebase
+  rbc = rebase --continue
+  rba = rebase --abort
+  rbs = rebase --skip
+  rom = !git fetch && git rebase -i origin/master --autosquash
+  save = stash push
+  pop = stash pop
+  apply = stash apply
+  rl = reflog
+  fa = fetch --all
