@@ -5,7 +5,7 @@ if [[ ${DEBUG-} =~ ^1|yes|true$ ]]; then
   set -o xtrace # Trace the execution of the script (debug)
 fi
 
-# Only enable these shell behaviours if we're not being sourced
+# Only enable these shell behaviors if we're not being sourced
 # Approach via: https://stackoverflow.com/a/28776166/8787985
 if ! (return 0 2>/dev/null); then
   # A better class of script...
