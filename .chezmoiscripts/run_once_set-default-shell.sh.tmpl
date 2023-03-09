@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Sets custom options for sudo using a drop-in configuration file.
+# See: https://wiki.archlinux.org/title/Sudo#Configure_sudo_using_drop-in_files_in_/etc/sudoers.d
+
+{{- template "shellscript" -}}
+
+readonly fish_path="$(command -v fish)"
+
+verbose_print "Making fish a valid login shell"
+echo "$fish_path" | run_as_root tee -a /etc/shells
+
+verbose_print "Setting fish as the default shell for user: $USER"
+chsh -s "$fish_path"
