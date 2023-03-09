@@ -6,7 +6,7 @@
 {{- template "shellscript" -}}
 
 # Default hosts entries.
-# See: ttps://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+# See: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 readonly hostess="$(command -v hostess)"
 
 run_as_root "$hostess" add 0.0.0.0 0.0.0.0
@@ -24,3 +24,8 @@ run_as_root "$hostess" add localhost 127.0.0.1
 run_as_root "$hostess" add localhost.localdomain 127.0.0.1
 
 # Custom entries
+{{- if eq .chezmoi.hostname "STFSAOC050546-L" }}
+run_as_root "$hostess" add devops.energisa.com.br 10.83.102.199
+run_as_root "$hostess" add STFSAOC050546-L.stefanini.dom 127.0.1.1
+run_as_root "$hostess" add STFSAOC050546-L 127.0.1.1
+{{- end }}

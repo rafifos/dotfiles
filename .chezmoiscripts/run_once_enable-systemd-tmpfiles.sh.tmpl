@@ -5,7 +5,7 @@
 # temporary files and directories.
 # See: https://wiki.archlinux.org/title/Systemd#systemd-tmpfiles_-_temporary_files
 
-{{- template "shellscript" -}}
 {{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
 
 systemctl --user enable --now systemd-tmpfiles-setup.service

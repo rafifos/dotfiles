@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Setups wsl-vpn on the current machine (without Docker).
+
+{{- template "work" . -}}
+{{- template "shellscript" -}}
+
+readonly tmp_dir="$(mktemp -d)"
+
+# Temporary directory for downloaded packages.
+cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+git clone https://github.com/AmmarRahman/wsl-vpn.git && cd wsl-vpn
+sudo ./wsl-vpnkit-setup.sh --no-docker

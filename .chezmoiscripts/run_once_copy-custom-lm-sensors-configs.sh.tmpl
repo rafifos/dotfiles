@@ -4,8 +4,8 @@
 # Custom configs for lm-sensors.
 # See: https://wiki.archlinux.org/title/lm_sensors#Adjusting_values
 
-{{- template "shellscript" -}}
 {{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
 
 readonly board_name="$(run_as_root dmidecode -s baseboard-product-name)"
 

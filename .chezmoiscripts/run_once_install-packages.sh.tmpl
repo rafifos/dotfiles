@@ -4,14 +4,15 @@
 # Ensures the required package managers and packages are installed before
 # setting up the host.
 
-{{- template "shellscript" . -}}
+{{- template "shellscript" -}}
 
-cd "{{- .chezmoi.sourceDir -}}" || script_exit "Unable to change directory!" 1
-
-readonly curr_dir="$PWD"
+readonly curr_dir="{{- .chezmoi.sourceDir -}}"
 readonly tmp_dir="$(mktemp -d)"
 
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
+
 # Base packages.
+run_as_root apt update
 run_as_root apt install --assume-yes build-essential file git
 
 # Homebrew is a great way to install packages without messing with
@@ -31,6 +32,27 @@ brew bundle --verbose
 # Temporary directory for downloaded packages.
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
+# The Legendary Git Client.
+if ! check_binary "gitkraken"; then
+  curl -fsSLO 'https://release.gitkraken.com/linux/gitkraken-amd64.deb'
+  run_as_root apt install --assume-yes ./gitkraken-amd64.deb
+fi
+
+{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
+
+# Remove unused packages.
+run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
+run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
+
+# Auto-select mscorefonts-eula
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
+
+run_as_root apt install --assume-yes gnome-tweaks \
+  lm-sensors \
+  openssh-server \
+  tilix \
+  ubuntu-restricted-extras
+
 # Docker is an open platform for developing, shipping, and running applications.
 # Docker enables you to separate your applications from your infrastructure so
 # you can deliver software quickly. With Docker, you can manage your
@@ -42,22 +64,12 @@ if ! check_binary "docker"; then
   curl -sS https://download.docker.com/linux/ubuntu/gpg | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/docker-archive-keyring.gpg
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | run_as_root tee /etc/apt/sources.list.d/docker.list
   run_as_root apt install --assume-yes docker-ce
+
+  # Enables Docker rootless mode.
+  # See: https://docs.docker.com/engine/security/rootless/
+  run_as_root usermod -aG plugdev "$USER"
+  run_as_root usermod -aG docker "$USER"
 fi
-
-{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
-# Remove unused packages.
-run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
-run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
-
-# Auto-select mscorefonts-eula
-echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
-
-run_as_root apt install --assume-yes build-essential file git \
-  gnome-tweaks \
-  lm-sensors \
-  openssh-server \
-  tilix \
-  ubuntu-restricted-extras
 
 if ! check_binary "openrazer-daemon"; then
   # A community-led effort to support Razer peripherals on Linux.
@@ -115,8 +127,9 @@ if ! check_binary "syncthing"; then
   echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable' | run_as_root tee /etc/apt/sources.list.d/syncthing.list
   run_as_root apt update && run_as_root apt install --assume-yes syncthing
 fi
-{{- end }}
 
 # Cleanup
-cd $curr_dir || script_exit "Unable to change directory!" 1
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
 rm -rf "$tmp_dir"
+
+{{- end }}
