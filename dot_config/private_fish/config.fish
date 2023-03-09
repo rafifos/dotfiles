@@ -2,6 +2,31 @@
 test -f "$__fish_user_config_dir"/private.fish; and source "$__fish_user_config_dir"/private.fish
 
 if status --is-interactive
+    # Load the VTE shell profile configuration to enable inheritance of the current working directory
+    # when opening a new terminal tab or splitting the current one.
+    # The script is necessary since some Linux distributions like Arch Linux only execute scripts in
+    # `/etc/profile.d` for login shells while not for non-login based shells which results in the state
+    # that the current directory is nve reported by VTE. This means when splitting terminals in Tilix
+    # instead of inheriting the directory from the current terminal the split terminal always opens in
+    # the home path of the current user.
+    # See: https://gnunn1.github.io/tilix-web/manual/vteconfig
+    if test -n $TILIX_ID; or test -n $VTE_VERSION; and test -f /etc/profile.d/vte.sh
+        replay 'source /etc/profile.d/vte.sh'
+    end
+
+    # Workaround for handling TERM variable in multiple tmux sessions properly.
+    # See: http://sourceforge.net/p/tmux/mailman/message/32751663
+    if type -q tmux; and test -n $TMUX
+        switch (tmux showenv TERM 2>/dev/null)
+            case '*256color'
+                set -g TERM screen-256color
+            case '*'
+                set -g TERM screen
+        end
+
+        tmux switch-client -t TMUX; or tmux new -s TMUX
+    end
+
     # Add "safety net" for basic but irreversible file system operations by using
     # verbose and interactive command modes.
     abbr -a -g cp 'cp -vi'

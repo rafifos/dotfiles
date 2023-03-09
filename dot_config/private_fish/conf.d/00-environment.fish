@@ -222,31 +222,6 @@ if status --is-interactive
     # See: https://wiki.archlinux.org/title/GnuPG#:~:text=gpg-agent%20%5B3%5D.-,Configure%20pinentry%20to%20use%20the%20correct%20TTY,-Also%20set%20the
     set -gx GPG_TTY (tty)
 
-    # Load the VTE shell profile configuration to enable inheritance of the current working directory
-    # when opening a new terminal tab or splitting the current one.
-    # The script is necessary since some Linux distributions like Arch Linux only execute scripts in
-    # `/etc/profile.d` for login shells while not for non-login based shells which results in the state
-    # that the current directory is nve reported by VTE. This means when splitting terminals in Tilix
-    # instead of inheriting the directory from the current terminal the split terminal always opens in
-    # the home path of the current user.
-    # See: https://gnunn1.github.io/tilix-web/manual/vteconfig
-    if test -n $TILIX_ID; or test -n $VTE_VERSION; and test -f /etc/profile.d/vte.sh
-        replay 'source /etc/profile.d/vte.sh'
-    end
-
-    # Workaround for handling TERM variable in multiple tmux sessions properly.
-    # See: http://sourceforge.net/p/tmux/mailman/message/32751663
-    if type -q tmux; and test -n $TMUX
-        switch (tmux showenv TERM 2>/dev/null)
-            case '*256color'
-                set -g TERM screen-256color
-            case '*'
-                set -g TERM screen
-        end
-
-        tmux attach -t TMUX; or tmux new -s TMUX
-    end
-
     # Additional command colorizers for grc.
     # See:
     #   1. http://www.gnu.org/software/grc/manual/html_node/Colorizing-Output.html
