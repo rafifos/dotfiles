@@ -5,8 +5,8 @@
 # increasing the system responsiveness.
 # See: https://wiki.archlinux.org/title/Swap#Swappiness
 
-{{- template "shellscript" -}}
 {{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
 
 verbose_print "Temporarily setting system swappiness"
 run_as_root sysctl -w vm.swappiness=30

@@ -7,8 +7,8 @@
 #   1. https://developer.1password.com/docs/ssh/agent/compatibility#ssh-auth-sock
 #   2. https://wiki.archlinux.org/title/GNOME/Keyring#Disable_keyring_daemon_components
 
-{{- template "shellscript" -}}
 {{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
 
 readonly curr_dir="$PWD"
 readonly tmp_dir="$(mktemp -d)"
