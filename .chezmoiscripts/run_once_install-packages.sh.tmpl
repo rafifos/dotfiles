@@ -11,10 +11,6 @@ readonly tmp_dir="$(mktemp -d)"
 
 cd "$curr_dir" || script_exit "Unable to change directory!" 1
 
-# Base packages.
-run_as_root apt update
-run_as_root apt install --assume-yes build-essential file git
-
 # Temporary directory for downloaded packages.
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
@@ -29,15 +25,6 @@ fi
 # Remove unused packages.
 run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
 run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
-
-# Auto-select mscorefonts-eula
-echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
-
-run_as_root apt install --assume-yes gnome-tweaks \
-  lm-sensors \
-  openssh-server \
-  tilix \
-  ubuntu-restricted-extras
 
 # Docker is an open platform for developing, shipping, and running applications.
 # Docker enables you to separate your applications from your infrastructure so

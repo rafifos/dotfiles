@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Ensures the required base packages are installed before setting up the host.
+
+{{- template "shellscript" -}}
+
+# Base packages needed by all machines.
+run_as_root apt update
+run_as_root apt install --assume-yes build-essential file git
+
+{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "pop-os")) }}
+
+# Auto-select mscorefonts-eula
+echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
+
+# Base packages for Pop!_OS.
+run_as_root apt install --assume-yes gnome-tweaks \
+  lm-sensors \
+  tilix \
+  ubuntu-restricted-extras
+
+{{- if (eq .chezmoi.hostname "pop-os") }}
+
+# Evolution is needed for Exchange Calendar, Contacts, and Email support (only on pop-os).
+run_as_root apt install --assume-yes evolution
+
+{{- end }}
+
+{{- end }}
