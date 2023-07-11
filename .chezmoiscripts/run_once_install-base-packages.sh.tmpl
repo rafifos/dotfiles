@@ -9,7 +9,7 @@
 run_as_root apt update
 run_as_root apt install --assume-yes build-essential file git
 
-{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "pop-os")) }}
+{{- template "not-wsl" . -}}
 
 # Auto-select mscorefonts-eula
 echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
@@ -20,11 +20,7 @@ run_as_root apt install --assume-yes gnome-tweaks \
   tilix \
   ubuntu-restricted-extras
 
-{{- if (eq .chezmoi.hostname "pop-os") }}
+{{- template "work" . -}}
 
 # Evolution is needed for Exchange Calendar, Contacts, and Email support (only on pop-os).
 run_as_root apt install --assume-yes evolution
-
-{{- end }}
-
-{{- end }}
