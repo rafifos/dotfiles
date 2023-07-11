@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Setups Homebrew and installs packages from the Brewfile.
+
+{{- template "shellscript" -}}
+
+# Installs Homebrew if it's not already installed.
+if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+fi
+
+# Injects the Homebrew path into the current shell.
+if ! check_binary "brew"; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Install packages from the Brewfile.
+brew bundle --verbose

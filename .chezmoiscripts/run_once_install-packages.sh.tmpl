@@ -15,20 +15,6 @@ cd "$curr_dir" || script_exit "Unable to change directory!" 1
 run_as_root apt update
 run_as_root apt install --assume-yes build-essential file git
 
-# Homebrew is a great way to install packages without messing with
-# dependencies system-wide.
-if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
-fi
-
-# Injects the Homebrew path into the current shell.
-if ! check_binary "brew"; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# Install packages from the Brewfile.
-brew bundle --verbose
-
 # Temporary directory for downloaded packages.
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
