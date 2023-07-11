@@ -9,8 +9,6 @@
 readonly curr_dir="{{- .chezmoi.sourceDir -}}"
 readonly tmp_dir="$(mktemp -d)"
 
-cd "$curr_dir" || script_exit "Unable to change directory!" 1
-
 # Temporary directory for downloaded packages.
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
@@ -22,9 +20,6 @@ fi
 
 {{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "immortal-bastion")) }}
 
-# Remove unused packages.
-run_as_root apt autoremove --purge --assume-yes baobab evince gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
-run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
 
 # Docker is an open platform for developing, shipping, and running applications.
 # Docker enables you to separate your applications from your infrastructure so

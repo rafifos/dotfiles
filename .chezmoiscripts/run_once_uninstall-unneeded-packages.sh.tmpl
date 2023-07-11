@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Uninstalls packages that aren't needed on Pop_OS!.
+
+{{- template "shellscript" -}}
+{{- template "not-wsl" . -}}
+
+# Remove unused packages.
+run_as_root apt autoremove --purge --assume-yes baobab evince geary gnome-font-viewer gucharmap ibus-libpinyin firefox* libreoffice* popsicle
+run_as_root rm -rf /usr/share/fonts/truetype/libreoffice
