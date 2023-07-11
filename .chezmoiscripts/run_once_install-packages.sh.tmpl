@@ -39,19 +39,6 @@ if ! check_binary "docker"; then
   run_as_root usermod -aG docker "$USER"
 fi
 
-if ! check_binary "openrazer-daemon"; then
-  # A community-led effort to support Razer peripherals on Linux.
-  run_as_root add-apt-repository --yes ppa:openrazer/stable
-  run_as_root apt install --assume-yes openrazer-meta
-fi
-
-if ! check_binary "polychromatic-controller"; then
-  # Polychromatic is a frontend for OpenRazer that enables Razer devices to
-  # control lighting effects and more on GNU/Linux.
-  run_as_root add-apt-repository --yes ppa:polychromatic/stable
-  run_as_root apt install --assume-yes polychromatic
-fi
-
 # The world’s most-loved password manager.
 if ! check_binary "1password"; then
   curl -sS https://downloads.1password.com/linux/keys/1password.asc | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/1password-archive-keyring.gpg

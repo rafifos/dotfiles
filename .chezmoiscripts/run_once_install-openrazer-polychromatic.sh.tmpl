@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Installs OpenRazer and Polychromatic.
+
+{{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
+
+if ! check_binary "openrazer-daemon"; then
+  # A community-led effort to support Razer peripherals on Linux.
+  run_as_root add-apt-repository --yes ppa:openrazer/stable
+  run_as_root apt install --assume-yes openrazer-meta
+fi
+
+if ! check_binary "polychromatic-controller"; then
+  # Polychromatic is a frontend for OpenRazer that enables Razer devices to
+  # control lighting effects and more on GNU/Linux.
+  run_as_root add-apt-repository --yes ppa:polychromatic/stable
+  run_as_root apt install --assume-yes polychromatic
+fi
