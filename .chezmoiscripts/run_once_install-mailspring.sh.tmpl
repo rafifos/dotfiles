@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Installs Mailspring. A beautiful, fast and fully open source mail client for
+# Mac, Windows and Linux.
+
+{{- template "work" . -}}
+{{- template "shellscript" -}}
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user --assumeyes com.getmailspring.Mailspring

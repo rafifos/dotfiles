@@ -10,10 +10,7 @@ if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
 fi
 
-# Injects the Homebrew path into the current shell.
-if ! check_binary "brew"; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+inject_homebrew
 
 # Install packages from the Brewfile.
 brew bundle --verbose

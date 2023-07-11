@@ -383,6 +383,15 @@ function run_as_root() {
   fi
 }
 
+# DESC: Injects the Homebrew path into the current shell
+# ARGS: None
+# OUTS: None
+function inject_homebrew() {
+  if ! check_binary "brew"; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+}
+
 trap script_trap_err ERR
 trap script_trap_exit EXIT
 

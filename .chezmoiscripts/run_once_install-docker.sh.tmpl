@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Installs Docker.
+#
+# Docker is an open platform for developing, shipping, and running applications.
+# Docker enables you to separate your applications from your infrastructure so
+# you can deliver software quickly. With Docker, you can manage your
+# infrastructure in the same ways you manage your applications. By taking
+# advantage of Docker’s methodologies for shipping, testing, and deploying code
+# quickly, you can significantly reduce the delay between writing code and
+# running it in production.
+
+{{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
+
+readonly curr_dir="{{- .chezmoi.sourceDir -}}"
+readonly tmp_dir="$(mktemp -d)"
+
+cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+
+if ! check_binary "docker"; then
+  curl -sS https://download.docker.com/linux/ubuntu/gpg | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/docker-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | run_as_root tee /etc/apt/sources.list.d/docker.list
+  run_as_root apt update
+  run_as_root apt install --assume-yes docker-ce
+
+  # Enables Docker rootless mode.
+  # See: https://docs.docker.com/engine/security/rootless/
+  run_as_root usermod -aG plugdev "$USER"
+  run_as_root usermod -aG docker "$USER"
+fi
+
+# Cleanup
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
+rm -rf "$tmp_dir"
