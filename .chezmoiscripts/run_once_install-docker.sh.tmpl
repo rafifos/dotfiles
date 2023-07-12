@@ -19,7 +19,6 @@ readonly tmp_dir="$(mktemp -d)"
 
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
-
 if ! check_binary "docker"; then
   curl -sS https://download.docker.com/linux/ubuntu/gpg | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/docker-archive-keyring.gpg
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | run_as_root tee /etc/apt/sources.list.d/docker.list
