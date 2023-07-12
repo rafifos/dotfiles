@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Sets the system clock to use the local time instead of UTC. This fixes the
+# issue of Windows and Linux showing different times when dual booting.
+# See: https://www.howtogeek.com/323390/how-to-fix-windows-and-linux-showing-different-times-when-dual-booting
+
+{{- template "not-wsl" . -}}
+{{- template "shellscript" -}}
+
+verbose_print "Setting system clock to use local time"
+timedatectl set-local-rtc 1 --adjust-system-clock
