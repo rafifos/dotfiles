@@ -2,7 +2,7 @@ require 'socket'
 
 tap "beeftornado/rmtree"
 
-if Socket.gethostname === 'drifter'
+if Socket.gethostname === 'drifter' or Socket.gethostname === 'immortal-bastion'
   tap "github/gh"
   tap "jesseduffield/lazydocker"
   tap "nektos/tap"
