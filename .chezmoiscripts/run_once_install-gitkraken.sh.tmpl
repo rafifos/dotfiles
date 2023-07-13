@@ -3,8 +3,19 @@
 
 # Installs GitKraken. The legendary Git GUI client for Windows, Mac and Linux.
 
-{{- template "not-wsl" . -}}
+{{- template "work" . -}}
 {{- template "shellscript" -}}
 
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install --user --assumeyes com.axosoft.GitKraken
+readonly curr_dir="{{- .chezmoi.sourceDir -}}"
+readonly tmp_dir="$(mktemp -d)"
+
+cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+if ! check_binary "gitkraken"; then
+  curl -fsSLO 'https://release.axocdn.com/linux/gitkraken-amd64.deb'
+  run_as_root apt install --assume-yes ./gitkraken-amd64.deb
+fi
+
+# Cleanup
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
+rm -rf "$tmp_dir"
