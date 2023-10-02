@@ -6,6 +6,14 @@
 #   4. https://git-scm.com/docs/git-config#Documentation/git-config.txt---show-origin
 
 # machine-specific configuration
+{{- if eq .chezmoi.hostname "GUARDIAN" }}
+
+[user]
+  name = Rafael Julio
+  email = development@rafifos.dev
+  signingkey = A489BB8CA6648427C24EA0924C3BDB4F9ED719BA
+{{- end }}
+
 {{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "pop-os")) }}
 
 {{- if eq .chezmoi.hostname "drifter" }}
