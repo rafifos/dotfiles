@@ -29,6 +29,9 @@ if ! check_binary "docker"; then
   # See: https://docs.docker.com/engine/security/rootless/
   run_as_root usermod -aG plugdev "$USER"
   run_as_root usermod -aG docker "$USER"
+
+  curl -fsSLO 'https://desktop.docker.com/linux/main/amd64/docker-desktop-4.24.0-amd64.deb'
+  run_as_root apt install --assume-yes ./docker-desktop-4.24.0-amd64.deb
 fi
 
 # Cleanup
