@@ -1,3 +1,3 @@
-{{- if ne .chezmoi.hostname "GUARDIAN" }}
+{{- if ne .chezmoi.hostname "TOWER" }}
 exit 0
 {{- end }}
