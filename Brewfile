@@ -8,6 +8,7 @@ if Socket.gethostname === 'abyss'
   tap "nektos/tap"
   tap "rafifos/homebrew-tap"
 
+  brew "awscli"
   brew "act"
   brew "android-sdk-platform-tools"
   brew "docker-compose"
