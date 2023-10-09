@@ -1,9 +1,13 @@
+[".config/fish/lib/nord-dircolors/src/dir_colors"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
+  refreshPeriod = "672h"
 [".gitkraken/themes/nord-dark.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/JonBunator/gitkraken-custom-themes/master/Themes/Nord/nord-dark.jsonc"
   refreshPeriod = "672h"
 
-[".config/fish/lib/nord-dircolors/src/dir_colors"]
+[".local/share/gedit/styles/nord.xml"]
   type = "file"
-  url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
+  url = "https://raw.githubusercontent.com/nordtheme/gedit/develop/src/xml/nord.xml"
   refreshPeriod = "672h"
