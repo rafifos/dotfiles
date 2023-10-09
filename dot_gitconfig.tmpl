@@ -14,16 +14,16 @@
   signingkey = A489BB8CA6648427C24EA0924C3BDB4F9ED719BA
 {{- end }}
 
-{{- if (or (eq .chezmoi.hostname "drifter") (eq .chezmoi.hostname "pop-os")) }}
+{{- if (or (eq .chezmoi.hostname "abyss") (eq .chezmoi.hostname "abyss")) }}
 
-{{- if eq .chezmoi.hostname "drifter" }}
+{{- if eq .chezmoi.hostname "abyss" }}
 
 [user]
   name = Rafael Julio
   email = development@rafifos.dev
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
 
-{{- else if eq .chezmoi.hostname "pop-os" }}
+{{- else if eq .chezmoi.hostname "abyss" }}
 
 [user]
   name = Rafael Julio Lemos Silva
