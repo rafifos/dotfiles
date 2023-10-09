@@ -14,8 +14,6 @@
   signingkey = A489BB8CA6648427C24EA0924C3BDB4F9ED719BA
 {{- end }}
 
-{{- if (or (eq .chezmoi.hostname "abyss") (eq .chezmoi.hostname "abyss")) }}
-
 {{- if eq .chezmoi.hostname "abyss" }}
 
 [user]
@@ -29,8 +27,6 @@
   name = Rafael Julio Lemos Silva
   email = rafael.lemos@aec.com.br
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfZWGR+cc5KnTayjcvWhhlmgKuqnAqWgta5FpAgb2Z7
-
-{{- end }}
 
 # Enables commit signing using a SSH key.
 [gpg]
