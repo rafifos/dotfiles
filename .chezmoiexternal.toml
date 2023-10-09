@@ -2,6 +2,12 @@
   type = "file"
   url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
   refreshPeriod = "672h"
+
+[".config/tilix/schemes/nord.json"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/nordtheme/tilix/develop/src/json/nord.json"
+  refreshPeriod = "672h"
+
 [".gitkraken/themes/nord-dark.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/JonBunator/gitkraken-custom-themes/master/Themes/Nord/nord-dark.jsonc"
