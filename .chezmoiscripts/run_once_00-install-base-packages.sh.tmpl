@@ -15,7 +15,9 @@ run_as_root apt install --assume-yes build-essential file git
 echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
 
 # Base packages for Pop!_OS.
-run_as_root apt install --assume-yes gnome-tweaks \
+run_as_root apt install --assume-yes chrome-gnome-shell \
+  gir1.2-gtop-2.0 \
+  gnome-tweaks \
   lm-sensors \
   tilix \
   ubuntu-restricted-extras
