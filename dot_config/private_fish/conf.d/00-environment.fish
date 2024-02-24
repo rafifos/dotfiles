@@ -229,11 +229,9 @@ if status --is-interactive
     #   3. https://github.com/zpm-zsh/colorize
     set -U grc_plugin_execs as cvs df dig du env free g++ gas gcc ifconfig last ld lsblk make mount mtr netstat ping ping6 ps tail traceroute wdiff
 
-    # Sets nvim as the default editor if it's installed.
-    if type -q nvim
-        set -Ux EDITOR nvim
-        set -Ux VISUAL $EDITOR
-        set -Ux MANPAGER 'nvim +Man!'
+    # Sets helix as the default editor if it's installed.
+    if type -q hx
+        set -Ux EDITOR hx
     end
 
     # An arctic, north-bluish clean and elegant dircolors theme.
