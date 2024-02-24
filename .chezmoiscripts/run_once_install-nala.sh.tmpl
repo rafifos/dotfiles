@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Installs Nala. A frontend for apt(8).
+
+{{- template "shellscript" -}}
+
+if ! check_binary "nala"; then
+  curl -sS https://deb.volian.org/volian/scar.key | run_as_root gpg --dearmor --yes --output /usr/share/keyrings/volian-archive-scar-unstable.gpg
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/volian-archive-scar-unstable.gpg] http://deb.volian.org/volian/ scar main" | run_as_root tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+  run_as_root apt update && run_as_root apt install --assume-yes nala
+fi
