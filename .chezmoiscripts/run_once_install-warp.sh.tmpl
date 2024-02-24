@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Installs Prompt. A terminal for a container-oriented desktop.
+
+{{- template "work" . -}}
+{{- template "shellscript" -}}
+
+readonly curr_dir="{{- .chezmoi.sourceDir -}}"
+readonly tmp_dir="$(mktemp -d)"
+
+cd "$tmp_dir" || script_exit "Unable to change directory!" 1
+
+if ! check_binary "warp-terminal"; then
+  curl -fsSL 'https://app.warp.dev/download?package=deb' -o warp_amd64.deb
+  run_as_root apt install --assume-yes ./warp_amd64.deb
+fi
+
+# Cleanup
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
+rm -rf "$tmp_dir"
