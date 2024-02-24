@@ -12,16 +12,10 @@
   name = Rafael Julio
   email = development@rafifos.dev
   signingkey = A489BB8CA6648427C24EA0924C3BDB4F9ED719BA
+
 {{- end }}
 
 {{- if eq .chezmoi.hostname "abyss" }}
-
-[user]
-  name = Rafael Julio
-  email = development@rafifos.dev
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
-
-{{- else if eq .chezmoi.hostname "abyss" }}
 
 [user]
   name = Rafael Julio Lemos Silva
@@ -46,7 +40,7 @@
   filemode = true
 
   # Text editor to be used on commands that launch a text editor.
-  editor = nvim
+  editor = hx
 
   # delta as the default pager, tweaked to match the theme "Nord".
   pager = delta --hyperlinks
