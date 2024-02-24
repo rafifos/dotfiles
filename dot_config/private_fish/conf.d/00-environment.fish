@@ -139,22 +139,6 @@ if status --is-interactive
     # background of the selected completion
     set -U fish_pager_color_selected_background --background=brblack
 
-    # Hydro, an ultra-pure, lag-free prompt with async Git status. Designed for Fish.
-    # See:
-    #   1. https://github.com/jorgebucaran/hydro
-
-    # Color of the pwd segment
-    set -U hydro_color_pwd $fish_color_cwd
-
-    # Color of the git segment
-    set -U hydro_color_git $nord15
-
-    # Color of the prompt symbol
-    set -U hydro_color_prompt $nord8
-
-    # Color of the duration section
-    set -U hydro_color_duration $nord13
-
     # Set the terminfo capability substrings for the color environment variable interpreted by the
     # "termcap" compatibility application interface.
     #
