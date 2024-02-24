@@ -1,7 +1,7 @@
 # asdf-vm setup.
 # See: https://asdf-vm.com/#/core-manage-asdf?id=install
 if not test -d ~/.asdf
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 
     not test -d ~/.config/fish/completions; and mkdir -p ~/.config/fish/completions
     ln -sf ~/.asdf/completions/asdf.fish ~/.config/fish/completions
