@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Ensures the required base packages are installed before setting up the host.
+#
+# See: https://wiki.archlinux.org/title/general_recommendations
+
+{{- template "shellscript" -}}
+
+# Extra packages needed by all machines.
+run_as_root pacman -S --noconfirm --needed aws-cli-v2 \
+  bat \
+  bottom \
+  eza \
+  fd \
+  fish \
+  fzf \
+  git-delta github-cli \
+  grc \
+  helix \
+  httpie
+
+run_as_root yay -S --noconfirm --needed lazydocker \
+  topgrade
+
+{{- template "work" . -}}
+
+# Extra packages needed by all machines.
+run_as_root pacman -S --noconfirm --needed aws-cli-v2

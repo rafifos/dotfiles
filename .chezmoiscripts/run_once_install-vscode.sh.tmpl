@@ -2,20 +2,12 @@
 # shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
 
 # Installs Visual Studio Code. Code editing. Redefined.
+#
+# See: https://wiki.archlinux.org/title/Visual_Studio_Code
 
 {{- template "not-wsl" . -}}
 {{- template "shellscript" -}}
 
-readonly curr_dir="{{- .chezmoi.sourceDir -}}"
-readonly tmp_dir="$(mktemp -d)"
-
-cd "$tmp_dir" || script_exit "Unable to change directory!" 1
-
 if ! check_binary "code"; then
-  curl -fsSL 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -o code_amd64.deb
-  run_as_root apt install --assume-yes code_amd64.deb
+  run_as_root yay -S --noconfirm --needed visual-studio-code-bin
 fi
-
-# Cleanup
-cd "$curr_dir" || script_exit "Unable to change directory!" 1
-rm -rf "$tmp_dir"

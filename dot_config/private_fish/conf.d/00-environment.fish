@@ -29,10 +29,6 @@ set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
 # Many programs try to parse the SHELL variable but fail miserably to do so. Tell them we're using fish.
 set -Ux SHELL $__fish_bin_dir/fish
 
-# Loads Homebrew if it's available.
-test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
 # Prepends local binary directory if it's present.
 test -d ~/.local/bin; and fish_add_path ~/.local/bin
 

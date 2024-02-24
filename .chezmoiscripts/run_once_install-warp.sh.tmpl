@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
 
-# Installs Prompt. A terminal for a container-oriented desktop.
+# Installs Warp. Great software starts on the command line.
 
 {{- template "work" . -}}
 {{- template "shellscript" -}}
@@ -12,8 +12,8 @@ readonly tmp_dir="$(mktemp -d)"
 cd "$tmp_dir" || script_exit "Unable to change directory!" 1
 
 if ! check_binary "warp-terminal"; then
-  curl -fsSL 'https://app.warp.dev/download?package=deb' -o warp_amd64.deb
-  run_as_root apt install --assume-yes ./warp_amd64.deb
+  curl -fsSL 'https://releases.warp.dev/stable/v0.2024.02.20.08.01.stable_02/warp-terminal-v0.2024.02.20.08.01.stable_02-1-x86_64.pkg.tar.zst' -o warp-terminal-v0.2024.02.20.08.01.stable_02-1-x86_64.pkg.tar.zst
+  run_as_root pacman -U --noconfirm --needed warp-terminal-v0.2024.02.20.08.01.stable_02-1-x86_64.pkg.tar.zst
 fi
 
 # Cleanup
