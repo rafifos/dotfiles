@@ -1,0 +1,10 @@
+# Include any additional configuration file(s)
+# [include] sections are processed in the order you write them
+# Files in $CONFIG_DIR/topgrade.d/ are automatically included before this file
+[include]
+# paths = ["/etc/topgrade.toml"]
+
+[misc]
+
+# Disable specific steps - same options as the command line flag
+disable = ["npm", "yarn"]

@@ -6,6 +6,5 @@
     "shellscript": "shellscript",
     "work": "shellscript",
     "dot_gitconfig.tmpl": "gitconfig",
-    "dot_gitignore.tmpl": "gitignore",
   }
 }

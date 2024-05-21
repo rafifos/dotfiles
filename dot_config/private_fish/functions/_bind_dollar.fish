@@ -1,4 +1,4 @@
-function _bind_dollar --description 'See: https://github.com/fish-shell/fish-shell/wiki/Bash-Style-Command-Substitution-and-Chaining-(!!-!$)'
+function _bind_dollar --description 'Bash Style Command Substitution and Chaining (!! !$). See: https://github.com/fish-shell/fish-shell/wiki/Bash-Style-Command-Substitution-and-Chaining-(!!-!$)'
     switch (commandline -t)
         # Variation on the original, vanilla "!" case
         # ===========================================

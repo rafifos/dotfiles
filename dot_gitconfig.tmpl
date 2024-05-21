@@ -1,9 +1,6 @@
 # Global Git configuration.
 # See:
-#   1. https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration#_colors_in_git
-#   2. https://git-scm.com/docs/git-config
-#   3. https://git-scm.com/docs/git-config#_conditional_includes
-#   4. https://git-scm.com/docs/git-config#Documentation/git-config.txt---show-origin
+#   1. https://git-scm.com/docs/git-config
 
 # machine-specific configuration
 {{- if eq .chezmoi.hostname "TOWER" }}
@@ -50,9 +47,6 @@
   # Text editor to be used on commands that launch a text editor.
   editor = hx
 
-  # delta as the default pager, tweaked to match the theme "Nord".
-  pager = delta --hyperlinks
-
 [init]
   defaultBranch = main
 
@@ -71,10 +65,6 @@
   # By default, signs commit with GnuPG.
   gpgSign = true
 
-[interactive]
-  # delta as the default diff filter, tweaked to match "Nord".
-  diffFilter = delta --color-only
-
 [merge]
   # Visual Studio Code 3-way merge editor as the default mergetool.
   tool = code
@@ -83,47 +73,3 @@
   # Visual Studio Code 3-way merge editor.
   # See: https://code.visualstudio.com/updates/v1_70#_command-line-option-merge
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
-
-[delta]
-  features = side-by-side line-numbers keep-plus-minus-markers
-  tabs = 2
-  syntax-theme = Nord
-  commit-style = "normal #88C0D0"
-  file-style = "box #8FBCBB"
-  hunk-style = "normal #81A1C1"
-  minus-style = "syntax #8B454B"
-  minus-emph-style = "normal #BF616A"
-  plus-style = "normal #4C6584"
-  plus-emph-style = "normal #5E81AC"
-
-[alias]
-  # Commits staged changes with a COMMIT_MSG fetched from whatthecommit.com.
-  yolo = !git commit -S -m \"$(curl --silent --fail http://whatthecommit.com/index.txt)\"
-  co = checkout
-  cob = checkout -b
-  coo = !git fetch && git checkout
-  br = branch
-  brd = branch -d
-  st = status
-  aa = add -A .
-  unstage = reset --soft HEAD^
-  c = commit -S -s
-  cm = commit -S -s -m
-  amend = commit -S --amend -m
-  fix = commit --fixup
-  undo = reset HEAD~1
-  rv = revert
-  cp = cherry-pick
-  pu = !git push origin `git branch --show-current`
-  fush = push -f
-  mg = merge --no-ff
-  rb = rebase
-  rbc = rebase --continue
-  rba = rebase --abort
-  rbs = rebase --skip
-  rom = !git fetch && git rebase -i origin/master --autosquash
-  save = stash push
-  pop = stash pop
-  apply = stash apply
-  rl = reflog
-  fa = fetch --all
