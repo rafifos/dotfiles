@@ -29,6 +29,14 @@
 # Uses 1Password to sign commits.
 [gpg "ssh"]
   program = "/opt/1Password/op-ssh-sign"
+
+[credential]
+  credentialStore = secretservice
+	helper =
+	helper = /usr/local/bin/git-credential-manager
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 {{- end }}
 
 [core]
