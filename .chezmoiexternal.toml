@@ -1,7 +1,4 @@
-[".config/fish/lib/nord-dircolors/src/dir_colors"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
-  refreshPeriod = "672h"
+
 
 [".config/tilix/schemes/nord.json"]
   type = "file"

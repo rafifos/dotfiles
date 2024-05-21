@@ -125,9 +125,6 @@ if status --is-interactive
         set -Ux EDITOR hx
     end
 
-    # An arctic, north-bluish clean and elegant dircolors theme.
-    test -f $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors; and eval (dircolors -c $__fish_user_config_dir/lib/nord-dircolors/src/dir_colors)
-
     # bat(1) customizations.
     # See: https://github.com/sharkdp/bat#customization
     if type -q bat
