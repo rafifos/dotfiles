@@ -1,0 +1,3 @@
+# See: https://mise.jdx.dev/configuration.html
+[tools]
+node = "lts"
