@@ -5,6 +5,9 @@
 
 {{- template "shellscript" -}}
 
+readonly curr_dir="{{- .chezmoi.sourceDir -}}"
+readonly root_dir="{{- .chezmoi.workingTree -}}"
+
 # Installs Homebrew if it's not already installed.
 if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
@@ -12,5 +15,10 @@ fi
 
 inject_homebrew
 
+cd "$root_dir" || script_exit "Unable to change directory!" 1
+
 # Install packages from the Brewfile.
 brew bundle --verbose
+
+# Cleanup
+cd "$curr_dir" || script_exit "Unable to change directory!" 1
