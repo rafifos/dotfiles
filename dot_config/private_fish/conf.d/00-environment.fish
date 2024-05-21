@@ -105,10 +105,6 @@ if status --is-interactive
     #   2. https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
     set -Ux SSH_AUTH_SOCK ~/.1password/agent.sock
 
-    # Set the style of the sudo prompt.
-    # See: sudo(8)
-    set -Ux SUDO_PROMPT (set_color $nord0 --background $fish_color_error; echo -n ' ! '; set_color --background $nord11; echo -n " sudo "; set_color normal; echo -n ' ')
-
     # Configure pinentry to use the correct TTY.
     # See: https://wiki.archlinux.org/title/GnuPG#:~:text=gpg-agent%20%5B3%5D.-,Configure%20pinentry%20to%20use%20the%20correct%20TTY,-Also%20set%20the
     set -gx GPG_TTY (tty)
