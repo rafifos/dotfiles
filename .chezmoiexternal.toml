@@ -1,16 +1,91 @@
+# +------------+
+# + Catppuccin +
+# +------------+
 
+# Black Box (Flatpak)
 
-[".config/tilix/schemes/nord.json"]
+["..var/app/com.raggesilver.BlackBox/data/blackbox/schemes/catppuccin-frappe.json"]
   type = "file"
-  url = "https://raw.githubusercontent.com/nordtheme/tilix/develop/src/json/nord.json"
-  refreshPeriod = "672h"
+  url = "https://raw.githubusercontent.com/catppuccin/tilix/main/themes/catppuccin-frappe.json"
+  refreshPeriod = "24h"
 
-[".gitkraken/themes/nord-dark.jsonc"]
+["..var/app/com.raggesilver.BlackBox/data/blackbox/schemes/catppuccin-latte.json"]
   type = "file"
-  url = "https://raw.githubusercontent.com/JonBunator/gitkraken-custom-themes/master/Themes/Nord/nord-dark.jsonc"
-  refreshPeriod = "672h"
+  url = "https://raw.githubusercontent.com/catppuccin/tilix/main/themes/catppuccin-latte.json"
+  refreshPeriod = "24h"
 
-[".local/share/gedit/styles/nord.xml"]
+["..var/app/com.raggesilver.BlackBox/data/blackbox/schemes/catppuccin-macchiato.json"]
   type = "file"
-  url = "https://raw.githubusercontent.com/nordtheme/gedit/develop/src/xml/nord.xml"
-  refreshPeriod = "672h"
+  url = "https://raw.githubusercontent.com/catppuccin/tilix/main/themes/catppuccin-macchiato.json"
+  refreshPeriod = "24h"
+
+["..var/app/com.raggesilver.BlackBox/data/blackbox/schemes/catppuccin-mocha.json"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/tilix/main/themes/catppuccin-mocha.json"
+  refreshPeriod = "24h"
+
+# Fish shell
+
+[".config/fish/themes/Catppuccin Frappe.theme"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Frappe.theme"
+  refreshPeriod = "24h"
+
+[".config/fish/themes/Catppuccin Latte.theme"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Latte.theme"
+  refreshPeriod = "24h"
+
+[".config/fish/themes/Catppuccin Macchiato.theme"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Macchiato.theme"
+  refreshPeriod = "24h"
+
+[".config/fish/themes/Catppuccin Mocha.theme"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme"
+  refreshPeriod = "24h"
+
+# GitKraken
+
+[".gitkraken/themes/catppuccin-frappe.jsonc"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-frappe.jsonc"
+  refreshPeriod = "24h"
+
+[".gitkraken/themes/catppuccin-latte.jsonc"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-latte.jsonc"
+  refreshPeriod = "24h"
+
+[".gitkraken/themes/catppuccin-macchiato.jsonc"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-macchiatto.jsonc"
+  refreshPeriod = "24h"
+
+[".gitkraken/themes/catppuccin-mocha.jsonc"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-mocha.jsonc"
+  refreshPeriod = "24h"
+
+# gedit
+
+[".local/share/gedit/styles/catppuccin-frappe.xml"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/gedit/main/themes/catppuccin-frappe.xml"
+  refreshPeriod = "24h"
+
+[".local/share/gedit/styles/catppuccin-latte.xml"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/gedit/main/themes/catppuccin-latte.xml"
+  refreshPeriod = "24h"
+
+[".local/share/gedit/styles/catppuccin-macchiato.xml"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/gedit/main/themes/catppuccin-macchiato.xml"
+  refreshPeriod = "24h"
+
+[".local/share/gedit/styles/catppuccin-mocha.xml"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/gedit/main/themes/catppuccin-mocha.xml"
+  refreshPeriod = "24h"
