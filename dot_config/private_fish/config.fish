@@ -23,6 +23,13 @@ if status --is-interactive
     type -q pnpm; and alias pnpm "NPQ_PKG_MGR=pnpm npq-hero"
     type -q yarn; and alias yarn "NPQ_PKG_MGR=yarn npq-hero"
 
+    # Rebuilds bat's cache if it doesn't exist.
+    if type -q bat
+        if not test -e ~/.cache/bat
+            bat cache --build
+        end
+    end
+
     # Generates delta's completions if they don't exist.
     if type -q delta
         if not test -f $__fish_user_data_dir/generated_completions/delta.fish

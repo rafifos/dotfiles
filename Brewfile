@@ -9,6 +9,7 @@ if Socket.gethostname === 'abyss'
   brew "android-sdk-platform-tools"
 end
 
+brew "bat"
 brew "fish"
 brew "git-delta"
 brew "httpie"
