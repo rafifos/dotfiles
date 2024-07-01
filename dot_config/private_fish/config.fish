@@ -36,4 +36,7 @@ if status --is-interactive
             delta --generate-completion fish > $__fish_user_data_dir/generated_completions/delta.fish
         end
     end
+
+    # Initializes fzf.
+    type -q fzf; and fzf --fish | source
 end
