@@ -11,7 +11,10 @@ if status --is-interactive
     # See:
     #   1. ssh(1)
     #   2. https://developer.1password.com/docs/ssh/get-started#step-4-configure-your-ssh-or-git-client
-    set -Ux SSH_AUTH_SOCK ~/.1password/agent.sock
+    set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
+
+    # Sets the default pager to less with some options.
+    set -gx PAGER 'less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init --quit-on-intr --chop-long-lines 2'
 
     # Configures the catppuccin theme.
     fish_config theme save "Catppuccin Frappe"
