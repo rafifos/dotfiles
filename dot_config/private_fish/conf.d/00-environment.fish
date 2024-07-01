@@ -37,7 +37,7 @@ if status --is-interactive
     set -gx PAGER 'less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init --quit-on-intr --chop-long-lines 2'
 
     # Configures the catppuccin theme.
-    fish_config theme save "Catppuccin Frappe"
+    # fish_config theme save "Catppuccin Frappe"
 
     # Configures the Pure prompt.
     # See: https://pure-fish.github.io/pure/
