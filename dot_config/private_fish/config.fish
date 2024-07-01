@@ -22,4 +22,11 @@ if status --is-interactive
     type -q npm; and alias npm npq-hero
     type -q pnpm; and alias pnpm "NPQ_PKG_MGR=pnpm npq-hero"
     type -q yarn; and alias yarn "NPQ_PKG_MGR=yarn npq-hero"
+
+    # Generates delta's completions if they don't exist.
+    if type -q delta
+        if not test -f $__fish_user_data_dir/generated_completions/delta.fish
+            delta --generate-completion fish > $__fish_user_data_dir/generated_completions/delta.fish
+        end
+    end
 end

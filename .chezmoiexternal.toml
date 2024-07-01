@@ -89,3 +89,9 @@
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/gedit/main/themes/catppuccin-mocha.xml"
   refreshPeriod = "24h"
+# delta
+
+[".config/delta/themes/catppuccin.gitconfig"]
+  type = "file"
+  url = "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
+  refreshPeriod = "24h"

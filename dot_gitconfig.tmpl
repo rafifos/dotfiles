@@ -36,6 +36,9 @@
 	useHttpPath = true
 {{- end }}
 
+[include]
+	path = .config/delta/themes/catppuccin.gitconfig
+
 [core]
   # CRLF endings in Windows checkouts.
   # LF endings on Mac and Linux systems and in the repository.
@@ -46,6 +49,9 @@
 
   # Text editor to be used on commands that launch a text editor.
   editor = hx
+
+  # Use delta as the default pager.
+  pager = delta
 
 [init]
   defaultBranch = main
@@ -68,8 +74,23 @@
 [merge]
   # Visual Studio Code 3-way merge editor as the default mergetool.
   tool = code
+  conflictstyle = diff3
 
 [mergetool "code"]
   # Visual Studio Code 3-way merge editor.
   # See: https://code.visualstudio.com/updates/v1_70#_command-line-option-merge
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
+[diff]
+  colorMoved = default
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  features = catppuccin-frappe
+  line-numbers = true
+  side-by-side = true
+  navigate = true
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
