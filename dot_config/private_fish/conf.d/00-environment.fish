@@ -22,6 +22,14 @@ if status --is-interactive
 
     # Sets helix as the default editor if it's installed.
     if type -q hx
-        set -Ux EDITOR hx
+        set -gx EDITOR hx
+    end
+
+    # Configures fd as the default command for fzf.
+    if type -q fd
+        # Follows symlinks and hidden files, but excludes the .git directory, with colored output.
+        set -gx FZF_DEFAULT_COMMAND 'fd --type file --color=always --follow --hidden --exclude .git --strip-cwd-prefix'
+        set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+        set -gx FZF_DEFAULT_OPTS --ansi
     end
 end

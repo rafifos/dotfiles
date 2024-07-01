@@ -11,6 +11,7 @@ end
 
 brew "bat"
 brew "eza"
+brew "fd"
 brew "fish"
 brew "git-delta"
 brew "httpie"
