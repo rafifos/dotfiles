@@ -1,3 +1,23 @@
+# Set's the output of various programs to use the ISO 8601 format.
+# See: https://www.gnu.org/software/coreutils/manual/html_node/Formatting-file-timestamps.html
+set -Ux TIME_STYLE iso
+
+# Sets the XDG Base Directory Specification directories.
+# See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_RUNTIME_DIR $HOME/.local/run
+set -Ux XDG_STATE_HOME $HOME/.local/state
+set -Ux XDG_DATA_HOME $HOME/.local/share
+
+# Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
+set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
+set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
+
+# Sets fish's config and data directories.
+set -U __fish_user_data_dir $XDG_DATA_HOME/fish
+set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
+
 # Loads Homebrew if it's available.
 test -d ~/.linuxbrew; and eval (~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
