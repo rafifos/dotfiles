@@ -1,3 +1,0 @@
-{{- if ( or ( contains "microsoft" ( lower .chezmoi.kernel.osrelease )) ( contains "wsl" ( lower .chezmoi.kernel.osrelease ))) }}
-exit 0
-{{- end }}

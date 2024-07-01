@@ -3,10 +3,6 @@ require 'socket'
 tap "beeftornado/rmtree"
 
 if Socket.gethostname === 'abyss'
-  tap "rafifos/homebrew-tap"
-
-  brew "awscli"
-  brew "android-sdk-platform-tools"
 end
 
 brew "bat"

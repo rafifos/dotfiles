@@ -16,8 +16,8 @@
 
 [user]
   name = Rafael Julio Lemos Silva
-  email = rafael.lemos@aec.com.br
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfZWGR+cc5KnTayjcvWhhlmgKuqnAqWgta5FpAgb2Z7
+  email = rafael.silva@internationalschool.global
+  signingkey =
 
 # Enables commit signing using a SSH key.
 [gpg]
@@ -26,14 +26,6 @@
 # Uses 1Password to sign commits.
 [gpg "ssh"]
   program = "/opt/1Password/op-ssh-sign"
-
-[credential]
-  credentialStore = secretservice
-	helper =
-	helper = /usr/local/bin/git-credential-manager
-
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 {{- end }}
 
 [include]

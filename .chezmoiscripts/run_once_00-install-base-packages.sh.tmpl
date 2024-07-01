@@ -7,23 +7,4 @@
 
 # Base packages needed by all machines.
 run_as_root apt update
-run_as_root apt install --assume-yes build-essential file git
-
-{{- template "not-wsl" . -}}
-
-# Auto-select mscorefonts-eula
-echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | run_as_root debconf-set-selections
-
-# Base packages for Pop!_OS.
-run_as_root apt install --assume-yes chrome-gnome-shell \
-  gir1.2-gtop-2.0 \
-  gnome-tweaks \
-  lm-sensors \
-  tilix \
-  ubuntu-restricted-extras
-
-{{- template "work" . -}}
-
-# Evolution is needed for Exchange Calendar, Contacts, and Email support (only
-# on abyss).
-run_as_root apt install --assume-yes evolution evolution-ews
+run_as_root apt full-upgrade --assume-yes
