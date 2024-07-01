@@ -10,6 +10,7 @@ if Socket.gethostname === 'abyss'
 end
 
 brew "bat"
+brew "eza"
 brew "fish"
 brew "git-delta"
 brew "httpie"
