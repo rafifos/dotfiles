@@ -25,6 +25,10 @@ test -d /home/linuxbrew/.linuxbrew; and eval (/home/linuxbrew/.linuxbrew/bin/bre
 # Prepends local binary directory if it's present.
 test -d ~/.local/bin; and fish_add_path ~/.local/bin
 
+# Fixes ssh commands on WSL
+alias ssh 'ssh.exe'
+alias ssh-add 'ssh-add.exe'
+
 # Environment variables for interactive shells.
 if status --is-interactive
     # Sets the default pager to less with some options.
