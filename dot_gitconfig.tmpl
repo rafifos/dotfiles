@@ -8,7 +8,7 @@
 [user]
   name = Rafael Julio
   email = development@rafifos.dev
-  signingkey = A489BB8CA6648427C24EA0924C3BDB4F9ED719BA
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
 
 {{- end }}
 
@@ -19,14 +19,6 @@
   email = rafael.silva@internationalschool.global
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJquvfk38aKCnpiVOJID0uK3l58B3T3rJYz0Ukj+YJG8
 
-# Enables commit signing using a SSH key.
-[gpg]
-  format = ssh
-
-# Uses 1Password to sign commits.
-[gpg "ssh"]
-  program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
-
 # Use work GitHub account by default
 [credential "https://ithub.com"]
   username = rafael-silva-is
@@ -35,6 +27,14 @@
 [credential "https://rafifos@github.com"]
   username = rafifos
 {{- end }}
+
+# Enables commit signing using a SSH key.
+[gpg]
+  format = ssh
+
+# Uses 1Password to sign commits.
+[gpg "ssh"]
+  program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
 
 [include]
 	path = .config/delta/themes/catppuccin.gitconfig
