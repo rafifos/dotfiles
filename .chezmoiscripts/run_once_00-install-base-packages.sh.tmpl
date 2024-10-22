@@ -8,3 +8,6 @@
 # Base packages needed by all machines.
 run_as_root apt update
 run_as_root apt full-upgrade --assume-yes
+run_as_root apt install --assume-yes build-essential \
+  file \
+  git
