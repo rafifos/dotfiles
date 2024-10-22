@@ -32,8 +32,10 @@ if status --is-interactive
 
     # Generates delta's completions if they don't exist.
     if type -q delta
+        not test -d $__fish_user_data_dir/generated_completions; and mkdir -p $__fish_user_data_dir/generated_completions
+
         if not test -f $__fish_user_data_dir/generated_completions/delta.fish
-            delta --generate-completion fish > $__fish_user_data_dir/generated_completions/delta.fish
+            delta --generate-completion fish >$__fish_user_data_dir/generated_completions/delta.fish
         end
     end
 
