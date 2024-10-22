@@ -39,7 +39,7 @@ if status --is-interactive
 
     # Configures the Pure prompt.
     # See: https://pure-fish.github.io/pure/
-    set -U pure_symbol_prompt '❯❮❯'
+    set -U pure_symbol_prompt '><>'
 
     # Sets helix as the default editor if it's installed.
     if type -q hx
