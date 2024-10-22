@@ -26,6 +26,14 @@
 # Uses 1Password to sign commits.
 [gpg "ssh"]
   program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+
+# Use work GitHub account by default
+[credential "https://ithub.com"]
+  username = rafael-silva-is
+
+# User personal GitHub account on select repositories
+[credential "https://rafifos@github.com"]
+  username = rafifos
 {{- end }}
 
 [include]
