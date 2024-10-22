@@ -28,22 +28,22 @@
 
 [".gitkraken/themes/catppuccin-frappe.jsonc"]
   type = "file"
-  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-frappe.jsonc"
+  url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-frappe.jsonc"
   refreshPeriod = "24h"
 
 [".gitkraken/themes/catppuccin-latte.jsonc"]
   type = "file"
-  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-latte.jsonc"
+  url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-latte.jsonc"
   refreshPeriod = "24h"
 
 [".gitkraken/themes/catppuccin-macchiato.jsonc"]
   type = "file"
-  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-macchiatto.jsonc"
+  url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-macchiato.jsonc"
   refreshPeriod = "24h"
 
 [".gitkraken/themes/catppuccin-mocha.jsonc"]
   type = "file"
-  url = "https://raw.githubusercontent.com/davi19/gitkraken/master/src/catppuccin-mocha.jsonc"
+  url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-mocha.jsonc"
   refreshPeriod = "24h"
 
 # bat
