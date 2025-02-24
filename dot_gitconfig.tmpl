@@ -10,6 +10,10 @@
   email = development@rafifos.dev
   signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
 
+# Uses 1Password to sign commits.
+[gpg "ssh"]
+  program = "/mnt/c/Users/Rafael/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+
 {{- end }}
 
 {{- if eq .chezmoi.hostname "IS-NOT-NB0286" }}
@@ -26,15 +30,16 @@
 # User personal GitHub account on select repositories
 [credential "https://rafifos@github.com"]
   username = rafifos
+
+# Uses 1Password to sign commits.
+[gpg "ssh"]
+  program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+
 {{- end }}
 
 # Enables commit signing using a SSH key.
 [gpg]
   format = ssh
-
-# Uses 1Password to sign commits.
-[gpg "ssh"]
-  program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
 
 [include]
 	path = .config/delta/themes/catppuccin.gitconfig
