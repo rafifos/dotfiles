@@ -1,6 +1,7 @@
 # Global Git configuration.
 # See:
 #   1. https://git-scm.com/docs/git-config
+#   2. https://blog.gitbutler.com/how-git-core-devs-configure-git
 
 # machine-specific configuration
 {{- if eq .chezmoi.hostname "TOWER" }}
@@ -58,7 +59,14 @@
   # Use delta as the default pager.
   pager = delta
 
+  # Use Windows's ssh as the default SSH client.
   sshCommand = "ssh.exe"
+
+  # Global ignores
+  excludesfile = ~/.gitignore
+
+  # fsmonitor = true
+  # untrackedCache = true
 
 [credential]
   helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
@@ -66,13 +74,31 @@
 [init]
   defaultBranch = main
 
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
+
 [status]
   # Show all untracked files by default.
   showUntrackedFiles = all
 
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+
 [pull]
   # Only allows pulls to use the fast-forward method.
   ff = only
+
+  # rebase = true
 
 [commit]
   # Template to be shown on the commit message prompt.
@@ -81,18 +107,34 @@
   # By default, signs commit with GnuPG.
   gpgSign = true
 
+  # Verbose commits.
+  verbose = true
+
+[column]
+  ui = auto
+
 [merge]
   # Visual Studio Code 3-way merge editor as the default mergetool.
   tool = code
-  conflictstyle = diff3
+
+  # (just 'diff3' if git version < 2.3)
+  conflictstyle = zdiff3
 
 [mergetool "code"]
   # Visual Studio Code 3-way merge editor.
   # See: https://code.visualstudio.com/updates/v1_70#_command-line-option-merge
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
 [diff]
+  algorithm = histogram
   colorMoved = default
+  mnemonicPrefix = true
+  renames = true
 
 [interactive]
   diffFilter = delta --color-only
@@ -104,3 +146,10 @@
   navigate = true
   hyperlinks = true
   hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+
+[help]
+  autocorrect = prompt
+
+[rerere]
+  enabled = true
+  autoupdate = true
