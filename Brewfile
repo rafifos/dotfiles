@@ -5,6 +5,7 @@ tap "beeftornado/rmtree"
 if Socket.gethostname === 'IS-NOT-NB0286'
 end
 
+brew "atuin"
 brew "bat"
 brew "eza"
 brew "fd"

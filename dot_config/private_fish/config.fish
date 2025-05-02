@@ -42,6 +42,9 @@ if status --is-interactive
     # Initializes fzf.
     type -q fzf; and fzf --fish | source
 
+    # Initializes atuin.
+    type -q atuin; and atuin init fish | source
+
     # Initializes zoxide.
     type -q zoxide; and zoxide init --cmd cd fish | source
 end
