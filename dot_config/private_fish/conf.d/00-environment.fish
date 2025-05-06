@@ -63,4 +63,18 @@ if status --is-interactive
         set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
         set -gx FZF_DEFAULT_OPTS --ansi
     end
+
+    if test (uname) = Darwin
+        # Prepends uutils-coreutils to the PATH.
+        # See: https://formulae.brew.sh/formula/uutils-coreutils
+        fish_add_path --prepend (brew --prefix uutils-coreutils)/libexec/uubin
+
+        # Prepends uutils-findutils to the PATH.
+        # See: https://formulae.brew.sh/formula/uutils-findutils
+        fish_add_path --prepend (brew --prefix uutils-findutils)/libexec/uubin
+
+        # Prepends uutils-diffutils to the PATH.
+        # See: https://formulae.brew.sh/formula/uutils-diffutils
+        fish_add_path --prepend (brew --prefix uutils-diffutils)/libexec/uubin
+    end
 end

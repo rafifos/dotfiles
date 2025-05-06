@@ -5,6 +5,9 @@ tap "beeftornado/rmtree"
 if RbConfig::CONFIG["host_os"] =~ /darwin/
   brew "gpg"
   brew "pinentry-mac"
+  brew "uutils-coreutils"
+  brew "uutils-diffutils"
+  brew "uutils-findutils"
 
   cask "1password-cli"
   cask "1password"
