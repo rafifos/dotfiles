@@ -1,12 +1,40 @@
-require 'socket'
+require "rbconfig"
 
 tap "beeftornado/rmtree"
 
-if Socket.gethostname === 'IS-NOT-NB0286'
+if RbConfig::CONFIG["host_os"] =~ /darwin/
+  brew "gpg"
+  brew "pinentry-mac"
+
+  cask "1password-cli"
+  cask "1password"
+  cask "arc"
+  cask "dbeaver-community"
+  cask "discord"
+  cask "eqmac"
+  cask "font-inter"
+  cask "font-iosevka-nerd-font"
+  cask "ghostty"
+  cask "git-credential-manager"
+  cask "gitkraken"
+  cask "google-chrome"
+  cask "google-drive"
+  cask "microsoft-teams"
+  cask "only-switch"
+  cask "raycast"
+  cask "slack"
+  cask "spotify"
+  cask "visual-studio-code"
+  cask "whatsapp"
+  cask "zed"
+
+  # Rosetta 2 is required for some x86_64 applications
+  cask "logitech-g-hub"
 end
 
 brew "atuin"
 brew "bat"
+brew "chezmoi"
 brew "eza"
 brew "fd"
 brew "fish"

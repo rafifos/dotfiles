@@ -27,5 +27,11 @@ Defaults insults
 EOF
 
 verbose_print "Setting sudoers file permissions"
-run_as_root chown -c root:root "$options_file"
-run_as_root chmod -c 0440 "$options_file"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  run_as_root chown root:wheel "$options_file"
+  run_as_root chmod 0440 "$options_file"
+else
+  run_as_root chown -c root:root "$options_file"
+  run_as_root chmod -c 0440 "$options_file"
+fi

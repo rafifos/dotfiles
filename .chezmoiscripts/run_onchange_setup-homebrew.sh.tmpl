@@ -9,8 +9,14 @@ readonly curr_dir="{{- .chezmoi.sourceDir -}}"
 readonly root_dir="{{- .chezmoi.workingTree -}}"
 
 # Installs Homebrew if it's not already installed.
-if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [[ ! -d /opt/homebrew ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+  fi
+else
+  if [[ ! -d /home/linuxbrew/.linuxbrew ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+  fi
 fi
 
 inject_homebrew

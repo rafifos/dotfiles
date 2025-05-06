@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1009,1036,SC1054,SC1056,SC1072,SC1073,SC1083
+
+# Setups macOS defaults.
+
+{{- template "shellscript" -}}
+
+# Show hidden files in Finder.
+defaults write com.apple.finder AppleShowAllFiles true

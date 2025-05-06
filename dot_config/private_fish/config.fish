@@ -11,8 +11,8 @@ if status --is-interactive
     # Prints some info about TARGET before prompting for action.
     abbr -a -g rip 'rip --inspect'
 
-    # Shortcut to chezmoi directory
-    abbr -a -g dot "cd $XDG_DATA_HOME/chezmoi"
+    # Shortcut to chezmoi's directory
+    abbr -a -g dot "cd ~/.local/share/chezmoi"
 
     # Handy abbr to download a remote file using httpie.
     type -q http; and abbr -a -g download 'http --follow --download'

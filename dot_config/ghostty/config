@@ -1,0 +1,32 @@
+# This is the configuration file for Ghostty, a fast, feature-rich, and
+# cross-platform terminal emulator that uses platform-native UI and GPU
+# acceleration.
+# See: https://ghostty.org/docs/config/reference
+
+# The font families to use.
+font-family = "Otoshi Term"
+font-family = "Iosevka Nerd Font Mono"
+
+# Font size in points. This value can be a non-integer and the nearest integer
+# pixel size will be selected. If you have a high dpi display where 1pt = 2px
+# then you can get an odd numbered pixel size by specifying a half point.
+font-size = 16
+
+# Draw fonts with a thicker stroke, if supported.
+font-thicken
+
+# A theme to use. This can be a built-in theme name, a custom theme name, or an
+# absolute path to a custom theme file. Ghostty also supports specifying a
+# different theme to use for light and dark mode. Each option is documented
+# below.
+theme = "catppuccin-frappe"
+
+# Horizontal window padding. This applies padding between the terminal cells and
+# the left and right window borders. The value is in points, meaning that it
+# will be scaled appropriately for screen DPI.
+window-padding-x = 8
+
+# Vertical window padding. This applies padding between the terminal cells and
+# the top and bottom window borders. The value is in points, meaning that it
+# will be scaled appropriately for screen DPI.
+window-padding-y = 8

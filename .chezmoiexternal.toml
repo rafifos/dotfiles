@@ -7,352 +7,352 @@
 [".config/fish/themes/Catppuccin Frappe.theme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Frappe.theme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/fish/themes/Catppuccin Latte.theme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Latte.theme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/fish/themes/Catppuccin Macchiato.theme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Macchiato.theme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/fish/themes/Catppuccin Mocha.theme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/fish/main/themes/Catppuccin%20Mocha.theme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 # GitKraken
 
 [".gitkraken/themes/catppuccin-frappe.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-frappe.jsonc"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".gitkraken/themes/catppuccin-latte.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-latte.jsonc"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".gitkraken/themes/catppuccin-macchiato.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-macchiato.jsonc"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".gitkraken/themes/catppuccin-mocha.jsonc"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/gitkraken/main/themes/catppuccin-mocha.jsonc"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 # bat
 
 [".config/bat/themes/Catppuccin Latte.tmTheme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Latte.tmTheme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/bat/themes/Catppuccin Frappe.tmTheme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Frappe.tmTheme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/bat/themes/Catppuccin Macchiato.tmTheme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Macchiato.tmTheme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/bat/themes/Catppuccin Mocha.tmTheme"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 # delta
 
 [".config/delta/themes/catppuccin.gitconfig"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 # atuin
 
 [".config/atuin/themes/catppuccin-frappe-blue.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-blue.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-flamingo.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-flamingo.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-green.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-green.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-lavender.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-lavender.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-maroon.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-maroon.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-mauve.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-mauve.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-peach.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-peach.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-pink.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-pink.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-red.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-red.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-rosewater.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-rosewater.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-sapphire.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-sapphire.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-sky.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-sky.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-teal.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-teal.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-frappe-yellow.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/frappe/catppuccin-frappe-yellow.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-blue.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-blue.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-flamingo.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-flamingo.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-green.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-green.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-lavender.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-lavender.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-maroon.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-maroon.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-mauve.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-mauve.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-peach.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-peach.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-pink.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-pink.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-red.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-red.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-rosewater.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-rosewater.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-sapphire.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-sapphire.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-sky.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-sky.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-teal.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-teal.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-latte-yellow.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/latte/catppuccin-latte-yellow.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-blue.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-blue.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-flamingo.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-flamingo.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-green.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-green.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-lavender.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-lavender.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-maroon.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-maroon.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-mauve.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-mauve.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-peach.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-peach.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-pink.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-pink.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-red.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-red.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-rosewater.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-rosewater.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-sapphire.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-sapphire.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-sky.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-sky.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-teal.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-teal.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-macchiato-yellow.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/macchiato/catppuccin-macchiato-yellow.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-blue.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-blue.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-flamingo.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-flamingo.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-green.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-green.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-lavender.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-lavender.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-maroon.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-maroon.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-mauve.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-mauve.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-peach.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-peach.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-pink.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-pink.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-red.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-red.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-rosewater.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-rosewater.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-sapphire.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-sapphire.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-sky.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-sky.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-teal.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-teal.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"
 
 [".config/atuin/themes/catppuccin-mocha-yellow.toml"]
   type = "file"
   url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/mocha/catppuccin-mocha-yellow.toml"
-  refreshPeriod = "24h"
+  refreshPeriod = "168h"

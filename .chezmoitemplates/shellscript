@@ -130,7 +130,7 @@ function script_init() {
 #       $ta_none variable after each tput is redundant during normal execution,
 #       but ensures the terminal output isn't mangled when running with xtrace.
 # shellcheck disable=SC2034,SC2155
-function colour_init() {
+function color_init() {
   if [[ -z ${no_colour-} ]]; then
     # Text attributes
     readonly ta_bold="$(tput bold 2>/dev/null || true)"
@@ -292,10 +292,10 @@ function build_path() {
   while [[ -n $temp_path ]]; do
     path_entry="${temp_path%%:*}"
     case "$new_path:" in
-      *:"$path_entry":*) ;;
-      *)
-        new_path="$new_path:$path_entry"
-        ;;
+    *:"$path_entry":*) ;;
+    *)
+      new_path="$new_path:$path_entry"
+      ;;
     esac
     temp_path="${temp_path#*:}"
   done
@@ -388,7 +388,15 @@ function run_as_root() {
 # OUTS: None
 function inject_homebrew() {
   if ! check_binary "brew"; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    if [[ "$(uname)" == "Darwin" ]]; then
+      if [[ -f /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+    else
+      if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      fi
+    fi
   fi
 }
 
@@ -396,7 +404,7 @@ trap script_trap_err ERR
 trap script_trap_exit EXIT
 
 script_init
-colour_init
+color_init
 
 if [[ $EUID -eq 0 ]]; then
   lock_init system

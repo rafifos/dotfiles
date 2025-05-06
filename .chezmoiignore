@@ -1,7 +1,16 @@
 # Project files
+
 LICENSE
 README.md
 
 # Homebrew
+
 Brewfile
 Brewfile.lock.json
+
+{{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+{{ else if ne .chezmoi.os "windows" }}
+.chezmoiscripts/windows/**
+dot_config/private_fish/functions/apt.fish
+{{ end }}

@@ -3,13 +3,10 @@
 #   1. https://git-scm.com/docs/git-config
 #   2. https://blog.gitbutler.com/how-git-core-devs-configure-git
 
-# machine-specific configuration
 {{- if eq .chezmoi.hostname "TOWER" }}
 
-[user]
-  name = Rafael Julio
-  email = development@rafifos.dev
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFGP/C/FYnEoz6bC1bk24IHHFFCWyyCcRekR7POqLR3T
+[include]
+  path = ~/.personal.gitconfig
 
 # Uses 1Password to sign commits.
 [gpg "ssh"]
@@ -19,18 +16,8 @@
 
 {{- if eq .chezmoi.hostname "IS-NOT-NB0286" }}
 
-[user]
-  name = Rafael Julio Lemos Silva
-  email = rafael.silva@internationalschool.global
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJquvfk38aKCnpiVOJID0uK3l58B3T3rJYz0Ukj+YJG8
-
-# Use work GitHub account by default
-[credential "https://github.com"]
-  username = rafael-silva-is
-
-# User personal GitHub account on select repositories
-[credential "https://rafifos@github.com"]
-  username = rafifos
+[include]
+  path = ~/.work.gitconfig
 
 # Uses 1Password to sign commits.
 [gpg "ssh"]
@@ -38,12 +25,37 @@
 
 {{- end }}
 
+{{- if eq .chezmoi.os "linux" }}
+
+[credential]
+  helper =
+  helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+
+{{- else if eq .chezmoi.os "darwin" }}
+
+[include]
+  path = ~/.personal.gitconfig
+
+[credential]
+  helper =
+  helper = /usr/local/share/gcm-core/git-credential-manager
+
+[includeIf "gitdir:/Volumes/WD_BLACK SN770/Pessoal/"]
+  path = ~/.personal.gitconfig
+
+[includeIf "gitdir:/Volumes/WD_BLACK SN770/Trabalho/"]
+  path = ~/.work.gitconfig
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+{{- end }}
+
 # Enables commit signing using a SSH key.
 [gpg]
   format = ssh
 
 [include]
-	path = .config/delta/themes/catppuccin.gitconfig
+	path = ~/.config/delta/themes/catppuccin.gitconfig
 
 [core]
   # CRLF endings in Windows checkouts.
@@ -68,8 +80,8 @@
   # fsmonitor = true
   # untrackedCache = true
 
-[credential]
-  helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+[credential "https://dev.azure.com"]
+  useHttpPath = true
 
 [init]
   defaultBranch = main
