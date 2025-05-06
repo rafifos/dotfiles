@@ -8,7 +8,7 @@ if RbConfig::CONFIG["host_os"] =~ /darwin/
 
   cask "1password-cli"
   cask "1password"
-  cask "arc"
+  cask "blip"
   cask "dbeaver-community"
   cask "discord"
   cask "eqmac"
