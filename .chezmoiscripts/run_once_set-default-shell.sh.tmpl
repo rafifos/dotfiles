@@ -11,8 +11,12 @@ inject_homebrew
 if check_binary "fish"; then
   readonly fish_path="$(command -v fish)"
 
-  verbose_print "Making fish a valid login shell"
-  echo "$fish_path" | run_as_root tee -a /etc/shells
+  if ! grep -Fxq "$fish_path" /etc/shells; then
+    verbose_print "Making fish a valid login shell"
+    echo "$fish_path" | run_as_root tee -a /etc/shells
+  else
+    verbose_print "Fish is already a valid login shell"
+  fi
 
   verbose_print "Setting fish as the default shell for user: $USER"
   chsh -s "$fish_path"
