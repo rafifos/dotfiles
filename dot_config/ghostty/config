@@ -30,3 +30,6 @@ window-padding-x = 8
 # the top and bottom window borders. The value is in points, meaning that it
 # will be scaled appropriately for screen DPI.
 window-padding-y = 8
+
+# Customize the macOS app icon.
+macos-icon = "holographic"
