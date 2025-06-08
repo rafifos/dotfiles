@@ -1,7 +1,9 @@
 encryption = "gpg"
 
 [gpg]
-  recipients = ["A489BB8CA6648427C24EA0924C3BDB4F9ED719BA", "7FC5311DAC54AB8049B142AF5A9109EE25A4436B"]
+  recipients = [
+    "A489BB8CA6648427C24EA0924C3BDB4F9ED719BA" # development@rafifos.dev
+  ]
 
 [edit]
   command = "code"

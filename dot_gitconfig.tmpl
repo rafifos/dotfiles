@@ -3,38 +3,26 @@
 #   1. https://git-scm.com/docs/git-config
 #   2. https://blog.gitbutler.com/how-git-core-devs-configure-git
 
-{{- if eq .chezmoi.hostname "TOWER" }}
-
 [include]
   path = ~/.personal.gitconfig
 
-# Uses 1Password to sign commits.
-[gpg "ssh"]
-  program = "/mnt/c/Users/Rafael/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
-
-{{- end }}
-
-{{- if eq .chezmoi.hostname "IS-NOT-NB0286" }}
-
-[include]
-  path = ~/.work.gitconfig
-
-# Uses 1Password to sign commits.
-[gpg "ssh"]
-  program = "/mnt/c/Users/rafael.silva/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
-
-{{- end }}
-
 {{- if eq .chezmoi.os "linux" }}
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 
 [credential]
   helper =
   helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 
-{{- else if eq .chezmoi.os "darwin" }}
+[core]
+  # Use Windows's ssh as the default SSH client.
+  sshCommand = "ssh.exe"
 
-[include]
-  path = ~/.personal.gitconfig
+# Uses 1Password to sign commits.
+[gpg "ssh"]
+  program = "/mnt/c/Users/{{ .chezmoi.username }}/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+
+{{   end }}
+{{- else if eq .chezmoi.os "darwin" }}
 
 [credential]
   helper =
@@ -48,6 +36,7 @@
 
 [gpg "ssh"]
   program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
 {{- end }}
 
 # Enables commit signing using a SSH key.
@@ -70,9 +59,6 @@
 
   # Use delta as the default pager.
   pager = delta
-
-  # Use Windows's ssh as the default SSH client.
-  sshCommand = "ssh.exe"
 
   # Global ignores
   excludesfile = ~/.gitignore
@@ -165,3 +151,6 @@
 [rerere]
   enabled = true
   autoupdate = true
+
+[gitbutler]
+  aiModelProvider = anthropic
