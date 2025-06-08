@@ -1,9 +1,10 @@
-require "rbconfig"
-
 tap "beeftornado/rmtree"
 
-if RbConfig::CONFIG["host_os"] =~ /darwin/
+if OS.mac?
+  tap "jnsahaj/lumen"
+
   brew "gpg"
+  brew "lumen"
   brew "pinentry-mac"
   brew "uutils-coreutils"
   brew "uutils-diffutils"
@@ -11,28 +12,39 @@ if RbConfig::CONFIG["host_os"] =~ /darwin/
 
   cask "1password-cli"
   cask "1password"
+  cask "alt-tab"
+  cask "android-platform-tools"
   cask "blip"
-  cask "dbeaver-community"
   cask "discord"
   cask "eqmac"
   cask "font-inter"
   cask "font-iosevka-nerd-font"
+  cask "font-new-york"
+  cask "font-sf-mono"
+  cask "font-sf-pro"
   cask "ghostty"
   cask "git-credential-manager"
+  cask "gitbutler"
   cask "gitkraken"
   cask "google-chrome"
   cask "google-drive"
+  cask "iina"
+  cask "jordanbaird-ice"
   cask "microsoft-teams"
-  cask "only-switch"
+  cask "minisim"
   cask "raycast"
-  cask "slack"
   cask "spotify"
+  cask "transmission"
   cask "visual-studio-code"
   cask "whatsapp"
   cask "zed"
+  cask "zen"
 
   # Rosetta 2 is required for some x86_64 applications
   cask "logitech-g-hub"
+
+  mas "Blackmagic Disk Speed Test", id: 425264550
+  mas "Xcode", id: 497799835
 end
 
 brew "atuin"
