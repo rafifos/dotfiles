@@ -1,0 +1,59 @@
+# +------------+
+# + Catppuccin +
+# +------------+
+
+# Fish shell themes
+[".config/fish/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/fish/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/*.theme"]
+refreshPeriod = "168h"
+
+# GitKraken themes
+[".gitkraken/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/gitkraken/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/*.jsonc"]
+refreshPeriod = "168h"
+
+# bat themes
+[".config/bat/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/*.tmTheme"]
+refreshPeriod = "168h"
+
+# delta themes
+[".config/delta/themes/catppuccin.gitconfig"]
+type = "archive-file"
+url = "https://github.com/catppuccin/delta/archive/main.tar.gz"
+path = "delta-main/catppuccin.gitconfig"
+refreshPeriod = "168h"
+
+# atuin themes
+[".config/atuin/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/atuin/archive/main.tar.gz"
+exact = true
+stripComponents = 3
+include = ["*/themes/**/*.toml"]
+refreshPeriod = "168h"
+
+{{- if eq .chezmoi.os "darwin" }}
+
+# Xcode themes
+["Library/Developer/Xcode/UserData/FontAndColorThemes"]
+type = "archive"
+url = "https://github.com/catppuccin/xcode/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/*.xccolortheme"]
+refreshPeriod = "168h"
+
+{{- end }}
