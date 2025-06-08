@@ -1,0 +1,48 @@
+# Configuration for lazygit.
+# See:
+#   1. https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+#   2. https://github.com/catppuccin/lazygit
+#   3. https://github.com/jnsahaj/lumen
+
+# Catppuccin
+gui:
+  theme:
+    activeBorderColor:
+      - "#babbf1"
+      - bold
+    inactiveBorderColor:
+      - "#a5adce"
+    optionsTextColor:
+      - "#8caaee"
+    selectedLineBgColor:
+      - "#414559"
+    cherryPickedCommitBgColor:
+      - "#51576d"
+    cherryPickedCommitFgColor:
+      - "#babbf1"
+    unstagedChangesColor:
+      - "#e78284"
+    defaultFgColor:
+      - "#c6d0f5"
+    searchingActiveBorderColor:
+      - "#e5c890"
+
+  authorColors:
+    "*": "#babbf1"
+
+# lumen
+customCommands:
+  - key: "<c-l>"
+    context: "files"
+    command: "lumen draft | tee >(pbcopy)"
+    loadingText: "Generating message..."
+    output: logWithPty
+  - key: "<c-k>"
+    context: "files"
+    command: "lumen draft -c {{.Form.Context | quote}} | tee >(pbcopy)"
+    loadingText: "Generating message..."
+    output: logWithPty
+    prompts:
+      - type: "input"
+        title: "Context"
+        key: "Context"å
