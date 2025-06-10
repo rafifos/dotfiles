@@ -31,6 +31,7 @@ if OS.mac?
   cask "google-drive"
   cask "iina"
   cask "jordanbaird-ice"
+  cask "microsoft-auto-update"
   cask "microsoft-teams"
   cask "minisim"
   cask "raycast"
