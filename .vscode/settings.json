@@ -5,5 +5,6 @@
     "shellscript": "shellscript",
     "work": "shellscript",
     "dot_gitconfig.tmpl": "gitconfig",
+    "private_settings.json": "jsonc",
   }
 }
