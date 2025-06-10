@@ -16,6 +16,7 @@ if OS.mac?
   cask "android-platform-tools"
   cask "blip"
   cask "discord"
+  cask "docker"
   cask "eqmac"
   cask "font-inter"
   cask "font-iosevka-nerd-font"
