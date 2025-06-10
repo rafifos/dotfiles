@@ -1,5 +1,5 @@
 # Private data.
-test -f "$__fish_user_config_dir"/private.fish; and source "$__fish_user_config_dir"/private.fish
+test -f "$__fish_config_dir"/private.fish; and source "$__fish_config_dir"/private.fish
 
 if status --is-interactive
     # Add "safety net" for basic but irreversible file system operations by using
