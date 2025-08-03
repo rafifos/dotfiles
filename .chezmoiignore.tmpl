@@ -10,7 +10,7 @@ Brewfile.lock.json
 
 {{ if ne .chezmoi.os "linux" }}
 .chezmoiscripts/linux/**
-{{ else if ne .chezmoi.os "windows" }}
-.chezmoiscripts/windows/**
-dot_config/private_fish/functions/apt.fish
+{{ else if ne .chezmoi.os "macos" }}
+.chezmoiscripts/macos/**
+dot_config/ghostty/**
 {{ end }}
