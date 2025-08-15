@@ -3,6 +3,7 @@
 
 # Installs Nala. A frontend for apt(8).
 
+{{- template "linux" . -}}
 {{- template "shellscript" -}}
 
 if ! check_binary "nala"; then

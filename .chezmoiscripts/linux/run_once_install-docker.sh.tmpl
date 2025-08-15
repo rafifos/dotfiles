@@ -11,6 +11,7 @@
 # quickly, you can significantly reduce the delay between writing code and
 # running it in production.
 
+{{- template "linux" . -}}
 {{- template "shellscript" -}}
 
 if ! check_binary "docker"; then

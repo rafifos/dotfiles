@@ -3,6 +3,7 @@
 
 # Installs Rosetta 2 if not already installed.
 
+{{- template "macos" . -}}
 {{- template "shellscript" -}}
 
 softwareupdate --install-rosetta --agree-to-license

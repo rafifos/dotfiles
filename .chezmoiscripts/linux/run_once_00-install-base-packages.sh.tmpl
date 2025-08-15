@@ -3,6 +3,7 @@
 
 # Ensures the required base packages are installed before setting up the host.
 
+{{- template "linux" . -}}
 {{- template "shellscript" -}}
 
 # Base packages needed by all machines.
