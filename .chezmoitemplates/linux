@@ -1,0 +1,3 @@
+{{- if (ne .chezmoi.os "linux") }}
+exit 0
+{{- end }}
