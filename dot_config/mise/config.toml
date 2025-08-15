@@ -2,6 +2,11 @@
 [tools]
 bun = "latest"
 node = "lts"
+python = "{{ get_env(name='PYTHON_VERSION', default='latest') }}"
+uv = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "python"]
+python.compile = true
+python.uv_venv_auto = true
+python.uv_venv_create_args = ["--seed"]
