@@ -2,6 +2,7 @@ tap "beeftornado/rmtree"
 
 if OS.mac?
   tap "jnsahaj/lumen"
+  tap "rafifos/tap"
 
   brew "awscli"
   brew "gpg"
@@ -34,6 +35,7 @@ if OS.mac?
   cask "microsoft-auto-update"
   cask "microsoft-outlook"
   cask "microsoft-teams"
+  cask "onyx"
   cask "postman"
   cask "raycast"
   cask "spotify"
