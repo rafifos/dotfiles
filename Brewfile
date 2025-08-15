@@ -14,7 +14,6 @@ if OS.mac?
 
   cask "1password-cli"
   cask "1password"
-  cask "alt-tab"
   cask "android-platform-tools"
   cask "blip"
   cask "discord"
