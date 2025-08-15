@@ -39,6 +39,12 @@ set -gx GPG_TTY (tty)
 # Launches gpg-agent if it's not already running.
 gpgconf --launch gpg-agent
 
+# Uses Homebrew's OpenSSL when compiling.
+# See: https://mise.jdx.dev/lang/python.html#troubleshooting-errors-with-homebrew
+set -Ux CFLAGS "-I$(brew --prefix openssl)/include"
+set -Ux CXXFLAGS "-I$(brew --prefix openssl)/include"
+set -Ux LDFLAGS "-L$(brew --prefix openssl)/lib"
+
 # Environment variables for interactive shells.
 if status --is-interactive
     # Sets the default pager to less with some options.
