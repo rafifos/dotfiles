@@ -5,6 +5,7 @@ if OS.mac?
 
   brew "awscli"
   brew "gpg"
+  brew "hostess"
   brew "lumen"
   brew "pinentry-mac"
   brew "uutils-coreutils"
