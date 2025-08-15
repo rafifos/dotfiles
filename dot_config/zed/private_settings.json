@@ -43,9 +43,6 @@
   },
   // The default font size for text in the editor
   "buffer_font_size": 16,
-  // Whether to use the system provided dialogs for Open and Save As.
-  // When set to false, Zed will use the built-in keyboard-first pickers.
-  "use_system_path_prompts": true,
   // How to highlight the current line in the editor.
   //
   // 1. Don't highlight the current line:
