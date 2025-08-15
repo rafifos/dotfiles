@@ -125,13 +125,17 @@
     "button": "never"
   },
   "agent": {
-    // Version of this setting.
-    "version": "2",
     // The default model to use when creating new chats.
     "default_model": {
+      // The provider to use.
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
-    }
+      // The model to use.
+      "model": "claude-sonnet-4"
+    },
+    // When enabled, the agent will stream edits.
+    "stream_edits": true,
+    // Default: false
+    "play_sound_when_agent_done": true
   },
   // The settings for slash commands.
   "slash_commands": {
