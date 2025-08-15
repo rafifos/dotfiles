@@ -37,7 +37,6 @@ if OS.mac?
   cask "minisim"
   cask "raycast"
   cask "spotify"
-  cask "transmission"
   cask "visual-studio-code"
   cask "whatsapp"
   cask "zed"
