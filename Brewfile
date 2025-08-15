@@ -35,6 +35,7 @@ if OS.mac?
   cask "iina"
   cask "jordanbaird-ice"
   cask "microsoft-auto-update"
+  cask "microsoft-outlook"
   cask "microsoft-teams"
   cask "minisim"
   cask "raycast"
