@@ -232,5 +232,14 @@
     "printWidth": 100,
     "proseWrap": "always",
     "quoteProps": "consistent"
+  },
+  // Configures context servers for use by the agent.
+  "context_servers": {
+    "effect": {
+      "source": "custom",
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "effect-mcp@latest"]
+    }
   }
 }
