@@ -20,6 +20,7 @@ if OS.mac?
   cask "discord"
   cask "docker"
   cask "eqmac"
+  cask "figma"
   cask "font-inter"
   cask "font-iosevka-nerd-font"
   cask "font-new-york"
