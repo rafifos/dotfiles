@@ -12,7 +12,6 @@ if OS.mac?
   brew "uutils-diffutils"
   brew "uutils-findutils"
 
-  cask "1password-cli"
   cask "1password"
   cask "android-platform-tools"
   cask "blip"
