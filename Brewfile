@@ -3,6 +3,7 @@ tap "beeftornado/rmtree"
 if OS.mac?
   tap "jnsahaj/lumen"
 
+  brew "awscli"
   brew "gpg"
   brew "lumen"
   brew "pinentry-mac"
