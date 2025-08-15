@@ -35,6 +35,7 @@ if OS.mac?
   cask "microsoft-outlook"
   cask "microsoft-teams"
   cask "minisim"
+  cask "postman"
   cask "raycast"
   cask "spotify"
   cask "stats"
