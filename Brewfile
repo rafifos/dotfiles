@@ -42,9 +42,6 @@ if OS.mac?
   cask "zed"
   cask "zen"
 
-  # Rosetta 2 is required for some x86_64 applications
-  cask "logitech-g-hub"
-
   mas "Blackmagic Disk Speed Test", id: 425264550
   mas "Xcode", id: 497799835
 end
