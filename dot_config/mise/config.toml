@@ -1,5 +1,6 @@
 # See: https://mise.jdx.dev/configuration.html
 [tools]
+bun = "latest"
 node = "lts"
 
 [settings]
