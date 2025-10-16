@@ -56,4 +56,13 @@ stripComponents = 2
 include = ["*/themes/*.xccolortheme"]
 refreshPeriod = "168h"
 
+# Ghostty themes
+[".config/ghostty/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/ghostty/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/**/*.conf"]
+refreshPeriod = "168h"
+
 {{- end }}
