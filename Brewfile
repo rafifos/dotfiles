@@ -6,6 +6,10 @@ if OS.mac?
   tap "jnsahaj/lumen"
   tap "rafifos/tap"
 
+  brew "graphicsmagick"
+  brew "ghostscript"
+  brew "imagemagick"
+
   brew "awscli"
   brew "gpg"
   brew "hostess"
