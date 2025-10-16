@@ -1,4 +1,5 @@
 tap "beeftornado/rmtree"
+tap "sst/tap"
 
 if OS.mac?
   tap "jnsahaj/lumen"
@@ -67,6 +68,7 @@ brew "lazygit"
 brew "mise"
 brew "ripgrep"
 brew "rm-improved"
+brew "opencode"
 brew "ouch"
 brew "topgrade"
 brew "zoxide"
