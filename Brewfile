@@ -22,6 +22,7 @@ tap "tw93/tap"
   brew "uutils-findutils"
 
   cask "1password"
+  cask "alt-tab"
   cask "android-platform-tools"
   cask "blip"
   cask "discord"
