@@ -19,7 +19,7 @@ font-thicken
 # absolute path to a custom theme file. Ghostty also supports specifying a
 # different theme to use for light and dark mode. Each option is documented
 # below.
-theme = "catppuccin-frappe"
+theme = "catppuccin-mocha.conf"
 
 # Horizontal window padding. This applies padding between the terminal cells and
 # the left and right window borders. The value is in points, meaning that it
