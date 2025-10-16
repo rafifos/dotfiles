@@ -5,6 +5,7 @@ tap "sst/tap"
 if OS.mac?
   tap "jnsahaj/lumen"
   tap "rafifos/tap"
+tap "tw93/tap"
 
   brew "graphicsmagick"
   brew "ghostscript"
@@ -14,6 +15,7 @@ if OS.mac?
   brew "gpg"
   brew "hostess"
   brew "lumen"
+  brew "mole"
   brew "pinentry-mac"
   brew "uutils-coreutils"
   brew "uutils-diffutils"
