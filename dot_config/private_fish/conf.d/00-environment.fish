@@ -1,20 +1,20 @@
+# Sets the XDG Base Directory Specification directories.
+# See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_RUNTIME_DIR $HOME/.local/run
+set -Ux XDG_STATE_HOME $HOME/.local/state
+set -Ux XDG_DATA_HOME $HOME/.local/share
+
+# Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
+set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
+set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
+
+# Sets fish's config and data directories.
+set -U __fish_user_data_dir $XDG_DATA_HOME/fish
+set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
+
 if test (uname) = Linux
-    # Sets the XDG Base Directory Specification directories.
-    # See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-    set -Ux XDG_CACHE_HOME $HOME/.cache
-    set -Ux XDG_CONFIG_HOME $HOME/.config
-    set -Ux XDG_RUNTIME_DIR $HOME/.local/run
-    set -Ux XDG_STATE_HOME $HOME/.local/state
-    set -Ux XDG_DATA_HOME $HOME/.local/share
-
-    # Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
-    set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
-    set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
-
-    # Sets fish's config and data directories.
-    set -U __fish_user_data_dir $XDG_DATA_HOME/fish
-    set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
-
     # Fixes ssh commands on WSL
     alias ssh 'ssh.exe'
     alias ssh-add 'ssh-add.exe'
