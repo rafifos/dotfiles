@@ -1,4 +1,4 @@
-function _puffer_fish_expand_dots -d 'expand ... to ../.. etc. See: See: https://github.com/nickeb96/puffer-fish/blob/master/functions/_puffer_fish_expand_dots.fish'
+function _puffer_fish_expand_dots -d 'expand ... to ../.. etc. See: https://github.com/nickeb96/puffer-fish/blob/master/functions/_puffer_fish_expand_dots.fish'
   set -l cmd (commandline --cut-at-cursor)
   set -l split (string split -- ' ' $cmd)
 
