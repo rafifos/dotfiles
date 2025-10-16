@@ -1,4 +1,5 @@
 tap "beeftornado/rmtree"
+tap "peterldowns/tap"
 tap "sst/tap"
 
 if OS.mac?
@@ -65,6 +66,7 @@ brew "httpie"
 brew "jq"
 brew "lazydocker"
 brew "lazygit"
+brew "localias"
 brew "mise"
 brew "ripgrep"
 brew "rm-improved"
