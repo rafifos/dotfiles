@@ -47,4 +47,7 @@ if status --is-interactive
 
     # Initializes zoxide.
     type -q zoxide; and zoxide init --cmd cd fish | source
+
+    # Initializes starship.
+    type -q starship; and starship init fish | source
 end

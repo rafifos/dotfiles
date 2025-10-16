@@ -50,6 +50,13 @@ set -Ux LDFLAGS "-L$(brew --prefix openssl)/lib"
 set -Ux PYTHON_CONFIGURE_OPTS '--enable-optimizations --with-lto'
 set -Ux PYTHON_CFLAGS '-march=native -mtune=native'
 
+# Starship PATH config.
+# See:
+#  1. https://starship.rs/config/#config-file-location
+#  2. https://starship.rs/config/#logging
+set -Ux STARSHIP_CONFIG ~/.config/starship/starship.toml
+set -Ux STARSHIP_CACHE ~/.cache/starship
+
 # Environment variables for interactive shells.
 if status --is-interactive
     # Sets the default pager to less with some options.
@@ -57,10 +64,6 @@ if status --is-interactive
 
     # Configures the catppuccin theme.
     # fish_config theme save "Catppuccin Mocha"
-
-    # Configures the Pure prompt.
-    # See: https://pure-fish.github.io/pure/
-    set -U pure_symbol_prompt '><>'
 
     # Sets helix as the default editor if it's installed.
     if type -q hx

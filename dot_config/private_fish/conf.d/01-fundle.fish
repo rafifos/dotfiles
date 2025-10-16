@@ -9,7 +9,6 @@ fundle plugin catppuccin/fish
 fundle plugin franciscolourenco/done
 fundle plugin gazorby/fish-abbreviation-tips
 fundle plugin meaningful-ooo/sponge
-fundle plugin pure-fish/pure
 
 # Initialize fundle, loading all the available plugins.
 fundle init
