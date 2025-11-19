@@ -31,5 +31,9 @@ window-padding-x = 8
 # will be scaled appropriately for screen DPI.
 window-padding-y = 8
 
+# Shell integration features to enable. These require our shell integration to
+# be loaded, either automatically via shell-integration or manually.
+shell-integration-features = no-cursor, sudo, title, ssh-env, ssh-terminfo
+
 # Customize the macOS app icon.
 macos-icon = "holographic"
