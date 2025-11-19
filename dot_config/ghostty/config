@@ -38,6 +38,3 @@ shell-integration-features = no-cursor, sudo, title, ssh-env, ssh-terminfo
 # Custom shaders to run after the default shaders. This is a file path to a
 # GLSL-syntax shader for all platforms.
 custom-shader = shaders/cursor_sweep.glsl
-
-# Customize the macOS app icon.
-macos-icon = "holographic"
