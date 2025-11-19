@@ -1,6 +1,7 @@
 # See: https://mise.jdx.dev/configuration.html
 [tools]
 bun = "latest"
+go = "latest"
 node = "lts"
 python = "{{ get_env(name='PYTHON_VERSION', default='latest') }}"
 uv = "latest"
