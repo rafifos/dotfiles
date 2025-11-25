@@ -58,6 +58,13 @@ if OS.mac?
   mas 'Xcode', id: 497799835
 end
 
+# Build tools and libraries
+brew 'autoconf'
+brew 'gmp'
+brew 'libyaml'
+brew 'openssl@3'
+brew 'readline'
+
 brew 'atuin'
 brew 'bat'
 brew 'chezmoi'
