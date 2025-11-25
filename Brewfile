@@ -24,6 +24,7 @@ if OS.mac?
   cask '1password'
   cask 'alt-tab'
   cask 'android-platform-tools'
+  cask 'betterdisplay'
   cask 'blip'
   cask 'discord'
   cask 'docker-desktop'
