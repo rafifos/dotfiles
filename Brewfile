@@ -1,87 +1,87 @@
-tap "beeftornado/rmtree"
-tap "peterldowns/tap"
-tap "sst/tap"
+tap 'beeftornado/rmtree'
+tap 'peterldowns/tap'
+tap 'sst/tap'
 
 if OS.mac?
-  tap "jnsahaj/lumen"
-  tap "rafifos/tap"
-  tap "tw93/tap"
+  tap 'jnsahaj/lumen'
+  tap 'rafifos/tap'
+  tap 'tw93/tap'
 
-  brew "graphicsmagick"
-  brew "ghostscript"
-  brew "imagemagick"
+  brew 'graphicsmagick'
+  brew 'ghostscript'
+  brew 'imagemagick'
 
-  brew "awscli"
-  brew "gpg"
-  brew "hostess"
-  brew "lumen"
-  brew "mole"
-  brew "pinentry-mac"
-  brew "uutils-coreutils"
-  brew "uutils-diffutils"
-  brew "uutils-findutils"
+  brew 'awscli'
+  brew 'gpg'
+  brew 'hostess'
+  brew 'lumen'
+  brew 'mole'
+  brew 'pinentry-mac'
+  brew 'uutils-coreutils'
+  brew 'uutils-diffutils'
+  brew 'uutils-findutils'
 
-  cask "1password"
-  cask "alt-tab"
-  cask "android-platform-tools"
-  cask "blip"
-  cask "discord"
-  cask "docker-desktop"
-  cask "eqmac"
-  cask "figma"
-  cask "font-inter"
-  cask "font-iosevka-nerd-font"
-  cask "font-new-york"
-  cask "font-sf-mono"
-  cask "font-sf-pro"
-  cask "ghostty"
-  cask "git-credential-manager"
-  cask "gitkraken"
-  cask "google-chrome"
-  cask "google-drive"
-  cask "iina"
-  cask "jordanbaird-ice@beta"
-  cask "microsoft-auto-update"
-  cask "microsoft-outlook"
-  cask "microsoft-teams"
-  cask "onyx"
-  cask "postman"
-  cask "raycast"
-  cask "spotify"
-  cask "stats"
-  cask "visual-studio-code"
-  cask "whatsapp"
-  cask "zed"
-  cask "zen"
+  cask '1password'
+  cask 'alt-tab'
+  cask 'android-platform-tools'
+  cask 'blip'
+  cask 'discord'
+  cask 'docker-desktop'
+  cask 'eqmac'
+  cask 'figma'
+  cask 'font-inter'
+  cask 'font-iosevka-nerd-font'
+  cask 'font-new-york'
+  cask 'font-sf-mono'
+  cask 'font-sf-pro'
+  cask 'ghostty'
+  cask 'git-credential-manager'
+  cask 'gitkraken'
+  cask 'google-chrome'
+  cask 'google-drive'
+  cask 'iina'
+  cask 'jordanbaird-ice@beta'
+  cask 'microsoft-auto-update'
+  cask 'microsoft-outlook'
+  cask 'microsoft-teams'
+  cask 'onyx'
+  cask 'postman'
+  cask 'raycast'
+  cask 'spotify'
+  cask 'stats'
+  cask 'visual-studio-code'
+  cask 'whatsapp'
+  cask 'zed'
+  cask 'zen'
 
-  mas "Blackmagic Disk Speed Test", id: 425264550
-  mas "Xcode", id: 497799835
+  mas 'Blackmagic Disk Speed Test', id: 425264550
+  mas 'Xcode', id: 497799835
 end
 
-brew "atuin"
-brew "bat"
-brew "chezmoi"
-brew "eza"
-brew "fd"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "git-delta"
-brew "helix"
-brew "httpie"
-brew "jq"
-brew "lazydocker"
-brew "lazygit"
-brew "localias"
-brew "mise"
-brew "ripgrep"
-brew "rm-improved"
-brew "opencode"
-brew "ouch"
-brew "ruby"
-brew "shfmt"
-brew "shellcheck"
-brew "starship"
-brew "topgrade"
-brew "zoxide"
+brew 'atuin'
+brew 'bat'
+brew 'chezmoi'
+brew 'eza'
+brew 'fd'
+brew 'fish'
+brew 'fzf'
+brew 'gh'
+brew 'git'
+brew 'git-delta'
+brew 'helix'
+brew 'httpie'
+brew 'jq'
+brew 'lazydocker'
+brew 'lazygit'
+brew 'localias'
+brew 'mise'
+brew 'ripgrep'
+brew 'rm-improved'
+brew 'opencode'
+brew 'ouch'
+brew 'ruby'
+brew 'shfmt'
+brew 'shellcheck'
+brew 'starship'
+brew 'topgrade'
+brew 'zoxide'
