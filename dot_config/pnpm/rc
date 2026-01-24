@@ -1,0 +1,3 @@
+# Don't install packages < 1 day old
+# See: https://x.com/sawyerhood/status/1967738317111459937
+minimumReleaseAge: 1440

@@ -2,6 +2,10 @@
 test -f "$__fish_config_dir"/private.fish; and source "$__fish_config_dir"/private.fish
 
 if status --is-interactive
+    # Bash Style Command Substitution and Chaining (!!)
+    # See: https://github.com/fish-shell/fish-shell/wiki/Bash-Style-Command-Substitution-and-Chaining-(!!-!$)
+    abbr -a !! --position anywhere --function _last_history_item
+
     # Add "safety net" for basic but irreversible file system operations by using
     # verbose and interactive command modes.
     abbr -a -g cp 'cp -vi'
@@ -47,4 +51,7 @@ if status --is-interactive
 
     # Initializes zoxide.
     type -q zoxide; and zoxide init --cmd cd fish | source
+
+    # Initializes starship.
+    type -q starship; and starship init fish | source
 end

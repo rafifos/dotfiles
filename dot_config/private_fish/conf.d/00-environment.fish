@@ -1,20 +1,20 @@
+# Sets the XDG Base Directory Specification directories.
+# See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_RUNTIME_DIR $HOME/.local/run
+set -Ux XDG_STATE_HOME $HOME/.local/state
+set -Ux XDG_DATA_HOME $HOME/.local/share
+
+# Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
+set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
+set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
+
+# Sets fish's config and data directories.
+set -U __fish_user_data_dir $XDG_DATA_HOME/fish
+set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
+
 if test (uname) = Linux
-    # Sets the XDG Base Directory Specification directories.
-    # See: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-    set -Ux XDG_CACHE_HOME $HOME/.cache
-    set -Ux XDG_CONFIG_HOME $HOME/.config
-    set -Ux XDG_RUNTIME_DIR $HOME/.local/run
-    set -Ux XDG_STATE_HOME $HOME/.local/state
-    set -Ux XDG_DATA_HOME $HOME/.local/share
-
-    # Also appends the applicable directories to XDG_CONFIG_DIRS and XDG_DATA_DIRS.
-    set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
-    set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
-
-    # Sets fish's config and data directories.
-    set -U __fish_user_data_dir $XDG_DATA_HOME/fish
-    set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
-
     # Fixes ssh commands on WSL
     alias ssh 'ssh.exe'
     alias ssh-add 'ssh-add.exe'
@@ -50,17 +50,20 @@ set -Ux LDFLAGS "-L$(brew --prefix openssl)/lib"
 set -Ux PYTHON_CONFIGURE_OPTS '--enable-optimizations --with-lto'
 set -Ux PYTHON_CFLAGS '-march=native -mtune=native'
 
+# Starship PATH config.
+# See:
+#  1. https://starship.rs/config/#config-file-location
+#  2. https://starship.rs/config/#logging
+set -Ux STARSHIP_CONFIG ~/.config/starship/starship.toml
+set -Ux STARSHIP_CACHE ~/.cache/starship
+
 # Environment variables for interactive shells.
 if status --is-interactive
     # Sets the default pager to less with some options.
     set -gx PAGER 'less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init --quit-on-intr --chop-long-lines'
 
     # Configures the catppuccin theme.
-    # fish_config theme save "Catppuccin Frappe"
-
-    # Configures the Pure prompt.
-    # See: https://pure-fish.github.io/pure/
-    set -U pure_symbol_prompt '><>'
+    # fish_config theme save "Catppuccin Mocha"
 
     # Sets helix as the default editor if it's installed.
     if type -q hx

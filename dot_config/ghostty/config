@@ -19,7 +19,7 @@ font-thicken
 # absolute path to a custom theme file. Ghostty also supports specifying a
 # different theme to use for light and dark mode. Each option is documented
 # below.
-theme = "catppuccin-frappe"
+theme = "catppuccin-mocha.conf"
 
 # Horizontal window padding. This applies padding between the terminal cells and
 # the left and right window borders. The value is in points, meaning that it
@@ -31,5 +31,10 @@ window-padding-x = 8
 # will be scaled appropriately for screen DPI.
 window-padding-y = 8
 
-# Customize the macOS app icon.
-macos-icon = "holographic"
+# Shell integration features to enable. These require our shell integration to
+# be loaded, either automatically via shell-integration or manually.
+shell-integration-features = no-cursor, sudo, title, ssh-env, ssh-terminfo
+
+# Custom shaders to run after the default shaders. This is a file path to a
+# GLSL-syntax shader for all platforms.
+custom-shader = shaders/cursor_sweep.glsl

@@ -56,4 +56,22 @@ stripComponents = 2
 include = ["*/themes/*.xccolortheme"]
 refreshPeriod = "168h"
 
+# Ghostty themes
+[".config/ghostty/themes"]
+type = "archive"
+url = "https://github.com/catppuccin/ghostty/archive/main.tar.gz"
+exact = true
+stripComponents = 2
+include = ["*/themes/**/*.conf"]
+refreshPeriod = "168h"
+
+# Ghostty shaders
+[".config/ghostty/shaders"]
+type = "archive"
+url = "https://github.com/sahaj-b/ghostty-cursor-shaders/archive/main.tar.gz"
+exact = true
+stripComponents = 1
+include = ["**/*.glsl"]
+refreshPeriod = "168h"
+
 {{- end }}

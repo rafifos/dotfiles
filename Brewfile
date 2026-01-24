@@ -1,72 +1,94 @@
-tap "beeftornado/rmtree"
+tap 'beeftornado/rmtree'
+tap 'peterldowns/tap'
+tap 'sst/tap'
 
 if OS.mac?
-  tap "jnsahaj/lumen"
-  tap "rafifos/tap"
+  tap 'jnsahaj/lumen'
+  tap 'rafifos/tap'
+  tap 'tw93/tap'
 
-  brew "awscli"
-  brew "gpg"
-  brew "hostess"
-  brew "lumen"
-  brew "pinentry-mac"
-  brew "uutils-coreutils"
-  brew "uutils-diffutils"
-  brew "uutils-findutils"
+  brew 'graphicsmagick'
+  brew 'ghostscript'
+  brew 'imagemagick'
 
-  cask "1password"
-  cask "android-platform-tools"
-  cask "blip"
-  cask "discord"
-  cask "docker-desktop"
-  cask "eqmac"
-  cask "figma"
-  cask "font-inter"
-  cask "font-iosevka-nerd-font"
-  cask "font-new-york"
-  cask "font-sf-mono"
-  cask "font-sf-pro"
-  cask "ghostty"
-  cask "git-credential-manager"
-  cask "gitkraken"
-  cask "google-chrome"
-  cask "google-drive"
-  cask "iina"
-  cask "jordanbaird-ice"
-  cask "microsoft-auto-update"
-  cask "microsoft-outlook"
-  cask "microsoft-teams"
-  cask "onyx"
-  cask "postman"
-  cask "raycast"
-  cask "spotify"
-  cask "stats"
-  cask "visual-studio-code"
-  cask "whatsapp"
-  cask "zed"
-  cask "zen"
+  brew 'awscli'
+  brew 'gpg'
+  brew 'hostess'
+  brew 'lumen'
+  brew 'mole'
+  brew 'pinentry-mac'
+  brew 'uutils-coreutils'
+  brew 'uutils-diffutils'
+  brew 'uutils-findutils'
 
-  mas "Blackmagic Disk Speed Test", id: 425264550
-  mas "Xcode", id: 497799835
+  cask '1password'
+  cask 'alt-tab'
+  cask 'android-platform-tools'
+  cask 'betterdisplay'
+  cask 'blip'
+  cask 'discord'
+  cask 'docker-desktop'
+  cask 'eqmac'
+  cask 'figma'
+  cask 'font-inter'
+  cask 'font-iosevka-nerd-font'
+  cask 'font-new-york'
+  cask 'font-sf-mono'
+  cask 'font-sf-pro'
+  cask 'ghostty'
+  cask 'git-credential-manager'
+  cask 'gitkraken'
+  cask 'google-chrome'
+  cask 'google-drive'
+  cask 'iina'
+  cask 'jordanbaird-ice@beta'
+  cask 'microsoft-auto-update'
+  cask 'microsoft-outlook'
+  cask 'microsoft-teams'
+  cask 'onyx'
+  cask 'postman'
+  cask 'raycast'
+  cask 'spotify'
+  cask 'stats'
+  cask 'visual-studio-code'
+  cask 'whatsapp'
+  cask 'zed'
+  cask 'zen'
+
+  mas 'Blackmagic Disk Speed Test', id: 425264550
+  mas 'Xcode', id: 497799835
 end
 
-brew "atuin"
-brew "bat"
-brew "chezmoi"
-brew "eza"
-brew "fd"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "git-delta"
-brew "helix"
-brew "httpie"
-brew "jq"
-brew "lazydocker"
-brew "lazygit"
-brew "mise"
-brew "ripgrep"
-brew "rm-improved"
-brew "ouch"
-brew "topgrade"
-brew "zoxide"
+# Build tools and libraries
+brew 'autoconf'
+brew 'gmp'
+brew 'libyaml'
+brew 'openssl@3'
+brew 'readline'
+
+brew 'atuin'
+brew 'bat'
+brew 'chezmoi'
+brew 'eza'
+brew 'fd'
+brew 'fish'
+brew 'fzf'
+brew 'gh'
+brew 'git'
+brew 'git-delta'
+brew 'helix'
+brew 'httpie'
+brew 'jq'
+brew 'lazydocker'
+brew 'lazygit'
+brew 'localias'
+brew 'mise'
+brew 'ripgrep'
+brew 'rm-improved'
+brew 'opencode'
+brew 'ouch'
+brew 'shfmt'
+brew 'shellcheck'
+brew 'starship'
+brew 'topgrade'
+brew 'zoxide'
