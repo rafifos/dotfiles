@@ -19,7 +19,7 @@
 
 # Uses 1Password to sign commits.
 [gpg "ssh"]
-  program = "/mnt/c/Users/{{ .chezmoi.username }}/AppData/Local/1Password/app/8/op-ssh-sign-wsl"
+  program = "/mnt/c/Users/{{ .chezmoi.username }}/AppData/Local/Microsoft/WindowsApps/op-ssh-sign.exl"
 
 {{   end }}
 {{- else if eq .chezmoi.os "darwin" }}
