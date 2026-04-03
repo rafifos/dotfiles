@@ -37,7 +37,7 @@ if OS.mac?
   cask 'font-sf-pro'
   cask 'ghostty'
   cask 'git-credential-manager'
-  cask 'gitkraken'
+  cask 'gitbutler'
   cask 'google-chrome'
   cask 'google-drive'
   cask 'iina'
