@@ -14,6 +14,11 @@
         "NOTE": "The below environment variables are completely optional, see the README.md for available tools and configuration options",
         "ENABLE_ADDITIONAL_TOOLS": "shadcn,memory,process_document,excel,aws_documentation,terraform_documentation,security,sequential-thinking,api,filesystem"
       }
+    },
+    "atlassian-rovo": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://mcp.atlassian.com/v1/mcp"
     }
   }
 }
