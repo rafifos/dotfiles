@@ -1,0 +1,11 @@
+// Folder-specific settings
+//
+// For a full list of overridable settings, and general information on folder-specific settings,
+// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
+{
+  "file_types": {
+    // Workaround for Ghostty's config file detection
+    // See: https://github.com/Else00/ghostty-zed-extension?tab=readme-ov-file#file-detection-workaround
+    "Ghostty": ["**/ghostty/config", "**/com.mitchellh.ghostty/config"],
+  },
+}
