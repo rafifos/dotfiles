@@ -18,6 +18,9 @@ if status --is-interactive
     # Shortcut to chezmoi's directory
     abbr -a -g dot "cd ~/.local/share/chezmoi"
 
+    # Setup grc if installed.
+    type -q grcat; and source (brew --prefix)/etc/grc.fish
+
     # Handy abbr to download a remote file using httpie.
     type -q http; and abbr -a -g download 'http --follow --download'
 
