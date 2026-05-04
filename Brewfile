@@ -27,7 +27,6 @@ if OS.mac?
   cask 'android-platform-tools'
   cask 'blip'
   cask 'codexbar'
-  cask 'copilot-cli'
   # cask 'discord'
   cask 'docker-desktop'
   cask 'eqmac'
