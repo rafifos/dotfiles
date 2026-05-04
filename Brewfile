@@ -54,7 +54,6 @@ if OS.mac?
   cask 'teamspeak-client@beta'
   cask 'visual-studio-code'
   cask 'whatsapp'
-  cask 'zed'
   cask 'zen'
 
   mas 'Blackmagic Disk Speed Test', id: 425264550
