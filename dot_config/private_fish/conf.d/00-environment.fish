@@ -47,6 +47,7 @@ set -Ux LDFLAGS "-L$(brew --prefix openssl)/lib"
 
 # Builds Python with optimizations and link-time optimizations (LTO).
 # See: https://github.com/pyenv/pyenv/tree/master/plugins/python-build#building-for-maximum-performance
+set -Ux PYTHON_BUILD_FREE_THREADING 1
 set -Ux PYTHON_CONFIGURE_OPTS '--enable-optimizations --with-lto'
 set -Ux PYTHON_CFLAGS '-march=native -mtune=native'
 
