@@ -47,6 +47,7 @@ if OS.mac?
   cask 'microsoft-outlook'
   cask 'microsoft-teams'
   cask 'onyx'
+  cask 'opencode-desktop'
   cask 'postman'
   cask 'spotify'
   cask 'stats'
@@ -60,11 +61,18 @@ if OS.mac?
 end
 
 # Build tools and libraries
+# See: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 brew 'autoconf'
 brew 'gmp'
 brew 'libyaml'
-brew 'openssl@3'
+brew 'openssl'
 brew 'readline'
+brew 'sqlite3'
+brew 'tcl-tk@8'
+brew 'libb2'
+brew 'zstd'
+brew 'zlib'
+brew 'pkgconfig'
 
 brew 'atuin'
 brew 'bat'
