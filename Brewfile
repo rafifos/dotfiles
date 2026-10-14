@@ -47,6 +47,7 @@ if OS.mac?
   cask 'docker-desktop'
   cask 'figma'
   cask 'finetune'
+  cask 'fluxer-canary'
   cask 'font-inter'
   cask 'font-iosevka-nerd-font'
   cask 'font-new-york'
