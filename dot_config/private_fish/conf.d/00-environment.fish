@@ -10,10 +10,6 @@ set -Ux XDG_DATA_HOME $HOME/.local/share
 set -Ua XDG_CONFIG_DIRS $XDG_CONFIG_HOME
 set -Ua XDG_DATA_DIRS $XDG_DATA_HOME
 
-# Sets fish's config and data directories.
-set -U __fish_user_data_dir $XDG_DATA_HOME/fish
-set -U __fish_user_config_dir $XDG_CONFIG_HOME/fish
-
 if test (uname) = Linux
     # Fixes ssh commands on WSL
     alias ssh 'ssh.exe'
