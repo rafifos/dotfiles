@@ -38,3 +38,11 @@ shell-integration-features = no-cursor, sudo, title, ssh-env, ssh-terminfo
 # Custom shaders to run after the default shaders. This is a file path to a
 # GLSL-syntax shader for all platforms.
 custom-shader = shaders/cursor_sweep.glsl
+
+# Customize the macOS app icon. This only affects the icon that appears in the
+# dock, application switcher, etc. This does not affect the icon in Finder
+# because that is controlled by a hardcoded value in the signed application
+# bundle and can't be changed at runtime. For more details on what exactly is
+# affected, see the NSApplication.icon Apple documentation; that is the API that
+# is being used to set the icon
+macos-icon = retro
