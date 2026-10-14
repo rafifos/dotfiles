@@ -65,6 +65,7 @@ if OS.mac?
   cask 'opencode-desktop'
   cask 'postman'
   cask 'spotify'
+  cask 'tablepro'
   cask 'teamspeak-client@beta'
   cask 'visual-studio-code'
   cask 'vorssaint'
