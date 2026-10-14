@@ -2,6 +2,7 @@
 [tools]
 bun = "latest"
 go = "latest"
+"go:github.com/sammcj/mcp-devtools" = "latest"
 node = "lts"
 python = "{{ get_env(name='PYTHON_VERSION', default='latest') }}"
 ruby = "latest"
