@@ -36,6 +36,10 @@ if OS.mac?
   brew 'uutils-diffutils'
   brew 'uutils-findutils'
 
+  brew 'airsync-mac'
+  brew 'scrcpy'
+  brew 'media-control'
+
   cask '1password'
   cask 'alt-tab'
   cask 'android-platform-tools'
