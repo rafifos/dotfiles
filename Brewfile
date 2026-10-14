@@ -45,7 +45,6 @@ if OS.mac?
   cask 'android-platform-tools'
   cask 'blip'
   cask 'codexbar'
-  # cask 'discord'
   cask 'docker-desktop'
   cask 'eqmac'
   cask 'figma'
