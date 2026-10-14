@@ -1,0 +1,12 @@
+{
+  "globalSettings": {
+    "lastNonAutoEditorTheme": "Light",
+    "lastLightEditorTheme": "Light",
+    "outlineEnable": true,
+    "uiFontSize": 16,
+    "editorFontSize": 16,
+    "editorLineHeight": 1.6,
+    "codeFontFamily": "'Otoshi Mono', 'Iosevka Custom', Iosevka, 'Iosevka Nerd Font Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+  },
+  "aiPreferences": {}
+}
