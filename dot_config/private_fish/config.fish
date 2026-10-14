@@ -46,6 +46,15 @@ if status --is-interactive
         end
     end
 
+    # Generates mode's completions if they don't exist.
+    if type -q mo
+        not test -d $__fish_user_data_dir/generated_completions; and mkdir -p $__fish_user_data_dir/generated_completions
+
+        if not test -f $__fish_user_data_dir/generated_completions/mole.fish
+            mo completion fish >$__fish_user_data_dir/generated_completions/mole.fish
+        end
+    end
+
     # Initializes fzf.
     type -q fzf; and fzf --fish | source
 
