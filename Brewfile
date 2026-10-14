@@ -1,12 +1,26 @@
-tap 'beeftornado/rmtree'
-tap 'peterldowns/tap'
-tap 'sst/tap'
+tap 'beeftornado/rmtree', trusted: {
+  formula:  "brew-rmtree",
+  command:  "rmtree",
+}
+
+tap 'peterldowns/tap', trusted: {
+  formulae: ["localias"],
+}
+
+tap 'rafifos/tap', trusted: true
 
 if OS.mac?
-  tap 'jnsahaj/lumen'
-  tap 'rafifos/tap'
-  tap 'steipete/tap'
-  tap 'tw93/tap'
+  tap 'jnsahaj/lumen', trusted: {
+    formula:  "lumen",
+  }
+
+  tap 'steipete/tap', trusted: {
+    formulae: ["codexbar"],
+  }
+
+  tap 'tw93/tap', trusted: {
+    formulae: ["mole"],
+  }
 
   brew 'graphicsmagick'
   brew 'ghostscript'
