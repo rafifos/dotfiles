@@ -3,6 +3,10 @@ tap 'beeftornado/rmtree', trusted: {
   command:  "rmtree",
 }
 
+tap 'hashicorp/tap', {
+  formulae: ["terraform", "terraform-ls"],
+}
+
 tap 'peterldowns/tap', trusted: {
   formulae: ["localias"],
 }
@@ -116,6 +120,8 @@ brew 'ouch'
 brew 'shfmt'
 brew 'shellcheck'
 brew 'starship'
+brew 'terraform'
+brew 'terraform-ls'
 brew 'topgrade'
 brew "xdg-ninja", args: ["HEAD"]
 brew 'zoxide'
